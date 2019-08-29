@@ -1,0 +1,38 @@
+<?php
+$GLOBALS['config'] = [];
+
+/**
+   What kind of environment is this?
+   * 'devel' : Development. Non-minimal CSS and JS libraries and PHP
+   code with information return.
+   * 'prod' : Production. Minimal CSS and JS libraries and PHP
+   without development output.
+ */
+$GLOBALS['environment']='devel';
+
+/**
+   Where I can store temporary files?
+
+   For executing Racer, I need to store the OWLlink file, where I
+   should do this?
+
+   Remember: Apache (represented as httpd, apache or www-data user in
+   some systems) should have write perms there.
+ */
+$GLOBALS['config']['temporal_path'] = '/var/www/html/wicom/run/';
+$GLOBALS['config']['public_html'] = '/var/www/html/';
+$GLOBALS['config']['sparqldl_api_path'] = '/var/www/html/wicom-qdod/run/sparql-dl-api/target/';
+
+/**
+   Where is the reasoner?
+
+   By default we provide a Racer and a konclude program inside the temporal_path
+   (at wicom/run/), but if you want to use another program you
+   have to set this value with the path.
+ */
+$GLOBALS['config']['racer_path'] = $GLOBALS['config']['temporal_path'];
+$GLOBALS['config']['konclude_path'] = $GLOBALS['config']['temporal_path'];
+$GLOBALS['config']['sparqldl_path'] = $GLOBALS['config']['sparqldl_api_path'];
+$GLOBALS['config']['widoco_path'] = $GLOBALS['config']['temporal_path'];
+
+?>
