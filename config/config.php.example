@@ -21,7 +21,6 @@ $GLOBALS['environment']='devel';
  */
 $GLOBALS['config']['temporal_path'] = '/var/www/html/wicom/run/';
 $GLOBALS['config']['public_html'] = '/var/www/html/';
-$GLOBALS['config']['sparqldl_api_path'] = '/var/www/html/wicom-qdod/run/sparql-dl-api/target/';
 
 /**
    Where is the reasoner?
@@ -32,7 +31,5 @@ $GLOBALS['config']['sparqldl_api_path'] = '/var/www/html/wicom-qdod/run/sparql-d
  */
 $GLOBALS['config']['racer_path'] = $GLOBALS['config']['temporal_path'];
 $GLOBALS['config']['konclude_path'] = $GLOBALS['config']['temporal_path'];
-$GLOBALS['config']['sparqldl_path'] = $GLOBALS['config']['sparqldl_api_path'];
-$GLOBALS['config']['widoco_path'] = $GLOBALS['config']['temporal_path'];
 
 ?>

@@ -41,7 +41,7 @@ If TESTNAME is present, then execute the first test founded at the subdirectorie
 		echo "found ../temp/input-file.owllink, changing its name..."
 		mv ../run/input-file.owllink ../temp/input-file.(date +%F-%T).owllink
 	end
-	phpunit --colors=always --include ../../web-src $argv[1]
+	phpunit --colors=always --include ../../ $argv[1]
 end
 
 if test -z "$argv[1]" 

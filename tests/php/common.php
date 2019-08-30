@@ -21,7 +21,7 @@
    along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-require_once("../../web-src/common/import_functions.php");
+require_once("../../common/import_functions.php");
 
 /**
    Remove multiple spaces (tabs and spaces) and newlines replacing it with only one space.
