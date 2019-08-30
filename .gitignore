@@ -1,2 +1,5 @@
 *~
 *\#
+docs/doxygen/**
+run/**
+config/config.php
