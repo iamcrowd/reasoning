@@ -131,36 +131,4 @@ EOT;
         $this->assertEqualXMLStructure($expected, $actual, true);
     }
 
-    public function testRunnerWidoco(){
-        $input = <<<'EOT'
-<?xml version="1.0" encoding="UTF-8"?>
-            <Ontology xmlns="http://www.w3.org/2002/07/owl#"
-              xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-              xmlns:xml="http://www.w3.org/XML/1998/namespace"
-              xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
-              xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
-              xml:base="http://crowd.fi.uncoma.edu.ar#"
-              ontologyIRI="http://crowd.fi.uncoma.edu.ar#">
-              <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
-              <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
-              <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
-              <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
-              <Prefix name="crowd" IRI="http://crowd.fi.uncoma.edu.ar#"/>
-              <Declaration>
-                <Class IRI="http://crowd.fi.uncoma.edu.ar#Class1"/>
-              </Declaration>
-              <Declaration>
-                <Class IRI="http://crowd.fi.uncoma.edu.ar#Class2"/>
-              </Declaration>
-              <SubClassOf>
-                <Class IRI="http://crowd.fi.uncoma.edu.ar#Class2"/>
-                <Class IRI="http://crowd.fi.uncoma.edu.ar#Class1"/>
-              </SubClassOf>
-          </Ontology>
-EOT;
-
-        $runner = new Runner(new WidocoConnector());
-        var_dump($runner);
-        $runner->run($input);
-    }
 }
