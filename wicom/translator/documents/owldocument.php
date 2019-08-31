@@ -92,33 +92,46 @@ class OWLDocument extends Document{
         $this->content->startElement("Ontology");
 
         if ((empty($headerIRIs)) && (empty($ontologyIRI))){
-          foreach ($this->default_header as $header){
-            $this->content->writeAttribute($header["attr"], $header["value"]);
-          }
-          $this->content->writeAttribute("xml:base","http://crowd.fi.uncoma.edu.ar/kb1#");
-          $this->content->writeAttribute("ontologyIRI","http://crowd.fi.uncoma.edu.ar/kb1#");
-          $this->actual_kb = "http://crowd.fi.uncoma.edu.ar/kb1#";
+            foreach ($this->default_header as $header){
+		$this->content->writeAttribute($header["attr"],
+					     $header["value"]);
+            }
+            $this->content->writeAttribute(
+		"xml:base","http://crowd.fi.uncoma.edu.ar/kb1#");
+            $this->content->writeAttribute(
+		"ontologyIRI","http://crowd.fi.uncoma.edu.ar/kb1#");
+            $this->actual_kb = "http://crowd.fi.uncoma.edu.ar/kb1#";
+	    
         } elseif ((empty($headerIRIs)) && (!empty($ontologyIRI))){
-              foreach ($this->default_header as $header){
-                $this->content->writeAttribute($header["attr"], $header["value"]);
-              }
-              $this->content->writeAttribute("xml:base", $ontologyIRI["value"]);
-              $this->content->writeAttribute("ontologyIRI",$ontologyIRI["value"]);
-              $this->actual_kb = $ontologyIRI;
-          } elseif ((!empty($headerIRIs)) && (empty($ontologyIRI))){
-              foreach ($reqiris as $iri){
+	    
+            foreach ($this->default_header as $header){
+                $this->content->writeAttribute($header["attr"],
+					     $header["value"]);
+            }
+            $this->content->writeAttribute("xml:base", $ontologyIRI["value"]);
+            $this->content->writeAttribute("ontologyIRI",$ontologyIRI["value"]);
+            $this->actual_kb = $ontologyIRI;
+	    
+        } elseif ((!empty($headerIRIs)) && (empty($ontologyIRI))){
+	    
+            foreach ($reqiris as $iri){
                 $this->content->writeAttribute($iri["prefix"], $iri["value"]);
-              }
-              $this->content->writeAttribute("xml:base","http://crowd.fi.uncoma.edu.ar/kb1#");
-              $this->content->writeAttribute("xml:base","http://crowd.fi.uncoma.edu.ar/kb1#");
-              $this->actual_kb = "http://crowd.fi.uncoma.edu.ar/kb1/";
-          } elseif ((!empty($headerIRIs)) && (!empty($ontologyIRI))){
-              foreach ($reqiris as $iri){
+            }
+            $this->content->writeAttribute(
+		"xml:base","http://crowd.fi.uncoma.edu.ar/kb1#");
+            $this->content->writeAttribute(
+		"xml:base","http://crowd.fi.uncoma.edu.ar/kb1#");
+            $this->actual_kb = "http://crowd.fi.uncoma.edu.ar/kb1/";
+	    
+        } elseif ((!empty($headerIRIs)) && (!empty($ontologyIRI))){
+	    
+            foreach ($reqiris as $iri){
                 $this->content->writeAttribute($iri["prefix"], $iri["value"]);
-              }
-                $this->content->writeAttribute("ontologyIRI",$ontologyIRI["value"]);
-                $this->actual_kb = $ontologyIRI;
-          }
+            }
+            $this->content->writeAttribute("ontologyIRI",$ontologyIRI["value"]);
+            $this->actual_kb = $ontologyIRI;
+	    
+        }
     }
 
     /**
@@ -142,7 +155,7 @@ class OWLDocument extends Document{
     // Starting and ending the document
 
     public function set_ontology_prefixes($ontologyIRI, $prefixes = []){
-      array_push($prefixes, $ontologyIRI);
+	array_merge($prefixes, $ontologyIRI);
 
       // Insert default prefixes for OWL 2 into an array of prefixes
       foreach ($this->default_prefixes as $pref){
