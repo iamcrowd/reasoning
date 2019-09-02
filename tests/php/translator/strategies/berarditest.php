@@ -39,6 +39,10 @@ use Wicom\Translator\Builders\OWLlinkBuilder;
 class BerardiTest extends PHPUnit\Framework\TestCase
 {
 
+
+    /**
+       @testdox Translate a simple class into OWL 2
+     */
     public function testTranslate(){
         //TODO: Complete JSON!
         $json = <<<'EOT'
@@ -91,8 +95,12 @@ EOT;
         $this->assertXmlStringEqualsXmlString($expected, $actual, true);
     }
 
-    ##
-    # Test if translate works properly with binary roles.
+
+    /**
+       Test if translate works properly with binary roles.
+
+       @testdox Translate a binary role into OWL 2
+     */
     public function testTranslateBinaryRoles(){
         //TODO: Complete JSON!
         $json = <<<'EOT'
@@ -208,7 +216,11 @@ EOT;
         $this->assertXmlStringEqualsXmlString($expected, $actual);
     }
 
-    # Test if 0..* to 0..* associations is translated properly.
+    /**
+       Test if 0..* to 0..* associations is translated properly.
+
+       @testdox Translate a many to many role into OWL 2
+     */
     public function testTranslateRolesManyToMany(){
         //TODO: Complete JSON!
         $json = <<<'EOT'
@@ -297,7 +309,11 @@ EOT;
     }
 
 
-    # Test generalization is translated properly.
+    /**
+       Test generalization is translated properly.
+       
+       @testdox Translate a generalization into OWL 2
+     */
     public function testTranslateGeneralization(){
         //TODO: Complete JSON!
         $json = <<<'EOT'
@@ -371,7 +387,11 @@ EOT;
         $this->assertXmlStringEqualsXmlString($expected, $actual, TRUE);
     }
 
-    # Test generalization with disjoint constraint is translated properly.
+    /**
+       Test generalization with disjoint constraint is translated properly.
+
+       @testdox Translate a disjoint generalizatio into OWL 2
+    */
     public function testTranslateGenDisjoint(){
         //TODO: Complete JSON!
         $json = <<<'EOT'
@@ -481,7 +501,11 @@ EOT;
         $this->assertXmlStringEqualsXmlString($expected, $actual, TRUE);
     }
 
-    # Test generalization with covering constraint is translated properly.
+    /**
+       Test generalization with covering constraint is translated properly.
+
+       @testdox Translate a covering generalization into OWL 2
+    */
     public function testTranslateGenCovering(){
         //TODO: Complete JSON!
         $json = <<<'EOT'
@@ -583,6 +607,8 @@ EOT;
 
     /**
        Test for checking Strategy::translate_queries method only for class.
+
+       @testdox Generate standard queries in OWL 2
      */
     public function test_translate_queries(){
         //TODO: Complete JSON!
