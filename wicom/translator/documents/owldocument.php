@@ -55,19 +55,25 @@ class OWLDocument extends Document{
 
     protected $current_prefixes = [];
 
+    protected $default_ontology_IRI = "http://crowd.fi.uncoma.edu.ar/kb1#";
+    
     protected $default_prefixes = [
-      ["prefix" => "rdf", "value" => "http://www.w3.org/1999/02/22-rdf-syntax-ns#"],
-      ["prefix" => "rdfs", "value" => "http://www.w3.org/2000/01/rdf-schema#"],
-      ["prefix" => "xsd", "value" => "http://www.w3.org/2001/XMLSchema#"],
-      ["prefix" => "owl", "value" => "http://www.w3.org/2002/07/owl#"]
+	["prefix" => "rdf",
+	 "value" => "http://www.w3.org/1999/02/22-rdf-syntax-ns#"],
+	["prefix" => "rdfs",
+	 "value" => "http://www.w3.org/2000/01/rdf-schema#"],
+	["prefix" => "xsd",
+	 "value" => "http://www.w3.org/2001/XMLSchema#"],
+	["prefix" => "owl",
+	 "value" => "http://www.w3.org/2002/07/owl#"]
     ];
 
     protected $default_header = [
-      ["attr" => "xmlns", "value" => "http://www.w3.org/2002/07/owl#"],
-      ["attr" => "xmlns:rdf", "value" => "http://www.w3.org/1999/02/22-rdf-syntax-ns#"],
-      ["attr" => "xmlns:xml", "value" => "http://www.w3.org/XML/1998/namespace"],
-      ["attr" => "xmlns:xsd", "value" => "http://www.w3.org/2001/XMLSchema#"],
-      ["attr" => "xmlns:rdfs", "value" => "http://www.w3.org/2000/01/rdf-schema#"],
+	["attr" => "xmlns", "value" => "http://www.w3.org/2002/07/owl#"],
+	["attr" => "xmlns:rdf", "value" => "http://www.w3.org/1999/02/22-rdf-syntax-ns#"],
+	["attr" => "xmlns:xml", "value" => "http://www.w3.org/XML/1998/namespace"],
+	["attr" => "xmlns:xsd", "value" => "http://www.w3.org/2001/XMLSchema#"],
+	["attr" => "xmlns:rdfs", "value" => "http://www.w3.org/2000/01/rdf-schema#"],
     ];
 
     function __construct(){
@@ -77,7 +83,7 @@ class OWLDocument extends Document{
 
     /**
        @name Starting and Ending the document
-    */
+     */
     ///@{
 
     public function insert_startdocument(){
@@ -88,65 +94,62 @@ class OWLDocument extends Document{
         $this->actual_kb = $kb_uri;
     }
 
-    public function insert_ontology($ontologyIRI, $headerIRIs){
+    /**
+       Insert the Ontology tag.
+
+       This is the first tag on an OWL 2 document. It usually has got prefixes 
+       and the ontology IRI.
+       
+       @param $ontologyIRI {string} (Optional) The IRI that represents the
+       ontology. If it is null or an empty string, then the 
+       default_ontology_IRI is used.
+       @param $headerIRIs {array} (Optional) An array with elements like
+       `['prefix' => "NAME", 'value' => "IRI"]`. If an empty array is passed
+       default_header prefixes are used.
+     */
+    public function insert_ontology($ontologyIRI = null, $headerIRIs = []){
         $this->content->startElement("Ontology");
 
-        if ((empty($headerIRIs)) && (empty($ontologyIRI))){
-            foreach ($this->default_header as $header){
-		$this->content->writeAttribute($header["attr"],
-					     $header["value"]);
-            }
-            $this->content->writeAttribute(
-		"xml:base","http://crowd.fi.uncoma.edu.ar/kb1#");
-            $this->content->writeAttribute(
-		"ontologyIRI","http://crowd.fi.uncoma.edu.ar/kb1#");
-            $this->actual_kb = "http://crowd.fi.uncoma.edu.ar/kb1#";
-	    
-        } elseif ((empty($headerIRIs)) && (!empty($ontologyIRI))){
-	    
-            foreach ($this->default_header as $header){
-                $this->content->writeAttribute($header["attr"],
-					     $header["value"]);
-            }
-            $this->content->writeAttribute("xml:base", $ontologyIRI["value"]);
-            $this->content->writeAttribute("ontologyIRI",$ontologyIRI["value"]);
-            $this->actual_kb = $ontologyIRI;
-	    
-        } elseif ((!empty($headerIRIs)) && (empty($ontologyIRI))){
-	    
-            foreach ($reqiris as $iri){
-                $this->content->writeAttribute($iri["prefix"], $iri["value"]);
-            }
-            $this->content->writeAttribute(
-		"xml:base","http://crowd.fi.uncoma.edu.ar/kb1#");
-            $this->content->writeAttribute(
-		"xml:base","http://crowd.fi.uncoma.edu.ar/kb1#");
-            $this->actual_kb = "http://crowd.fi.uncoma.edu.ar/kb1/";
-	    
-        } elseif ((!empty($headerIRIs)) && (!empty($ontologyIRI))){
-	    
-            foreach ($reqiris as $iri){
-                $this->content->writeAttribute($iri["prefix"], $iri["value"]);
-            }
-            $this->content->writeAttribute("ontologyIRI",$ontologyIRI["value"]);
-            $this->actual_kb = $ontologyIRI;
-	    
+	if (empty($headerIRIs)){
+	    $headerIRIs = $this->default_header;
+	}
+
+	if ($ontologyIRI == null || $ontologyIRI == ""){
+	    $ontologyIRI = $this->default_ontology_IRI;
+	}
+	
+	foreach ($headerIRIs as $header){
+	    $this->content->writeAttribute($header["attr"], $header["value"]);
         }
+	
+	$this->content->writeAttribute("xml:base", $ontologyIRI);
+        $this->content->writeAttribute("ontologyIRI", $ontologyIRI);
+
+        $this->actual_kb = $ontologyIRI;
     }
 
     /**
-       Abbreviation of:
+       Start the document with default elements.
 
-       @code{.php}
-       $d->insert_startdocument();
-       $d->insert_request();
-       @endcode
+       Default elements are some initial tags. The `end_document()` must be 
+       called after this method.
+
+       @param $ontologyIRI {string} An IRI. It is the IRI which represent the 
+       ontology.
+       @param headerIRIs {array} An array of elements like 
+       `['prefix' => "PREFIX", 'value' => "IRI"]`.
      */
-    public function start_document($ontologyIRI = [], $headerIRIs = []){
+    public function start_document($ontologyIRI = null, $headerIRIs = []){
         $this->insert_startdocument();
         $this->insert_ontology($ontologyIRI, $headerIRIs);
     }
 
+    /**
+       End the document.
+       
+       End some important tags. If the `start_document()` method has been 
+       called, this one must be called too.
+     */
     public function end_document(){
         $this->content->endElement();
     }
@@ -154,28 +157,34 @@ class OWLDocument extends Document{
     ///@}
     // Starting and ending the document
 
-    public function set_ontology_prefixes($ontologyIRI, $prefixes = []){
-	array_merge($prefixes, $ontologyIRI);
+    /**
+       Change ontology prefixes.
 
-      // Insert default prefixes for OWL 2 into an array of prefixes
-      foreach ($this->default_prefixes as $pref){
-        if (!in_array($pref, $prefixes)){
-          array_push($prefixes, $pref);
-        }
-      }
+       @param $prefixes {array} An array of prefixes. Its elements must be a 
+       hash of `[ "prefix" => "NAME", "value"="AN IRI"]`.
+     */
+    public function set_ontology_prefixes($prefixes){
+	// Insert default prefixes for OWL 2 into an array of prefixes
+	foreach ($this->default_prefixes as $pref){
+            if (!in_array($pref, $prefixes)){
+		array_push($prefixes, $pref);
+            }
+	}
 
-      $this->insert_prefix($prefixes);
-      $this->current_prefixes = $prefixes;
-
+	$this->insert_prefix($prefixes);
+	$this->current_prefixes = $prefixes;
     }
 
+    /**
+       Insert several Prefix tags.
+    */
     public function insert_prefix($prefixes){
-      foreach ($prefixes as $prefix){
-        $this->content->startElement("Prefix");
-        $this->content->writeAttribute("name", $prefix["prefix"]);
-        $this->content->writeAttribute("IRI", $prefix["value"]);
-        $this->content->endElement();
-      }
+	foreach ($prefixes as $prefix){
+            $this->content->startElement("Prefix");
+            $this->content->writeAttribute("name", $prefix["prefix"]);
+            $this->content->writeAttribute("IRI", $prefix["value"]);
+            $this->content->endElement();
+	}
     }
 
     /**
@@ -219,14 +228,14 @@ class OWLDocument extends Document{
     }
 
     protected function prefix_exists($prefix){
-      foreach ($this->current_prefixes as $p){
-          if (strcmp($p["prefix"], $prefix) == 0){
-            $iri = $p["value"];
-            return $iri;
-          }
-      }
-      $iri = null;
-      return $iri;
+	foreach ($this->current_prefixes as $p){
+            if (strcmp($p["prefix"], $prefix) == 0){
+		$iri = $p["value"];
+		return $iri;
+            }
+	}
+	$iri = null;
+	return $iri;
     }
 
 
@@ -234,15 +243,15 @@ class OWLDocument extends Document{
         $dot_pos = stripos($name, ':');
 
         if ($dot_pos !== false){
-          $prefix = mb_substr($name, 0, $dot_pos);
-          $iri = $this->prefix_exists($prefix);
+            $prefix = mb_substr($name, 0, $dot_pos);
+            $iri = $this->prefix_exists($prefix);
 
-          if ($iri != null){
-            return $iri;
-          }
-          else {
-            return null;
-          }
+            if ($iri != null){
+		return $iri;
+            }
+            else {
+		return null;
+            }
         }
     }
 
@@ -254,7 +263,7 @@ class OWLDocument extends Document{
 
        @param name a String with the IRI.
        @return True if the name has an XML Namespace. False otherwise.
-    */
+     */
     protected function name_has_namespace($name){
         $ns_regexp = '/([a-zA-Z0-9])+\:([a-zA-Z0-9])+/';        // Namespace Regexp.
 
@@ -270,7 +279,7 @@ class OWLDocument extends Document{
 
        @param name a String with the IRI.
        @return True if the name is full expanded. False otherwise.
-    */
+     */
     protected function name_full_expanded($name){
         $ns_regexp = '/^(http:\/\/([a-zA-Z0-9\/\.])+)/';        // Namespace Regexp.
 
@@ -282,31 +291,31 @@ class OWLDocument extends Document{
     }
 
     /**
-    This function returns a short name for a OWL 2 entity removing prefix expansions
-    */
+       This function returns a short name for a OWL 2 entity removing prefix expansions
+     */
 
     protected function remove_prefixExpansion($fullname){
-      $hash_pos = stripos($fullname, '#');  //looking for hash to remove prefix
+	$hash_pos = stripos($fullname, '#');  //looking for hash to remove prefix
 
-      if ($hash_pos !== false){
-        $short_name = mb_substr($fullname, $hash_pos + 1);
-      } else {
-        $slash_pos = strrpos($fullname, '/'); //looking for the latest slash to remove prefix
+	if ($hash_pos !== false){
+            $short_name = mb_substr($fullname, $hash_pos + 1);
+	} else {
+            $slash_pos = strrpos($fullname, '/'); //looking for the latest slash to remove prefix
 
-        if ($slash_pos !== false){
-          $short_name = mb_substr($fullname, $slash_pos + 1);
-        }
-        else{
-          $dot_pos = strrpos($fullname, ':'); //looking for the latest : to remove prefix
+            if ($slash_pos !== false){
+		$short_name = mb_substr($fullname, $slash_pos + 1);
+            }
+            else{
+		$dot_pos = strrpos($fullname, ':'); //looking for the latest : to remove prefix
 
-          if ($dot_pos !== false){
-            $short_name = mb_substr($fullname, $dot_pos + 1);
-          }elseif ((!strcmp($fullname, "") == 0)) {
-          $short_name = $fullname; // if value does not have an expanded prefix
-          }
-        }
-      }
-      return $short_name;
+		if ($dot_pos !== false){
+		    $short_name = mb_substr($fullname, $dot_pos + 1);
+		}elseif ((!strcmp($fullname, "") == 0)) {
+		    $short_name = $fullname; // if value does not have an expanded prefix
+		}
+            }
+	}
+	return $short_name;
     }
 
     public function insert_subobjectpropertyof($child_objprop, $father_objprop, $child_abbrev = false, $father_abbrev = false){
@@ -318,113 +327,113 @@ class OWLDocument extends Document{
 
 
     /**
-    Add a class DL element.
+       Add a class DL element.
 
-    Abbreviated IRI's are recognized automatically by name_has_namespace() function.
+       Abbreviated IRI's are recognized automatically by name_has_namespace() function.
 
-    @note crowd does not expand class names when ontology is written in OWL 2.
-    if name is abbreviated, crowd checks that such prefix had been declarated and expands the name with the respective IRI.
-    if name is already expanded, crowd uses this full name.
+       @note crowd does not expand class names when ontology is written in OWL 2.
+       if name is abbreviated, crowd checks that such prefix had been declarated and expands the name with the respective IRI.
+       if name is already expanded, crowd uses this full name.
 
-    @param name String the name or IRI of the new concept.
-    @param is_abbreviated Boolean (Optional) force that the given IRI is or is not an abreviated like <tt>owl:class</tt>.
+       @param name String the name or IRI of the new concept.
+       @param is_abbreviated Boolean (Optional) force that the given IRI is or is not an abreviated like <tt>owl:class</tt>.
      */
     public function insert_class($name, $is_abbreviated = null){
 
-      if ($is_abbreviated == null){;
-          $has_namespace = $this->name_has_namespace($name);
+	if ($is_abbreviated == null){;
+            $has_namespace = $this->name_has_namespace($name);
 
-          if ($has_namespace){
-            $is_abbreviated = $this->check_prefixes($name);
-          }
-          $is_fullexpanded = $this->name_full_expanded($name);
-      }
+            if ($has_namespace){
+		$is_abbreviated = $this->check_prefixes($name);
+            }
+            $is_fullexpanded = $this->name_full_expanded($name);
+	}
 
-      $this->content->startElement("Class");
+	$this->content->startElement("Class");
 
-      if ($is_abbreviated != null){
-          $this->content->writeAttribute("abbreviatedIRI", $name);
-      } elseif ($is_fullexpanded){
+	if ($is_abbreviated != null){
+            $this->content->writeAttribute("abbreviatedIRI", $name);
+	} elseif ($is_fullexpanded){
             $this->content->writeAttribute("IRI", $name);
         }
         else{
-          $this->content->writeAttribute("IRI", $name);
+            $this->content->writeAttribute("IRI", $name);
         }
 
-      $this->content->endElement();
+	$this->content->endElement();
     }
 
     public function insert_objectproperty($name, $is_abbreviated=null){
-      if ($is_abbreviated == null){
-          $has_namespace = $this->name_has_namespace($name);
+	if ($is_abbreviated == null){
+            $has_namespace = $this->name_has_namespace($name);
 
-          if ($has_namespace){
-            $is_abbreviated = $this->check_prefixes($name);
-          }
-          $is_fullexpanded = $this->name_full_expanded($name);
-      }
+            if ($has_namespace){
+		$is_abbreviated = $this->check_prefixes($name);
+            }
+            $is_fullexpanded = $this->name_full_expanded($name);
+	}
 
-      $this->content->startElement("ObjectProperty");
+	$this->content->startElement("ObjectProperty");
 
-      if ($is_abbreviated != null){
-          $this->content->writeAttribute("abbreviatedIRI", $name);
-      }elseif ($is_fullexpanded){
-          $this->content->writeAttribute("IRI", $name);
+	if ($is_abbreviated != null){
+            $this->content->writeAttribute("abbreviatedIRI", $name);
+	}elseif ($is_fullexpanded){
+            $this->content->writeAttribute("IRI", $name);
         }
         else{
-          $this->content->writeAttribute("IRI", $name);
+            $this->content->writeAttribute("IRI", $name);
         }
 
-      $this->content->endElement();
+	$this->content->endElement();
     }
 
     public function insert_dataproperty($name, $is_abbreviated=null){
-      if ($is_abbreviated == null){
-          $has_namespace = $this->name_has_namespace($name);
+	if ($is_abbreviated == null){
+            $has_namespace = $this->name_has_namespace($name);
 
-          if ($has_namespace){
-            $is_abbreviated = $this->check_prefixes($name);
-          }
-          $is_fullexpanded = $this->name_full_expanded($name);
-      }
+            if ($has_namespace){
+		$is_abbreviated = $this->check_prefixes($name);
+            }
+            $is_fullexpanded = $this->name_full_expanded($name);
+	}
 
-      $this->content->startElement("DataProperty");
+	$this->content->startElement("DataProperty");
 
-      if ($is_abbreviated != null){
-          $this->content->writeAttribute("abbreviatedIRI", $name);
-      }elseif ($is_fullexpanded){
-          $this->content->writeAttribute("IRI", $name);
+	if ($is_abbreviated != null){
+            $this->content->writeAttribute("abbreviatedIRI", $name);
+	}elseif ($is_fullexpanded){
+            $this->content->writeAttribute("IRI", $name);
         }
         else{
-          $this->content->writeAttribute("IRI", $name);
+            $this->content->writeAttribute("IRI", $name);
         }
 
-      $this->content->endElement();
+	$this->content->endElement();
     }
 
 
     public function insert_datatype($name, $is_abbreviated=null){
-      if ($is_abbreviated == null){
-          $has_namespace = $this->name_has_namespace($name);
+	if ($is_abbreviated == null){
+            $has_namespace = $this->name_has_namespace($name);
 
-          if ($has_namespace){
-            $is_abbreviated = $this->check_prefixes($name);
-          }
-          $is_fullexpanded = $this->name_full_expanded($name);
-      }
+            if ($has_namespace){
+		$is_abbreviated = $this->check_prefixes($name);
+            }
+            $is_fullexpanded = $this->name_full_expanded($name);
+	}
 
-      $this->content->startElement("Datatype");
+	$this->content->startElement("Datatype");
 
-      if ($is_abbreviated != null){
-          $this->content->writeAttribute("abbreviatedIRI", $name);
-      }elseif ($is_fullexpanded){
-          $this->content->writeAttribute("IRI", $name);
+	if ($is_abbreviated != null){
+            $this->content->writeAttribute("abbreviatedIRI", $name);
+	}elseif ($is_fullexpanded){
+            $this->content->writeAttribute("IRI", $name);
         }
         else{
-          $this->content->writeAttribute("IRI", $name);
+            $this->content->writeAttribute("IRI", $name);
         }
 
-      $this->content->endElement();
+	$this->content->endElement();
     }
 
     public function begin_inverseof(){
@@ -489,87 +498,87 @@ class OWLDocument extends Document{
         $this->content->EndElement();
     }
 
-	public function begin_objectpropertydomain(){
-		$this->content->startElement("ObjectPropertyDomain");
-	}
+    public function begin_objectpropertydomain(){
+	$this->content->startElement("ObjectPropertyDomain");
+    }
 
-   	public function end_objectpropertydomain(){
+    public function end_objectpropertydomain(){
         $this->content->EndElement();
-	}
+    }
 
-	public function begin_objectpropertyrange(){
-		$this->content->startElement("ObjectPropertyRange");
-	}
+    public function begin_objectpropertyrange(){
+	$this->content->startElement("ObjectPropertyRange");
+    }
 
-   	public function end_objectpropertyrange(){
+    public function end_objectpropertyrange(){
         $this->content->EndElement();
-	}
+    }
 
-  // DataProperties
+    // DataProperties
 
-  # Min and Max Cardinalities for DataProperties
-  #
-  public function begin_mincardinality_dataproperty($cardinality){
-      $this->content->startElement("DataMinCardinality");
-      $this->content->writeAttribute("cardinality", $cardinality);
-  }
-  public function end_mincardinality_dataproperty(){
-      $this->content->EndElement();
-  }
+    # Min and Max Cardinalities for DataProperties
+    #
+    public function begin_mincardinality_dataproperty($cardinality){
+	$this->content->startElement("DataMinCardinality");
+	$this->content->writeAttribute("cardinality", $cardinality);
+    }
+    public function end_mincardinality_dataproperty(){
+	$this->content->EndElement();
+    }
 
-  public function begin_maxcardinality_dataproperty($cardinality){
-      $this->content->startElement("DataMaxCardinality");
-      $this->content->writeAttribute("cardinality", $cardinality);
-  }
-  public function end_maxcardinality_dataproperty(){
-      $this->content->EndElement();
-  }
+    public function begin_maxcardinality_dataproperty($cardinality){
+	$this->content->startElement("DataMaxCardinality");
+	$this->content->writeAttribute("cardinality", $cardinality);
+    }
+    public function end_maxcardinality_dataproperty(){
+	$this->content->EndElement();
+    }
 
-  public function begin_somevaluesfrom_dataproperty(){
-      $this->content->startElement("DataSomeValuesFrom");
-  }
-  public function end_somevaluesfrom_dataproperty(){
-      $this->content->EndElement();
-  }
+    public function begin_somevaluesfrom_dataproperty(){
+	$this->content->startElement("DataSomeValuesFrom");
+    }
+    public function end_somevaluesfrom_dataproperty(){
+	$this->content->EndElement();
+    }
 
-  public function begin_allvaluesfrom_dataproperty(){
-      $this->content->startElement("DataAllValuesFrom");
-  }
-  public function end_allvaluesfrom_dataproperty(){
-      $this->content->EndElement();
-  }
+    public function begin_allvaluesfrom_dataproperty(){
+	$this->content->startElement("DataAllValuesFrom");
+    }
+    public function end_allvaluesfrom_dataproperty(){
+	$this->content->EndElement();
+    }
 
-  public function begin_datapropertydomain(){
-      $this->content->startElement("DataPropertyDomain");
-  }
+    public function begin_datapropertydomain(){
+	$this->content->startElement("DataPropertyDomain");
+    }
 
-  public function end_datapropertydomain(){
-      $this->content->EndElement();
-  }
+    public function end_datapropertydomain(){
+	$this->content->EndElement();
+    }
 
-  public function begin_datapropertyrange(){
-      $this->content->startElement("DataPropertyRange");
-  }
+    public function begin_datapropertyrange(){
+	$this->content->startElement("DataPropertyRange");
+    }
 
-  public function end_datapropertyrange(){
-      $this->content->EndElement();
-  }
+    public function end_datapropertyrange(){
+	$this->content->EndElement();
+    }
 
-	public function begin_equivalentclasses(){
-		$this->content->startElement("EquivalentClasses");
-	}
+    public function begin_equivalentclasses(){
+	$this->content->startElement("EquivalentClasses");
+    }
 
-  public function end_equivalentclasses(){
+    public function end_equivalentclasses(){
         $this->content->EndElement();
-	}
+    }
 
-  public function begin_disjointclasses(){
-      $this->content->startElement("DisjointClasses");
-  }
+    public function begin_disjointclasses(){
+	$this->content->startElement("DisjointClasses");
+    }
 
-  public function end_disjointclasses(){
+    public function end_disjointclasses(){
         $this->content->EndElement();
-  }
+    }
 
     /**
        Insert an ASK query denominated IsEntailedDirect for all the classes in the array.

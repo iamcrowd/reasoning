@@ -106,6 +106,10 @@ class OWL2DocumentTest extends PHPUnit\Framework\TestCase{
        }
 
      */
+
+    /**
+       @testdox Generate an OWL2 Subclass
+     */
     public function testOWL2Subclass(){
 	$expected = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>
         <Ontology
@@ -131,19 +135,18 @@ class OWL2DocumentTest extends PHPUnit\Framework\TestCase{
         </Ontology>";
 
 	$d = new OWLDocument();
-	$d->start_document(["prefix" => "",
-			   "value" => "http://crowd.fi.uncoma.edu.ar/kb1/"],
-			  []);
+	$d->start_document("http://crowd.fi.uncoma.edu.ar/kb1/");
 	$d->set_ontology_prefixes([
-	    "prefix" => "",
-	    "value" => "http://crowd.fi.uncoma.edu.ar/kb1/"]);
+	    ["prefix" => "",
+	     "value" => "http://crowd.fi.uncoma.edu.ar/kb1/"]
+	]);
+
 	$d->insert_class_declaration("Class1");
 	//      $d->insert_class_declaration("Class2");
 	$d->insert_subclassof("Class2", "Class1");
+
 	$d->end_document();
 	$actual = $d->to_string();
-
-	var_dump($actual);
 
 	$expected = process_xmlspaces($expected);
 	$actual = process_xmlspaces($actual);
