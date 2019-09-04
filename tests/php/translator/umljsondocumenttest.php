@@ -29,7 +29,10 @@ load("umljsondocument.php","wicom/translator/documents/");
 
 use Wicom\Translator\Documents\UMLJSONDocument;
 
-class JSONDocumentTest extends PHPUnit\Framework\TestCase{
+/**
+   @testdox UMLJSonDocument tests
+*/
+class UMLJSONDocumentTest extends PHPUnit\Framework\TestCase{
 
     /**
        @testdox Convert an empty UML into JSON.
