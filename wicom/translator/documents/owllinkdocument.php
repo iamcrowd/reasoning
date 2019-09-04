@@ -126,33 +126,25 @@ class OWLlinkDocument extends Document{
         $this->content->startDocument("1.0", "UTF-8");
     }
 
-    public function insert_request($ontologyIRI, $reqiris = []){
+    public function insert_request($ontologyIRI = null, $reqiris = []){
 	$this->content->startElement("RequestMessage");
 
-	if ((empty($reqiris)) && (empty($ontologyIRI))){
-            foreach ($this->default_header as $header){
-		$this->content->writeAttribute($header["attr"],
-					     $header["value"]);
-            }
-            $this->content->writeAttribute("xml:base",
-					 "http://crowd.fi.uncoma.edu.ar/kb1/");
-	} elseif ((empty($reqiris)) && (!empty($ontologyIRI))){
-            foreach ($this->default_header as $header){
-		$this->content->writeAttribute($header["attr"],
-					     $header["value"]);
-            }
-            $this->content->writeAttribute("xml:base",$ontologyIRI["value"]);
-        } elseif ((!empty($reqiris)) && (empty($ontologyIRI))){
-            foreach ($reqiris as $iri){
-		$this->content->writeAttribute($iri["prefix"], $iri["value"]);
-            }
-            $this->content->writeAttribute("xml:base",
-					 "http://crowd.fi.uncoma.edu.ar/kb1/");
-        } elseif ((!empty($reqiris)) && (!empty($ontologyIRI))){
-            foreach ($reqiris as $iri){
-		$this->content->writeAttribute($iri["prefix"], $iri["value"]);
-            }
+	if (empty($reqiris)){
+	    $reqiris = $this->default_header;
+	}
+	
+	if (($ontologyIRI == null) or ($ontologyIRI == "")){
+	    $ontologyIRI = $this->default_ontologyIRI;
+	}
+
+
+        foreach ($this->default_header as $header){
+	    $this->content->writeAttribute($header["attr"],
+					 $header["value"]);
         }
+        $this->content->writeAttribute("xml:base",
+				     $ontologyIRI);
+	
     }
 
     /**

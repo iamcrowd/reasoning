@@ -58,20 +58,20 @@ EOT;
 		xmlns:owl="http://www.w3.org/2002/07/owl#"
 		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 		xsi:schemaLocation="http://www.owllink.org/owllink# http://www.owllink.org/owllink-20091116.xsd"
-		xml:base="http://crowd.fi.uncoma.edu.ar/kb1/">
-  <CreateKB kb="http://crowd.fi.uncoma.edu.ar/kb1/">
-    <Prefix fullIRI="http://crowd.fi.uncoma.edu.ar/kb1/" name="crowd" />
+		xml:base="http://crowd.fi.uncoma.edu.ar/kb1#">
+  <CreateKB kb="http://crowd.fi.uncoma.edu.ar/kb1#">
+    <Prefix fullIRI="http://crowd.fi.uncoma.edu.ar/kb1#" name="" />
     <Prefix fullIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#" name="rdf"/>
     <Prefix fullIRI="http://www.w3.org/2000/01/rdf-schema#" name="rdfs"/>
     <Prefix fullIRI="http://www.w3.org/2001/XMLSchema#" name="xsd"/>
     <Prefix fullIRI="http://www.w3.org/2002/07/owl#" name="owl"/>
   </CreateKB>
-  <Set kb="http://crowd.fi.uncoma.edu.ar/kb1/" key="abbreviatesIRIs">
+  <Set kb="http://crowd.fi.uncoma.edu.ar/kb1#" key="abbreviatesIRIs">
     <Literal>false</Literal>
   </Set>
-  <Tell kb="http://crowd.fi.uncoma.edu.ar/kb1/">
+  <Tell kb="http://crowd.fi.uncoma.edu.ar/kb1#">
     <owl:SubClassOf>
-      <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1/Hi World" />
+      <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Hi World" />
       <owl:Class IRI="http://www.w3.org/2002/07/owl#Thing" />
     </owl:SubClassOf>
   </Tell>
@@ -122,34 +122,34 @@ EOT;
 		xmlns:owl="http://www.w3.org/2002/07/owl#"
 		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 		xsi:schemaLocation="http://www.owllink.org/owllink# http://www.owllink.org/owllink-20091116.xsd"
-		xml:base="http://crowd.fi.uncoma.edu.ar/kb1/">
-  <CreateKB kb="http://crowd.fi.uncoma.edu.ar/kb1/">
-    <Prefix fullIRI="http://crowd.fi.uncoma.edu.ar/kb1/" name="crowd" />
+		xml:base="http://crowd.fi.uncoma.edu.ar/kb1#">
+  <CreateKB kb="http://crowd.fi.uncoma.edu.ar/kb1#">
+    <Prefix fullIRI="http://crowd.fi.uncoma.edu.ar/kb1#" name="" />
     <Prefix fullIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#" name="rdf"/>
     <Prefix fullIRI="http://www.w3.org/2000/01/rdf-schema#" name="rdfs"/>
     <Prefix fullIRI="http://www.w3.org/2001/XMLSchema#" name="xsd"/>
     <Prefix fullIRI="http://www.w3.org/2002/07/owl#" name="owl"/>
   </CreateKB>
-  <Set kb="http://crowd.fi.uncoma.edu.ar/kb1/" key="abbreviatesIRIs">
+  <Set kb="http://crowd.fi.uncoma.edu.ar/kb1#" key="abbreviatesIRIs">
     <Literal>false</Literal>
   </Set>
-  <Tell kb="http://crowd.fi.uncoma.edu.ar/kb1/">
+  <Tell kb="http://crowd.fi.uncoma.edu.ar/kb1#">
     <!-- <owl:ClassAssertion>
-	 <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1/Person" />
-	 <owl:NamedIndividual IRI="http://crowd.fi.uncoma.edu.ar/kb1/Mary" />
+	 <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Person" />
+	 <owl:NamedIndividual IRI="http://crowd.fi.uncoma.edu.ar/kb1#Mary" />
 	 </owl:ClassAssertion>
     -->
 
     <owl:SubClassOf>
-      <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1/Person" />
+      <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Person" />
       <owl:Class IRI="http://www.w3.org/2002/07/owl#Thing" />
     </owl:SubClassOf>
     <owl:SubClassOf>
-      <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1/Cellphone" />
+      <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Cellphone" />
       <owl:Class IRI="http://www.w3.org/2002/07/owl#Thing" />
     </owl:SubClassOf>
     <owl:SubObjectPropertyOf>
-      <owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1/hasCellphone"/>
+      <owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#hasCellphone"/>
       <owl:ObjectProperty IRI="http://www.w3.org/2002/07/owl#topObjectProperty"/>
     </owl:SubObjectPropertyOf>
 
@@ -159,37 +159,37 @@ EOT;
       <owl:Class IRI="http://www.w3.org/2002/07/owl#Thing" />
       <owl:ObjectIntersectionOf>
 	<owl:ObjectAllValuesFrom>
-	  <owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1/hasCellphone" />
-	  <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1/Person" />
+	  <owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#hasCellphone" />
+	  <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Person" />
 	</owl:ObjectAllValuesFrom>
 	<owl:ObjectAllValuesFrom>
 	  <owl:ObjectInverseOf>
-	    <owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1/hasCellphone" />
+	    <owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#hasCellphone" />
 	  </owl:ObjectInverseOf>
-	  <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1/Cellphone" />
+	  <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Cellphone" />
 	</owl:ObjectAllValuesFrom>
       </owl:ObjectIntersectionOf>
     </owl:SubClassOf>
 
     <!-- Multiplicity -->
     <owl:SubClassOf>
-      <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1/Person" />
+      <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Person" />
       <owl:ObjectMinCardinality cardinality="1">
-        <owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1/hasCellphone" />
+        <owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#hasCellphone" />
       </owl:ObjectMinCardinality>
     </owl:SubClassOf>
 
     <owl:SubClassOf>
-      <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1/Cellphone" />
+      <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Cellphone" />
       <owl:ObjectIntersectionOf>
 	<owl:ObjectMinCardinality cardinality="1">
 	  <owl:ObjectInverseOf>
-	    <owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1/hasCellphone" />
+	    <owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#hasCellphone" />
 	  </owl:ObjectInverseOf>
 	</owl:ObjectMinCardinality>
 	<owl:ObjectMaxCardinality cardinality="1">
 	  <owl:ObjectInverseOf>
-	    <owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1/hasCellphone" />
+	    <owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#hasCellphone" />
 	  </owl:ObjectInverseOf>
 	</owl:ObjectMaxCardinality>
       </owl:ObjectIntersectionOf>
@@ -242,29 +242,29 @@ EOT;
 		xmlns:owl="http://www.w3.org/2002/07/owl#"
 		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 		xsi:schemaLocation="http://www.owllink.org/owllink# http://www.owllink.org/owllink-20091116.xsd"
-		xml:base="http://crowd.fi.uncoma.edu.ar/kb1/">
-  <CreateKB kb="http://crowd.fi.uncoma.edu.ar/kb1/">
-    <Prefix fullIRI="http://crowd.fi.uncoma.edu.ar/kb1/" name="crowd" />
+		xml:base="http://crowd.fi.uncoma.edu.ar/kb1#">
+  <CreateKB kb="http://crowd.fi.uncoma.edu.ar/kb1#">
+    <Prefix fullIRI="http://crowd.fi.uncoma.edu.ar/kb1#" name="" />
     <Prefix fullIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#" name="rdf"/>
     <Prefix fullIRI="http://www.w3.org/2000/01/rdf-schema#" name="rdfs"/>
     <Prefix fullIRI="http://www.w3.org/2001/XMLSchema#" name="xsd"/>
     <Prefix fullIRI="http://www.w3.org/2002/07/owl#" name="owl"/>
   </CreateKB>
-  <Set kb="http://crowd.fi.uncoma.edu.ar/kb1/" key="abbreviatesIRIs">
+  <Set kb="http://crowd.fi.uncoma.edu.ar/kb1#" key="abbreviatesIRIs">
     <Literal>false</Literal>
   </Set>
-  <Tell kb="http://crowd.fi.uncoma.edu.ar/kb1/">
+  <Tell kb="http://crowd.fi.uncoma.edu.ar/kb1#">
 
     <owl:SubClassOf>
-      <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1/Person" />
+      <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Person" />
       <owl:Class IRI="http://www.w3.org/2002/07/owl#Thing" />
     </owl:SubClassOf>
     <owl:SubClassOf>
-      <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1/Cellphone" />
+      <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Cellphone" />
       <owl:Class IRI="http://www.w3.org/2002/07/owl#Thing" />
     </owl:SubClassOf>
     <owl:SubObjectPropertyOf>
-      <owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1/hasCellphone"/>
+      <owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#hasCellphone"/>
       <owl:ObjectProperty IRI="http://www.w3.org/2002/07/owl#topObjectProperty"/>
     </owl:SubObjectPropertyOf>
 
@@ -274,14 +274,14 @@ EOT;
       <owl:Class IRI="http://www.w3.org/2002/07/owl#Thing" />
       <owl:ObjectIntersectionOf>
 	<owl:ObjectAllValuesFrom>
-	  <owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1/hasCellphone" />
-	  <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1/Person" />
+	  <owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#hasCellphone" />
+	  <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Person" />
 	</owl:ObjectAllValuesFrom>
 	<owl:ObjectAllValuesFrom>
 	  <owl:ObjectInverseOf>
-	    <owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1/hasCellphone" />
+	    <owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#hasCellphone" />
 	  </owl:ObjectInverseOf>
-	  <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1/Cellphone" />
+	  <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Cellphone" />
 	</owl:ObjectAllValuesFrom>
       </owl:ObjectIntersectionOf>
     </owl:SubClassOf>
@@ -336,33 +336,33 @@ EOT;
 		xmlns:owl="http://www.w3.org/2002/07/owl#"
 		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 		xsi:schemaLocation="http://www.owllink.org/owllink# http://www.owllink.org/owllink-20091116.xsd"
-		xml:base="http://crowd.fi.uncoma.edu.ar/kb1/">
-  <CreateKB kb="http://crowd.fi.uncoma.edu.ar/kb1/">
-    <Prefix fullIRI="http://crowd.fi.uncoma.edu.ar/kb1/" name="crowd" />
+		xml:base="http://crowd.fi.uncoma.edu.ar/kb1#">
+  <CreateKB kb="http://crowd.fi.uncoma.edu.ar/kb1#">
+    <Prefix fullIRI="http://crowd.fi.uncoma.edu.ar/kb1#" name="" />
     <Prefix fullIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#" name="rdf"/>
     <Prefix fullIRI="http://www.w3.org/2000/01/rdf-schema#" name="rdfs"/>
     <Prefix fullIRI="http://www.w3.org/2001/XMLSchema#" name="xsd"/>
     <Prefix fullIRI="http://www.w3.org/2002/07/owl#" name="owl"/>
   </CreateKB>
-  <Set kb="http://crowd.fi.uncoma.edu.ar/kb1/" key="abbreviatesIRIs">
+  <Set kb="http://crowd.fi.uncoma.edu.ar/kb1#" key="abbreviatesIRIs">
     <Literal>false</Literal>
   </Set>
-  <Tell kb="http://crowd.fi.uncoma.edu.ar/kb1/">
+  <Tell kb="http://crowd.fi.uncoma.edu.ar/kb1#">
 
     <owl:SubClassOf>
-      <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1/Person" />
+      <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Person" />
       <owl:Class IRI="http://www.w3.org/2002/07/owl#Thing" />
     </owl:SubClassOf>
     <owl:SubClassOf>
-      <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1/Employee" />
+      <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Employee" />
       <owl:Class IRI="http://www.w3.org/2002/07/owl#Thing" />
     </owl:SubClassOf>
 
     <!-- Generalization -->
 
     <owl:SubClassOf>
-      <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1/Employee" />
-	  <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1/Person" />
+      <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Employee" />
+	  <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Person" />
     </owl:SubClassOf>
 
   </Tell>
@@ -416,67 +416,67 @@ EOT;
 		xmlns:owl="http://www.w3.org/2002/07/owl#"
 		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 		xsi:schemaLocation="http://www.owllink.org/owllink# http://www.owllink.org/owllink-20091116.xsd"
-		xml:base="http://crowd.fi.uncoma.edu.ar/kb1/">
-  <CreateKB kb="http://crowd.fi.uncoma.edu.ar/kb1/">
-    <Prefix fullIRI="http://crowd.fi.uncoma.edu.ar/kb1/" name="crowd" />
+		xml:base="http://crowd.fi.uncoma.edu.ar/kb1#">
+  <CreateKB kb="http://crowd.fi.uncoma.edu.ar/kb1#">
+    <Prefix fullIRI="http://crowd.fi.uncoma.edu.ar/kb1#" name="" />
     <Prefix fullIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#" name="rdf"/>
     <Prefix fullIRI="http://www.w3.org/2000/01/rdf-schema#" name="rdfs"/>
     <Prefix fullIRI="http://www.w3.org/2001/XMLSchema#" name="xsd"/>
     <Prefix fullIRI="http://www.w3.org/2002/07/owl#" name="owl"/>
   </CreateKB>
-  <Set kb="http://crowd.fi.uncoma.edu.ar/kb1/" key="abbreviatesIRIs">
+  <Set kb="http://crowd.fi.uncoma.edu.ar/kb1#" key="abbreviatesIRIs">
     <Literal>false</Literal>
   </Set>
-  <Tell kb="http://crowd.fi.uncoma.edu.ar/kb1/">
+  <Tell kb="http://crowd.fi.uncoma.edu.ar/kb1#">
 
     <owl:SubClassOf>
-      <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1/Person" />
+      <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Person" />
       <owl:Class IRI="http://www.w3.org/2002/07/owl#Thing" />
     </owl:SubClassOf>
     <owl:SubClassOf>
-      <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1/Employee" />
+      <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Employee" />
       <owl:Class IRI="http://www.w3.org/2002/07/owl#Thing" />
     </owl:SubClassOf>
     <owl:SubClassOf>
-      <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1/Employer" />
+      <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Employer" />
       <owl:Class IRI="http://www.w3.org/2002/07/owl#Thing" />
     </owl:SubClassOf>
     <owl:SubClassOf>
-      <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1/Director" />
+      <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Director" />
       <owl:Class IRI="http://www.w3.org/2002/07/owl#Thing" />
     </owl:SubClassOf>
 
     <!-- Generalization -->
 
     <owl:SubClassOf>
-      <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1/Employee" />
-	  <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1/Person" />
+      <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Employee" />
+	  <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Person" />
     </owl:SubClassOf>
     <owl:SubClassOf>
-      <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1/Employer" />
-	  <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1/Person" />
+      <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Employer" />
+	  <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Person" />
     </owl:SubClassOf>
     <owl:SubClassOf>
-      <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1/Director" />
-	  <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1/Person" />
+      <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Director" />
+	  <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Person" />
     </owl:SubClassOf>
 
     <owl:SubClassOf>
-      <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1/Employee" />
+      <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Employee" />
       <owl:ObjectIntersectionOf>
         <owl:ObjectComplementOf>
-          <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1/Employer" />
+          <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Employer" />
         </owl:ObjectComplementOf>
         <owl:ObjectComplementOf>
-          <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1/Director" />
+          <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Director" />
         </owl:ObjectComplementOf>
       </owl:ObjectIntersectionOf>
     </owl:SubClassOf>
 
     <owl:SubClassOf>
-      <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1/Employer" />
+      <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Employer" />
       <owl:ObjectComplementOf>
-        <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1/Director" />
+        <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Director" />
       </owl:ObjectComplementOf>
     </owl:SubClassOf>
 
@@ -530,57 +530,57 @@ EOT;
 		xmlns:owl="http://www.w3.org/2002/07/owl#"
 		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 		xsi:schemaLocation="http://www.owllink.org/owllink# http://www.owllink.org/owllink-20091116.xsd"
-		xml:base="http://crowd.fi.uncoma.edu.ar/kb1/">
-  <CreateKB kb="http://crowd.fi.uncoma.edu.ar/kb1/">
-    <Prefix fullIRI="http://crowd.fi.uncoma.edu.ar/kb1/" name="crowd" />
+		xml:base="http://crowd.fi.uncoma.edu.ar/kb1#">
+  <CreateKB kb="http://crowd.fi.uncoma.edu.ar/kb1#">
+    <Prefix fullIRI="http://crowd.fi.uncoma.edu.ar/kb1#" name="" />
     <Prefix fullIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#" name="rdf"/>
     <Prefix fullIRI="http://www.w3.org/2000/01/rdf-schema#" name="rdfs"/>
     <Prefix fullIRI="http://www.w3.org/2001/XMLSchema#" name="xsd"/>
     <Prefix fullIRI="http://www.w3.org/2002/07/owl#" name="owl"/>
   </CreateKB>
-  <Set kb="http://crowd.fi.uncoma.edu.ar/kb1/" key="abbreviatesIRIs">
+  <Set kb="http://crowd.fi.uncoma.edu.ar/kb1#" key="abbreviatesIRIs">
     <Literal>false</Literal>
   </Set>
-  <Tell kb="http://crowd.fi.uncoma.edu.ar/kb1/">
+  <Tell kb="http://crowd.fi.uncoma.edu.ar/kb1#">
 
     <owl:SubClassOf>
-      <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1/Person" />
+      <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Person" />
       <owl:Class IRI="http://www.w3.org/2002/07/owl#Thing" />
     </owl:SubClassOf>
     <owl:SubClassOf>
-      <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1/Employee" />
+      <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Employee" />
       <owl:Class IRI="http://www.w3.org/2002/07/owl#Thing" />
     </owl:SubClassOf>
     <owl:SubClassOf>
-      <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1/Employer" />
+      <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Employer" />
       <owl:Class IRI="http://www.w3.org/2002/07/owl#Thing" />
     </owl:SubClassOf>
     <owl:SubClassOf>
-      <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1/Director" />
+      <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Director" />
       <owl:Class IRI="http://www.w3.org/2002/07/owl#Thing" />
     </owl:SubClassOf>
 
     <!-- Generalization -->
 
     <owl:SubClassOf>
-      <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1/Employee" />
-	  <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1/Person" />
+      <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Employee" />
+	  <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Person" />
     </owl:SubClassOf>
     <owl:SubClassOf>
-      <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1/Employer" />
-	  <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1/Person" />
+      <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Employer" />
+	  <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Person" />
     </owl:SubClassOf>
     <owl:SubClassOf>
-      <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1/Director" />
-	  <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1/Person" />
+      <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Director" />
+	  <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Person" />
     </owl:SubClassOf>
 
     <owl:SubClassOf>
-      <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1/Person" />
+      <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Person" />
       <owl:ObjectUnionOf>
-          <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1/Employee" />
-          <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1/Employer" />
-          <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1/Director" />
+          <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Employee" />
+          <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Employer" />
+          <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Director" />
       </owl:ObjectUnionOf>
     </owl:SubClassOf>
 
@@ -632,39 +632,39 @@ EOT;
 		xmlns:owl="http://www.w3.org/2002/07/owl#"
 		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 		xsi:schemaLocation="http://www.owllink.org/owllink# http://www.owllink.org/owllink-20091116.xsd"
-		xml:base="http://crowd.fi.uncoma.edu.ar/kb1/">
-  <CreateKB kb="http://crowd.fi.uncoma.edu.ar/kb1/">
-    <Prefix fullIRI="http://crowd.fi.uncoma.edu.ar/kb1/" name="crowd" />
+		xml:base="http://crowd.fi.uncoma.edu.ar/kb1#">
+  <CreateKB kb="http://crowd.fi.uncoma.edu.ar/kb1#">
+    <Prefix fullIRI="http://crowd.fi.uncoma.edu.ar/kb1#" name="" />
     <Prefix fullIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#" name="rdf"/>
     <Prefix fullIRI="http://www.w3.org/2000/01/rdf-schema#" name="rdfs"/>
     <Prefix fullIRI="http://www.w3.org/2001/XMLSchema#" name="xsd"/>
     <Prefix fullIRI="http://www.w3.org/2002/07/owl#" name="owl"/>
   </CreateKB>
-  <Set kb="http://crowd.fi.uncoma.edu.ar/kb1/" key="abbreviatesIRIs">
+  <Set kb="http://crowd.fi.uncoma.edu.ar/kb1#" key="abbreviatesIRIs">
     <Literal>false</Literal>
   </Set>
-  <Tell kb="http://crowd.fi.uncoma.edu.ar/kb1/"/>
-  <IsKBSatisfiable kb="http://crowd.fi.uncoma.edu.ar/kb1/"/>
-  <IsClassSatisfiable kb="http://crowd.fi.uncoma.edu.ar/kb1/">
-    <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1/PhoneCall"/>
+  <Tell kb="http://crowd.fi.uncoma.edu.ar/kb1#"/>
+  <IsKBSatisfiable kb="http://crowd.fi.uncoma.edu.ar/kb1#"/>
+  <IsClassSatisfiable kb="http://crowd.fi.uncoma.edu.ar/kb1#">
+    <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#PhoneCall"/>
   </IsClassSatisfiable>
-  <IsClassSatisfiable kb="http://crowd.fi.uncoma.edu.ar/kb1/">
-    <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1/MobileCall"/>
+  <IsClassSatisfiable kb="http://crowd.fi.uncoma.edu.ar/kb1#">
+    <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#MobileCall"/>
   </IsClassSatisfiable>
-  <GetSubClassHierarchy kb="http://crowd.fi.uncoma.edu.ar/kb1/"/>
-  <GetDisjointClasses kb="http://crowd.fi.uncoma.edu.ar/kb1/">
-    <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1/PhoneCall"/>
+  <GetSubClassHierarchy kb="http://crowd.fi.uncoma.edu.ar/kb1#"/>
+  <GetDisjointClasses kb="http://crowd.fi.uncoma.edu.ar/kb1#">
+    <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#PhoneCall"/>
   </GetDisjointClasses>
-  <GetDisjointClasses kb="http://crowd.fi.uncoma.edu.ar/kb1/">
-    <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1/MobileCall"/>
+  <GetDisjointClasses kb="http://crowd.fi.uncoma.edu.ar/kb1#">
+    <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#MobileCall"/>
   </GetDisjointClasses>
-  <GetEquivalentClasses kb="http://crowd.fi.uncoma.edu.ar/kb1/">
-    <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1/PhoneCall"/>
+  <GetEquivalentClasses kb="http://crowd.fi.uncoma.edu.ar/kb1#">
+    <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#PhoneCall"/>
   </GetEquivalentClasses>
-  <GetEquivalentClasses kb="http://crowd.fi.uncoma.edu.ar/kb1/">
-    <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1/MobileCall"/>
+  <GetEquivalentClasses kb="http://crowd.fi.uncoma.edu.ar/kb1#">
+    <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#MobileCall"/>
   </GetEquivalentClasses>
-  <GetPrefixes kb="http://crowd.fi.uncoma.edu.ar/kb1/"/>
+  <GetPrefixes kb="http://crowd.fi.uncoma.edu.ar/kb1#"/>
 </RequestMessage>
 EOT;
 
