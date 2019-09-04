@@ -1,3 +1,5 @@
+![tests](http://crowd.fi.uncoma.edu.ar/crowd2/Trun/results/reasoning.svg)
+
 # Reasoner API Back-end
 
 API entry points:
