@@ -1,4 +1,5 @@
 ![tests](http://crowd.fi.uncoma.edu.ar/crowd2/Trun/results/reasoning.svg)
+![overall_tests](http://crowd.fi.uncoma.edu.ar/crowd2/Trun/results/all.svg)
 
 # Reasoner API Back-end
 
