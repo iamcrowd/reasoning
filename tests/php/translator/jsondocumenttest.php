@@ -31,8 +31,22 @@ use Wicom\Translator\Documents\UMLJSONDocument;
 
 class JSONDocumentTest extends PHPUnit\Framework\TestCase{
 
+    /**
+       @testdox Convert an empty UML into JSON.
+     */
     public function testUMLConstructor(){
-        $expected = '{"classes":[], "links":[]}';
+        $expected = <<<'EOT'
+	{
+    "namespaces": {
+	"ontologyIRI": "http://crowd.fi.uncoma.edu.ar/kb1#",
+	"defaultIRIs": [],
+	"IRIs": []
+    },
+    "classes":[],
+    "links":[],
+    "owllink": []
+}
+EOT;
 
         $d = new UMLJSONDocument();
         $actual = $d->to_json();
@@ -40,102 +54,191 @@ class JSONDocumentTest extends PHPUnit\Framework\TestCase{
         $this->assertJsonStringEqualsJsonString($expected, $actual, true);
     }
 
+    /**
+       @testdox Convert a UML class without attributes into JSON.
+     */
     public function testUMLClassWithoutAttrsToJson(){
-      $expected = '{"classes":[{"name":"Person","attrs":[], "methods":[]}], "links":[]}';
+	$expected = <<<'EOT'
+{
+    "namespaces": {
+	"ontologyIRI": "http://crowd.fi.uncoma.edu.ar/kb1#",
+	"defaultIRIs": [],
+	"IRIs": []
+    },
+    "classes":[{"name":"Person","attrs":[], "methods":[]}],
+    "links":[],
+    "owllink": []
+}
+EOT;
 
-      $d = new UMLJSONDocument();
-      $d->insert_class_without_attr("Person");
-      $actual = $d->to_json();
+	$d = new UMLJSONDocument();
+	$d->insert_class_without_attr("Person");
+	$actual = $d->to_json();
 
-      $this->assertJsonStringEqualsJsonString($expected, $actual, true);
+	$this->assertJsonStringEqualsJsonString($expected, $actual, true);
 
     }
 
+    /**
+       @testdox Convert an UML class with attributes into JSON
+     */
     public function testUMLClassWithAttrsToJson(){
-      $expected = '{"classes":[{"name":"Person",
-                                "attrs":[{"name":"dni","datatype":"String"},
-                                         {"name":"firstname","datatype":"String"}],
-                                "methods":[]}],"links":[]}';
+	$expected = <<<'EOT'
+{
+    "namespaces": {
+	"ontologyIRI": "http://crowd.fi.uncoma.edu.ar/kb1#",
+	"defaultIRIs": [],
+	"IRIs": []
+    },
+    "classes":[{
+	"name": "Person",
+        "attrs":[
+	    {"name": "dni", "datatype": "String"},
+            {"name": "firstname", "datatype": "String"}
+	],
+       "methods": []
+    }],
+    "links":[],
+    "owllink": []
+}
+EOT;
 
-      $d = new UMLJSONDocument();
-      $d->insert_class_with_attr("Person",[["dni","String"],["firstname","String"]]);
-      $actual = $d->to_json();
+	$d = new UMLJSONDocument();
+	$d->insert_class_with_attr(
+	    "Person",
+	    [
+		["name" => "dni",
+		 "datatype" => "String"],
+		["name" => "firstname",
+		 "datatype" => "String"]
+	    ]);
+	$actual = $d->to_json();
 
-      $this->assertJsonStringEqualsJsonString($expected, $actual, true);
+	$this->assertJsonStringEqualsJsonString($expected, $actual, true);
 
     }
 
-
+    
+    /**
+       @testdox Convert an UML generalization into JSON.
+     */
     public function testUMLGenToJson(){
-      $expected = '{"classes":[{"name":"Person","attrs":[],"methods":[]},
-                               {"name":"Student","attrs":[],"methods":[]}],
-                    "links":[{"name":"","classes":["Student"],
-                  							 "multiplicity":null,
-                  							 "roles":[null,null],
-                  							 "type":"generalization",
-                  							 "parent":"Person",
-                  							 "constraint":[]}]}';
+	$expected = <<<'EOT'
+{
+    "namespaces": {
+	"ontologyIRI": "http://crowd.fi.uncoma.edu.ar/kb1#",
+	"defaultIRIs": [],
+	"IRIs": []
+    },
+    "classes":[{"name":"Person","attrs":[],"methods":[]},
+               {"name":"Student","attrs":[],"methods":[]}],
+    "links":[{"name":"http://crowd.fi.uncoma.edu.ar/kb1#s1",
+              "classes":["Student"],
+              "multiplicity":null,
+              "roles":[null,null],
+              "type":"generalization",
+              "parent":"Person",
+              "constraint":[]}],
+    "owllink": []
+}
+EOT;
 
-      $d = new UMLJSONDocument();
-      $d->insert_class_without_attr("Person");
-      $d->insert_class_without_attr("Student");
-      $d->insert_subsumption(["Student"],"Person");
-      $actual = $d->to_json();
+	$d = new UMLJSONDocument();
+	$d->insert_class_without_attr("Person");
+	$d->insert_class_without_attr("Student");
+	$d->insert_subsumption(["Student"],"Person");
+	$actual = $d->to_json();
 
-      $this->assertJsonStringEqualsJsonString($expected, $actual, true);
+	$this->assertJsonStringEqualsJsonString($expected, $actual, true);
     }
 
 
+    /**
+       @testdox Convert an UML association into JSON.
+     */
     public function testUMLAssocToJson(){
-      $expected = '{"classes":[{"name":"Person","attrs":[],"methods":[]},
-                               {"name":"Student","attrs":[],"methods":[]}],
-                    "links":[{"name":"R1","classes":["Person","Student"],
-                  					  "multiplicity":["2..4","1..*"],
-                  						"roles":["e","c"],
-                  						"type":"association"}]}';
+	$expected = <<<'EOT'
+{
+    "namespaces": {
+	"ontologyIRI": "http://crowd.fi.uncoma.edu.ar/kb1#",
+	"defaultIRIs": [],
+	"IRIs": []
+    },
+ "classes":[{"name":"Person","attrs":[],"methods":[]},
+            {"name":"Student","attrs":[],"methods":[]}],
+ "links":[{"name":"R1","classes":["Person","Student"],
+           "multiplicity":["2..4","1..*"],
+           "roles":["e","c"],
+           "type":"association"}],
+ "owllink": []
+}
+EOT;
 
-      $d = new UMLJSONDocument();
-      $d->insert_class_without_attr("Person");
-      $d->insert_class_without_attr("Student");
-      $d->insert_relationship("R1",["Person","Student"],["2..4","1..*"],["e","c"]);
-      $actual = $d->to_json();
+	$d = new UMLJSONDocument();
+	$d->insert_class_without_attr("Person");
+	$d->insert_class_without_attr("Student");
+	$d->insert_relationship(["Person","Student"],
+			       "R1",
+			       ["2..4","1..*"],
+			       ["e","c"]);
+	$actual = $d->to_json();
 
-      $this->assertJsonStringEqualsJsonString($expected, $actual, true);
+	$this->assertJsonStringEqualsJsonString($expected, $actual, true);
     }
 
+    /**
+       @testdox Convert UML into a JSON representation.
+     */
     public function testUMLToJson(){
-      $expected = '{"classes":[
+	$expected = <<<'EOT'
+{
+    "namespaces": {
+	"ontologyIRI": "http://crowd.fi.uncoma.edu.ar/kb1#",
+	"defaultIRIs": [],
+	"IRIs": []
+    },
+    "classes":[
       	{"name":"Person","attrs":[{"name":"dni","datatype":"String"},
-      														{"name":"firstname","datatype":"String"}],
-      									 "methods":[]},
+				  {"name":"firstname","datatype":"String"}],
+	 "methods":[]},
       	{"name":"Student","attrs":[],
-      										"methods":[]},
+	 "methods":[]},
         {"name":"Class1","attrs":[],
-      									 "methods":[]}],
-      "links":[
-      	{"name":"","classes":["Student"],
-      							 "multiplicity":null,
-      							 "roles":[null,null],
-      							 "type":"generalization",
-      							 "parent":"Person",
-      							 "constraint":[]},
-      	{"name":"R1","classes":["Student","Class1"],
-      							 "multiplicity":["2..4","1..*"],
-      							 "roles":["e","c"],
-      							 "type":"association"}]
-      }';
+	 "methods":[]}],
+    "links":[
+      	{"name":"http://crowd.fi.uncoma.edu.ar/kb1#s1",
+         "classes":["Student"],
+	 "multiplicity":null,
+	 "roles":[null,null],
+	 "type":"generalization",
+	 "parent":"Person",
+	 "constraint":[]},
+      	{"name":"R1",
+         "classes":["Student","Class1"],
+	 "multiplicity":["2..4","1..*"],
+      	 "roles":["e","c"],
+      	 "type":"association"}],
+  "owllink": []
+}
+  
+EOT;
 
-      $d = new UMLJSONDocument();
-      $d->insert_class_with_attr("Person",[["dni","String"],["firstname","String"]]);
-      $d->insert_class_without_attr("Student");
-      $d->insert_class_without_attr("Class1");
-      $d->insert_subsumption(["Student"],"Person");
-      $d->insert_relationship("R1",["Student","Class1"],["2..4","1..*"],["e","c"]);
-      $actual = $d->to_json();
+	$d = new UMLJSONDocument();
+	$d->insert_class_with_attr("Person",
+				  [["name" => "dni",
+				    "datatype" => "String"],
+				   ["name" => "firstname",
+				    "datatype" => "String"]]);
+	$d->insert_class_without_attr("Student");
+	$d->insert_class_without_attr("Class1");
+	$d->insert_subsumption(["Student"],"Person");
+	$d->insert_relationship(["Student","Class1"],
+			       "R1",
+			       ["2..4","1..*"],
+			       ["e","c"]);
+	$actual = $d->to_json();
 
-      var_dump($actual);
-
-      $this->assertJsonStringEqualsJsonString($expected, $actual, true);
+	$this->assertJsonStringEqualsJsonString($expected, $actual, true);
     }
 
 }
