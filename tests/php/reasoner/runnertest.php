@@ -27,12 +27,10 @@ require_once("common.php");
 load("config.php", "config/");
 load("racerconnector.php", "wicom/reasoner/");
 load("koncludeconnector.php", "wicom/reasoner/");
-load("widococonnector.php", "wicom/reasoner/");
 load("runner.php", "wicom/reasoner/");
 
 use Wicom\Reasoner\RacerConnector;
 use Wicom\Reasoner\KoncludeConnector;
-use Wicom\Reasoner\WidocoConnector;
 use Wicom\Reasoner\Runner;
 
 class RunnerTest extends PHPUnit\Framework\TestCase

@@ -24,26 +24,23 @@
 namespace Wicom;
 
 load("translator.php", "../wicom/translator/");
-load("crowd_uml.php", "../wicom/translator/strategies/");
 load("berardistrat.php", "../wicom/translator/strategies/");
 load("owllinkbuilder.php", "../wicom/translator/builders/");
 load("owlbuilder.php", "../wicom/translator/builders/");
 load("umljsonbuilder.php", "../wicom/translator/builders/");
-load("decoder.php", "../wicom/translator/");
 
 load("runner.php", "../wicom/reasoner/");
 load("racerconnector.php", "../wicom/reasoner/");
 load("koncludeconnector.php", "../wicom/reasoner/");
 
-load("ansanalizer.php", "../wicom/translator/strategies/qapackages/answeranalizers/");
+load("ansanalizer.php",
+     "../wicom/translator/strategies/qapackages/answeranalizers/");
 
 use Wicom\Translator\Translator;
-use Wicom\Translator\Strategies\UMLcrowd;
 use Wicom\Translator\Strategies\Berardi;
 use Wicom\Translator\Builders\OWLlinkBuilder;
 use Wicom\Translator\Builders\OWLBuilder;
 use Wicom\Translator\Builders\UMLJSONBuilder;
-use Wicom\Translator\Decoder;
 
 use Wicom\Reasoner\Runner;
 use Wicom\Reasoner\RacerConnector;
@@ -55,7 +52,7 @@ use Wicom\Translator\Strategies\QAPackages\QueriesGenerators\QueriesGenerator;
 class UML_Wicom extends Wicom{
 
     function __construct(){
-      parent::__construct();
+	parent::__construct();
     }
 
     /**
@@ -67,17 +64,14 @@ class UML_Wicom extends Wicom{
 
        @return Wicom\Translator\Strategies\QAPackages\AnswerAnalizers\Answer an answer object.
      */
-    function full_reasoning($json_str, $strategy = 'crowd', $reasoner = 'Racer'){
+    function full_reasoning($json_str, $strategy = 'berardi', $reasoner = 'Racer'){
 
         $encoding = null;
         switch($strategy){
-          case "berardi" :
-              $encoding = new Berardi();
-              break;
-          case "crowd" :
-              $encoding = new UMLcrowd();
-              break;
-          default: die("Invalid Encoding");
+            case "berardi" :
+		$encoding = new Berardi();
+		break;
+            default: die("Invalid Encoding");
         }
 
         $trans = new Translator($encoding, new OWLlinkBuilder());
@@ -86,13 +80,13 @@ class UML_Wicom extends Wicom{
 
         $reasonerconn = null;
         switch($reasoner){
-          case "Konclude" :
-              $reasonerconn = new KoncludeConnector();
-              break;
-          case "Racer" :
-              $reasonerconn = new RacerConnector();
-              break;
-          default: die("Reasoner Not Found!");
+            case "Konclude" :
+		$reasonerconn = new KoncludeConnector();
+		break;
+            case "Racer" :
+		$reasonerconn = new RacerConnector();
+		break;
+            default: die("Reasoner Not Found!");
         }
 
         $runner = new Runner($reasonerconn);
@@ -105,14 +99,9 @@ class UML_Wicom extends Wicom{
 
         $encoding->analize_answer($owllink_str, $reasoner_answer, $owl2_str);
 
-		    $answer = $encoding->get_answer();
+	$answer = $encoding->get_answer();
 
-        $owldeco_end = new Decoder(new UMLcrowd(), new UMLJSONBuilder());
-        $json_end = $owldeco_end->to_json($owl2_str, ["prefix" => "crowd", "value" => "http://crowd.fi.uncoma.edu.ar/"], []);
-
-        $answer_e = $encoding->merge_answer($json_str, $json_end);
-
-		    return $answer_e;
+	return $answer;
 
     }
 }
