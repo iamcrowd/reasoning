@@ -28,6 +28,9 @@ load("berardianalizer.php", "wicom/translator/strategies/qapackages/answeranaliz
 
 use Wicom\Translator\Strategies\QAPackages\AnswerAnalizers\BerardiAnalizer;
 
+/**
+   @testdox Analize the answer from a Berardi conertion
+ */
 class BerardiAnalizerTest extends PHPUnit\Framework\TestCase
 {
 
@@ -37,7 +40,9 @@ class BerardiAnalizerTest extends PHPUnit\Framework\TestCase
 
        Classes names are still IRI's suffix. For that reason we still leave the
        numeral char.
-    */
+
+       @testdox Can remove some useless XML things
+     */
     public function testFilterXML(){
         $query_input = <<<'EOT'
 <?xml version="1.0" encoding="UTF-8"?>
@@ -166,22 +171,30 @@ EOT;
 EOT;
 
         $expected = <<<'EOT'
-       {
-           "satisfiable": {
-               "kb" : true,
-               "classes" : ["Person", "OtherPerson"]
-           },
-           "unsatisfiable": {
-              	"classes" : ["Nope this one nope"]
-           },
-           "suggestions" : {
-              	"links" : []
-           },
-           "reasoner" : {
-              	"input" : "",
-              	"output" : ""
-           }
-       }
+{
+"satisfiable": {
+  "kb" : true,
+  "classes" : ["Person", "OtherPerson"],
+  "objectproperties": [],
+  "dataproperties": []
+},
+"unsatisfiable": {
+  "classes" : ["Nope this one nope"],
+  "objectproperties": [],
+  "dataproperties": []
+  },
+"subsumptions" : [],
+"disjunctions": [],
+"equivalences": [],
+"reasoner" : {
+  "input" : "",
+  "output" : ""
+},
+"inferredSubs" : [],
+"inferredCards" : [],
+"inferredDisj" : [],
+"inferredEquiv" : []
+}
 EOT;
 
         $oa = new BerardiAnalizer();
@@ -195,10 +208,10 @@ EOT;
 
 
         /*
-        print("\n\n");
-        print($actual);
-        print("\n\n");
-        */
+           print("\n\n");
+           print($actual);
+           print("\n\n");
+         */
 
         $this->assertJsonStringEqualsJsonString($expected, $actual, true);
     }
@@ -242,22 +255,30 @@ EOT;
 EOT;
 
         $expected = <<<'EOT'
-       {
-           "satisfiable": {
-               "kb" : true,
-               "classes" : ["Person"]
-           },
-           "unsatisfiable": {
-              	"classes" : []
-           },
-           "suggestions" : {
-              	"links" : []
-           },
-           "reasoner" : {
-              	"input" : "",
-              	"output" : ""
-           }
-       }
+{
+"satisfiable": {
+  "kb" : true,
+  "classes" : ["Person"],
+  "objectproperties": [],
+  "dataproperties": []
+},
+"unsatisfiable": {
+  "classes" : [],
+  "objectproperties": [],
+  "dataproperties": []
+  },
+"subsumptions" : [],
+"disjunctions": [],
+"equivalences": [],
+"reasoner" : {
+  "input" : "",
+  "output" : ""
+},
+"inferredSubs" : [],
+"inferredCards" : [],
+"inferredDisj" : [],
+"inferredEquiv" : []
+}
 EOT;
 
         $oa = new BerardiAnalizer();
@@ -271,13 +292,19 @@ EOT;
 
 
         /*
-        print("\n\n");
-        print($actual);
-        print("\n\n");
-        */
+           print("\n\n");
+           print($actual);
+           print("\n\n");
+         */
 
         $this->assertJsonStringEqualsJsonString($expected, $actual, true);
     }
+
+
+
+    /**
+       @testdox Try a real case
+     */
     public function testRealCase(){
         $query_input = <<<'EOT'
 <?xml version="1.0" encoding="UTF-8"?>
@@ -288,22 +315,30 @@ EOT;
 EOT;
 
         $expected = <<<'EOT'
-       {
-           "satisfiable": {
-               "kb" : true,
-               "classes" : ["Hi World"]
-           },
-           "unsatisfiable": {
-              	"classes" : []
-           },
-           "suggestions" : {
-              	"links" : []
-           },
-           "reasoner" : {
-              	"input" : "",
-              	"output" : ""
-           }
-       }
+{
+"satisfiable": {
+  "kb" : true,
+  "classes" : ["Hi World"],
+  "objectproperties": [],
+  "dataproperties": []
+},
+"unsatisfiable": {
+  "classes" : [],
+  "objectproperties": [],
+  "dataproperties": []
+  },
+"subsumptions" : [],
+"disjunctions": [],
+"equivalences": [],
+"reasoner" : {
+  "input" : "",
+  "output" : ""
+},
+"inferredSubs" : [],
+"inferredCards" : [],
+"inferredDisj" : [],
+"inferredEquiv" : []
+}
 EOT;
 
         $oa = new BerardiAnalizer();
@@ -317,14 +352,17 @@ EOT;
 
 
         /*
-        print("\n\n");
-        print($actual);
-        print("\n\n");
-        */
+           print("\n\n");
+           print($actual);
+           print("\n\n");
+         */
 
         $this->assertJsonStringEqualsJsonString($expected, $actual, true);
     }
 
+    /**
+       @testdox Can detect unsatisfiable classes 
+     */
     public function testUnsatisfiableOWLlink(){
         $query_input = <<<'EOT'
 <?xml version="1.0" encoding="UTF-8"?>
@@ -351,22 +389,30 @@ EOT;
 EOT;
 
         $expected = <<<'EOT'
-       {
-           "satisfiable": {
-               "kb" : true,
-               "classes" : []
-           },
-           "unsatisfiable": {
-              	"classes" : ["Test Class"]
-           },
-           "suggestions" : {
-              	"links" : []
-           },
-           "reasoner" : {
-              	"input" : "",
-              	"output" : ""
-           }
-       }
+{
+"satisfiable": {
+  "kb" : true,
+  "classes" : [],
+  "objectproperties": [],
+  "dataproperties": []
+},
+"unsatisfiable": {
+  "classes" : ["Test Class"],
+  "objectproperties": [],
+  "dataproperties": []
+  },
+"subsumptions" : [],
+"disjunctions": [],
+"equivalences": [],
+"reasoner" : {
+  "input" : "",
+  "output" : ""
+},
+"inferredSubs" : [],
+"inferredCards" : [],
+"inferredDisj" : [],
+"inferredEquiv" : []
+}
 EOT;
 
         $oa = new BerardiAnalizer();
@@ -380,10 +426,10 @@ EOT;
 
 
         /*
-        print("\n\n");
-        print($actual);
-        print("\n\n");
-        */
+           print("\n\n");
+           print($actual);
+           print("\n\n");
+         */
 
         $this->assertJsonStringEqualsJsonString($expected, $actual, true);
     }

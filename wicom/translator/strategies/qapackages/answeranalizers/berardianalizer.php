@@ -59,8 +59,8 @@ class BerardiAnalizer extends AnsAnalizer{
          "GetEquivalentObjectProperties" => "SetOfObjectProperties",
      ];
 
-    function generate_answer($query, $answer){
-        parent::generate_answer($query, $answer);
+    function generate_answer($query, $answer, $owl2 = ''){
+        parent::generate_answer($query, $answer, $owl2);
 
         $this->query_reader = XMLReader::xml($query);
         $this->answer_reader = XMLReader::xml($answer);
