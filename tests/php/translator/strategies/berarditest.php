@@ -612,7 +612,7 @@ EOT;
      */
     public function test_translate_queries(){
         //TODO: Complete JSON!
-        $json = <<< EOT
+        $json = <<<'EOT'
 	{"classes": [
 	    {"attrs":[], "methods":[], "name": "PhoneCall"},
 	    {"attrs":[], "methods":[], "name": "MobileCall"}],
@@ -625,7 +625,7 @@ EOT;
 	      "constraint": []}
 	 ]
 	}
-	EOT;
+EOT;
         $expected = <<<'EOT'
 <?xml version="1.0" encoding="UTF-8"?>
 <RequestMessage xmlns="http://www.owllink.org/owllink#"
