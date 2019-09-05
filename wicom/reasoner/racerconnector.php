@@ -44,27 +44,46 @@ class RacerConnector extends Connector{
      */
     function run($input_string){
         $temporal_path = $GLOBALS['config']['temporal_path'];
-        $racer_path = $GLOBALS['config']['racer_path'];
+        $racer_path = $GLOBALS['config']['racer_path'] . '/';
 
         $uuid = uniqid();
 
-        $temporal_path = realpath($temporal_path) . "/";
-        $file_name = $uuid . "input-file.owllink";
-        $file_path = $temporal_path . $file_name;
-        $racer_path .= RacerConnector::PROGRAM_CMD;
-        $commandline = $racer_path . " " . RacerConnector::PROGRAM_PARAMS . $file_path;
+        $tmp_realpath = realpath($temporal_path);
 
+	if (($tmp_realpath == FALSE) or (!is_writable($tmp_realpath)) ) {
+	    throw new \Exception(
+		"Temporal path does not exists or is not  writeable. ".
+		"Check if this path exists and is writeable: '$temporal_path'."
+	    );
+	}
+	$tmp_realpath .= '/';
+	
+	$file_name = $uuid . "input-file.owllink";
+        $file_path = $tmp_realpath . $file_name;
+        $racer_path .= RacerConnector::PROGRAM_CMD;
+
+	if (!is_executable($racer_path)){
+	    throw new \Exception(
+		"The program is not executable. " .
+		"Please, use chmod +x to make it executable.");
+	}
+	
+        $commandline = $racer_path . " " . RacerConnector::PROGRAM_PARAMS .
+		       $file_path;
+
+	
         $owllink_file = fopen($file_path, "w");
 
         if (! $owllink_file){
-            throw new \Exception("Temporal file couldn't be opened for writing...
-Is the path '$file_path' correct?");
+            throw new \Exception(
+		"Temporal file couldn't be opened for " .
+		"writing... \n Is the path '$file_path' correct?");
         }
 
         fwrite($owllink_file, $input_string);
         fclose($owllink_file);
 
-        exec($commandline,$answer);
+        exec($commandline, $answer);
 
         unlink($file_path);
 
