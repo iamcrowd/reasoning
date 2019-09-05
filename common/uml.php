@@ -94,7 +94,7 @@ class UML_Wicom extends Wicom{
         $reasoner_answer = $runner->get_last_answer();
 
         $owl2_trans = new Translator($encoding, new OWLBuilder());
-        $encoding->change_min_maxTo_false();
+        // $encoding->change_min_maxTo_false();
         $owl2_str = $owl2_trans->to_owl2($json_str);
 
         $encoding->analize_answer($owllink_str, $reasoner_answer, $owl2_str);

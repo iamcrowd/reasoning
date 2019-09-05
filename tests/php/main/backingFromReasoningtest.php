@@ -456,12 +456,16 @@ EOT;
 EOT;
 
 
+	/*
+	TODO: Should I erase this?
+		  - Christian. September, 5 2019
+	
         $wicom = new UML_Wicom();
         $answer = $wicom->full_reasoning($input);
         $actual = $answer->to_json();
 
 	      var_dump($actual);
-
+	 */
 //        $answer->set_reasoner_input("");
 //        $answer->set_reasoner_output("");
 //        $actual = $answer->to_json();
@@ -499,13 +503,15 @@ EOT;
        }
 EOT;
 
-
+	/*
+	   TODO: Should I erase this?
+	   - Christian. September, 5 2019
         $wicom = new UML_Wicom();
         $answer = $wicom->full_reasoning($input);
         $actual = $answer->to_json();
 
 	      var_dump($actual);
-
+	 */
 //        $answer->set_reasoner_input("");
 //        $answer->set_reasoner_output("");
 //        $actual = $answer->to_json();
