@@ -102,9 +102,16 @@ use Wicom\Translator\Builders\UMLJSONBuilder;
 
 use Wicom\Translator\Strategies\QAPackages\AnswerAnalizers\Answer;
 
+/**
+   @testdox Answer object to create and encapsulate answers
+*/
 class AnswerTest extends PHPUnit\Framework\TestCase
 {
 
+
+    /**
+       @testdox Can create a JSON answer with some classes
+    */
     public function testAnswerJsonGraphical(){
         $expected = <<<EOT
 {
@@ -160,6 +167,9 @@ EOT;
     }
 
 
+    /**
+       @testdox Can create a JSON answer with a disjunction
+    */
     public function testAnswerJsonNongraphical(){
         $expected = <<<EOT
 {
@@ -211,7 +221,7 @@ EOT;
 
 
     /**
-       @testdox Create an answer in JSON
+       @testdox Can create an answer in JSON with a subsumption and a disjoint
      */
     public function testAnswerJsonBoth(){
         $expected = <<<EOT
@@ -275,7 +285,7 @@ EOT;
 
 
     /**
-       @testdox Create an answer in OWL 2 document.
+       @testdox Can create an answer in OWL 2 format
      */
     public function testAnswerOWL2(){
         $expected = <<<'EOT'
