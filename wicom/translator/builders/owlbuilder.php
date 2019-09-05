@@ -35,6 +35,7 @@ class OWLBuilder extends DocumentBuilder{
 
     function __construct(){
         $this->product = new OWLDocument;
+	$this->product->start_document();
         $this->min_max = [];
     }
 
