@@ -106,7 +106,7 @@ class CrowdAnalizer extends AnsAnalizer{
         "GetPrefixes" => "Prefixes",
     ];
 
-    function generate_answer($query, $answer, $owl2){
+    function generate_answer($query, $answer, $owl2 = ''){
         parent::generate_answer($query, $answer, $owl2);
     }
 
@@ -512,7 +512,7 @@ class CrowdAnalizer extends AnsAnalizer{
         $ontologyIRI = $responses["GetOntologyIRI"][0];
         $prefixes = $responses["GetPrefixes"];
 
-        $this->answer->start_owl2_answer($ontologyIRI, [], $prefixes);
+        // $this->answer->start_owl2_answer($ontologyIRI, [], $prefixes);
         $this->answer->translate_responses($responses["DL"]);
         $this->answer->copyowl2_to_response();
         $this->answer->end_owl2_answer();

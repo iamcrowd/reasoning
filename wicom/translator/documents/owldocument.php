@@ -55,7 +55,7 @@ class OWLDocument extends Document{
 
     protected $current_prefixes = [];
 
-    protected $default_ontology_IRI = "http://crowd.fi.uncoma.edu.ar/kb1#";
+    const default_ontologyIRI = "http://crowd.fi.uncoma.edu.ar/kb1#";
     
     protected $default_prefixes = [
 	["prefix" => "rdf",
@@ -115,7 +115,7 @@ class OWLDocument extends Document{
 	}
 
 	if ($ontologyIRI == null || $ontologyIRI == ""){
-	    $ontologyIRI = $this->default_ontology_IRI;
+	    $ontologyIRI = OWLDocument::default_ontologyIRI;
 	}
 	
 	foreach ($headerIRIs as $header){

@@ -90,11 +90,11 @@ class Translator{
       if (array_key_exists("namespaces", $json_ns)) {
 
         if (array_key_exists("ontologyIRI", $json_ns["namespaces"])) {
-          return $json_ns["namespaces"]["ontologyIRI"][0];
+          return $json_ns["namespaces"]["ontologyIRI"];
         }
-        else return [];
+        else return null;
       }
-      else return [];
+      else return null;
     }
 
     function get_other_URIs_fromNS($json_ns){

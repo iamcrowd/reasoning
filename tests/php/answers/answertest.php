@@ -104,14 +104,14 @@ use Wicom\Translator\Strategies\QAPackages\AnswerAnalizers\Answer;
 
 /**
    @testdox Answer object to create and encapsulate answers
-*/
+ */
 class AnswerTest extends PHPUnit\Framework\TestCase
 {
 
 
     /**
        @testdox Can create a JSON answer with some classes
-    */
+     */
     public function testAnswerJsonGraphical(){
         $expected = <<<EOT
 {
@@ -169,7 +169,7 @@ EOT;
 
     /**
        @testdox Can create a JSON answer with a disjunction
-    */
+     */
     public function testAnswerJsonNongraphical(){
         $expected = <<<EOT
 {
@@ -297,6 +297,11 @@ EOT;
         xmlns:xml="http://www.w3.org/XML/1998/namespace"
         xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+  <Prefix IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#" name="rdf"/>
+  <Prefix IRI="http://www.w3.org/2000/01/rdf-schema#" name="rdfs"/>
+  <Prefix IRI="http://www.w3.org/2001/XMLSchema#" name="xsd"/>
+  <Prefix IRI="http://www.w3.org/2002/07/owl#" name="owl"/>
+
   <DisjointClasses>
     <Class IRI="A"/>
     <Class IRI="B"/>

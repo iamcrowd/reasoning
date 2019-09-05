@@ -33,31 +33,31 @@ class OWLBuilder extends DocumentBuilder{
 
     protected $actual_kb = null;
 
-    function __construct(){
+    function __construct($ontologyIRI = null, $iris = []){
         $this->product = new OWLDocument;
-	$this->product->start_document();
+	$this->insert_header_owl2($ontologyIRI, $iris);
         $this->min_max = [];
     }
 
     /**
-    @param $ontologyIRI An Array containing the IRI for the ontology: ["prefix" => "", "value" => ""]
-    @param $uris An Array containing the OWL 2 header IRIs: [["prefix" => "", "value" => ""], ... , ["prefix" => "", "value" => ""]]
-    */
-    public function insert_header_owl2($ontologyIRI = [], $uris = []){
-        $this->product->start_document($ontologyIRI, []);
-
-        if (empty($ontologyIRI)){
-          $this->actual_kb = "http://crowd.fi.uncoma.edu.ar/kb1#";
-          $ontologyIRI = ["prefix" => "crowd", "value" => $this->actual_kb];
+       @param $ontologyIRI {string} A string containing the IRI for the ontology
+       @param $uris {array} An Array containing the OWL 2 header IRIs:
+       [["prefix" => "", "value" => ""], ... , ["prefix" => "", "value" => ""]]
+     */
+    public function insert_header_owl2($ontologyIRI = null, $uris = []){
+        if (($ontologyIRI == null) or ($ontologyIRI == '')){
+            $this->actual_kb = OWLDocument::default_ontologyIRI;
+            $ontologyIRI = $this->actual_kb;
         } else {
-          $this->actual_kb = $ontologyIRI["value"];
+            $this->actual_kb = $ontologyIRI;
         }
-
-        $this->product->set_ontology_prefixes($ontologyIRI, $uris);
+	
+        $this->product->start_document($ontologyIRI, []);
+        $this->product->set_ontology_prefixes($uris);
     }
 
     public function insert_class_declaration($name){
-      $this->product->insert_class_declaration($name);
+	$this->product->insert_class_declaration($name);
     }
 
     public function insert_class($name, $col_attrs = []){
@@ -65,7 +65,7 @@ class OWLBuilder extends DocumentBuilder{
     }
 
     public function insert_dataproperty_declaration($name){
-      $this->product->insert_dataproperty_declaration($name);
+	$this->product->insert_dataproperty_declaration($name);
     }
 
     public function insert_dataproperty($name){
@@ -73,7 +73,7 @@ class OWLBuilder extends DocumentBuilder{
     }
 
     public function insert_objectproperty_declaration($name){
-      $this->product->insert_objectproperty_declaration($name);
+	$this->product->insert_objectproperty_declaration($name);
     }
 
     public function insert_objectproperty($name){
@@ -91,40 +91,40 @@ class OWLBuilder extends DocumentBuilder{
 
     /**
        @todo Move this into the Strategy.
-    */
+     */
     public function _normalise_strategy($strategyClass){
-      return str_replace("#", "/", $strategyClass);
+	return str_replace("#", "/", $strategyClass);
     }
     /**
        @todo Move this into the Strategy.
-    */
+     */
     public function insert_class_min($classname, $rolename, $i){
-      $class_n = $this->_normalise_strategy($classname);
-      $role_n = $this->_normalise_strategy($rolename);
-      $minname = $class_n.'_'.$role_n.'_min'.'_'.$i;
+	$class_n = $this->_normalise_strategy($classname);
+	$role_n = $this->_normalise_strategy($rolename);
+	$minname = $class_n.'_'.$role_n.'_min'.'_'.$i;
 
-      if (key_exists($classname, $this->min_max)){
-          $this->min_max[$classname][0] = $minname;
-      }else{
-          $this->min_max[$classname] = [$minname, null];
-      }
-      $this->product->insert_class($minname);
+	if (key_exists($classname, $this->min_max)){
+            $this->min_max[$classname][0] = $minname;
+	}else{
+            $this->min_max[$classname] = [$minname, null];
+	}
+	$this->product->insert_class($minname);
     }
     /**
        @todo Move this into the Strategy.
      */
     public function insert_class_max($classname, $rolename, $i){
-      $class_n = $this->_normalise_strategy($classname);
-      $role_n = $this->_normalise_strategy($rolename);
-      $maxname = $class_n.'_'.$role_n.'_max'.'_'.$i;
+	$class_n = $this->_normalise_strategy($classname);
+	$role_n = $this->_normalise_strategy($rolename);
+	$maxname = $class_n.'_'.$role_n.'_max'.'_'.$i;
 
-      if (key_exists($classname, $this->min_max)){
-          $this->min_max[$classname][1] = $maxname;
-      }else{
-          $this->min_max[$classname] = [null, $maxname];
-      }
+	if (key_exists($classname, $this->min_max)){
+            $this->min_max[$classname][1] = $maxname;
+	}else{
+            $this->min_max[$classname] = [null, $maxname];
+	}
 
-      $this->product->insert_class($maxname);
+	$this->product->insert_class($maxname);
     }
 
 
@@ -145,7 +145,7 @@ class OWLBuilder extends DocumentBuilder{
 
     /**
        @name DL list translation
-    */
+     */
     ///@{
     ///@}
     // DL List Translation

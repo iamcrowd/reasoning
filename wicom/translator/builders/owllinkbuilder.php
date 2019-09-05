@@ -44,18 +44,21 @@ class OWLlinkBuilder extends DocumentBuilder{
     /**
     @param $createkb A Boolean flag for setting CreateKB tags
     @param $starttell A Boolean flag for starting Tell elements
-    @param $ontologyIRI An Array containing the IRI for the ontology: ["prefix" => "", "value" => ""]
-    @param $uris An Array containing the Request IRIs: [["prefix" => "", "value" => ""], ... , ["prefix" => "", "value" => ""]]
+    @param $ontologyIRI {string} A string containing the IRI for 
+       the ontology: ["prefix" => "", "value" => ""]
+    @param $uris An Array containing the Request IRIs:
+       [["prefix" => "", "value" => ""], ... , ["prefix" => "", "value" => ""]]
     */
 
-    public function insert_header($createkb=true, $starttell=true, $ontologyIRI = [], $uris = []){
+    public function insert_header($createkb=true, $starttell=true,
+			   $ontologyIRI = null,
+			   $uris = []){
+	
         $this->product->start_document($ontologyIRI, []);
 
-        if (empty($ontologyIRI)){
-          $this->actual_kb = "http://crowd.fi.uncoma.edu.ar/kb1/";
-        } else {
-          $this->actual_kb = $ontologyIRI["value"];
-        }
+	if (($ontologyIRI == null) or ($ontologyIRI == "")){
+            $this->actual_kb = OWLlinkDocument::default_ontologyIRI;
+	}
 
         if ($createkb){
             $this->product->insert_create_kb($ontologyIRI, $uris);

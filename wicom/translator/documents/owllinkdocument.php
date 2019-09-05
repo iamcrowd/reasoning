@@ -48,7 +48,7 @@ use \XMLReader;
 
  */
 class OWLlinkDocument extends Document{
-    protected $default_ontologyIRI = "http://crowd.fi.uncoma.edu.ar/kb1#";
+    const default_ontologyIRI = "http://crowd.fi.uncoma.edu.ar/kb1#";
 				     
     protected $content = null;
 
@@ -134,7 +134,7 @@ class OWLlinkDocument extends Document{
 	}
 	
 	if (($ontologyIRI == null) or ($ontologyIRI == "")){
-	    $ontologyIRI = $this->default_ontologyIRI;
+	    $ontologyIRI = OWLlinkDocument::default_ontologyIRI;
 	}
 
 
@@ -204,7 +204,7 @@ class OWLlinkDocument extends Document{
         $this->content->startElement("CreateKB");
 
 	if (($ontologyIRI == null) or ($ontologyIRI == "")){
-	    $ontologyIRI = $this->default_ontologyIRI;
+	    $ontologyIRI = OWLlinkDocument::default_ontologyIRI;
 	}
 
 	$this->content->writeAttribute("kb",$ontologyIRI);
