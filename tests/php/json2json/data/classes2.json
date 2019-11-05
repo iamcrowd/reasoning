@@ -1,0 +1,63 @@
+{
+   "associationWithClass" : [],
+   "associations" : [],
+   "classes" : [
+      {
+         "attributes" : [],
+         "id" : "c31",
+         "methods" : [],
+         "name" : "Celphone",
+         "position" : {
+            "x" : 660,
+            "y" : 120
+         },
+         "size" : {
+            "height" : 80,
+            "width" : 105
+         }
+      },
+      {
+         "attributes" : [],
+         "id" : "c43",
+         "methods" : [],
+         "name" : "Person",
+         "position" : {
+            "x" : 210,
+            "y" : 120
+         },
+         "size" : {
+            "height" : 80,
+            "width" : 105
+         }
+      },
+      {
+         "attributes" : [],
+         "id" : "c71",
+         "methods" : [],
+         "name" : "ClassA",
+         "position" : {
+            "x" : 220,
+            "y" : 320
+         },
+         "size" : {
+            "height" : 80,
+            "width" : 105
+         }
+      },
+      {
+         "attributes" : [],
+         "id" : "c72",
+         "methods" : [],
+         "name" : "ClassB",
+         "position" : {
+            "x" : 580,
+            "y" : 340
+         },
+         "size" : {
+            "height" : 80,
+            "width" : 105
+         }
+      }
+   ],
+   "inheritances" : []
+}

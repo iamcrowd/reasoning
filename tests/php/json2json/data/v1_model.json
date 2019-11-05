@@ -1,0 +1,22 @@
+{"classes": [
+    {"attrs":[], "methods":[], "name": "Cellphone", "id": "c31"},
+    {"attrs":[], "methods":[], "name": "Person", "id": "c43"},
+    {"attrs":[], "methods":[], "name": "ClassA", "id": "c71"},
+    {"attrs":[], "methods":[], "name": "ClassB", "id": "c72"}],
+ "links": [
+     {"classes": ["ClassB"],
+      "multiplicity": null,
+      "name": "r1",
+      "type": "generalization",
+      "parent": "Cellphone",
+      "constraint": ["disjoint"]},
+     {"classes": ["Cellphone", "Person"],
+      "multiplicity": ["1..5", "1..6"],
+      "name": "hasA",
+      "type": "association"},
+     {"classes": ["ClassB", "ClassA"],
+      "multiplicity": ["1..5", "1..6"],
+      "name": "aName",
+      "type": "association"}
+ ]
+}

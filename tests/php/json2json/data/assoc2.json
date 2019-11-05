@@ -1,0 +1,90 @@
+{
+   "associationWithClass" : [],
+   "associations" : [
+      {
+         "id" : "c47",
+         "info" : {
+            "cardDestino" : "1..5",
+            "cardOrigin" : "1..6",
+            "nameAssociation" : "hasA",
+            "roleDestiny" : "RoleDestino",
+            "roleOrigin" : "RoleOrigen"
+         },
+         "source" : "c31",
+         "target" : "c43",
+         "type" : "binaryAssociation"
+      },
+      {
+         "id" : "c193",
+         "info" : {
+            "cardDestino" : "1..5",
+            "cardOrigin" : "1..6",
+            "nameAssociation" : "aName",
+            "roleDestiny" : "RoleDestino",
+            "roleOrigin" : "RoleOrigen"
+         },
+         "source" : "c72",
+         "target" : "c71",
+         "type" : "binaryAssociation"
+      }
+   ],
+   "classes" : [
+      {
+         "attributes" : [],
+         "id" : "c31",
+         "methods" : [],
+         "name" : "Celphone",
+         "position" : {
+            "x" : 660,
+            "y" : 120
+         },
+         "size" : {
+            "height" : 80,
+            "width" : 105
+         }
+      },
+      {
+         "attributes" : [],
+         "id" : "c43",
+         "methods" : [],
+         "name" : "Person",
+         "position" : {
+            "x" : 210,
+            "y" : 120
+         },
+         "size" : {
+            "height" : 80,
+            "width" : 105
+         }
+      },
+      {
+         "attributes" : [],
+         "id" : "c71",
+         "methods" : [],
+         "name" : "ClassA",
+         "position" : {
+            "x" : 220,
+            "y" : 320
+         },
+         "size" : {
+            "height" : 80,
+            "width" : 105
+         }
+      },
+      {
+         "attributes" : [],
+         "id" : "c72",
+         "methods" : [],
+         "name" : "ClassB",
+         "position" : {
+            "x" : 580,
+            "y" : 340
+         },
+         "size" : {
+            "height" : 80,
+            "width" : 105
+         }
+      }
+   ],
+   "inheritances" : []
+}
