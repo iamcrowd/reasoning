@@ -37,6 +37,16 @@ abstract class UMLConverter {
     function associations_str(){
         return json_encode($this->associations());
     }
+
+    abstract function gen();
+    /**
+       @return [string] The encoding of gen()
+     */
+    public function gen_str(){
+        return json_encode($this->gen());
+    } // gen_str
+
+    
 }
 
 ?>

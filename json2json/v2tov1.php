@@ -56,7 +56,7 @@ class V2toV1 extends UMLConverter{
         $this->input = json_decode($input, true);
 
         $this->map_class_with_ids();
-    }
+    } // __constructs
 
     protected function map_class_with_ids(){
         $this->id2class = [];
@@ -65,7 +65,7 @@ class V2toV1 extends UMLConverter{
         foreach ($lst_classes as $class){
             $this->id2class[$class['id']] = $class['name'];
         }
-    }
+    } // map_class_with_ids
     
     /**
        Convert only the classes.
@@ -89,12 +89,13 @@ class V2toV1 extends UMLConverter{
             'classes' => $ret,
             'links' =>  []
         ];
-    }
+    } // classes
 
     /**
        Convert only the associations.
        
-       Needed classes are converted. Generalizations are skipped.
+       Classes are converted in order to make the conversion consistent. 
+       Generalizations are skipped.
        
        @return [array] An array with the decoded JSON.
      */
@@ -122,7 +123,52 @@ class V2toV1 extends UMLConverter{
             'classes' => $classes,
             'links' => $links
         ];
-    }
+    } // associations
+
+    /**
+       Convert only the generalizations.
+
+       Classes are converted too in order to make the conversion consistent. 
+
+       @return [array] An array with the decoded JSON.
+     */
+    function gen(){
+        $classes = $this->classes()['classes'];
+        $gens = [];
+
+        $lst_gens2 = $this->input['inheritances'];
+        foreach ($lst_gens2 as $gen2){
+            // Convert each child id into its name.
+            $children = [];
+            foreach ($gen2['subClasses'] as $child){
+                $children[] = $this->id2class[$child];
+            }
+
+            // Set constraint
+            $constraints = [];
+            if ($gen2['type'] == 'd'){
+                $constraints = ['disjoint'];
+            }else if ($gen2['type'] == 'c'){
+                $constraints = ['covering'];
+            }else if ($gen2['type'] == 'c/d') {
+                $constraints = ['covering', 'disjoint'];
+            }
+            
+            $gens[] = [
+                'classes' => $children,
+                'multiplicity' => null,
+                'name' => $gen2['id'],
+                'type' => 'generalization',
+                'parent' => $this->id2class[$gen2['superClasses'][0]],
+                'constraint' => $constraints,
+            ];
+        }
+
+        return [
+            'classes' => $classes,
+            'links' => $gens
+        ];
+    } // gen
     
 }
 

@@ -6,7 +6,7 @@
  "links": [
      {"classes": ["ClassB"],
       "multiplicity": null,
-      "name": "r1",
+      "name": "c129",
       "type": "generalization",
       "parent": "Cellphone",
       "constraint": ["disjoint"]}
