@@ -23,15 +23,17 @@
 
 namespace Json2Json;
 
-require_once '../common/import_functions.php';
+# require_once '../common/import_functions.php';
 use function \load;
+
+load('uml_converter.php');
 
 use function \json_decode;
 
 /**
    Implements the conversion between JSON version 1 to the new version 2.
 */
-class V1toV2{
+class V1toV2 extends UMLConverter{
 
     /**
        The input as a JSON parsed string. 

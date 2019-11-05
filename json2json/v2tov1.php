@@ -58,6 +58,11 @@ class V2toV1 extends UMLConverter{
         $this->map_class_with_ids();
     } // __constructs
 
+    /**
+       Generate mappings between classes and ids.
+
+       Create the id2class mapping for converting an id into a class easily.
+    */
     protected function map_class_with_ids(){
         $this->id2class = [];
         $lst_classes = $this->input['classes'];
@@ -66,12 +71,8 @@ class V2toV1 extends UMLConverter{
             $this->id2class[$class['id']] = $class['name'];
         }
     } // map_class_with_ids
-    
-    /**
-       Convert only the classes.
 
-       @return [array] An array with the decoded JSON.
-     */
+    // doc inherited
     function classes(){
         $ret = [];
         
@@ -91,14 +92,7 @@ class V2toV1 extends UMLConverter{
         ];
     } // classes
 
-    /**
-       Convert only the associations.
-       
-       Classes are converted in order to make the conversion consistent. 
-       Generalizations are skipped.
-       
-       @return [array] An array with the decoded JSON.
-     */
+    // doc inherited
     function associations(){
         $classes = $this->classes()['classes'];
         $links = [];
@@ -125,13 +119,7 @@ class V2toV1 extends UMLConverter{
         ];
     } // associations
 
-    /**
-       Convert only the generalizations.
-
-       Classes are converted too in order to make the conversion consistent. 
-
-       @return [array] An array with the decoded JSON.
-     */
+    // doc inherited
     function gen(){
         $classes = $this->classes()['classes'];
         $gens = [];
@@ -169,6 +157,11 @@ class V2toV1 extends UMLConverter{
             'links' => $gens
         ];
     } // gen
+
+    // doc inherited
+    function convert(){
+        
+    } // convert
     
 }
 

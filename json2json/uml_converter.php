@@ -25,28 +25,86 @@ namespace Json2Json;
 
 /**
    This class has got the common methods for every UML JSON to JSON converter.
-*/
+ */
 abstract class UMLConverter {
 
+    /**
+       @defgroup Convertion Functions
+       These functions returns JSON objects (PHP array representations).
+     */
+    ///@{
+
+    /**
+       Convert only the classes.
+
+       @return [array] An array with the decoded JSON.
+     */
     abstract function classes();
+
+    /**
+       Convert only the associations.
+       
+       Classes are converted in order to make the conversion consistent. 
+       Generalizations are skipped.
+       
+       @return [array] An array with the decoded JSON.
+     */
+
+    abstract function associations();
+
+    /**
+       Convert only the generalizations.
+       
+       Classes are converted too in order to make the conversion consistent. 
+       
+       @return {array} An array with the decoded JSON.
+     */
+    abstract function gen();
+    
+    /**
+       Convert all the model completely
+
+       @return [array] A JSON Array.
+     */
+    abstract function convert();
+
+    ///@}
+    
+    /**
+       @defgroup Convert to JSON 2 String 
+       Same as before, but returns a string.
+     */
+
+    ///@{
+    
+    /**
+       Convert all generalizations and return it as string.
+
+       @return {string} The encoding of gen()
+     */    
     function classes_str(){
         return json_encode($this->classes());
     }
+    
+    /**
+       Convert all generalizations and return it as string.
 
-    abstract function associations();
+       @return {string} The encoding of gen()
+     */
     function associations_str(){
         return json_encode($this->associations());
     }
 
-    abstract function gen();
     /**
-       @return [string] The encoding of gen()
+       Convert all generalizations and return it as string.
+
+       @return {string} The encoding of gen()
      */
     public function gen_str(){
         return json_encode($this->gen());
     } // gen_str
 
-    
+    ///@} 
 }
 
 ?>
