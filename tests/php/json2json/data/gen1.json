@@ -9,6 +9,27 @@
       "name": "c129",
       "type": "generalization",
       "parent": "Cellphone",
-      "constraint": ["disjoint"]}
+      "constraint": ["disjoint"]},
+
+     {"classes": ["ClassA"],
+      "multiplicity": null,
+      "name": "c128",
+      "type": "generalization",
+      "parent": "Cellphone",
+      "constraint": ["covering", "disjoint"]},
+
+     {"classes": ["ClassA"],
+      "multiplicity": null,
+      "name": "c127",
+      "type": "generalization",
+      "parent": "Person",
+      "constraint": ["covering"]},
+     
+     {"classes": ["ClassB"],
+      "multiplicity": null,
+      "name": "c126",
+      "type": "generalization",
+      "parent": "Person",
+      "constraint": []}
  ]
 }
