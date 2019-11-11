@@ -32,31 +32,101 @@ use function \json_decode;
 
 /**
    Implements the conversion between JSON version 1 to the new version 2.
-*/
+ */
 class V1toV2 extends UMLConverter{
 
     /**
        The input as a JSON parsed string. 
 
        It must be a V1 JSON.
-    */
+     */
     protected $input  = null;
+
+    /**
+       Mapping between the class names and their ids.
+     */
+    protected $class2id = [];
 
     /**
        Create a new instance.
 
        @param $input [string] A JSON string.
-    */
+     */
     function __construct($input=''){
         $this->input = json_decode($input, true);
+
+        $this->map_id_with_class();
     }
 
     /**
-       Convert only the classes.
-    */
-    function classes(){
+       Associate each class name with its own id.
+
+       If the id is not in the V1 JSON, create a new one.
+     */
+    protected function map_id_with_class(){
+        $this->class2id = [];
+        $lastid = 0;
         
+        $lst_classes = $this->input['classes'];
+
+        foreach ($lst_classes as $class1){
+            // Use the id if exists, else create a new one.
+            $name = $class1['name'];
+            $id = 0;
+            if (array_key_exists('id', $class1)) {
+                $id = $class1['id'];
+            }else{
+                $id = "c$lastid";
+                $lastid ++;
+            }
+            $this->class2id[$name] = $id;
+        }   
+    } // map_id_with_class
+
+    /**
+       Convert only the classes.
+     */
+    function classes(){
+        $ret = [];
+        $classes = $this->input['classes'];
+
+        foreach ($classes as $class1){
+            $class2 = [
+                'attributes' => $class1['attrs'],
+                'methods' => $class1['methods'],
+                'name' => $class1['name'],
+                'id' => $this->class2id[$class1['name']],
+                /*
+                   'position' => [
+                   'x' : $x,
+                   'y' : $y,
+                   ],*/
+                'size' => [
+                    'height' => 80,
+                    'width' => 105,
+                ],
+            ];
+            
+            $ret[] = $class2;
+        }
+
+        return [
+            'associationWithClass' => [],
+            'associations' => [],
+            'classes' => $ret,
+            'inheritances' => [],
+        ];
     }
+
+    function associations(){
+    }
+    
+    function gen(){
+    }
+
+    function convert(){
+    }
+
     
 }
 

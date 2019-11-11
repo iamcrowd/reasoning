@@ -37,49 +37,49 @@ class v1tov2Test extends PHPUnit\Framework\TestCase{
        @testdox Can convert a set of classes
      */
     public function testClasses(){
-        $input = file_get_contents('data/classes1.json');
-        $expected = file_get_contents('data/classes2.json');
+        $input = file_get_contents('json2json/data/classes1.json');
+        $expected = file_get_contents('json2json/data/classes2-2.json');
 
         $conv = new V1toV2($input);
-        $actual = $conv->classes();
+        $actual = $conv->classes_str();
         $this->assertJsonStringEqualsJsonString($expected, $actual, true);
     }
-
-    /**
-       @testdox Can convert different kind of associations
-     */
-    public function testAssociacions(){
-        $input = file_get_contents('data/assoc1.json');
-        $expected = file_get_contents('data/assoc2.json');
-
-        $conv = new V1toV2($input);
-        $actual = $conv->convert();
-        $this->assertJsonStringEqualsJsonString($expected, $actual, true);
-    }
-
-    /**
-       @testdox Can convert generalizations (disjoint, covering, etc.).
-    */
-    public function testGeneralizations(){
-        $input = file_get_contents('data/gen1.json');
-        $expected = file_get_contents('data/gen2.json');
-
-        $conv = new V1toV2($input);
-        $actual = $conv->convert();
-        $this->assertJsonStringEqualsJsonString($expected, $actual, true);
-    }
-
-    /**
-       @testdox Can convert a complete sample model
-     */
-    public function testAll(){
-        $input = file_get_contents('data/v1_model.json');
-        $expected = file_get_contents('data/v2_model.json');
-
-        $conv = new V1toV2($input);
-        $actual = $conv->convert();
-        $this->assertJsonStringEqualsJsonString($expected, $actual, true);
-    }
+    
+//    /**
+//       @testdox Can convert different kind of associations
+//     */
+//    public function testAssociacions(){
+//        $input = file_get_contents('json2json/data/assoc1.json');
+//        $expected = file_get_contents('json2json/data/assoc2.json');
+//
+//        $conv = new V1toV2($input);
+//        $actual = $conv->associations_str();
+//        $this->assertJsonStringEqualsJsonString($expected, $actual, true);
+//    }
+//
+//    /**
+//       @testdox Can convert generalizations (disjoint, covering, etc.).
+//     */
+//    public function testGeneralizations(){
+//        $input = file_get_contents('json2json/data/gen1.json');
+//        $expected = file_get_contents('json2json/data/gen2.json');
+//
+//        $conv = new V1toV2($input);
+//        $actual = $conv->gen_str();
+//        $this->assertJsonStringEqualsJsonString($expected, $actual, true);
+//    }
+//
+//    /**
+//       @testdox Can convert a complete sample model
+//     */
+//    public function testAll(){
+//        $input = file_get_contents('json2json/data/v1_model.json');
+//        $expected = file_get_contents('json2json/data/v2_model.json');
+//
+//        $conv = new V1toV2($input);
+//        $actual = $conv->convert_str();
+//        $this->assertJsonStringEqualsJsonString($expected, $actual, true);
+//    }
     
 }
 ?>
