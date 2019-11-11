@@ -160,7 +160,16 @@ class V2toV1 extends UMLConverter{
 
     // doc inherited
     function convert(){
+        $classes = $this->classes()['classes'];
+        $assocs = $this->associations()['links'];
+        $gen = $this->gen()['links'];
+
+        $links = array_merge($gen, $assocs);
         
+        return [
+            'classes' => $classes,
+            'links' => $links,
+            ];
     } // convert
     
 }

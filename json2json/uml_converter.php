@@ -104,6 +104,15 @@ abstract class UMLConverter {
         return json_encode($this->gen());
     } // gen_str
 
+    /**
+       Get the V1 JSON representation.
+
+       @return {string} The encoding of convert()
+    */
+    function convert_str(){
+        return json_encode($this->convert());
+    }
+    
     ///@} 
 }
 
