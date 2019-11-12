@@ -119,6 +119,54 @@ class V1toV2 extends UMLConverter{
     }
 
     function associations(){
+        $ret = [];
+        $lst_assocs = $this->input['links'];
+        $lastid = 0;
+        
+        foreach ($lst_assocs as $assoc1){
+            // Only convert binary associations
+            // Type: associations (not generalizations, etc.)
+            // Associations with only 2 classes.
+            if ($assoc1['type'] == 'association' &&
+                sizeof($assoc1['classes']) == 2){
+
+                // For id, use the one defined on the association if it exists.
+                // Else create one.
+                $id = 0;
+                if (array_key_exists('id', $assoc1)){
+                    $id = $assoc1['id'];
+                }else{
+                    $id = "c$lastid";
+                    $lastid++;
+                }
+
+                
+                $assoc2 = [
+                    'id' => $id,
+                    'info' => [
+                        'cardDestino' => $assoc1['multiplicity'][0],
+                        'cardOrigin' => $assoc1['multiplicity'][1],
+                        'nameAssociation' => $assoc1['name'],
+                        'roleDestiny' => '',
+                        'roleOrigin' => '',
+                    ],
+                    'source' => $this->class2id[$assoc1['classes'][0]],
+                    'target' => $this->class2id[$assoc1['classes'][1]],
+                    'type' => 'binaryAssociation',
+                ];
+                
+                $ret[] = $assoc2;
+            }
+        }
+
+        $classes = $this->classes()['classes'];
+        
+        return [
+            'associationWithClass' => [],
+            'associations' => $ret,
+            'classes' => $classes,
+            'inheritances' => [],
+        ];
     }
     
     function gen(){

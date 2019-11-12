@@ -45,18 +45,18 @@ class v1tov2Test extends PHPUnit\Framework\TestCase{
         $this->assertJsonStringEqualsJsonString($expected, $actual, true);
     }
     
-//    /**
-//       @testdox Can convert different kind of associations
-//     */
-//    public function testAssociacions(){
-//        $input = file_get_contents('json2json/data/assoc1.json');
-//        $expected = file_get_contents('json2json/data/assoc2.json');
-//
-//        $conv = new V1toV2($input);
-//        $actual = $conv->associations_str();
-//        $this->assertJsonStringEqualsJsonString($expected, $actual, true);
-//    }
-//
+    /**
+       @testdox Can convert different kind of associations
+     */
+    public function testAssociacions(){
+        $input = file_get_contents('json2json/data/assoc1.json');
+        $expected = file_get_contents('json2json/data/assoc2.json');
+
+        $conv = new V1toV2($input);
+        $actual = $conv->associations_str();
+        $this->assertJsonStringEqualsJsonString($expected, $actual, true);
+    }
+
 //    /**
 //       @testdox Can convert generalizations (disjoint, covering, etc.).
 //     */
@@ -68,7 +68,7 @@ class v1tov2Test extends PHPUnit\Framework\TestCase{
 //        $actual = $conv->gen_str();
 //        $this->assertJsonStringEqualsJsonString($expected, $actual, true);
 //    }
-//
+
 //    /**
 //       @testdox Can convert a complete sample model
 //     */

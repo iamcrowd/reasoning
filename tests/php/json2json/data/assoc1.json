@@ -7,10 +7,14 @@
      {"classes": ["Cellphone", "Person"],
       "multiplicity": ["1..5", "1..6"],
       "name": "hasA",
-      "type": "association"},
+      "type": "association",
+      "id" : "c47",
+      "roles": ["RoleOrigen", "RoleDestino"]},
      {"classes": ["ClassB", "ClassA"],
       "multiplicity": ["1..5", "1..6"],
-      "name": "aName",
-      "type": "association"}
+      "name": "aName",      
+      "type": "association",
+      "id": "c193",
+      "roles": ["RoleOrigen", "RoleDestino"]}
  ]
 }
