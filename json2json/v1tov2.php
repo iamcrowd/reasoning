@@ -91,19 +91,31 @@ class V1toV2 extends UMLConverter{
         $classes = $this->input['classes'];
 
         foreach ($classes as $class1){
+            // Use the position values if provided.
+            $x = 0; $y = 0;
+            if (array_key_exists('position', $class1)){
+                $x = $class1['position']['x'];
+                $y = $class1['position']['y'];
+            }
+            // Use defualt size values unless provided
+            $height = 80; $width = 105;
+            if (array_key_exists('size', $class1)){
+                $height = $class1['size']['height'];
+                $width = $class1['size']['width'];
+            }
+            
             $class2 = [
                 'attributes' => $class1['attrs'],
+                'id' => $this->class2id[$class1['name']],
                 'methods' => $class1['methods'],
                 'name' => $class1['name'],
-                'id' => $this->class2id[$class1['name']],
-                /*
-                   'position' => [
-                   'x' : $x,
-                   'y' : $y,
-                   ],*/
+                'position' => [
+                    'x' => $x,
+                    'y' => $y,
+                ],
                 'size' => [
-                    'height' => 80,
-                    'width' => 105,
+                    'height' => $height,
+                    'width' => $width,
                 ],
             ];
             
@@ -147,8 +159,8 @@ class V1toV2 extends UMLConverter{
                         'cardDestino' => $assoc1['multiplicity'][0],
                         'cardOrigin' => $assoc1['multiplicity'][1],
                         'nameAssociation' => $assoc1['name'],
-                        'roleDestiny' => '',
-                        'roleOrigin' => '',
+                        'roleDestiny' => $assoc1['roles'][1],
+                        'roleOrigin' => $assoc1['roles'][0],
                     ],
                     'source' => $this->class2id[$assoc1['classes'][0]],
                     'target' => $this->class2id[$assoc1['classes'][1]],
@@ -168,8 +180,84 @@ class V1toV2 extends UMLConverter{
             'inheritances' => [],
         ];
     }
+
+    /**
+       Convert the constraint list from v1 to a v2 string.
+
+       @param $lst A list of constraints strings.
+       @return A string with the constraint string supported by V2.
+     */
+    protected function v12v2_type($lst){
+        $type = '';
+        if (in_array('covering', $lst) and in_array('disjoint', $lst)){
+            $type = 'c/d';
+        }else{
+            if (in_array('disjoint', $lst)){
+                $type = 'd';
+            }
+            if (in_array('covering', $lst)){
+                $type = 'c';
+            }
+        }
+
+        return $type;
+    } // v12v2_type
     
     function gen(){
+        $ret = [];
+        $lst_assocs = $this->input['links'];
+        $lastid = 0;
+
+        foreach ($lst_assocs as $assoc1){
+            // Only conert generalizations, ignore the rest.
+            if ($assoc1['type'] == 'generalization'){
+
+                // Use the id within the association. But if it does
+                // not exists, use the $lastid number.
+                $id = 0;
+                if (array_key_exists('name', $assoc1)){
+                    $id = $assoc1['name'];
+                }else{
+                    $id = 'c$lastid';
+                    $lastid++;
+                }
+
+                $subclasses = [];
+                foreach ($assoc1['classes'] as $classname){
+                    $subclasses[] = $this->class2id[$classname];
+                }
+
+                $superclass = [ $this->class2id[$assoc1['parent']] ];
+
+                
+                $assoc2 = [
+                    'id' => $id,
+                    'position' => [
+                        'x' => 703,
+                        'y' => 264,
+                    ],
+                    'size' => [
+                        'height' => 40,
+                        'width' => 40,
+                    ],
+                    'subClasses' => $subclasses,
+                    'superClasses' =>$superclass,
+                    'type' => $this->v12v2_type($assoc1['constraint']),
+                ];
+                $ret[] = $assoc2;
+            }
+
+            
+        }
+        
+        $classes = $this->classes()['classes'];
+        
+        return [
+            'associationWithClass' => [],
+            'associations' => [],
+            'classes' => $classes,
+            'inheritances' => $ret,
+        ];
     }
 
     function convert(){

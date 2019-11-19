@@ -38,7 +38,7 @@ class v1tov2Test extends PHPUnit\Framework\TestCase{
      */
     public function testClasses(){
         $input = file_get_contents('json2json/data/classes1.json');
-        $expected = file_get_contents('json2json/data/classes2-2.json');
+        $expected = file_get_contents('json2json/data/classes2.json');
 
         $conv = new V1toV2($input);
         $actual = $conv->classes_str();
@@ -48,6 +48,7 @@ class v1tov2Test extends PHPUnit\Framework\TestCase{
     /**
        @testdox Can convert different kind of associations
      */
+    
     public function testAssociacions(){
         $input = file_get_contents('json2json/data/assoc1.json');
         $expected = file_get_contents('json2json/data/assoc2.json');
@@ -56,18 +57,18 @@ class v1tov2Test extends PHPUnit\Framework\TestCase{
         $actual = $conv->associations_str();
         $this->assertJsonStringEqualsJsonString($expected, $actual, true);
     }
+    
+    /**
+       @testdox Can convert generalizations (disjoint, covering, etc.).
+     */
+    public function testGeneralizations(){
+        $input = file_get_contents('json2json/data/gen1.json');
+        $expected = file_get_contents('json2json/data/gen2.json');
 
-//    /**
-//       @testdox Can convert generalizations (disjoint, covering, etc.).
-//     */
-//    public function testGeneralizations(){
-//        $input = file_get_contents('json2json/data/gen1.json');
-//        $expected = file_get_contents('json2json/data/gen2.json');
-//
-//        $conv = new V1toV2($input);
-//        $actual = $conv->gen_str();
-//        $this->assertJsonStringEqualsJsonString($expected, $actual, true);
-//    }
+        $conv = new V1toV2($input);
+        $actual = $conv->gen_str();
+        $this->assertJsonStringEqualsJsonString($expected, $actual, true);
+    }
 
 //    /**
 //       @testdox Can convert a complete sample model
