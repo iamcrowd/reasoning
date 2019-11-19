@@ -82,7 +82,8 @@ class V2toV1 extends UMLConverter{
                 'attrs' => [],
                 'methods' => [],
                 'name' => $class['name'],
-                'id' => $class['id']
+                'id' => $class['id'],
+                'position' => $class['position'],
             ];
         }
 
@@ -96,9 +97,17 @@ class V2toV1 extends UMLConverter{
     function associations(){
         $classes = $this->classes()['classes'];
         $links = [];
+        $lastid = 0;
         
         $lst_assocs = $this->input['associations'];
         foreach ($lst_assocs as $assoc){
+            $id = '';
+            if (array_key_exists('id', $assoc)){
+                $id = $assoc['id'];
+            }else{
+                $id = "c$lastid";
+            }
+            
             $links[] = [
                 'classes' => [
                     $this->id2class[$assoc['source']],
@@ -109,7 +118,12 @@ class V2toV1 extends UMLConverter{
                     $assoc['info']['cardOrigin'],
                 ],
                 'name' => $assoc['info']['nameAssociation'],
-                'type' => 'association'
+                'type' => 'association',
+                'id' => $id,
+                'roles' => [
+                    $assoc['info']['roleOrigin'],
+                    $assoc['info']['roleDestiny'],
+                ],
             ];
         }
 

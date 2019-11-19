@@ -1,8 +1,12 @@
 {"classes": [
-    {"attrs":[], "methods":[], "name": "Cellphone", "id": "c31"},
-    {"attrs":[], "methods":[], "name": "Person", "id": "c43"},
-    {"attrs":[], "methods":[], "name": "ClassA", "id": "c71"},
-    {"attrs":[], "methods":[], "name": "ClassB", "id": "c72"}],
+    {"attrs":[], "methods":[], "name": "Cellphone", "id": "c31",
+     "position": {"x": 660, "y": 120}},
+    {"attrs":[], "methods":[], "name": "Person", "id": "c43",
+     "position": {"x": 210, "y": 120}},
+    {"attrs":[], "methods":[], "name": "ClassA", "id": "c71",
+     "position": {"x": 220, "y": 320}},
+    {"attrs":[], "methods":[], "name": "ClassB", "id": "c72",
+     "position": {"x": 580, "y": 340}}],
  "links": [
      {"classes": ["ClassB"],
       "multiplicity": null,
@@ -13,10 +17,14 @@
      {"classes": ["Cellphone", "Person"],
       "multiplicity": ["1..5", "1..6"],
       "name": "hasA",
-      "type": "association"},
+      "type": "association",
+      "id": "c47",
+      "roles": ["RoleOrigen", "RoleDestino"]},
      {"classes": ["ClassB", "ClassA"],
       "multiplicity": ["1..5", "1..6"],
       "name": "aName",
-      "type": "association"}
+      "type": "association",
+      "id": "c193",
+      "roles": ["RoleOrigen", "RoleDestino"]}
  ]
 }

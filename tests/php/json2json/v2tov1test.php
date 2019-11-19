@@ -79,7 +79,8 @@ class v2tov1Test extends PHPUnit\Framework\TestCase{
         $conv = new V2tov1($input);
         $actual = $conv->convert_str();
         $this->assertJsonStringEqualsJsonString($expected, $actual, true);
-    }
+}
+
     
 }
 ?>
