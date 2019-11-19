@@ -70,17 +70,18 @@ class v1tov2Test extends PHPUnit\Framework\TestCase{
         $this->assertJsonStringEqualsJsonString($expected, $actual, true);
     }
 
-//    /**
-//       @testdox Can convert a complete sample model
-//     */
-//    public function testAll(){
-//        $input = file_get_contents('json2json/data/v1_model.json');
-//        $expected = file_get_contents('json2json/data/v2_model.json');
-//
-//        $conv = new V1toV2($input);
-//        $actual = $conv->convert_str();
-//        $this->assertJsonStringEqualsJsonString($expected, $actual, true);
-//    }
+    /**
+       @testdox Can convert a complete sample model
+     */
+    public function testAll(){
+        $input = file_get_contents('json2json/data/v1_model.json');
+        $expected = file_get_contents('json2json/data/v2_model.json');
+
+        $conv = new V1toV2($input);
+        $actual = $conv->convert_str();
+        $this->assertJsonStringEqualsJsonString($expected, $actual, true);
+    }
     
 }
+
 ?>

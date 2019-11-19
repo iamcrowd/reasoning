@@ -261,9 +261,17 @@ class V1toV2 extends UMLConverter{
     }
 
     function convert(){
-    }
+        $assocs = $this->associations()['associations'];
+        $classes = $this->classes()['classes'];
+        $inheritances = $this->gen()['inheritances'];
 
-    
+        return [
+            'associationWithClass' => [],
+            'associations' => $assocs,
+            'classes' => $classes,
+            'inheritances' => $inheritances,
+        ];             
+    }
 }
 
 ?>
