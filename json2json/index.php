@@ -38,6 +38,9 @@ function show_usage($message){
     echo "Bad usage:\n";
     echo $message;
     echo "\nPlease correct this mistakes and try again.\n";
+    echo "Synopsis:\n";
+    echo "  GET : from=v1|v2&to=v2|v1\n";
+    echo "  POST: json='UML JSON STRING'\n";
 } // show_usage
 
 /**
