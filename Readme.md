@@ -33,7 +33,7 @@ Remember to set executable perms to the reasoners:
 Create a blank file at `run/input-file.owllink`.
 
 # Testing 
-The tests directory has got all the PHP tests. 
+The tests directory has got all the PHP tests.
 
 ## PHPUnit
 Test can be executed using PHPUnit. Download it from https://phpunit.de/ and make it available on your PATH. Remember to check your repository if you are using a GNU/Linux distribution.
