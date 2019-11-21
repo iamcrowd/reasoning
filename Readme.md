@@ -9,6 +9,7 @@ API entry points:
 - translate/*.php
 
 # Requirements
+This section describe the requirements and configurations needed to run this  module.
 
 ## Configs
 This module requires configuration. See config/* files.
