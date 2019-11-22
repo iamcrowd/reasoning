@@ -1,0 +1,18 @@
+{"classes":[
+    {"name":"Person","attrs":[
+        {"name":"dni","datatype":"String"},
+        {"name":"firstname","datatype":"String"},
+        {"name":"surname","datatype":"String"},
+        {"name":"birthdate","datatype":"Date"}],
+     "methods":[],"position":{"x":287,"y":38}},
+    {"name":"Student","attrs":[
+        {"name":"id","datatype":"String"},
+        {"name":"enrolldate","datatype":"Date"}],
+     "methods":[],"position":{"x":538,"y":251}}],
+ "links":[{"name":"r1","classes":["Student"],
+           "multiplicity":null,
+           "roles":[null,null],
+           "type":"generalization",
+           "parent":"Person",
+           "constraint":[]}]
+}

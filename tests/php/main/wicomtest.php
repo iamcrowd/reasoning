@@ -265,69 +265,24 @@ class WicomTest extends PHPUnit\Framework\TestCase
        //        $this->assertJsonStringEqualsJsonString($expected, $actual, true);
        }
      */
+    /*
     public function test_full_reasoning_UML_BinaryAssocWithoutClass0N_CompareJSON(){
-        $input = <<<'EOT'
-{"namespaces":
- {"ontologyIRI": "http://crowd.fi.uncoma.edu.ar#",
-  "defaultIRIs": [
-      {"prefix":"rdf","value":"http://www.w3.org/1999/02/22-rdf-syntax-ns#"},
-      {"prefix":"rdfs","value":"http://www.w3.org/2000/01/rdf-schema#"},
-      {"prefix":"xsd","value":"http://www.w3.org/2001/XMLSchema#"},
-      {"prefix":"owl","value":"http://www.w3.org/2002/07/owl#"}
-  ],
-  "IRIs":[]
- },
- "classes":[
-     {"name":"http://crowd.fi.uncoma.edu.ar#Class1","attrs":[],"methods":[],
-      "position":{"x":298,"y":102}},
-     {"name":"http://crowd.fi.uncoma.edu.ar#Class2","attrs":[],"methods":[],
-      "position":{"x":297,"y":431}}],
- "links":[{"name":"http://crowd.fi.uncoma.edu.ar#r1",
-	   "classes":[
-	       "http://crowd.fi.uncoma.edu.ar#Class1",
-	       "http://crowd.fi.uncoma.edu.ar#Class2"],
-	   "multiplicity":["0..*","0..*"],
-	   "roles":[
-	       "http://crowd.fi.uncoma.edu.ar#class1",
-	       "http://crowd.fi.uncoma.edu.ar#class2"],
-	   "type":"association"}]
-}
-EOT;
-
-        $expected = <<<EOT
-       {
-           "satisfiable": {
-               "kb" : true,
-               "classes" : ["Person", "NoStudent"]
-           },
-           "unsatisfiable": {
-                "classes" : ["Student"]
-           },
-           "suggestions" : {
-                "links" : []
-           },
-           "reasoner" : {
-                "input" : "",
-                "output" : ""
-           }
-       }
-EOT;
-
+        $input = file_get_contents('main/data/full_reasoning_input.json');
+        $expected = file_get_contents('main/data/full_reasoning_expected.json');
 
 	/*
 	   TODO:
 	   Should I erase this?
-	   - Christian. September, 5 2019
+	          - Christian. September, 5 2019
+         */
         $wicom = new UML_Wicom();
         $answer = $wicom->full_reasoning($input);
-	*/
 
+	// $answer->set_reasoner_input("");
+	// $answer->set_reasoner_output("");
+	$actual = $answer->to_json();
 
-	//        $answer->set_reasoner_input("");
-	//        $answer->set_reasoner_output("");
-	//        $actual = $answer->to_json();
-
-	//        $this->assertJsonStringEqualsJsonString($expected, $actual, true);
-    }
+	$this->assertJsonStringEqualsJsonString($expected, $actual, true);
+    }*/
 
 }

@@ -1,0 +1,16 @@
+{
+    "satisfiable": {
+        "kb" : true,
+        "classes" : ["Person", "Student"]
+    },
+    "unsatisfiable": {
+        "classes" : []
+    },
+    "suggestions" : {
+        "links" : []
+    },
+    "reasoner" : {
+        "input" : "",
+        "output" : ""
+    }
+}

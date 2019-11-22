@@ -1,0 +1,16 @@
+{
+    "satisfiable": {
+        "kb" : true,
+        "classes" : ["Hi World"]
+    },
+    "unsatisfiable": {
+        "classes" : []
+    },
+    "suggestions" : {
+        "links" : []
+    },
+    "reasoner" : {
+        "input" : "",
+        "output" : ""
+    }
+}
