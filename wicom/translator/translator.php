@@ -199,7 +199,8 @@ class Translator{
         $this->builder->insert_header_owl2($ontoURI, $uris);
         $this->strategy->translate($json, $this->builder);
 
-        if (array_key_exists("owllink", $json_obj) && count($json_obj["owllink"]) != 0){
+        if (array_key_exists("owllink", $json_obj) &&
+            count($json_obj["owllink"]) != 0){
             $owl_str = $this->insertedOWLlink2OWLNaive($json_obj["owllink"]);
             $this->builder->insert_owl2($owl_str);
         }

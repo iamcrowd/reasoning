@@ -35,7 +35,7 @@ class OWLBuilder extends DocumentBuilder{
 
     function __construct($ontologyIRI = null, $iris = []){
         $this->product = new OWLDocument;
-	$this->insert_header_owl2($ontologyIRI, $iris);
+	// $this->insert_header_owl2($ontologyIRI, $iris);
         $this->min_max = [];
     }
 
