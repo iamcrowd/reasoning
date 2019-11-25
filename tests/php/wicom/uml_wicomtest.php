@@ -42,8 +42,9 @@ class WicomTest extends PHPUnit\Framework\TestCase
         $wicom = new UML_Wicom();
         $answer = $wicom->is_satisfiable($input);
 
-        // $answer->set_reasoner_input("");
-        // $answer->set_reasoner_output("");
+        // Erase the reasoner input and output in the JSON answer
+        $answer->set_reasoner_input("");
+        $answer->set_reasoner_output("");
         $actual = $answer->to_json();
 
         $this->assertJsonStringEqualsJsonString($expected, $actual, true);
@@ -57,6 +58,7 @@ class WicomTest extends PHPUnit\Framework\TestCase
         $wicom = new UML_Wicom();
         $answer = $wicom->full_reasoning($input);
 
+        // Erase the reasoner input and output in the JSON answer
         $answer->set_reasoner_input("");
         $answer->set_reasoner_output("");
         $actual = $answer->to_json();
@@ -72,8 +74,9 @@ class WicomTest extends PHPUnit\Framework\TestCase
         $wicom = new UML_Wicom();
         $answer = $wicom->full_reasoning($input);
 
-        // $answer->set_reasoner_input("");
-        // $answer->set_reasoner_output("");
+        // Erase the reasoner input and output in the JSON answer
+        $answer->set_reasoner_input("");
+        $answer->set_reasoner_output("");
         $actual = $answer->to_json();
 
         $this->assertJsonStringEqualsJsonString($expected, $actual, true);
@@ -88,13 +91,17 @@ class WicomTest extends PHPUnit\Framework\TestCase
         $wicom = new UML_Wicom();
         $answer = $wicom->full_reasoning($input);
 
-        //        $answer->set_reasoner_input("");
-        //        $answer->set_reasoner_output("");
+        // Erase the reasoner input and output in the JSON answer
+        $answer->set_reasoner_input("");
+        $answer->set_reasoner_output("");
         $actual = $answer->to_json();
 
         $this->assertJsonStringEqualsJsonString($expected, $actual, true);
     }
 
+    /**
+       @testdox Can do a UML full reasoning with a subsumption
+    */
     public function test_full_reasoning_UML_Subsumption_CompareJSON(){
         $input = file_get_contents('wicom/data/uml_subsumption.json');
         $expected = file_get_contents('wicom/data/uml_subsumption_answer.json');
@@ -103,27 +110,27 @@ class WicomTest extends PHPUnit\Framework\TestCase
         $answer = $wicom->full_reasoning($input);
 
 
-        //        $answer->set_reasoner_input("");
-        //        $answer->set_reasoner_output("");
+        // Erase the reasoner input and output in the JSON answer
+        $answer->set_reasoner_input("");
+        $answer->set_reasoner_output("");
         $actual = $answer->to_json();
 
         $this->assertJsonStringEqualsJsonString($expected, $actual, true);
     }
 
+    /**
+       @testdox Can do a UML full reasoning with a binary associacion
+    */
     public function test_full_reasoning_UML_BinaryAssocWithoutClass0N_CompareJSON(){
         $input = file_get_contents('wicom/data/full_reasoning_input.json');
         $expected = file_get_contents('wicom/data/full_reasoning_expected.json');
 
-	/*
-	   TODO:
-	   Should I erase this?
-	   - Christian. September, 5 2019
-         */
         $wicom = new UML_Wicom();
         $answer = $wicom->full_reasoning($input);
 
-	// $answer->set_reasoner_input("");
-	// $answer->set_reasoner_output("");
+        // Erase the reasoner input and output in the JSON answer
+	$answer->set_reasoner_input("");
+	$answer->set_reasoner_output("");
 	$actual = $answer->to_json();
 
 	$this->assertJsonStringEqualsJsonString($expected, $actual, true);

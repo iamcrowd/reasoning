@@ -1,16 +1,25 @@
 {
     "satisfiable": {
         "kb" : true,
-        "classes" : ["Person", "NoStudent"]
+        "classes" : ["http://crowd.fi.uncoma.edu.ar#Class1",
+                     "http://crowd.fi.uncoma.edu.ar#Class2"],
+        "objectproperties": [],
+        "dataproperties": []
     },
     "unsatisfiable": {
-        "classes" : ["Student"]
+        "classes": [],
+        "objectproperties": [],
+        "dataproperties": []
     },
-    "suggestions" : {
-        "links" : []
-    },
+    "subsumptions": [],
+    "disjunctions": [],
+    "equivalences": [],
     "reasoner" : {
         "input" : "",
         "output" : ""
-    }
+    },
+    "inferredSubs": [],
+    "inferredCards": [],
+    "inferredDisj": [],
+    "inferredEquiv": []
 }

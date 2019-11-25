@@ -48,8 +48,12 @@ use \XMLReader;
 
  */
 class OWLlinkDocument extends Document{
-    const default_ontologyIRI = "http://crowd.fi.uncoma.edu.ar/kb1#";
-				     
+    const default_ontologyIRI = [
+        [
+            'prefix' => 'crowd',
+            'value' => "http://crowd.fi.uncoma.edu.ar/kb1#"]
+    ];
+    
     protected $content = null;
 
     protected $firstKBElement = "Tell";
@@ -132,16 +136,20 @@ class OWLlinkDocument extends Document{
 	if (empty($reqiris)){
 	    $reqiris = $this->default_header;
 	}
-	
-	if (($ontologyIRI == null) or ($ontologyIRI == "")){
+
+	if ($ontologyIRI == null){
 	    $ontologyIRI = OWLlinkDocument::default_ontologyIRI;
-	}
+        }
+        // Discard the prefix
+        $ontologyIRI = $ontologyIRI[0]['value'];
+        
 
 
         foreach ($this->default_header as $header){
 	    $this->content->writeAttribute($header["attr"],
 					 $header["value"]);
         }
+        
         $this->content->writeAttribute("xml:base",
 				     $ontologyIRI);
 	
@@ -155,7 +163,8 @@ class OWLlinkDocument extends Document{
        $d->insert_request();
        @endcode
 
-       @param $ontologyIRI {string} The IRI that represents the ontology.
+       @param $ontologyIRI {Array} A list with the default URI. A value should 
+         be `[['prefix' => 'crowd', 'value' => 'http://crowd.fi.uncoma.edu.ar/']]`
        @param $req {array} An array of IRIs prefixes needed by all the XML
        document's tags. Format:
        `[['prefix' => 'PREFIX_NAME', 'value' => 'IRI'], ...]`
@@ -196,16 +205,19 @@ class OWLlinkDocument extends Document{
        Insert a "CreateKB" OWLlink primitive. After that, set the
        actual_kb to the given URI.
 
-       @param $ontologyIRI {string} An IRI for the current ontology. 
-       The name or the URI of the KB.
+       @param $ontologyIRI {Array} A list with the default URI. A value should 
+         be `[['prefix' => 'crowd', 'value' => 'http://crowd.fi.uncoma.edu.ar/']]`
        @param $prefixes {array} An Array of namespaces and IRIs for the ontology.
      */
     public function insert_create_kb($ontologyIRI = null, $prefixes = []){
         $this->content->startElement("CreateKB");
 
-	if (($ontologyIRI == null) or ($ontologyIRI == "")){
+	if ($ontologyIRI == null){
 	    $ontologyIRI = OWLlinkDocument::default_ontologyIRI;
 	}
+        // Drop the prefix
+        $ontologyIRI = $ontologyIRI[0]['value'];
+        
 
 	$this->content->writeAttribute("kb",$ontologyIRI);
         $this->actual_kb = $ontologyIRI;

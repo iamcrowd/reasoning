@@ -55,7 +55,12 @@ class OWLDocument extends Document{
 
     protected $current_prefixes = [];
 
-    const default_ontologyIRI = "http://crowd.fi.uncoma.edu.ar/kb1#";
+    const default_ontologyIRI = [
+        [
+            'prefix' => 'crowd',
+            'value' => "http://crowd.fi.uncoma.edu.ar/kb1#"
+        ]
+    ];
     
     protected $default_prefixes = [
 	["prefix" => "rdf",
@@ -100,9 +105,8 @@ class OWLDocument extends Document{
        This is the first tag on an OWL 2 document. It usually has got prefixes 
        and the ontology IRI.
        
-       @param $ontologyIRI {string} (Optional) The IRI that represents the
-       ontology. If it is null or an empty string, then the 
-       default_ontology_IRI is used.
+       @param $ontologyIRI {Array} A list with the default URI. A value should 
+         be `[['prefix' => 'crowd', 'value' => 'http://crowd.fi.uncoma.edu.ar/']]`
        @param $headerIRIs {array} (Optional) An array with elements like
        `['prefix' => "NAME", 'value' => "IRI"]`. If an empty array is passed
        default_header prefixes are used.
@@ -114,9 +118,11 @@ class OWLDocument extends Document{
 	    $headerIRIs = $this->default_header;
 	}
 
-	if ($ontologyIRI == null || $ontologyIRI == ""){
+	if ($ontologyIRI == null){
 	    $ontologyIRI = OWLDocument::default_ontologyIRI;
 	}
+        
+        $ontologyIRI = $ontologyIRI[0]['value'];
 	
 	foreach ($headerIRIs as $header){
 	    $this->content->writeAttribute($header["attr"], $header["value"]);
@@ -177,7 +183,7 @@ class OWLDocument extends Document{
 
     /**
        Insert several Prefix tags.
-    */
+     */
     public function insert_prefix($prefixes){
 	foreach ($prefixes as $prefix){
             $this->content->startElement("Prefix");
