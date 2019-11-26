@@ -33,16 +33,7 @@ class HTMLBuilderTest extends PHPUnit\Framework\TestCase
 {
 
     public function testTranslate(){
-        $expected = <<<'EOT'
-<p><b>&#8849;</b>(Persona &#8868;)</p>
-<p><b>&#8849;</b>(Cellphone &#8868;)</p>
-<p><b>&#8849;</b>(&exist;(hasCellphone &#8868;)Person)</p>
-<p><b>&#8849;</b>(&exist;((hasCellphone)<sup>-</sup> &#8868;)Cellphone)</p>
-<p><b>&#8849;</b>(Person (&ge; 1.hasCellphone))</p>
-<p><b>&#8849;</b>(Cellphone <b>&sqcap;</b>((&ge; 1.(hasCellphone)<sup>-</sup>)(&le; 1.(hasCellphone)<sup>-</sup>)))</p>
-<p><b>&#8849;</b>(&#8868; <b>&sqcap;</b>(&forall;(Rolename Classname)&forall;((Rolename)<sup>-</sup> Class2)))</p>
-EOT;
-
+        $expected = trim(file_get_contents('translator/data/html_translate.html'));
 
         $builder = new HTMLBuilder();
 

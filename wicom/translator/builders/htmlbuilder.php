@@ -37,6 +37,8 @@ class HTMLBuilder extends DocumentBuilder{
     public function insert_class($name, $col_attrs = []){
         $this->product->insert_class($name);
     }
+    public function insert_dataproperty($name, $datatype=null){
+    }
 
     public function insert_subclassof($child, $father){
         $this->product->insert_subclassof($child, $father);

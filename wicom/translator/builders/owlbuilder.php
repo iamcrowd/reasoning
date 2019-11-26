@@ -68,8 +68,8 @@ class OWLBuilder extends DocumentBuilder{
 	$this->product->insert_dataproperty_declaration($name);
     }
 
-    public function insert_dataproperty($name){
-        $this->product->insert_dataproperty($name);
+    public function insert_dataproperty($name, $datatype){
+        $this->product->insert_dataproperty($name, $datatype);
     }
 
     public function insert_objectproperty_declaration($name){

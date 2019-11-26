@@ -38,13 +38,13 @@
    @return An XML web page.
  */
 
-require_once '../../common/import_functions.php';
+require_once '../common/import_functions.php';
 
-load('translator.php', '../../wicom/translator/');
-load('owllinkdocument.php', '../../wicom/translator/documents/');
-load('berardistrat.php','../../wicom/translator/strategies/');
-load('owllinkbuilder.php', '../../wicom/translator/builders/');
-load('htmlbuilder.php', '../../wicom/translator/builders/');
+load('translator.php', '../wicom/translator/');
+load('owllinkdocument.php', '../wicom/translator/documents/');
+load('berardistrat.php','../wicom/translator/strategies/');
+load('owllinkbuilder.php', '../wicom/translator/builders/');
+load('htmlbuilder.php', '../wicom/translator/builders/');
 
 use Wicom\Translator\Translator;
 use Wicom\Translator\Strategies\Berardi;
