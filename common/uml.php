@@ -55,6 +55,11 @@ class UML_Wicom extends Wicom{
 	parent::__construct();
     }
 
+    function is_satisfiable($json_str, $strategy = 'berardi', $reasoner = 'Racer'){
+        return $this->full_reasoning($json_str, $strategy, $reasoner);
+    }
+
+    
     /**
        Check the diagram represented in JSON format for full reasoning.
 

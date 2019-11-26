@@ -36,7 +36,7 @@ class WicomTest extends PHPUnit\Framework\TestCase
 
     
     public function test_is_satisfiable_UML(){
-        $input = '{"classes": [{"attrs":[], "methods":[], "name": "Hi World"}]}';
+        $input = file_get_contents('wicom/data/uml_satisfiable.json');
         $expected = file_get_contents('wicom/data/uml_satisfiable_answer.json');
 
         $wicom = new UML_Wicom();
