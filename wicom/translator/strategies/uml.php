@@ -52,8 +52,9 @@ abstract class UML extends Strategy{
         $js_links = $json["links"];
 
         if (!empty($js_clases)){
-          foreach ($js_clases as $class){
-            $builder->insert_class_declaration($class["name"]);
+            foreach ($js_clases as $class){
+                // The builder provides a shorthand for this.
+                $builder->insert_class_declaration($class["name"]);
 
             if (!empty($class["attrs"])){
               foreach ($class["attrs"] as $attr){

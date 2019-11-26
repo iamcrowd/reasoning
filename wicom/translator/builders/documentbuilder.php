@@ -36,6 +36,14 @@ use Wicom\Translator\Documents\Document;
 abstract class DocumentBuilder extends Documents{
     protected $product = null;
 
+    /**
+       Shorthand for a DL complete declaration.
+
+       In DL this would create the "Class is subset of Top" instead only the 
+       class name.
+
+       @param $name The class name to insert.
+    */
     public function insert_class_declaration($name){
         $this->insert_class($name);
     }

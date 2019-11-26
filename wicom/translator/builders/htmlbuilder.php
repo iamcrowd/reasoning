@@ -34,6 +34,10 @@ class HTMLBuilder extends DocumentBuilder{
         $this->product = new HTMLDocument();
     }
 
+    public function insert_class_declaration($name){
+        $this->product->insert_subclassof($name, "owl:Thing");
+    }
+    
     public function insert_class($name, $col_attrs = []){
         $this->product->insert_class($name);
     }
