@@ -288,25 +288,34 @@ EOT;
        @testdox Can create an answer in OWL 2 format
      */
     public function testAnswerOWL2(){
-        $expected = <<<'EOT'
-<?xml version="1.0" encoding="UTF-8"?>
-<Ontology xmlns="http://www.w3.org/2002/07/owl#"
-        ontologyIRI="http://crowd.fi.uncoma.edu.ar/kb1#"
-        xml:base="http://crowd.fi.uncoma.edu.ar/kb1#"
-        xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-        xmlns:xml="http://www.w3.org/XML/1998/namespace"
-        xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
-        xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
-  <Prefix IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#" name="rdf"/>
-  <Prefix IRI="http://www.w3.org/2000/01/rdf-schema#" name="rdfs"/>
-  <Prefix IRI="http://www.w3.org/2001/XMLSchema#" name="xsd"/>
-  <Prefix IRI="http://www.w3.org/2002/07/owl#" name="owl"/>
+        /*
+           // There's no need for this because no start-document() method is used.
 
+           <?xml version="1.0" encoding="UTF-8"?>
+           <Ontology xmlns="http://www.w3.org/2002/07/owl#"
+           ontologyIRI="http://crowd.fi.uncoma.edu.ar/kb1#"
+           xml:base="http://crowd.fi.uncoma.edu.ar/kb1#"
+           xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+           xmlns:xml="http://www.w3.org/XML/1998/namespace"
+           xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+           xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+           <Prefix IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#" name="rdf"/>
+           <Prefix IRI="http://www.w3.org/2000/01/rdf-schema#" name="rdfs"/>
+           <Prefix IRI="http://www.w3.org/2001/XMLSchema#" name="xsd"/>
+           <Prefix IRI="http://www.w3.org/2002/07/owl#" name="owl"/>
+
+           <DisjointClasses>
+           <Class IRI="A"/>
+           <Class IRI="B"/>
+           </DisjointClasses>
+           </Ontology>
+
+         */
+        $expected = <<<'EOT'
   <DisjointClasses>
     <Class IRI="A"/>
     <Class IRI="B"/>
   </DisjointClasses>
-</Ontology>
 EOT;
 
         $owl = new OWLBuilder();

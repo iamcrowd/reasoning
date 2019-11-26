@@ -78,7 +78,8 @@ class OWLlinkDocumentTest extends PHPUnit\Framework\TestCase{
 
         $d = new OWLlinkDocument();
         $d->start_document();
-        $d->insert_create_kb("http://crowd.fi.uncoma.edu.ar/kb1/");
+        $d->insert_create_kb([['prefix' => 'crowd',
+                              'value' => "http://crowd.fi.uncoma.edu.ar/kb1/"]]);
         $d->end_document();
 
         $actual = $d->to_string();
@@ -168,7 +169,8 @@ class OWLlinkDocumentTest extends PHPUnit\Framework\TestCase{
 	     "value" => "http://www.cenpat-conicet.gob.ar/ontology/"],
         ];
 
-        $ontoIRI = "http://www.cenpat-conicet.gob.ar/bioOnto/";
+        $ontoIRI = [['prefix' => 'bio-onto',
+                     'value' => "http://www.cenpat-conicet.gob.ar/bioOnto/"]];
 	
         $d->start_document($ontoIRI, $reqiris);
         $d->insert_create_kb($ontoIRI, $prefixes);
@@ -185,7 +187,7 @@ class OWLlinkDocumentTest extends PHPUnit\Framework\TestCase{
 
     /**
        @testdox Can insert some classes.
-    */
+     */
     public function testClasses(){
         $expected = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>
 <RequestMessage xmlns=\"http://www.owllink.org/owllink#\"
@@ -208,7 +210,8 @@ class OWLlinkDocumentTest extends PHPUnit\Framework\TestCase{
 
         $d = new OWLlinkDocument();
         $d->start_document();
-        $d->insert_create_kb("http://crowd.fi.uncoma.edu.ar/kb1/");
+        $d->insert_create_kb([['prefix' => 'crowd',
+                              'value' => "http://crowd.fi.uncoma.edu.ar/kb1/"]]);
         $d->start_tell();
         $d->insert_class("HiWorld");
         $d->end_tell();
@@ -224,7 +227,7 @@ class OWLlinkDocumentTest extends PHPUnit\Framework\TestCase{
 
     /**
        @testdox Can insert subclass relationships
-    */
+     */
     public function testSubclass(){
         $expected = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>
 <RequestMessage xmlns=\"http://www.owllink.org/owllink#\"
@@ -250,7 +253,8 @@ class OWLlinkDocumentTest extends PHPUnit\Framework\TestCase{
 
         $d = new OWLlinkDocument();
         $d->start_document();
-        $d->insert_create_kb("http://crowd.fi.uncoma.edu.ar/kb1/");
+        $d->insert_create_kb([['prefix' => 'crowd',
+                              'value' => "http://crowd.fi.uncoma.edu.ar/kb1/"]]);
         $d->start_tell();
         $d->insert_subclassof("HiWorld", "owl:Thing");
         $d->end_tell();

@@ -135,7 +135,9 @@ class OWL2DocumentTest extends PHPUnit\Framework\TestCase{
         </Ontology>";
 
 	$d = new OWLDocument();
-	$d->start_document("http://crowd.fi.uncoma.edu.ar/kb1/");
+	$d->start_document([
+            ['prefix' => 'crowd',
+             'value' => "http://crowd.fi.uncoma.edu.ar/kb1/"]]);
 	$d->set_ontology_prefixes([
 	    ["prefix" => "",
 	     "value" => "http://crowd.fi.uncoma.edu.ar/kb1/"]
