@@ -43,6 +43,8 @@ class HTMLBuilder extends DocumentBuilder{
     }
     public function insert_dataproperty($name, $datatype=null){
     }
+    public function insert_objectproperty($name) {
+    }
 
     public function insert_subclassof($child, $father){
         $this->product->insert_subclassof($child, $father);

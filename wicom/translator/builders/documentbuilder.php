@@ -36,6 +36,10 @@ use Wicom\Translator\Documents\Document;
 abstract class DocumentBuilder extends Documents{
     protected $product = null;
 
+    public function insert_objectproperty_declaration($name){
+        $this->insert_objectproperty($name);
+    }
+    
     /**
        Shorthand for a DL complete declaration.
 
@@ -53,6 +57,7 @@ abstract class DocumentBuilder extends Documents{
     
     abstract public function insert_class($name, $col_attrs = []);
     abstract public function insert_dataproperty($name, $datatype);
+    abstract public function insert_objectproperty($name);
     
     /**
        Depending on the subclass, add an OWLlink text directly.
