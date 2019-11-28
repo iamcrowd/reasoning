@@ -265,24 +265,24 @@ class WicomTest extends PHPUnit\Framework\TestCase
        //        $this->assertJsonStringEqualsJsonString($expected, $actual, true);
        }
      */
-    /*
-    public function test_full_reasoning_UML_BinaryAssocWithoutClass0N_CompareJSON(){
-        $input = file_get_contents('main/data/full_reasoning_input.json');
-        $expected = file_get_contents('main/data/full_reasoning_expected.json');
+   
+//    public function test_full_reasoning_UML_BinaryAssocWithoutClass0N_CompareJSON(){
+//        $input = file_get_contents('main/data/full_reasoning_input.json');
+//        $expected = file_get_contents('main/data/full_reasoning_expected.json');
 
 	/*
 	   TODO:
 	   Should I erase this?
 	          - Christian. September, 5 2019
          */
-        $wicom = new UML_Wicom();
-        $answer = $wicom->full_reasoning($input);
+//        $wicom = new UML_Wicom();
+//        $answer = $wicom->full_reasoning($input);
 
 	// $answer->set_reasoner_input("");
 	// $answer->set_reasoner_output("");
-	$actual = $answer->to_json();
+//	$actual = $answer->to_json();
 
-	$this->assertJsonStringEqualsJsonString($expected, $actual, true);
-    }*/
+//	$this->assertJsonStringEqualsJsonString($expected, $actual, true);
+//    }*/
 
 }
