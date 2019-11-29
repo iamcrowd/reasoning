@@ -23,6 +23,7 @@
 
 namespace Wicom;
 
+load("wicom.php");
 load("translator.php", "../wicom/translator/");
 load("berardistrat.php", "../wicom/translator/strategies/");
 load("owllinkbuilder.php", "../wicom/translator/builders/");

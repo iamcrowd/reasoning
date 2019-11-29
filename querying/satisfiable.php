@@ -28,7 +28,7 @@
 require_once("../common/import_functions.php");
 
 load("v2tov1.php", "../json2json/");
-load("wicom.php", "../common/");
+load("uml.php", "../common/");
 
 use Json2Json\V2toV1;
 
@@ -58,7 +58,7 @@ if (array_key_exists('json_version', $_GET)){
     }
 }
 
-$wicom = new Wicom\Wicom();
+$wicom = new Wicom\UML_Wicom();
 
 try{
     $reasoner = 'Konclude';
