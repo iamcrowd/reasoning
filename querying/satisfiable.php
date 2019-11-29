@@ -27,10 +27,10 @@
 
 require_once("../common/import_functions.php");
 
-load("v1tov2.php", "../json2json/");
+load("v2tov1.php", "../json2json/");
 load("wicom.php", "../common/");
 
-use Json2Json\v1tov2;
+use Json2Json\V2toV1;
 
 if (!array_key_exists('json', $_POST)){
     echo "{\"error\": \"json parameter not founded.\"}";
@@ -40,7 +40,7 @@ if (!array_key_exists('json', $_POST)){
 /**
  */
 function convert_v2tov1($json){
-    $conv = new V2toV1($_POST['JSON']);
+    $conv = new V2toV1($json);
     return $conv->convert_str();
 } // convert_v2tov1
 
