@@ -32,6 +32,9 @@ load("uml.php", "../common/");
 
 use Json2Json\V2toV1;
 
+// --------------------
+// Check GET and POST parameters
+
 if (!array_key_exists('json', $_POST)){
     echo "{\"error\": \"json parameter not founded.\"}";
     exit();
@@ -46,34 +49,64 @@ function convert_v2tov1($json){
 
 
 $json = $_POST['json'];
+$json_version = 1;
 if (array_key_exists('json_version', $_GET)){
     switch ($_GET['json_version']){
         case "1":
             $json = $_POST['json'];
             break;
         case "2":
+            $json_version = 2;
             $json = convert_v2tov1($_POST['json']);
             break;
             
     }
 }
 
+$reasoner = 'Konclude';
+if (array_key_exists('reasoner', $_POST)){
+    $reasoner = $_POST['reasoner'];
+}
+
+$encoding = 'berardi';
+if (array_key_exists('encoding', $_POST)){
+    $encoding = $_POST['encoding'];
+}
+
+
+// --------------------
+// Execute the service
+
 $wicom = new Wicom\UML_Wicom();
 
-try{
-    $reasoner = 'Konclude';
-    if (array_key_exists('reasoner', $_POST)){
-        $reasoner = $_POST['reasoner'];
-    }
-    $answer = $wicom->full_reasoning($_POST['json'], $reasoner);
+try{    
+    $answer = $wicom->full_reasoning($json, $encoding, $reasoner);
     if ($answer != null){
-        echo $answer->to_json();
+        echo json_encode(
+            ["answer" => $answer->to_json()]
+        );
     }else{
-        echo "{\"error\": \"no answer from the reasoner\"}";
+        echo json_encode(
+            ["error" => "no answer from the reasoner",
+             "input" => [
+                 "json" => $json,
+                 "encoding" => $encoding,
+                 "reasoner" => $reasoner,
+                 "json_version" => $json_version,
+             ],
+            ]);
     }
-}catch(Exception $e){
+}catch(\Exception $e){
     http_response_code(500);
-    echo $e->getMessage();
+    echo json_encode(
+        ["error" => $e->getMessage(),
+         "input" => [
+             "json" => $json,
+             "encoding" => $encoding,
+             "reasoner" => $reasoner,
+             "json_version" => $json_version,
+         ],
+        ]);
 }
 
 ?>

@@ -77,7 +77,8 @@ class UML_Wicom extends Wicom{
             case "berardi" :
 		$encoding = new Berardi();
 		break;
-            default: die("Invalid Encoding");
+            default: throw new \Exception(
+                "Invalid encoding selected: $strategy");
         }
 
         $trans = new Translator($encoding, new OWLlinkBuilder());
@@ -92,7 +93,8 @@ class UML_Wicom extends Wicom{
             case "Racer" :
 		$reasonerconn = new RacerConnector();
 		break;
-            default: die("Reasoner Not Found!");
+            default: throw new \Exception(
+                "Reasoner $reasoner not Found!");
         }
 
         $runner = new Runner($reasonerconn);
