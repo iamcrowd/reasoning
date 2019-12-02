@@ -83,7 +83,7 @@ try{
     $answer = $wicom->full_reasoning($json, $encoding, $reasoner);
     if ($answer != null){
         echo json_encode(
-            ["answer" => $answer->to_json()]
+            ["answer" => json_decode($answer->to_json())]
         );
     }else{
         echo json_encode(
