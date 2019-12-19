@@ -71,7 +71,7 @@ use \SimpleXMLIterator;
                                                      </SetOfClasses>
 
  */
-class CrowdAnalizer extends AnsAnalizer{
+class CrowdMetaAnalizer extends AnsAnalizer{
 
     /**
        XMLReader instance for parsing the query given to the
