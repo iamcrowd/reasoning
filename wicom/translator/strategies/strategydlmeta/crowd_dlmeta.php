@@ -55,30 +55,17 @@ class DLMeta extends Strategy{
        @todo Disjointness and Complete constraints
     */
     protected function translate_subsumption($json_subs, $builder){
-
+      
       foreach ($json_subs as $sub){
-          $parent = $sub["parent"];
-          foreach ($sub["children"] as $child){
-            $lst = [
+          $parent = $sub["entity parent"];
+          $child = $sub["entity children"];
+          $lst = [
               ["subclass" => [
                   ["class" => $child],
-                  ["class" => $parent]]]
-            ];
-            $builder->translate_DL($lst);
-          }
-
-          // Translate a composed generalization (without constraints)
-          if (count($sub["children"]) > 1) {
-            $union = [];
-            foreach ($sub["children"] as $classunion){
-              array_push($union, ["class" => $classunion]);
-            }
-            $lst = [["subclass" => [
-                ["union" => $union],
-                ["class" => $parent]
-            ]]];
-            $builder->translate_DL($lst);
-          }
+                  ["class" => $parent]
+                ]
+              ]];
+          $builder->translate_DL($lst);
       }
     }
 
@@ -96,12 +83,13 @@ class DLMeta extends Strategy{
 
         $json = json_decode($json_str, true);
 
-        $js_objtype = $json["Object type"];
+        $js_objtype = $json["Entity type"][0]["Object type"];
+
       /*  $js_links = $json["links"]; */
 
         if (!empty($js_objtype)){
             foreach ($js_objtype as $objtype){
-                $builder->insert_class_declaration($objtype["name"]);
+                $builder->insert_class_declaration($objtype);
 
 /*            if (!empty($class["attrs"])){
               foreach ($class["attrs"] as $attr){
@@ -141,7 +129,7 @@ class DLMeta extends Strategy{
         }
 
         $this->translate_attributes($json, $builder); */
-        $this->translate_subsumption($json["Subsumption"], $builder);
+        $this->translate_subsumption($json["Relationship"][0]["Subsumption"], $builder);
 
       }
 

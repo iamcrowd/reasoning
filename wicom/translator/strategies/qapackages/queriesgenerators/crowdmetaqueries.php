@@ -148,10 +148,10 @@ class CrowdMetaQueries extends QueriesGenerator {
     */
     function gen_class_satisfiable($json_diagram, $builder){
         $json = json_decode($json_diagram, true);
-        $json_classes = $json["Object type"];
+        $json_classes = $json["Entity type"][0]["Object type"];
 
         foreach ($json_classes as $jelem) {
-            $builder->insert_satisfiable_class($jelem["name"]);
+            $builder->insert_satisfiable_class($jelem);
         }
     }
 
