@@ -1,22 +1,22 @@
-<?php 
-/* 
+<?php
+/*
 
    Copyright 2016 Giménez, Christian
-   
-   Author: Giménez, Christian   
+
+   Author: Giménez, Christian
 
    htmlbuilder.php
-   
+
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
    the Free Software Foundation, either version 3 of the License, or
    (at your option) any later version.
-   
+
    This program is distributed in the hope that it will be useful,
    but WITHOUT ANY WARRANTY; without even the implied warranty of
    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
    GNU General Public License for more details.
-   
+
    You should have received a copy of the GNU General Public License
    along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
@@ -37,7 +37,7 @@ class HTMLBuilder extends DocumentBuilder{
     public function insert_class_declaration($name){
         $this->product->insert_subclassof($name, "owl:Thing");
     }
-    
+
     public function insert_class($name, $col_attrs = []){
         $this->product->insert_class($name);
     }
@@ -52,6 +52,10 @@ class HTMLBuilder extends DocumentBuilder{
 
     public function insert_header(){
     }
+    
+    public function insert_header_owl2(){
+    }
+
     public function insert_footer(){
         $this->product->end_document();
     }
@@ -67,7 +71,7 @@ class HTMLBuilder extends DocumentBuilder{
     ///@}
 
     /**
-       @name DL List 
+       @name DL List
     */
     ///@{
 
@@ -77,7 +81,7 @@ class HTMLBuilder extends DocumentBuilder{
             $this->DL_element($elt);
             $this->product->end_line();
         }
-        
+
     }
 
     protected function translate_DL_internal($DL_list){
@@ -85,7 +89,7 @@ class HTMLBuilder extends DocumentBuilder{
             $this->DL_element($elt);
         }
     }
-    
+
     protected function DL_element($elt){
         $key = array_keys($elt)[0];
 
@@ -98,7 +102,7 @@ class HTMLBuilder extends DocumentBuilder{
             break;
         case "subclass" :
             $this->product->begin_subclassof();
-            // We expect various consecutives DL cexpressions 
+            // We expect various consecutives DL cexpressions
             // (two classes for example)
             $this->translate_DL_internal($elt["subclass"]);
             $this->product->end_subclassof();
@@ -153,7 +157,7 @@ class HTMLBuilder extends DocumentBuilder{
         }
     }
     //@}
-   
+
 }
 
 ?>
