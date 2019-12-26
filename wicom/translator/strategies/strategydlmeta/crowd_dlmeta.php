@@ -42,6 +42,58 @@ class DLMeta extends Strategy{
       $this->qapack = new CrowdMetaPack();
     }
 
+    /**
+       Translate a JSON KF Disjointness Constraint into another format depending on
+       the given Builder.
+
+       @param json_str A String with a KF metamodel containing a disjointness constraint in
+       JSON format.
+       @param builder A Wicom\Translator\Builders\DocumentBuilder subclass instance.
+
+       @see Translator class for description about the JSON format.
+    */
+    protected function translate_disjointness($json, $disj_name, $builder){
+      $disjoint = [];
+      $constraints = $json["Disjointness constraints"][0]["Disjoint object type"];
+
+      foreach ($constraints as $constraint) {
+        if (strcasecmp($disj_name,$constraint["name"]) == 0){
+          foreach ($constraint["entities"] as $entitydisj){
+              array_push($disjoint, ["class" => $entitydisj]);
+          }
+          $gendisj = [["disjointclasses" => $disjoint]];
+          $builder->translate_DL($gendisj);
+        }
+      }
+    }
+
+    /**
+       Translate a JSON KF Completeness Constraint into another format depending on
+       the given Builder.
+
+       @param json_str A String with a KF metamodel containing a completeness constraint in
+       JSON format.
+       @param builder A Wicom\Translator\Builders\DocumentBuilder subclass instance.
+
+       @see Translator class for description about the JSON format.
+    */
+    protected function translate_completeness($json, $compl_name, $parent, $builder){
+      $complete = [];
+      $constraints = $json["Completeness constraints"];
+
+      foreach ($constraints as $constraint) {
+        if (strcasecmp($compl_name,$constraint["name"]) == 0){
+          foreach ($constraint["entities"] as $entitycompl){
+              array_push($complete, ["class" => $entitycompl]);
+          }
+          $gencov = [["subclass" => [
+              ["class" => $parent],
+              ["union" => $complete]
+          ]]];
+          $builder->translate_DL($gencov);
+        }
+      }
+    }
 
     /**
        Translate a JSON KF Subsumption into another format depending on
@@ -54,8 +106,10 @@ class DLMeta extends Strategy{
        @see Translator class for description about the JSON format.
        @todo Disjointness and Complete constraints
     */
-    protected function translate_subsumption($json_subs, $builder){
-      
+    protected function translate_subsumption($json, $builder){
+      $json_subs = $json["Relationship"][0]["Subsumption"];
+      $already_constrencoded = [];
+
       foreach ($json_subs as $sub){
           $parent = $sub["entity parent"];
           $child = $sub["entity children"];
@@ -66,6 +120,22 @@ class DLMeta extends Strategy{
                 ]
               ]];
           $builder->translate_DL($lst);
+
+          if ($sub["disjointness constraints"] != ""){
+            $disj_name = $sub["disjointness constraints"];
+            if (!in_array($disj_name,$already_constrencoded)){
+              $this->translate_disjointness($json, $disj_name, $builder);
+              array_push($already_constrencoded, $disj_name);
+            }
+          }
+
+          if ($sub["completeness constraints"] != ""){
+            $comp_name = $sub["completeness constraints"];
+            if (!in_array($comp_name,$already_constrencoded)){
+              $this->translate_completeness($json, $comp_name, $parent, $builder);
+              array_push($already_constrencoded, $comp_name);
+            }
+          }
       }
     }
 
@@ -129,13 +199,12 @@ class DLMeta extends Strategy{
         }
 
         $this->translate_attributes($json, $builder); */
-        $this->translate_subsumption($json["Relationship"][0]["Subsumption"], $builder);
+        $this->translate_subsumption($json, $builder);
 
       }
 
-      function decode($owl, $jsonbuild){
 
-      }
+      function decode($owl, $jsonbuild){}
 
 }
 ?>

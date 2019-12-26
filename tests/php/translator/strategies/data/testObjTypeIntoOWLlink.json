@@ -8,7 +8,10 @@
     },
     {
       "Data type" : []
-    }
+    },
+		{
+			"Value property": []
+		}
   ],
  "Role": [],
  "Relationship": [
@@ -17,6 +20,9 @@
    },
    {
      "Relationship" : []
+   },
+   {
+     "Attributive Property": []
    }
  ],
  "Disjointness constraints" : [
@@ -28,6 +34,5 @@
    }
  ],
  "Completeness constraints" : [],
- "Cardinality constraints": [],
- "Attribute": []
+ "Cardinality constraints": []
 }

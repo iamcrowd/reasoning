@@ -1,11 +1,11 @@
 <?php
 /*
 
-   Copyright 2016 Giménez, Christian
+   Copyright 2019 gilia
 
-   Author: Giménez, Christian
+   Author: gilia
 
-   berarditest.php
+   dlmetastrattest.php
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -66,6 +66,27 @@ class DLMetaTest extends PHPUnit\Framework\TestCase
     public function testSubsumptionNoConstIntoOWLlinkWithSat(){
         $json = file_get_contents("translator/strategies/data/testSubIntoOWLlink.json");
         $expected = file_get_contents("translator/strategies/data/testSubIntoOWLlink.owllink");
+
+        $strategy = new DLMeta();
+        $builder = new OWLlinkBuilder();
+
+        $builder->insert_header();
+        $strategy->translate($json, $builder);
+        $strategy->translate_queries($json, $builder);
+        $builder->insert_footer();
+
+        $actual = $builder->get_product();
+        $actual = $actual->to_string();
+
+        $this->assertXmlStringEqualsXmlString($expected, $actual, true);
+    }
+
+    /**
+       @testdox Translate a simple model with some KF SUBSUMPTIONS and CONSTRAINTS into OWLlink with SAT queries
+     */
+    public function testSubsumptionWithConstIntoOWLlinkWithSat(){
+        $json = file_get_contents("translator/strategies/data/testSubWithConstraintsIntoOWLlink.json");
+        $expected = file_get_contents("translator/strategies/data/testSubWithConstraintsIntoOWLlink.owllink");
 
         $strategy = new DLMeta();
         $builder = new OWLlinkBuilder();
