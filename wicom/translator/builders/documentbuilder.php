@@ -132,9 +132,9 @@ abstract class DocumentBuilder extends Documents{
         $key = array_keys($elt)[0];
 
         switch ($key){
-	    case "top" :
-		$this->product->insert_class($elt["top"]);
-		break;
+	         case "top" :
+		         $this->product->insert_class($elt["top"]);
+		       break;
             case "class" :
                 $this->product->insert_class($elt["class"]);
                 break;

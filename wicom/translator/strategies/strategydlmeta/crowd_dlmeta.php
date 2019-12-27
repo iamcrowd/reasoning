@@ -146,6 +146,85 @@ class DLMeta extends Strategy{
     }
 
     /**
+       Translate a JSON KF Relationship and its Roles into another format depending on
+       the given Builder.
+
+       @param json_str A String with a KF metamodel containing a relationship and its roles in
+       JSON format.
+       @param builder A Wicom\Translator\Builders\DocumentBuilder subclass instance.
+
+       @see Translator class for description about the JSON format.
+    */
+    protected function translate_relationship($json, $builder){
+      $json_rel = $json["Relationship"][1]["Relationship"];
+      $json_role = $json["Role"];
+      $already_rolencoded = [];
+
+      foreach ($json_rel as $rel){
+          $relname = $rel["name"];
+          $entities = $rel["entities"];
+
+          foreach ($json_role as $role) {
+            $lst = [];
+            $lst_dom = [];
+            $lst_range = [];
+
+            if (strcasecmp($role["relationship"], $relname) == 0){
+              array_push($already_rolencoded, $role);
+              $lst_dom = [
+                "subclass" => [
+                  ["exists" => [
+                    ["role" => $role["rolename"]],
+                    ["class" => "owl:Thing"]]],
+                  ["class" => $relname]
+                  ]
+                ];
+
+              $lst_range = [
+                "subclass" => [
+                  ["exists" => [
+                    ["inverse" => ["role" => $role["rolename"]]],
+                    ["class" => "owl:Thing"]]],
+                  ["class" => $role["entity type"]]
+                  ]
+                ];
+              array_push($lst, $lst_dom);
+              array_push($lst, $lst_range);
+              $builder->translate_DL($lst);
+            }
+          }
+
+          $conjunction = [];
+          foreach ($already_rolencoded as $erole) {
+            $exists_temp = [
+              "exists" => [
+                  ["role" => $erole["rolename"]],
+                  ["class" => "owl:Thing"]
+                ]
+              ];
+            $card_temp = [
+              "maxcard" => [1,
+                  ["role" => $erole["rolename"]]
+                ]
+              ];
+            array_push($conjunction, $exists_temp);
+            array_push($conjunction, $card_temp);
+          }
+
+          $lst_card = [
+            ["subclass" => [
+                  ["class" => $relname],
+                  ["intersection" => $conjunction]
+                ]
+            ]
+          ];
+          //print_r($lst_card);
+          $builder->translate_DL($lst_card);
+        }
+
+    }
+
+    /**
        Translate a JSON KF Metamodel String into another format depending on
        the given Builder.
 
@@ -154,58 +233,35 @@ class DLMeta extends Strategy{
        @param builder A Wicom\Translator\Builders\DocumentBuilder subclass instance.
 
        @see Translator class for description about the JSON format.
+       @// NOTE:  declarations are put at top when the encoding is starting in order to get "standard"
+       documents.
     */
     function translate($json_str, $builder){
 
         $json = json_decode($json_str, true);
 
         $js_objtype = $json["Entity type"][0]["Object type"];
-
-      /*  $js_links = $json["links"]; */
+        $js_role = $json["Role"];
+        $js_rel = $json["Relationship"][1]["Relationship"];
 
         if (!empty($js_objtype)){
             foreach ($js_objtype as $objtype){
                 $builder->insert_class_declaration($objtype);
-
-/*            if (!empty($class["attrs"])){
-              foreach ($class["attrs"] as $attr){
-                $builder->insert_dataproperty_declaration($attr["name"]);
-              }*/
+            }
+        }
+        if (!empty($js_role)){
+            foreach ($js_role as $role){
+                $builder->insert_objectproperty_declaration($role["rolename"]);
+            }
+        }
+        if (!empty($js_rel)){
+            foreach ($js_rel as $rel){
+                $builder->insert_class_declaration($rel["name"]);
             }
         }
 
-/*        $gen_array = [];
-
-          if (!empty($json["links"])){
-            foreach ($json["links"] as $link){
-              switch ($link["type"]){
-                case "generalization":
-                  array_push($gen_array, $link);
-                  break;
-                case "association":
-                  $builder->insert_objectproperty_declaration($link["name"]);
-                  break;
-                case "association with class":
-                  $builder->insert_objectproperty_declaration($link["roles"][0]);
-                  $builder->insert_objectproperty_declaration($link["roles"][1]);
-                  break;
-                case "n-ary association without class":
-                  foreach ($link["roles"] as $role){
-                    $builder->insert_objectproperty_declaration($role);
-                  }
-                  break;
-                case "n-ary association with class":
-                  foreach ($link["roles"] as $role){
-                    $builder->insert_objectproperty_declaration($role);
-                  }
-                  break;
-                }
-             }
-          }
-        }
-
-        $this->translate_attributes($json, $builder); */
         $this->translate_subsumption($json, $builder);
+        $this->translate_relationship($json, $builder);
 
       }
 
