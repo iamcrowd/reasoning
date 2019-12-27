@@ -52,7 +52,7 @@ class HTMLBuilder extends DocumentBuilder{
 
     public function insert_header(){
     }
-    
+
     public function insert_header_owl2(){
     }
 
@@ -132,7 +132,7 @@ class HTMLBuilder extends DocumentBuilder{
             break;
         case "exists" :
             $this->product->begin_somevaluesfrom();
-            $this->DL_element($elt["exists"]);
+            $this->DL_element($elt["exists"][0]);
             $this->product->insert_class("owl:Thing");
             $this->product->end_somevaluesfrom();
             break;

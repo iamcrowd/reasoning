@@ -64,7 +64,7 @@ class DLMeta extends Strategy{
           $lst = [
               ["subclass" => [
                   ["intersection" => $disjoint],
-                  ["class" => "owl:Bottom"]
+                  ["class" => "owl:Nothing"]
                  ]
               ]
           ];

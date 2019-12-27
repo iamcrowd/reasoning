@@ -1,22 +1,22 @@
-<?php 
-/* 
+<?php
+/*
 
    Copyright 2016 Giménez, Christian
-   
-   Author: Giménez, Christian   
+
+   Author: Giménez, Christian
 
    htmldocument.php
-   
+
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
    the Free Software Foundation, either version 3 of the License, or
    (at your option) any later version.
-   
+
    This program is distributed in the hope that it will be useful,
    but WITHOUT ANY WARRANTY; without even the implied warranty of
    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
    GNU General Public License for more details.
-   
+
    You should have received a copy of the GNU General Public License
    along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
@@ -40,7 +40,7 @@ class HTMLDocument extends Document{
     function end_line(){
         $this->content .= "</p>\n";
     }
-    
+
     public function insert_class($name){
         if ($name == "owl:Thing"){
             $this->content .= "&#8868; ";
@@ -113,7 +113,7 @@ class HTMLDocument extends Document{
         $this->content .= "&forall;(";
     }
     public function end_allvaluesfrom(){
-        $this->content .= ")";        
+        $this->content .= ")";
     }
 
     public function begin_mincardinality($cardinality){
@@ -129,7 +129,7 @@ class HTMLDocument extends Document{
     public function end_maxcardinality(){
         $this->content .= ")";
     }
-    
+
     public function end_document(){
         $this->content = str_replace("  ", " ", $this->content);
         $this->content = str_replace("( ", "(", $this->content);
@@ -138,7 +138,7 @@ class HTMLDocument extends Document{
         $this->content = str_replace(") ", ")", $this->content);
         $this->content = trim($this->content);
     }
-    
+
     public function to_string(){
         return $this->content;
     }
