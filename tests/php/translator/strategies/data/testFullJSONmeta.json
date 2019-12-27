@@ -97,15 +97,21 @@
 			"http://crowd.fi.uncoma.edu.ar/kb1#Dog"
 		]
 	}],
-	"Cardinality constraints": [{
-			"name": "http://crowd.fi.uncoma.edu.ar/kb1#card1",
-			"minimum": "1",
-			"maximum": "2"
+	"Cardinality constraints": [
+		{
+			"Object type cardinality": [{
+				"name": "http://crowd.fi.uncoma.edu.ar/kb1#card1",
+				"minimum": "1",
+				"maximum": "2"
+			},
+			{
+				"name": "http://crowd.fi.uncoma.edu.ar/kb1#card2",
+				"minimum": "0",
+				"maximum": "N"
+		 	}]
 		},
 		{
-			"name": "http://crowd.fi.uncoma.edu.ar/kb1#card2",
-			"minimum": "0",
-			"maximum": "N"
+			"Attibutive property cardinality": []
 		}
 	]
 }

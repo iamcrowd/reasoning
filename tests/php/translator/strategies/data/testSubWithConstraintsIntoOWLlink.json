@@ -66,5 +66,12 @@
      ]
    }
  ],
- "Cardinality constraints": []
+ "Cardinality constraints": [
+   {
+     "Object type cardinality": []
+   },
+   {
+     "Attibutive property cardinality": []
+   }
+ ]
 }
