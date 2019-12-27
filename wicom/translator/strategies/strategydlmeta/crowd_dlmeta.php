@@ -61,8 +61,14 @@ class DLMeta extends Strategy{
           foreach ($constraint["entities"] as $entitydisj){
               array_push($disjoint, ["class" => $entitydisj]);
           }
-          $gendisj = [["disjointclasses" => $disjoint]];
-          $builder->translate_DL($gendisj);
+          $lst = [
+              ["subclass" => [
+                  ["intersection" => $disjoint],
+                  ["class" => "owl:Bottom"]
+                 ]
+              ]
+          ];
+          $builder->translate_DL($lst);
         }
       }
     }
