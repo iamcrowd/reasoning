@@ -158,6 +158,7 @@ class DLMeta extends Strategy{
     protected function translate_relationship($json, $builder){
       $json_rel = $json["Relationship"][1]["Relationship"];
       $json_role = $json["Role"];
+      $json_ot_card = $json["Cardinality constraints"][0]["Object type cardinality"];
       $already_rolencoded = [];
 
       foreach ($json_rel as $rel){
@@ -168,6 +169,7 @@ class DLMeta extends Strategy{
             $lst = [];
             $lst_dom = [];
             $lst_range = [];
+            $role_ot_card = $role["object type cardinality"];
 
             if (strcasecmp($role["relationship"], $relname) == 0){
               array_push($already_rolencoded, $role);
@@ -191,6 +193,48 @@ class DLMeta extends Strategy{
               array_push($lst, $lst_dom);
               array_push($lst, $lst_range);
               $builder->translate_DL($lst);
+
+              foreach ($role_ot_card as $role_card) {
+
+                foreach ($json_ot_card as $ot_card) {
+                  if (strcasecmp($ot_card["name"], $role_card) == 0){
+                    $card_conj = [];
+                    $min = $ot_card["minimum"];
+                    $max = $ot_card["maximum"];
+
+                    if (strcasecmp($min, "0") != 0){
+                      $card_min_ax = [
+                        "mincard" => [$min,
+                            ["inverse" => ["role" => $role["rolename"]]]
+                          ]
+                        ];
+                      array_push($card_conj, $card_min_ax);
+                    }
+
+                    if (strcasecmp($max, "N") != 0){
+                      $card_max_ax = [
+                        "maxcard" => [$max,
+                            ["inverse" => ["role" => $role["rolename"]]]
+                          ]
+                        ];
+                      array_push($card_conj, $card_max_ax);
+                    }
+
+                    if (count($card_conj) > 0){
+                      $lst_card_a = [
+                        ["subclass" => [
+                              ["class" => $role["entity type"]],
+                              ["intersection" => $card_conj]
+                            ]
+                          ]
+                        ];
+                        $builder->translate_DL($lst_card_a);
+                    }
+
+                  }
+                }
+              }
+
             }
           }
 
@@ -218,10 +262,8 @@ class DLMeta extends Strategy{
                 ]
             ]
           ];
-          //print_r($lst_card);
           $builder->translate_DL($lst_card);
         }
-
     }
 
     /**
