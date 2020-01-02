@@ -110,7 +110,10 @@ class DLMeta extends Strategy{
        @param builder A Wicom\Translator\Builders\DocumentBuilder subclass instance.
 
        @see Translator class for description about the JSON format.
-       @todo Disjointness and Complete constraints
+
+       C1 \sqsubseteq C
+       Ci \sqsubseteq ¬Cj (disjointness)
+       C \sqsubseteq C1 \sqcup · · · \sqcup Ck (completeness)
     */
     protected function translate_subsumption($json, $builder){
       $json_subs = $json["Relationship"][0]["Subsumption"];
@@ -154,6 +157,11 @@ class DLMeta extends Strategy{
        @param builder A Wicom\Translator\Builders\DocumentBuilder subclass instance.
 
        @see Translator class for description about the JSON format.
+
+       ∃Ai \sqsubseteq A
+       ∃Ai- \sqsubseteq Ci
+       for i ∈ {1, . . . , n}
+       Ci \sqsubseteq ∃A \sqcap <= 1 A \sqcap · · · \sqcap ∃An \sqcap <= 1 An
     */
     protected function translate_relationship($json, $builder){
       $json_rel = $json["Relationship"][1]["Relationship"];
