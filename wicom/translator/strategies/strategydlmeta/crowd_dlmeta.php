@@ -101,6 +101,39 @@ class DLMeta extends Strategy{
       }
     }
 
+    protected function is_entity_type($json, $objtype){
+      $js_objtype = $json["Entity type"][0]["Object type"];
+
+      foreach ($js_objtype as $ot) {
+        if (strcmp($objtype, $ot) == 0){
+          return true;
+        }
+      }
+      return false;
+    }
+
+    protected function is_role($json, $role){
+      $js_role = $json["Role"];
+
+      foreach ($js_role as $ro) {
+        if (strcmp($ro["rolename"], $role) == 0){
+          return true;
+        }
+      }
+      return false;
+    }
+
+    protected function is_relationship($json, $rel){
+      $js_rel = $json["Relationship"][1]["Relationship"];
+
+      foreach ($js_rel as $r) {
+        if (strcmp($r["name"], $rel) == 0){
+          return true;
+        }
+      }
+      return false;
+    }
+
     /**
        Translate a JSON KF Subsumption into another format depending on
        the given Builder.
@@ -114,6 +147,12 @@ class DLMeta extends Strategy{
        C1 \sqsubseteq C
        Ci \sqsubseteq ¬Cj (disjointness)
        C \sqsubseteq C1 \sqcup · · · \sqcup Ck (completeness)
+
+       @note complete and disjoint subtypes are declared among
+       subtypes on the subsumption relation, not between any object types
+       @note a subsumption can be declared among any two Relationships,
+       between any two Object types or between any two Roles. However completeness and disjointness
+       constraint are only declared over two or more object types.
     */
     protected function translate_subsumption($json, $builder){
       $json_subs = $json["Relationship"][0]["Subsumption"];
@@ -122,29 +161,53 @@ class DLMeta extends Strategy{
       foreach ($json_subs as $sub){
           $parent = $sub["entity parent"];
           $child = $sub["entity children"];
-          $lst = [
-              ["subclass" => [
-                  ["class" => $child],
-                  ["class" => $parent]
-                ]
-              ]];
-          $builder->translate_DL($lst);
 
-          if ($sub["disjointness constraints"] != ""){
-            $disj_name = $sub["disjointness constraints"];
-            if (!in_array($disj_name,$already_constrencoded)){
-              $this->translate_disjointness($json, $disj_name, $builder);
-              array_push($already_constrencoded, $disj_name);
-            }
-          }
+          if ($this->is_entity_type($json,$parent) && $this->is_entity_type($json,$child)){
 
-          if ($sub["completeness constraints"] != ""){
-            $comp_name = $sub["completeness constraints"];
-            if (!in_array($comp_name,$already_constrencoded)){
-              $this->translate_completeness($json, $comp_name, $parent, $builder);
-              array_push($already_constrencoded, $comp_name);
+               $lst = [
+                 ["subclass" => [
+                   ["class" => $child],
+                   ["class" => $parent]
+                 ]
+                 ]];
+                $builder->translate_DL($lst);
+
+                if ($sub["disjointness constraints"] != ""){
+                  $disj_name = $sub["disjointness constraints"];
+
+                  if (!in_array($disj_name,$already_constrencoded)){
+                    $this->translate_disjointness($json, $disj_name, $builder);
+                    array_push($already_constrencoded, $disj_name);
+                  }
+                }
+
+                if ($sub["completeness constraints"] != ""){
+                  $comp_name = $sub["completeness constraints"];
+
+                  if (!in_array($comp_name,$already_constrencoded)){
+                    $this->translate_completeness($json, $comp_name, $parent, $builder);
+                    array_push($already_constrencoded, $comp_name);
+                  }
+                }
+
+            } elseif ($this->is_relationship($json,$parent) && $this->is_relationship($json,$child)) {
+                $lst = [
+                  ["subclass" => [
+                    ["class" => $child],
+                    ["class" => $parent]
+                  ]
+                  ]];
+                  $builder->translate_DL($lst);
+
+            } elseif ($this->is_role($json,$parent) && $this->is_role($json,$child)) {
+                $lst = [
+                  ["subrole" => [
+                    ["role" => $child],
+                    ["role" => $parent]
+                  ]
+                  ]];
+                  $builder->translate_DL($lst);
             }
-          }
       }
     }
 
@@ -167,9 +230,9 @@ class DLMeta extends Strategy{
       $json_rel = $json["Relationship"][1]["Relationship"];
       $json_role = $json["Role"];
       $json_ot_card = $json["Cardinality constraints"][0]["Object type cardinality"];
-      $already_rolencoded = [];
 
       foreach ($json_rel as $rel){
+          $already_rolencoded = [];
           $relname = $rel["name"];
           $entities = $rel["entities"];
 
