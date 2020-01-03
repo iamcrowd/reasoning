@@ -41,9 +41,19 @@ class HTMLBuilder extends DocumentBuilder{
     public function insert_class($name, $col_attrs = []){
         $this->product->insert_class($name);
     }
+
     public function insert_dataproperty($name, $datatype=null){
     }
-    public function insert_objectproperty($name) {
+
+    public function insert_dataproperty_declaration($name) {
+        $this->product->insert_subclassof($name, "owl:topDataProperty");
+    }
+
+    public function insert_objectproperty($name){
+    }
+
+    public function insert_objectproperty_declaration($name) {
+        $this->product->insert_subclassof($name, "owl:topObjectProperty");
     }
 
     public function insert_subclassof($child, $father){
@@ -105,6 +115,13 @@ class HTMLBuilder extends DocumentBuilder{
             // We expect various consecutives DL cexpressions
             // (two classes for example)
             $this->translate_DL_internal($elt["subclass"]);
+            $this->product->end_subclassof();
+            break;
+        case "subrole" :
+            $this->product->begin_subclassof();
+            // We expect various consecutives DL cexpressions
+            // (two classes for example)
+            $this->translate_DL_internal($elt["subrole"]);
             $this->product->end_subclassof();
             break;
         case "intersection" :
