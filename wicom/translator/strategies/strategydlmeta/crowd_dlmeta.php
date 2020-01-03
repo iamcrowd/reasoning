@@ -40,6 +40,7 @@ class DLMeta extends Strategy{
       parent::__construct();
 
       $this->qapack = new CrowdMetaPack();
+      
     }
 
     /**

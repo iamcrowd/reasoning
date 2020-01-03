@@ -62,83 +62,6 @@ class CrowdMetaQueries extends QueriesGenerator {
 
 
     /**
-       Generate queries for checking satisfiability of min and max.
-
-       @see gen_class_satisfiable() for parameters.
-     */
-    protected function gen_class_satisfiable_min_max($json_diagram, $builder){
-        // [[class => [min, max]], [class2 => [min2, max2]], ...]
-        $lst_classes = $builder->get_classes_with_min_max();
-
-        foreach ($lst_classes as $classname => $tuple){
-            $builder->insert_satisfiable_class($tuple[0]);
-            $builder->insert_satisfiable_class($tuple[1]);
-        }
-    }
-
-
-
-    /**
-       Generate queries for checking for entailed classes min and max.
-
-       @see gen_class_satisfiable() for parameters.
-     */
-    protected function gen_entailed_classes_min_max($json_diagram, $builder){
-        // [[class => [min, max]], [class2 => [min2, max2]], ...]
-        $lst_classes = $builder->get_classes_with_min_max();
-
-        foreach ($lst_classes as $classname => $tuple){
-            $builder->insert_isEntailed_query([$classname, $tuple[0]]);
-            $builder->insert_isEntailed_query([$classname, $tuple[1]]);
-        }
-    }
-
-    /**
-       Generate queries for checking for subclasses of min and max.
-
-       @see gen_class_satisfiable() for parameters.
-     */
-    protected function gen_sub_classes_min_max($json_diagram, $builder){
-        // [[class => [min, max]], [class2 => [min2, max2]], ...]
-        $lst_classes = $builder->get_classes_with_min_max();
-
-        foreach ($lst_classes as $classname => $tuple){
-            $builder->insert_get_subClasses_query($tuple[0]);
-            $builder->insert_get_subClasses_query($tuple[1]);
-        }
-    }
-
-    /**
-       Generate queries for checking for superclasses of min and max.
-
-       @see gen_class_satisfiable() for parameters.
-     */
-    protected function gen_super_classes_min_max($json_diagram, $builder){
-        // [[class => [min, max]], [class2 => [min2, max2]], ...]
-        $lst_classes = $builder->get_classes_with_min_max();
-
-        foreach ($lst_classes as $classname => $tuple){
-            $builder->insert_get_superClasses_query($tuple[0]);
-            $builder->insert_get_superClasses_query($tuple[1]);
-        }
-    }
-
-    /**
-       Generate queries for checking equivalent of min and max.
-
-       @see gen_class_satisfiable() for parameters.
-     */
-    protected function gen_equivalent_classes_min_max($json_diagram, $builder){
-        // [[class => [min, max]], [class2 => [min2, max2]], ...]
-        $lst_classes = $builder->get_classes_with_min_max();
-
-        foreach ($lst_classes as $classname => $tuple){
-            $builder->insert_get_equivalentClasses_query($tuple[0]);
-            $builder->insert_get_equivalentClasses_query($tuple[1]);
-        }
-    }
-
-    /**
        I generate queries for checking satisfability per each class
        in the diagram.
 
@@ -159,13 +82,17 @@ class CrowdMetaQueries extends QueriesGenerator {
        I generate queries for checking satisfability for each objectProperty (role)
        in the diagram.
 
-       @param $json_diagram a String in JSON format with the diagram.
+       @param $json_diagram a String in JSON format with a metamodel instance.
        @param $builder A Wicom\Translator\Builders\DocumentBuilder
        instance.
-       @todo add roles for n-ary assocs. Now only generates queries for UML binary associations
     */
-    function gen_objectProperty_satisfiable($json_diagram, $builder){
+    function gen_objectProperty_satisfiable($json_meta, $builder){
+        $json = json_decode($json_meta, true);
+        $json_roles = $json["Role"];
 
+        foreach ($json_roles as $role) {
+          $builder->insert_satisfiable_objectProperty($role["rolename"]);
+        }
     }
 
     /**
