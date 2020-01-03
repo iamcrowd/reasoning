@@ -51,13 +51,13 @@ class OWLBuilder extends DocumentBuilder{
         } else {
             $this->actual_kb = $ontologyIRI;
         }
-	
+
         $this->product->start_document($ontologyIRI, []);
         $this->product->set_ontology_prefixes($uris);
     }
 
     public function insert_class_declaration($name){
-	$this->product->insert_class_declaration($name);
+	     $this->product->insert_class_declaration($name);
     }
 
     public function insert_class($name, $col_attrs = []){
@@ -65,7 +65,7 @@ class OWLBuilder extends DocumentBuilder{
     }
 
     public function insert_dataproperty_declaration($name){
-	$this->product->insert_dataproperty_declaration($name);
+	     $this->product->insert_dataproperty_declaration($name);
     }
 
     public function insert_dataproperty($name, $datatype){
@@ -73,7 +73,7 @@ class OWLBuilder extends DocumentBuilder{
     }
 
     public function insert_objectproperty_declaration($name){
-	$this->product->insert_objectproperty_declaration($name);
+	     $this->product->insert_objectproperty_declaration($name);
     }
 
     public function insert_objectproperty($name){
@@ -82,6 +82,10 @@ class OWLBuilder extends DocumentBuilder{
 
     public function insert_subclassof($child, $father){
         $this->product->insert_subclassof($child, $father);
+    }
+
+    public function insert_subobjectpropertyof($child, $father){
+        $this->product->insert_subobjectpropertyof($child, $father);
     }
 
     public function insert_footer(){

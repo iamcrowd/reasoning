@@ -149,7 +149,6 @@ abstract class DocumentBuilder extends Documents{
                 $this->translate_DL($elt["subclass"]);
                 $this->product->end_subclassof();
                 break;
-
                 // ObjectProperties
             case "role" :
                 $this->product->insert_objectproperty($elt["role"]);
@@ -159,7 +158,6 @@ abstract class DocumentBuilder extends Documents{
                 $this->translate_DL($elt["subrole"]);
                 $this->product->end_subobjectpropertyof();
                 break;
-
             case "intersection" :
                 $this->product->begin_intersectionof();
                 $this->translate_DL($elt["intersection"]);
