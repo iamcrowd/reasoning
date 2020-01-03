@@ -146,4 +146,25 @@ class DLMetaTest extends PHPUnit\Framework\TestCase
         $this->assertXmlStringEqualsXmlString($expected, $actual, true);
     }
 
+    /**
+       @testdox Translate a simple model with some KF ROLE SUBSUMPTIONS
+       into OWLlink with SAT queries.
+     */
+    public function testSubRolesIntoOWLlinkWithSat(){
+        $json = file_get_contents("translator/strategies/data/testSubRoleIntoOWLlink.json");
+        $expected = file_get_contents("translator/strategies/data/testSubRoleIntoOWLlink.owllink");
+
+        $strategy = new DLMeta();
+        $builder = new OWLlinkBuilder();
+
+        $builder->insert_header();
+        $strategy->translate($json, $builder);
+        $strategy->translate_queries($json, $builder);
+        $builder->insert_footer();
+
+        $actual = $builder->get_product();
+        $actual = $actual->to_string();
+
+        $this->assertXmlStringEqualsXmlString($expected, $actual, true);
+    }
 }
