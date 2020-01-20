@@ -34,13 +34,13 @@ load('jsondocument.php');
  */
 class MetaJSONDocument extends JSONDocument{
 
-
     /**
        The content in PHP array and hashes.
 
        This will be translated directly into JSON.
     */
     protected $content = NULL;
+    
     /**
        Number used to count the amount of subsumptions.
 
