@@ -35,7 +35,7 @@ class UnderstandAPITest extends PHPUnit\Framework\TestCase
 {
 
     /**
-      Asserting that restfulAPI returns "HTTP/1.1 200 OK"
+      @testdox Asserting that restfulAPI returns "HTTP/1.1 200 OK"
     */
     public function testHeaderOKInterface(){
 
@@ -46,7 +46,7 @@ class UnderstandAPITest extends PHPUnit\Framework\TestCase
     }
 
     /**
-      Asserting that restfulAPI returns "HTTP/1.1 404 Not Found"
+      @testdox Asserting that restfulAPI returns "HTTP/1.1 404 Not Found"
     */
     public function testHeader404Interface(){
 
@@ -57,7 +57,7 @@ class UnderstandAPITest extends PHPUnit\Framework\TestCase
     }
 
     /**
-      Test List of ontologies
+      @testdox Test List of ontologies
     */
     public function testListOfOntolInterface(){
 
@@ -66,7 +66,7 @@ class UnderstandAPITest extends PHPUnit\Framework\TestCase
     }
 
     /**
-      Test Ontology by ID
+      @testdox Test Ontology by ID
     */
     public function testOntolByIdInterface(){
 
@@ -79,7 +79,7 @@ class UnderstandAPITest extends PHPUnit\Framework\TestCase
     }
 
     /**
-      Test Class by ID
+      @testdox Test Class by ID
     */
     public function testClassByIdInterface(){
 

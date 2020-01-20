@@ -31,7 +31,9 @@ use Wicom\Importer\ConnectorAPI;
 
 class ConnectorAPITest extends PHPUnit\Framework\TestCase
 {
-
+    /**
+      @testdox test API status
+    */
     public function testHeader(){
 
       $conn = new ConnectorAPI();
@@ -40,6 +42,9 @@ class ConnectorAPITest extends PHPUnit\Framework\TestCase
 
     }
 
+    /**
+      @testdox test connector to API
+    */
     public function testConnector(){
 
         $conn = new ConnectorAPI();

@@ -24,12 +24,9 @@
 namespace Wicom\Importer;
 
 use function \load;
-
 use function \json_decode;
 
 load("config.php", "../../../config/");
-
-//use Wicom\Reasoner\Connector;
 
 class ConnectorAPI {
 
