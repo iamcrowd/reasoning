@@ -21,6 +21,7 @@ $GLOBALS['environment']='devel';
  */
 $GLOBALS['config']['temporal_path'] = '/var/www/html/wicom/run/';
 $GLOBALS['config']['public_html'] = '/var/www/html/';
+$GLOBALS['config']['api_url'] = 'http://127.0.0.1:8000/';
 
 /**
    Where is the reasoner?
