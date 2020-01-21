@@ -38,6 +38,19 @@ class UnderstandAPI {
         $this->subclass = "";
     }
 
+    /**
+      Given an api ID as URL, this function returns the ID number of such URL
+    */
+    function getIDfromAPIElementID($apiid){
+      $an_array = preg_split("[/]", trim($apiid));
+      $index = count($an_array) - 2;
+      return $an_array[$index];
+    }
+
+    function getConnector(){
+      return $this->connector;
+    }
+
     function getOntologyName(){
       return $this->ontology["name"];
     }
