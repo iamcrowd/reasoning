@@ -45,5 +45,11 @@ abstract class StrategyImporter{
      */
     abstract function import_classes();
 
+    abstract function import_object_properties();
+
+    abstract function import_data_properties();
+
+    abstract function import_subsumptions();
+
 
 }

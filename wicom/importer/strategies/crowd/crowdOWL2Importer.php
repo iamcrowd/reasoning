@@ -61,7 +61,7 @@ class OWL2Importer extends StrategyImporter{
     }
 
     /**
-      Get classes from OWL ontology and generate an instance of KF with object types
+      Get classes from OWL ontology and add them to an instance of KF with object types
     */
     function import_classes(){
       $this->api->getOntologyById($this->onto_id);
@@ -71,7 +71,15 @@ class OWL2Importer extends StrategyImporter{
         $this->api->getClassById($this->api->getIDfromAPIElementID($anclass));
         $this->anmetainstance->insert_object_type($this->api->getClassURI());
       }
-
     }
+
+    function import_object_properties(){}
+
+    function import_data_properties(){}
+
+    /**
+      Get subsumptions from OWL ontology and add them to an instance of KF as relationships
+    */
+    function import_subsumptions(){}
 
 }
