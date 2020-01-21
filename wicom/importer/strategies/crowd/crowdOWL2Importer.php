@@ -80,6 +80,23 @@ class OWL2Importer extends StrategyImporter{
     /**
       Get subsumptions from OWL ontology and add them to an instance of KF as relationships
     */
-    function import_subsumptions(){}
+    function import_subsumptions(){
+      $this->api->getOntologyById($this->onto_id);
+      $subasmeta = $this->api->getSubClasses();
+
+      foreach ($subasmeta as $ansub) {
+        $this->api->getSubClassById($this->api->getIDfromAPIElementID($ansub));
+
+        $parent_id = $this->api->getSubClassParent();
+        $this->api->getClassById($this->api->getIDfromAPIElementID($parent_id));
+        $parent = $this->api->getClassURI();
+
+        $child_id = $this->api->getSubClassChild();
+        $this->api->getClassById($this->api->getIDfromAPIElementID($child_id));
+        $child = $this->api->getClassURI();
+        
+        $this->anmetainstance->insert_subsumption($parent, $child, $ansub);
+      }
+    }
 
 }

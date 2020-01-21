@@ -90,6 +90,7 @@ class ConnectorAPI {
       $commandline = $list_path . " " . "GET" . " " . $api_url . "ontology/";
 
       exec($commandline, $answer);
+      $this->col_answers = [];
       array_push($this->col_answers, join($answer));
     }
 
@@ -104,6 +105,7 @@ class ConnectorAPI {
       $commandline = $list_path . " " . "GET" . " " . $api_url . "ontology/" . $id . "/";
 
       exec($commandline, $answer);
+      $this->col_answers = [];
       array_push($this->col_answers, join($answer));
     }
 
@@ -118,6 +120,7 @@ class ConnectorAPI {
       $commandline = $list_path . " " . "GET" . " " . $api_url . "classes/" . $id . "/";
 
       exec($commandline, $answer);
+      $this->col_answers = [];
       array_push($this->col_answers, join($answer));
     }
 
@@ -132,6 +135,7 @@ class ConnectorAPI {
       $commandline = $list_path . " " . "GET" . " " . $api_url . "subclasses/" . $id . "/";
 
       exec($commandline, $answer);
+      $this->col_answers = [];
       array_push($this->col_answers, join($answer));
     }
 

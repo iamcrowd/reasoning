@@ -48,4 +48,17 @@ class UnderstandAPITest extends PHPUnit\Framework\TestCase
 
     }
 
+    /**
+      @testdox Getting an KF instance from OWL 2 only object types
+    */
+    public function testSubsumptionsFromOWL2(){
+
+      $importer = new OWL2Importer("5");
+      $importer->import_classes();
+      $importer->import_subsumptions();
+      $kf = $importer->getKFInstance();
+      var_dump($kf);
+
+    }
+
 }

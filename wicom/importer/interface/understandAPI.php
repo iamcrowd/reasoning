@@ -145,6 +145,7 @@ class UnderstandAPI {
       if ($this->status($string)) {
         $this->connector->getClassById($id);
         $this->class = json_decode($this->connector->get_col_answers(), true);
+        var_dump($this->class);
         return $this->class;
       } else {
           echo "{\"ERROR\": \"restfulAPI returned 404 Not Found.\"}";
@@ -181,6 +182,7 @@ class UnderstandAPI {
       if ($this->status($string)) {
         $this->connector->getSubClassById($id);
         $this->subclass = json_decode($this->connector->get_col_answers(), true);
+        var_dump($this->subclass);
         return $this->subclass;
       } else {
           echo "{\"ERROR\": \"restfulAPI returned 404 Not Found.\"}";
