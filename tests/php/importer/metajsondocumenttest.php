@@ -39,19 +39,16 @@ class MetaJSONDocumentTest extends PHPUnit\Framework\TestCase{
      */
     public function testKFConstructor(){
       $expected = <<<'EOT'
-        {
-          "Entity type": {
-          "Object type": [],
-          "Data type": [],
-          "Value property": [
-              {
-                "name": "",
-                "domain": [],
-                "value type": ""
-              }
-            ]
-          }
-        }
+      {"Entity type":
+        {"Object type":[],
+          "Data type":[],
+          "Value property":[]},
+        "Role":[],
+        "Relationship":{
+          "Subsumption":[],
+          "Relationship":[],
+          "Attribute property":[]}
+      }
 EOT;
 
         $d = new MetaJSONDocument();
@@ -64,23 +61,51 @@ EOT;
      */
     public function testOTintoKFJSON(){
       $expected = <<<'EOT'
-        {
-          "Entity type": {
-            "Object type": ["http://crowd.fi.uncoma.edu.ar/kb1#Dog"],
-            "Data type": [],
-            "Value property": [
-              {
-                "name": "",
-                "domain": [],
-                "value type": ""
-              }
-            ]
-          }
-        }
+      {"Entity type":
+        {"Object type":["http:\/\/crowd.fi.uncoma.edu.ar\/kb1#Dog"],
+          "Data type":[],
+          "Value property":[]},
+        "Role":[],
+        "Relationship":{
+          "Subsumption":[],
+          "Relationship":[],
+          "Attribute property":[]}
+      }
 EOT;
 
       $d = new MetaJSONDocument();
       $d->insert_object_type("http://crowd.fi.uncoma.edu.ar/kb1#Dog");
+      $actual = $d->to_json();
+
+      $this->assertJsonStringEqualsJsonString(trim($expected), $actual, true);
+    }
+
+    /**
+       @testdox Test inserting Subsumptions into a KF metamodel JSON
+     */
+    public function testSubsumptionintoKFJSON(){
+      $expected = <<<'EOT'
+      {"Entity type":
+        {"Object type":["http:\/\/crowd.fi.uncoma.edu.ar\/kb1#Dog","http:\/\/crowd.fi.uncoma.edu.ar\/kb1#Cat"],
+          "Data type":[],
+          "Value property":[]},
+        "Role":[],
+        "Relationship":{
+          "Subsumption":[
+            {"name":"http:\/\/crowd.fi.uncoma.edu.ar\/kb1#112",
+            "entity parent":"http:\/\/crowd.fi.uncoma.edu.ar\/kb1#Dog",
+            "entity child":"http:\/\/crowd.fi.uncoma.edu.ar\/kb1#Cat",
+            "disjointness constraints":"","completeness constraints":""}
+          ],
+          "Relationship":[],
+          "Attribute property":[]}
+      }
+EOT;
+
+      $d = new MetaJSONDocument();
+      $d->insert_object_type("http://crowd.fi.uncoma.edu.ar/kb1#Dog");
+      $d->insert_object_type("http://crowd.fi.uncoma.edu.ar/kb1#Cat");
+      $d->insert_subsumption("http://crowd.fi.uncoma.edu.ar/kb1#Dog","http://crowd.fi.uncoma.edu.ar/kb1#Cat", "http://crowd.fi.uncoma.edu.ar/kb1#112", "", "");
       $actual = $d->to_json();
 
       $this->assertJsonStringEqualsJsonString(trim($expected), $actual, true);

@@ -40,6 +40,10 @@ class MetaJSONBuilder extends Documents{
 		$this->product->insert_object_type($otname);
 	}
 
+	public function insert_subsumption($parent, $child, $id, $compl = "", $disj = ""){
+		$this->product->insert_subsumption($parent, $child, $id, $compl, $disj);
+	}
+
 	public function get_product(){
 			return $this->product;
 	}

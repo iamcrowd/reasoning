@@ -139,7 +139,6 @@ class UnderstandAPI {
        [rdf_label] => []
        [rdf_comment] => []
        )
-
      */
     function getClassById($id){
       $string = "classes/" . $id;
@@ -176,7 +175,6 @@ class UnderstandAPI {
        [parent] => http://127.0.0.1:8000/classes/497/
        [child] => http://127.0.0.1:8000/classes/556/
        )
-
      */
     function getSubClassById($id){
       $string = "subclasses/" . $id;
