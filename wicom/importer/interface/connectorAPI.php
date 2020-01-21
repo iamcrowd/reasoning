@@ -121,4 +121,18 @@ class ConnectorAPI {
       array_push($this->col_answers, join($answer));
     }
 
+    /**
+       Call API in order to get a class by id
+     */
+    function getSubClassById($id){
+      $list_path = "";
+      $api_url = $GLOBALS['config']['api_url'];
+      $uuid = uniqid();
+      $list_path .= ConnectorAPI::PROGRAM_CMD . ConnectorAPI::PROGRAM_PARAMS;
+      $commandline = $list_path . " " . "GET" . " " . $api_url . "subclasses/" . $id . "/";
+
+      exec($commandline, $answer);
+      array_push($this->col_answers, join($answer));
+    }
+
 }

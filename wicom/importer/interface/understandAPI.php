@@ -165,5 +165,38 @@ class UnderstandAPI {
       return $this->class["prefix"];
     }
 
+    /**
+       Return a subclass from the current ontology
+
+       @param an id subclass number
+       @return a JSON Array containing the subclass id
+       Array
+       (
+       [ontology] => http://127.0.0.1:8000/ontology/12/
+       [parent] => http://127.0.0.1:8000/classes/497/
+       [child] => http://127.0.0.1:8000/classes/556/
+       )
+
+     */
+    function getSubClassById($id){
+      $string = "subclasses/" . $id;
+      if ($this->status($string)) {
+        $this->connector->getSubClassById($id);
+        $this->subclass = json_decode($this->connector->get_col_answers(), true);
+        return $this->subclass;
+      } else {
+          echo "{\"ERROR\": \"restfulAPI returned 404 Not Found.\"}";
+          exit();
+      }
+    }
+
+    function getSubClassParent(){
+      return $this->subclass["parent"];
+    }
+
+    function getSubClassChild(){
+      return $this->subclass["child"];
+    }
+
 
 }

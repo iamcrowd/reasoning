@@ -94,4 +94,18 @@ class UnderstandAPITest extends PHPUnit\Framework\TestCase
 
     }
 
+    /**
+      @testdox Test SubClass by ID
+    */
+    public function testSubClassByIdInterface(){
+
+        $inter = new UnderstandAPI();
+        $inter->getSubClassById("112");
+        $parent = $inter->getSubClassParent();
+        $child = $inter->getSubClassChild();
+        $this->assertEquals("http://127.0.0.1:8000/classes/497/", $parent, true);
+        $this->assertEquals("http://127.0.0.1:8000/classes/556/", $child, true);
+
+    }
+
 }
