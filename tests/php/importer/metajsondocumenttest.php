@@ -39,15 +39,33 @@ class MetaJSONDocumentTest extends PHPUnit\Framework\TestCase{
      */
     public function testKFConstructor(){
       $expected = <<<'EOT'
-      {"Entity type":
-        {"Object type":[],
-          "Data type":[],
-          "Value property":[]},
-        "Role":[],
-        "Relationship":{
-          "Subsumption":[],
-          "Relationship":[],
-          "Attribute property":[]}
+      {
+        "Entity type":
+          {
+            "Object type": [],
+            "Data type" : [],
+      			"Value property": []
+      		},
+       "Role": [],
+       "Relationship":
+         {
+           "Subsumption": [],
+           "Relationship" : [],
+           "Attributive Property": []
+         },
+       "Constraints" : {
+         "Disjointness constraints" :
+          {
+            "Disjoint object type": [],
+            "Disjoint role": []
+          },
+          "Completeness constraints" : [],
+          "Cardinality constraints":
+          {
+            "Object type cardinality": [],
+            "Attibutive property cardinality": []
+          }
+        }
       }
 EOT;
 
@@ -61,15 +79,33 @@ EOT;
      */
     public function testOTintoKFJSON(){
       $expected = <<<'EOT'
-      {"Entity type":
-        {"Object type":["http:\/\/crowd.fi.uncoma.edu.ar\/kb1#Dog"],
-          "Data type":[],
-          "Value property":[]},
-        "Role":[],
-        "Relationship":{
-          "Subsumption":[],
-          "Relationship":[],
-          "Attribute property":[]}
+      {
+        "Entity type":
+          {
+            "Object type": ["http:\/\/crowd.fi.uncoma.edu.ar\/kb1#Dog"],
+            "Data type" : [],
+            "Value property": []
+          },
+       "Role": [],
+       "Relationship":
+         {
+           "Subsumption": [],
+           "Relationship" : [],
+           "Attributive Property": []
+         },
+       "Constraints" : {
+         "Disjointness constraints" :
+          {
+            "Disjoint object type": [],
+            "Disjoint role": []
+          },
+          "Completeness constraints" : [],
+          "Cardinality constraints":
+          {
+            "Object type cardinality": [],
+            "Attibutive property cardinality": []
+          }
+        }
       }
 EOT;
 
@@ -85,20 +121,38 @@ EOT;
      */
     public function testSubsumptionintoKFJSON(){
       $expected = <<<'EOT'
-      {"Entity type":
-        {"Object type":["http:\/\/crowd.fi.uncoma.edu.ar\/kb1#Dog","http:\/\/crowd.fi.uncoma.edu.ar\/kb1#Cat"],
-          "Data type":[],
-          "Value property":[]},
-        "Role":[],
-        "Relationship":{
-          "Subsumption":[
-            {"name":"http:\/\/crowd.fi.uncoma.edu.ar\/kb1#112",
-            "entity parent":"http:\/\/crowd.fi.uncoma.edu.ar\/kb1#Dog",
-            "entity child":"http:\/\/crowd.fi.uncoma.edu.ar\/kb1#Cat",
-            "disjointness constraints":"","completeness constraints":""}
-          ],
-          "Relationship":[],
-          "Attribute property":[]}
+      {
+        "Entity type":
+          {
+            "Object type": ["http:\/\/crowd.fi.uncoma.edu.ar\/kb1#Dog","http:\/\/crowd.fi.uncoma.edu.ar\/kb1#Cat"],
+            "Data type" : [],
+            "Value property": []
+          },
+       "Role": [],
+       "Relationship":
+         {
+           "Subsumption": [
+             {"name":"http:\/\/crowd.fi.uncoma.edu.ar\/kb1#112",
+               "entity parent":"http:\/\/crowd.fi.uncoma.edu.ar\/kb1#Dog",
+               "entity children":"http:\/\/crowd.fi.uncoma.edu.ar\/kb1#Cat",
+               "disjointness constraints":"","completeness constraints":""}
+            ],
+           "Relationship" : [],
+           "Attributive Property": []
+         },
+       "Constraints" : {
+         "Disjointness constraints" :
+          {
+            "Disjoint object type": [],
+            "Disjoint role": []
+          },
+          "Completeness constraints" : [],
+          "Cardinality constraints":
+          {
+            "Object type cardinality": [],
+            "Attibutive property cardinality": []
+          }
+        }
       }
 EOT;
 
@@ -106,6 +160,63 @@ EOT;
       $d->insert_object_type("http://crowd.fi.uncoma.edu.ar/kb1#Dog");
       $d->insert_object_type("http://crowd.fi.uncoma.edu.ar/kb1#Cat");
       $d->insert_subsumption("http://crowd.fi.uncoma.edu.ar/kb1#Dog","http://crowd.fi.uncoma.edu.ar/kb1#Cat", "http://crowd.fi.uncoma.edu.ar/kb1#112", "", "");
+      $actual = $d->to_json();
+
+      $this->assertJsonStringEqualsJsonString(trim($expected), $actual, true);
+    }
+
+    /**
+       @testdox Test inserting Roles and Cardinalities into a KF metamodel JSON
+     */
+    public function testRolesintoKFJSON(){
+      $expected = <<<'EOT'
+      {
+        "Entity type":
+          {
+            "Object type": ["http:\/\/crowd.fi.uncoma.edu.ar\/kb1#Dog","http:\/\/crowd.fi.uncoma.edu.ar\/kb1#Cat"],
+            "Data type" : [],
+            "Value property": []
+          },
+       "Role": [
+         {
+           "rolename": "http://crowd.fi.uncoma.edu.ar/kb1#cat",
+           "relationship": "http:\/\/crowd.fi.uncoma.edu.ar\/kb1#Dog",
+           "entity type": "http:\/\/crowd.fi.uncoma.edu.ar\/kb1#Cat",
+           "object type cardinality": ["obj type card number_0"]
+         }
+       ],
+       "Relationship":
+         {
+           "Subsumption": [],
+           "Relationship" : [],
+           "Attributive Property": []
+         },
+       "Constraints" : {
+         "Disjointness constraints" :
+          {
+            "Disjoint object type": [],
+            "Disjoint role": []
+          },
+          "Completeness constraints" : [],
+          "Cardinality constraints":
+          {
+            "Object type cardinality": [
+              {
+                "name" : "obj type card number_0",
+                "minimum" : "0",
+                "maximum" : "N"
+              }
+            ],
+            "Attibutive property cardinality": []
+          }
+        }
+      }
+EOT;
+
+      $d = new MetaJSONDocument();
+      $d->insert_object_type("http://crowd.fi.uncoma.edu.ar/kb1#Dog");
+      $d->insert_object_type("http://crowd.fi.uncoma.edu.ar/kb1#Cat");
+      $d->insert_roles("http://crowd.fi.uncoma.edu.ar/kb1#cat","http://crowd.fi.uncoma.edu.ar/kb1#Dog","http://crowd.fi.uncoma.edu.ar/kb1#Cat", "0", "N");
       $actual = $d->to_json();
 
       $this->assertJsonStringEqualsJsonString(trim($expected), $actual, true);
