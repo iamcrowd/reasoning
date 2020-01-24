@@ -17,6 +17,10 @@ This module requires configuration. See config/* files.
 - Set the temporal path.
 - Reasoner paths.
 
+## Dependencies
+
+- run `php composer.phar update`
+
 ## Reasoner Programs
 
 This module requires third party applications. See http://crowd.fi.uncoma.edu.ar/reasoners/ URL to download them.
@@ -26,13 +30,13 @@ This module requires third party applications. See http://crowd.fi.uncoma.edu.ar
 
 The reasoners should be installed at the `run/` directory. Write the path at the config.php file.
 
-Remember to set executable perms to the reasoners: 
+Remember to set executable perms to the reasoners:
 
     chmod +x run/Racer run/Konclude
 
 Create a blank file at `run/input-file.owllink`.
 
-# Testing 
+# Testing
 The tests directory has got all the PHP tests.
 
 ## PHPUnit
