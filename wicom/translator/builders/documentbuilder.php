@@ -39,11 +39,11 @@ abstract class DocumentBuilder extends Documents{
     public function insert_objectproperty_declaration($name){
         $this->insert_objectproperty($name);
     }
-    
+
     /**
        Shorthand for a DL complete declaration.
 
-       In DL this would create the "Class is subset of Top" instead only the 
+       In DL this would create the "Class is subset of Top" instead only the
        class name.
 
        @param $name The class name to insert.
@@ -54,11 +54,11 @@ abstract class DocumentBuilder extends Documents{
     public function insert_dataproperty_declaration($name){
         $this->insert_dataproperty($name);
     }
-    
+
     abstract public function insert_class($name, $col_attrs = []);
     abstract public function insert_dataproperty($name, $datatype);
     abstract public function insert_objectproperty($name);
-    
+
     /**
        Depending on the subclass, add an OWLlink text directly.
      */
@@ -132,9 +132,9 @@ abstract class DocumentBuilder extends Documents{
         $key = array_keys($elt)[0];
 
         switch ($key){
-	    case "top" :
-		$this->product->insert_class($elt["top"]);
-		break;
+	         case "top" :
+		         $this->product->insert_class($elt["top"]);
+		       break;
             case "class" :
                 $this->product->insert_class($elt["class"]);
                 break;
@@ -149,10 +149,14 @@ abstract class DocumentBuilder extends Documents{
                 $this->translate_DL($elt["subclass"]);
                 $this->product->end_subclassof();
                 break;
-
                 // ObjectProperties
             case "role" :
                 $this->product->insert_objectproperty($elt["role"]);
+                break;
+            case "subrole" :
+                $this->product->begin_subobjectpropertyof();
+                $this->translate_DL($elt["subrole"]);
+                $this->product->end_subobjectpropertyof();
                 break;
             case "intersection" :
                 $this->product->begin_intersectionof();
@@ -204,29 +208,28 @@ abstract class DocumentBuilder extends Documents{
                 }
                 $this->product->end_maxcardinality();
                 break;
-	    case "domain" :
-		$this->product->begin_objectpropertydomain();
-		$this->DL_element($elt["domain"][0]);
-		$this->DL_element($elt["domain"][1]);
-		$this->product->end_objectpropertydomain();
-		break;
-	    case "range" :
-		$this->product->begin_objectpropertyrange();
-		$this->DL_element($elt["range"][0]);
-		$this->DL_element($elt["range"][1]);
-		$this->product->end_objectpropertyrange();
-		break;
-	    case "equivalentclasses" :
-		$this->product->begin_equivalentclasses();
-		$this->translate_DL($elt["equivalentclasses"]);
-		$this->product->end_equivalentclasses();
-		break;
-            case "disjointclasses" :
-   		$this->product->begin_disjointclasses();
-   		$this->translate_DL($elt["disjointclasses"]);
-   		$this->product->end_disjointclasses();
-   		break;
-
+	              case "domain" :
+		              $this->product->begin_objectpropertydomain();
+		              $this->DL_element($elt["domain"][0]);
+		              $this->DL_element($elt["domain"][1]);
+		              $this->product->end_objectpropertydomain();
+		              break;
+                case "range" :
+                  $this->product->begin_objectpropertyrange();
+                  $this->DL_element($elt["range"][0]);
+                  $this->DL_element($elt["range"][1]);
+                  $this->product->end_objectpropertyrange();
+		            break;
+                case "equivalentclasses" :
+		              $this->product->begin_equivalentclasses();
+		              $this->translate_DL($elt["equivalentclasses"]);
+		              $this->product->end_equivalentclasses();
+		            break;
+                case "disjointclasses" :
+   		           $this->product->begin_disjointclasses();
+   		           $this->translate_DL($elt["disjointclasses"]);
+   		           $this->product->end_disjointclasses();
+   		          break;
                 // DataProperties
             case "datatype" :
                 $this->product->insert_datatype($elt["datatype"]);

@@ -53,7 +53,7 @@ class OWLlinkDocument extends Document{
             'prefix' => 'crowd',
             'value' => "http://crowd.fi.uncoma.edu.ar/kb1#"]
     ];
-    
+
     protected $content = null;
 
     protected $firstKBElement = "Tell";
@@ -142,17 +142,17 @@ class OWLlinkDocument extends Document{
         }
         // Discard the prefix
         $ontologyIRI = $ontologyIRI[0]['value'];
-        
+
 
 
         foreach ($this->default_header as $header){
 	    $this->content->writeAttribute($header["attr"],
 					 $header["value"]);
         }
-        
+
         $this->content->writeAttribute("xml:base",
 				     $ontologyIRI);
-	
+
     }
 
     /**
@@ -163,7 +163,7 @@ class OWLlinkDocument extends Document{
        $d->insert_request();
        @endcode
 
-       @param $ontologyIRI {Array} A list with the default URI. A value should 
+       @param $ontologyIRI {Array} A list with the default URI. A value should
          be `[['prefix' => 'crowd', 'value' => 'http://crowd.fi.uncoma.edu.ar/']]`
        @param $req {array} An array of IRIs prefixes needed by all the XML
        document's tags. Format:
@@ -205,7 +205,7 @@ class OWLlinkDocument extends Document{
        Insert a "CreateKB" OWLlink primitive. After that, set the
        actual_kb to the given URI.
 
-       @param $ontologyIRI {Array} A list with the default URI. A value should 
+       @param $ontologyIRI {Array} A list with the default URI. A value should
          be `[['prefix' => 'crowd', 'value' => 'http://crowd.fi.uncoma.edu.ar/']]`
        @param $prefixes {array} An Array of namespaces and IRIs for the ontology.
      */
@@ -217,11 +217,11 @@ class OWLlinkDocument extends Document{
 	}
         // Drop the prefix
         $ontologyIRI = $ontologyIRI[0]['value'];
-        
+
 
 	$this->content->writeAttribute("kb",$ontologyIRI);
         $this->actual_kb = $ontologyIRI;
-	
+
         array_push($prefixes,
 		   ['prefix' => '',
 		    'value' => $ontologyIRI]);
@@ -612,6 +612,14 @@ class OWLlinkDocument extends Document{
 
     public function end_subclassof(){
 	$this->content->EndElement();
+    }
+
+    public function begin_subobjectpropertyof(){
+      $this->content->startElement("owl:SubObjectPropertyOf");
+    }
+
+    public function end_subobjectpropertyof(){
+      $this->content->EndElement();
     }
 
     public function begin_intersectionof(){

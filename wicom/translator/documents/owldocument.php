@@ -61,7 +61,7 @@ class OWLDocument extends Document{
             'value' => "http://crowd.fi.uncoma.edu.ar/kb1#"
         ]
     ];
-    
+
     protected $default_prefixes = [
 	["prefix" => "rdf",
 	 "value" => "http://www.w3.org/1999/02/22-rdf-syntax-ns#"],
@@ -102,10 +102,10 @@ class OWLDocument extends Document{
     /**
        Insert the Ontology tag.
 
-       This is the first tag on an OWL 2 document. It usually has got prefixes 
+       This is the first tag on an OWL 2 document. It usually has got prefixes
        and the ontology IRI.
-       
-       @param $ontologyIRI {Array} A list with the default URI. A value should 
+
+       @param $ontologyIRI {Array} A list with the default URI. A value should
          be `[['prefix' => 'crowd', 'value' => 'http://crowd.fi.uncoma.edu.ar/']]`
        @param $headerIRIs {array} (Optional) An array with elements like
        `['prefix' => "NAME", 'value' => "IRI"]`. If an empty array is passed
@@ -121,13 +121,13 @@ class OWLDocument extends Document{
 	if ($ontologyIRI == null){
 	    $ontologyIRI = OWLDocument::default_ontologyIRI;
 	}
-        
+
         $ontologyIRI = $ontologyIRI[0]['value'];
-	
+
 	foreach ($headerIRIs as $header){
 	    $this->content->writeAttribute($header["attr"], $header["value"]);
         }
-	
+
 	$this->content->writeAttribute("xml:base", $ontologyIRI);
         $this->content->writeAttribute("ontologyIRI", $ontologyIRI);
 
@@ -137,12 +137,12 @@ class OWLDocument extends Document{
     /**
        Start the document with default elements.
 
-       Default elements are some initial tags. The `end_document()` must be 
+       Default elements are some initial tags. The `end_document()` must be
        called after this method.
 
-       @param $ontologyIRI {string} An IRI. It is the IRI which represent the 
+       @param $ontologyIRI {string} An IRI. It is the IRI which represent the
        ontology.
-       @param headerIRIs {array} An array of elements like 
+       @param headerIRIs {array} An array of elements like
        `['prefix' => "PREFIX", 'value' => "IRI"]`.
      */
     public function start_document($ontologyIRI = null, $headerIRIs = []){
@@ -152,8 +152,8 @@ class OWLDocument extends Document{
 
     /**
        End the document.
-       
-       End some important tags. If the `start_document()` method has been 
+
+       End some important tags. If the `start_document()` method has been
        called, this one must be called too.
      */
     public function end_document(){
@@ -166,7 +166,7 @@ class OWLDocument extends Document{
     /**
        Change ontology prefixes.
 
-       @param $prefixes {array} An array of prefixes. Its elements must be a 
+       @param $prefixes {array} An array of prefixes. Its elements must be a
        hash of `[ "prefix" => "NAME", "value"="AN IRI"]`.
      */
     public function set_ontology_prefixes($prefixes){
@@ -230,6 +230,13 @@ class OWLDocument extends Document{
         $this->content->startElement("SubClassOf");
         $this->insert_class($child_class, $child_abbrev);
         $this->insert_class($father_class, $father_abbrev);
+        $this->content->endElement();
+    }
+
+    public function insert_subobjectpropertyof($child_class, $father_class, $child_abbrev=false, $father_abbrev=false){
+        $this->content->startElement("SubObjectPropertyOf");
+        $this->insert_objectproperty($child_class, $child_abbrev);
+        $this->insert_objectproperty($father_class, $father_abbrev);
         $this->content->endElement();
     }
 
@@ -322,13 +329,6 @@ class OWLDocument extends Document{
             }
 	}
 	return $short_name;
-    }
-
-    public function insert_subobjectpropertyof($child_objprop, $father_objprop, $child_abbrev = false, $father_abbrev = false){
-        $this->content->startElement("SubObjectPropertyOf");
-        $this->insert_objectproperty($child_objprop, $child_abbrev);
-        $this->insert_objectproperty($father_objprop, $father_abbrev);
-        $this->content->endElement();
     }
 
 
@@ -452,6 +452,12 @@ class OWLDocument extends Document{
         $this->content->startElement("SubClassOf");
     }
     public function end_subclassof(){
+        $this->content->EndElement();
+    }
+    public function begin_subobjectpropertyof(){
+        $this->content->startElement("SubObjectPropertyOf");
+    }
+    public function end_subobjectpropertyof(){
         $this->content->EndElement();
     }
     public function begin_intersectionof(){
