@@ -23,11 +23,17 @@
 
 require_once("common.php");
 
+load("autoload.php", "vendor/");
+
 load("crowd_dlmeta.php", "wicom/translator/strategies/strategydlmeta/");
 load("owllinkbuilder.php", "wicom/translator/builders/");
 
+
 use Wicom\Translator\Strategies\Strategydlmeta\DLMeta;
 use Wicom\Translator\Builders\OWLlinkBuilder;
+
+use Opis\JsonSchema\Validator;
+use Opis\JsonSchema\Schema;
 
 /**
    # Warning!
@@ -35,10 +41,26 @@ use Wicom\Translator\Builders\OWLlinkBuilder;
 
    It will only check for the amount of attributes.
  */
-class DLMetaTest extends PHPUnit\Framework\TestCase
-{
+class DLMetaTest extends PHPUnit\Framework\TestCase{
 
+    protected function validate_against_scheme($json){
+      $data = json_decode($json);
+      $scheme_json = file_get_contents('/var/www/html/reasoning/wicom/translator/strategies/strategydlmeta/kfmetaScheme.json');
+      $scheme = Schema::fromJsonString($scheme_json);
 
+      $validator = new Validator();
+      $result = $validator->schemaValidation($data, $scheme);
+
+      if ($result->isValid()) {
+        return true;
+      } else {
+        $error = $result->getFirstError();
+        echo '$data is invalid', PHP_EOL;
+        echo "Error: ", $error->keyword(), PHP_EOL;
+        echo json_encode($error->keywordArgs(), JSON_PRETTY_PRINT), PHP_EOL;
+        return false;
+      }
+    }
     /**
        @testdox Translate a simple model with some KF OBJECT TYPES into OWLlink with SAT queries
      */
@@ -46,18 +68,22 @@ class DLMetaTest extends PHPUnit\Framework\TestCase
         $json = file_get_contents("translator/strategies/data/testObjTypeIntoOWLlink.json");
         $expected = file_get_contents("translator/strategies/data/testObjTypeIntoOWLlink.owllink");
 
-        $strategy = new DLMeta();
-        $builder = new OWLlinkBuilder();
+        if ($this->validate_against_scheme($json)){
+          $strategy = new DLMeta();
+          $builder = new OWLlinkBuilder();
 
-        $builder->insert_header();
-        $strategy->translate($json, $builder);
-        $strategy->translate_queries($json, $builder);
-        $builder->insert_footer();
+          $builder->insert_header();
+          $strategy->translate($json, $builder);
+          $strategy->translate_queries($json, $builder);
+          $builder->insert_footer();
 
-        $actual = $builder->get_product();
-        $actual = $actual->to_string();
+          $actual = $builder->get_product();
+          $actual = $actual->to_string();
 
-        $this->assertXmlStringEqualsXmlString($expected, $actual, true);
+          $this->assertXmlStringEqualsXmlString($expected, $actual, true);
+        } else {
+          $this->assertTrue(false, "JSON KF does not match against KF Scheme");
+        }
     }
 
     /**
@@ -67,18 +93,22 @@ class DLMetaTest extends PHPUnit\Framework\TestCase
         $json = file_get_contents("translator/strategies/data/testSubIntoOWLlink.json");
         $expected = file_get_contents("translator/strategies/data/testSubIntoOWLlink.owllink");
 
-        $strategy = new DLMeta();
-        $builder = new OWLlinkBuilder();
+        if ($this->validate_against_scheme($json)){
+          $strategy = new DLMeta();
+          $builder = new OWLlinkBuilder();
 
-        $builder->insert_header();
-        $strategy->translate($json, $builder);
-        $strategy->translate_queries($json, $builder);
-        $builder->insert_footer();
+          $builder->insert_header();
+          $strategy->translate($json, $builder);
+          $strategy->translate_queries($json, $builder);
+          $builder->insert_footer();
 
-        $actual = $builder->get_product();
-        $actual = $actual->to_string();
+          $actual = $builder->get_product();
+          $actual = $actual->to_string();
 
-        $this->assertXmlStringEqualsXmlString($expected, $actual, true);
+          $this->assertXmlStringEqualsXmlString($expected, $actual, true);
+        } else {
+          $this->assertTrue(false, "JSON KF does not match against KF Scheme");
+        }
     }
 
     /**
@@ -88,18 +118,22 @@ class DLMetaTest extends PHPUnit\Framework\TestCase
         $json = file_get_contents("translator/strategies/data/testSubWithConstraintsIntoOWLlink.json");
         $expected = file_get_contents("translator/strategies/data/testSubWithConstraintsIntoOWLlink.owllink");
 
-        $strategy = new DLMeta();
-        $builder = new OWLlinkBuilder();
+        if ($this->validate_against_scheme($json)){
+          $strategy = new DLMeta();
+          $builder = new OWLlinkBuilder();
 
-        $builder->insert_header();
-        $strategy->translate($json, $builder);
-        $strategy->translate_queries($json, $builder);
-        $builder->insert_footer();
+          $builder->insert_header();
+          $strategy->translate($json, $builder);
+          $strategy->translate_queries($json, $builder);
+          $builder->insert_footer();
 
-        $actual = $builder->get_product();
-        $actual = $actual->to_string();
+          $actual = $builder->get_product();
+          $actual = $actual->to_string();
 
-        $this->assertXmlStringEqualsXmlString($expected, $actual, true);
+          $this->assertXmlStringEqualsXmlString($expected, $actual, true);
+        } else {
+          $this->assertTrue(false, "JSON KF does not match against KF Scheme");
+        }
     }
 
     /**
@@ -110,18 +144,22 @@ class DLMetaTest extends PHPUnit\Framework\TestCase
         $json = file_get_contents("translator/strategies/data/testRelNoCardIntoOWLlink.json");
         $expected = file_get_contents("translator/strategies/data/testRelNoCardIntoOWLlink.owllink");
 
-        $strategy = new DLMeta();
-        $builder = new OWLlinkBuilder();
+        if ($this->validate_against_scheme($json)){
+          $strategy = new DLMeta();
+          $builder = new OWLlinkBuilder();
 
-        $builder->insert_header();
-        $strategy->translate($json, $builder);
-        $strategy->translate_queries($json, $builder);
-        $builder->insert_footer();
+          $builder->insert_header();
+          $strategy->translate($json, $builder);
+          $strategy->translate_queries($json, $builder);
+          $builder->insert_footer();
 
-        $actual = $builder->get_product();
-        $actual = $actual->to_string();
+          $actual = $builder->get_product();
+          $actual = $actual->to_string();
 
-        $this->assertXmlStringEqualsXmlString($expected, $actual, true);
+          $this->assertXmlStringEqualsXmlString($expected, $actual, true);
+        } else {
+          $this->assertTrue(false, "JSON KF does not match against KF Scheme");
+        }
     }
 
     /**
@@ -132,18 +170,22 @@ class DLMetaTest extends PHPUnit\Framework\TestCase
         $json = file_get_contents("translator/strategies/data/testRelNoExtendedCardIntoOWLlink.json");
         $expected = file_get_contents("translator/strategies/data/testRelNoExtendedCardIntoOWLlink.owllink");
 
-        $strategy = new DLMeta();
-        $builder = new OWLlinkBuilder();
+        if ($this->validate_against_scheme($json)){
+          $strategy = new DLMeta();
+          $builder = new OWLlinkBuilder();
 
-        $builder->insert_header();
-        $strategy->translate($json, $builder);
-        $strategy->translate_queries($json, $builder);
-        $builder->insert_footer();
+          $builder->insert_header();
+          $strategy->translate($json, $builder);
+          $strategy->translate_queries($json, $builder);
+          $builder->insert_footer();
 
-        $actual = $builder->get_product();
-        $actual = $actual->to_string();
+          $actual = $builder->get_product();
+          $actual = $actual->to_string();
 
-        $this->assertXmlStringEqualsXmlString($expected, $actual, true);
+          $this->assertXmlStringEqualsXmlString($expected, $actual, true);
+        } else {
+          $this->assertTrue(false, "JSON KF does not match against KF Scheme");
+        }
     }
 
     /**
@@ -154,18 +196,23 @@ class DLMetaTest extends PHPUnit\Framework\TestCase
         $json = file_get_contents("translator/strategies/data/testSubRoleIntoOWLlink.json");
         $expected = file_get_contents("translator/strategies/data/testSubRoleIntoOWLlink.owllink");
 
-        $strategy = new DLMeta();
-        $builder = new OWLlinkBuilder();
+        if ($this->validate_against_scheme($json)){
+          $strategy = new DLMeta();
+          $builder = new OWLlinkBuilder();
 
-        $builder->insert_header();
-        $strategy->translate($json, $builder);
-        $strategy->translate_queries($json, $builder);
-        $builder->insert_footer();
+          $builder->insert_header();
+          $strategy->translate($json, $builder);
+          $strategy->translate_queries($json, $builder);
+          $builder->insert_footer();
 
-        $actual = $builder->get_product();
-        $actual = $actual->to_string();
+          $actual = $builder->get_product();
+          $actual = $actual->to_string();
 
-        $this->assertXmlStringEqualsXmlString($expected, $actual, true);
+          $this->assertXmlStringEqualsXmlString($expected, $actual, true);
+        }
+        else {
+          $this->assertTrue(false, "JSON KF does not match against KF Scheme");
+        }
     }
 
     /**
@@ -176,17 +223,22 @@ class DLMetaTest extends PHPUnit\Framework\TestCase
         $json = file_get_contents("translator/strategies/data/testSubRelationshipsIntoOWLlink.json");
         $expected = file_get_contents("translator/strategies/data/testSubRelationshipsIntoOWLlink.owllink");
 
-        $strategy = new DLMeta();
-        $builder = new OWLlinkBuilder();
+        if ($this->validate_against_scheme($json)){
+          $strategy = new DLMeta();
+          $builder = new OWLlinkBuilder();
 
-        $builder->insert_header();
-        $strategy->translate($json, $builder);
-        $strategy->translate_queries($json, $builder);
-        $builder->insert_footer();
+          $builder->insert_header();
+          $strategy->translate($json, $builder);
+          $strategy->translate_queries($json, $builder);
+          $builder->insert_footer();
 
-        $actual = $builder->get_product();
-        $actual = $actual->to_string();
+          $actual = $builder->get_product();
+          $actual = $actual->to_string();
 
-        $this->assertXmlStringEqualsXmlString($expected, $actual, true);
+          $this->assertXmlStringEqualsXmlString($expected, $actual, true);
+        }
+        else {
+          $this->assertTrue(false, "JSON KF does not match against KF Scheme");
+        }
     }
 }
