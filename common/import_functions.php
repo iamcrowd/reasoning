@@ -1,32 +1,37 @@
-<?php 
-/* 
+<?php
+/*
 
    Copyright 2016 Giménez, Christian
-   
-   Author: Giménez, Christian   
+
+   Author: Giménez, Christian
 
    import_functions.php
-   
+
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
    the Free Software Foundation, either version 3 of the License, or
    (at your option) any later version.
-   
+
    This program is distributed in the hope that it will be useful,
    but WITHOUT ANY WARRANTY; without even the implied warranty of
    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
    GNU General Public License for more details.
-   
+
    You should have received a copy of the GNU General Public License
    along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
 $current_path = "./";
 
+load("autoload.php", "vendor/");
+
+use Opis\JsonSchema\Validator;
+use Opis\JsonSchema\Schema;
+
 /**
    This is a function for loading a module relative to the current file in static context.
 
-   # Problem   
+   # Problem
    There is a problem about paths. When an HTTP is requested on http://localhost/folderA/index.php the current path is the real one matching folderA virtual one, say ./proyect/folderA/index.php.
 
    If this index.php requires the file ./proyect/folderA/folderB/require1.php , require1.php is a module that uses the folderA path as current directory, not folderB, and it may require something from other folder like ./proyect/folderA/folderC/require2.php so, it will have:
@@ -49,7 +54,7 @@ $current_path = "./";
  */
 function load($module, $path=null){
     global $current_path;
-    
+
     if ($path != null){
         // Store the current path before modifying it.
         $previous_path = $current_path;
@@ -57,12 +62,12 @@ function load($module, $path=null){
     }
 
     try{
-        
+
         // Load the module...
         require_once($current_path . $module);
-        
+
     }catch(Exception $e){
-        echo "Fatal error:\nCouldn't load in $current_path the module $module\n";        
+        echo "Fatal error:\nCouldn't load in $current_path the module $module\n";
     }
 
     if ($path != null){
@@ -70,4 +75,24 @@ function load($module, $path=null){
         $current_path = $previous_path;
     }
 }
+
+  function validate_KF_against_JSONSchema($jsonkf){
+    $data = json_decode($jsonkf);
+    $scheme_json = file_get_contents('/var/www/html/reasoning/wicom/translator/strategies/strategydlmeta/kfmetaScheme.json');
+    $scheme = Schema::fromJsonString($scheme_json);
+
+    $validator = new Validator();
+    $result = $validator->schemaValidation($data, $scheme);
+
+    if ($result->isValid()) {
+      return true;
+    } else {
+      $error = $result->getFirstError();
+      echo '$data is invalid', PHP_EOL;
+      echo "Error: ", $error->keyword(), PHP_EOL;
+      echo json_encode($error->keywordArgs(), JSON_PRETTY_PRINT), PHP_EOL;
+      return false;
+    }
+
+  }
 ?>
