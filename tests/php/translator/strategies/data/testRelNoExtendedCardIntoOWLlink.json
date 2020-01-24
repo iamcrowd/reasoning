@@ -1,18 +1,13 @@
 {
-  "Entity type": [
+  "Entity type":
     {
       "Object type": [
         "http://crowd.fi.uncoma.edu.ar/kb1#Institution",
         "http://crowd.fi.uncoma.edu.ar/kb1#Person"
-      ]
-    },
-    {
-      "Data type" : []
-    },
-		{
+      ],
+      "Data type" : [],
 			"Value property": []
-		}
-  ],
+    },
  "Role": [{
      "rolename": "http://crowd.fi.uncoma.edu.ar/kb1#person",
      "relationship": "http://crowd.fi.uncoma.edu.ar/kb1#enrolled",
@@ -25,33 +20,26 @@
      "entity type": "http://crowd.fi.uncoma.edu.ar/kb1#Institution",
      "object type cardinality": ["http://crowd.fi.uncoma.edu.ar/kb1#card2"]
    }],
- "Relationship": [
+ "Relationship":
    {
-     "Subsumption": []
-   },
-   {
+     "Subsumption": [],
      "Relationship" : [{
        "name": "http://crowd.fi.uncoma.edu.ar/kb1#enrolled",
        "entities": [
          "http://crowd.fi.uncoma.edu.ar/kb1#Person",
-         "http://crowd.fi.uncoma.edu.ar/kb1#Institution"
-       ]
-     }]
-   },
-   {
+         "http://crowd.fi.uncoma.edu.ar/kb1#Institution"]
+     }],
      "Attributive Property": []
-   }
- ],
- "Disjointness constraints" : [
-   {
-     "Disjoint object type": []
    },
-   {
+ "Constraints":
+ {
+   "Disjointness constraints" :
+    {
+     "Disjoint object type": [],
      "Disjoint role": []
-   }
- ],
- "Completeness constraints" : [],
- "Cardinality constraints": [
+   },
+   "Completeness constraints" : [],
+   "Cardinality constraints":
    {
      "Object type cardinality": [{
        "name": "http://crowd.fi.uncoma.edu.ar/kb1#card1",
@@ -62,10 +50,8 @@
        "name": "http://crowd.fi.uncoma.edu.ar/kb1#card2",
        "minimum": "2",
        "maximum": "9"
-     }]
-   },
-   {
+     }],
      "Attibutive property cardinality": []
    }
- ]
+ }
 }
