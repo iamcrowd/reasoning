@@ -47,7 +47,7 @@ class OWL2Importer extends StrategyImporter{
     protected $onto_id;
 
     function __construct($id){
-        //parent::__construct($id);
+        parent::__construct();
         $this->api = new UnderstandAPI();
         $this->anmetainstance = new MetaJSONBuilder();
         $this->onto_id = $id;
@@ -94,7 +94,7 @@ class OWL2Importer extends StrategyImporter{
         $child_id = $this->api->getSubClassChild();
         $this->api->getClassById($this->api->getIDfromAPIElementID($child_id));
         $child = $this->api->getClassURI();
-        
+
         $this->anmetainstance->insert_subsumption($parent, $child, $ansub);
       }
     }

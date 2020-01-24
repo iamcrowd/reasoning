@@ -29,8 +29,6 @@ load("owllinkbuilder.php", "wicom/translator/builders/");
 use Wicom\Translator\Strategies\Strategydlmeta\DLMeta;
 use Wicom\Translator\Builders\OWLlinkBuilder;
 
-use function \validate_KF_against_JSONSchema;
-
 /**
    # Warning!
    Don't use assertEqualXMLStructure()! It won't check for attributes values!

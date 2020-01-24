@@ -57,7 +57,7 @@ class UnderstandAPITest extends PHPUnit\Framework\TestCase
       $importer->import_classes();
       $importer->import_subsumptions();
       $kf = $importer->getKFInstance();
-      var_dump($kf);
+      print_r($kf);
 
     }
 

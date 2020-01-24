@@ -123,7 +123,7 @@ class MetaJSONDocument extends JSONDocument{
     function insert_subsumption($parent, $child, $id, $compl = "", $disj = ""){
       $data["name"] = $id;
       $data["entity parent"] = $parent;
-      $data["entity child"] = $child;
+      $data["entity children"] = $child;
       $data["disjointness constraints"] = $disj;
       $data["completeness constraints"] = $compl;
 	    array_push($this->content["Relationship"]["Subsumption"], $data);
