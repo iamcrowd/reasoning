@@ -23,17 +23,13 @@
 
 require_once("common.php");
 
-load("autoload.php", "vendor/");
-
 load("crowd_dlmeta.php", "wicom/translator/strategies/strategydlmeta/");
 load("owllinkbuilder.php", "wicom/translator/builders/");
-
 
 use Wicom\Translator\Strategies\Strategydlmeta\DLMeta;
 use Wicom\Translator\Builders\OWLlinkBuilder;
 
-use Opis\JsonSchema\Validator;
-use Opis\JsonSchema\Schema;
+use function \validate_KF_against_JSONSchema;
 
 /**
    # Warning!
@@ -43,24 +39,6 @@ use Opis\JsonSchema\Schema;
  */
 class DLMetaTest extends PHPUnit\Framework\TestCase{
 
-    protected function validate_against_scheme($json){
-      $data = json_decode($json);
-      $scheme_json = file_get_contents('/var/www/html/reasoning/wicom/translator/strategies/strategydlmeta/kfmetaScheme.json');
-      $scheme = Schema::fromJsonString($scheme_json);
-
-      $validator = new Validator();
-      $result = $validator->schemaValidation($data, $scheme);
-
-      if ($result->isValid()) {
-        return true;
-      } else {
-        $error = $result->getFirstError();
-        echo '$data is invalid', PHP_EOL;
-        echo "Error: ", $error->keyword(), PHP_EOL;
-        echo json_encode($error->keywordArgs(), JSON_PRETTY_PRINT), PHP_EOL;
-        return false;
-      }
-    }
     /**
        @testdox Translate a simple model with some KF OBJECT TYPES into OWLlink with SAT queries
      */
@@ -68,7 +46,7 @@ class DLMetaTest extends PHPUnit\Framework\TestCase{
         $json = file_get_contents("translator/strategies/data/testObjTypeIntoOWLlink.json");
         $expected = file_get_contents("translator/strategies/data/testObjTypeIntoOWLlink.owllink");
 
-        if ($this->validate_against_scheme($json)){
+        if (\validate_KF_against_JSONSchema($json)){
           $strategy = new DLMeta();
           $builder = new OWLlinkBuilder();
 
@@ -93,7 +71,7 @@ class DLMetaTest extends PHPUnit\Framework\TestCase{
         $json = file_get_contents("translator/strategies/data/testSubIntoOWLlink.json");
         $expected = file_get_contents("translator/strategies/data/testSubIntoOWLlink.owllink");
 
-        if ($this->validate_against_scheme($json)){
+        if (\validate_KF_against_JSONSchema($json)){
           $strategy = new DLMeta();
           $builder = new OWLlinkBuilder();
 
@@ -118,7 +96,7 @@ class DLMetaTest extends PHPUnit\Framework\TestCase{
         $json = file_get_contents("translator/strategies/data/testSubWithConstraintsIntoOWLlink.json");
         $expected = file_get_contents("translator/strategies/data/testSubWithConstraintsIntoOWLlink.owllink");
 
-        if ($this->validate_against_scheme($json)){
+        if (\validate_KF_against_JSONSchema($json)){
           $strategy = new DLMeta();
           $builder = new OWLlinkBuilder();
 
@@ -144,7 +122,7 @@ class DLMetaTest extends PHPUnit\Framework\TestCase{
         $json = file_get_contents("translator/strategies/data/testRelNoCardIntoOWLlink.json");
         $expected = file_get_contents("translator/strategies/data/testRelNoCardIntoOWLlink.owllink");
 
-        if ($this->validate_against_scheme($json)){
+        if (\validate_KF_against_JSONSchema($json)){
           $strategy = new DLMeta();
           $builder = new OWLlinkBuilder();
 
@@ -170,7 +148,7 @@ class DLMetaTest extends PHPUnit\Framework\TestCase{
         $json = file_get_contents("translator/strategies/data/testRelNoExtendedCardIntoOWLlink.json");
         $expected = file_get_contents("translator/strategies/data/testRelNoExtendedCardIntoOWLlink.owllink");
 
-        if ($this->validate_against_scheme($json)){
+        if (\validate_KF_against_JSONSchema($json)){
           $strategy = new DLMeta();
           $builder = new OWLlinkBuilder();
 
@@ -196,7 +174,7 @@ class DLMetaTest extends PHPUnit\Framework\TestCase{
         $json = file_get_contents("translator/strategies/data/testSubRoleIntoOWLlink.json");
         $expected = file_get_contents("translator/strategies/data/testSubRoleIntoOWLlink.owllink");
 
-        if ($this->validate_against_scheme($json)){
+        if (\validate_KF_against_JSONSchema($json)){
           $strategy = new DLMeta();
           $builder = new OWLlinkBuilder();
 
@@ -223,7 +201,7 @@ class DLMetaTest extends PHPUnit\Framework\TestCase{
         $json = file_get_contents("translator/strategies/data/testSubRelationshipsIntoOWLlink.json");
         $expected = file_get_contents("translator/strategies/data/testSubRelationshipsIntoOWLlink.owllink");
 
-        if ($this->validate_against_scheme($json)){
+        if (\validate_KF_against_JSONSchema($json)){
           $strategy = new DLMeta();
           $builder = new OWLlinkBuilder();
 
