@@ -84,7 +84,18 @@ class MetaJSONDocument extends JSONDocument{
           "Relationship" => [
             "Subsumption" => [],
             "Relationship" => [],
-            "Attribute property" => []
+            "Attributive Property" => []
+          ],
+          "Constraints" => [
+            "Disjointness constraints" => [
+              "Disjoint object type" => [],
+              "Disjoint role" => []
+            ],
+            "Completeness constraints" => [],
+            "Cardinality constraints" => [
+              "Object type cardinality" => [],
+              "Attibutive property cardinality" => []
+            ]
           ]
         ];
     }

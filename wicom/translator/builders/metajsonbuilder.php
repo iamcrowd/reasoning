@@ -24,6 +24,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 namespace Wicom\Translator\Builders;
 
 use function \load;
+use function \validate_KF_against_JSONSchema;
+
 load("jsonbuilder.php");
 load("metajsondocument.php", "../documents/");
 
@@ -45,7 +47,12 @@ class MetaJSONBuilder extends Documents{
 	}
 
 	public function get_product(){
+		if (\validate_KF_against_JSONSchema($this->product->to_json())){
 			return $this->product;
+		} else{
+			echo 'JSON KF Metamodel generated does not match against KF JSON Schema', PHP_EOL;
+			exit();
+		}
 	}
 
 }
