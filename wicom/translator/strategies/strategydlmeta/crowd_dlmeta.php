@@ -40,7 +40,7 @@ class DLMeta extends Strategy{
       parent::__construct();
 
       $this->qapack = new CrowdMetaPack();
-      
+
     }
 
     /**
@@ -55,7 +55,7 @@ class DLMeta extends Strategy{
     */
     protected function translate_disjointness($json, $disj_name, $builder){
       $disjoint = [];
-      $constraints = $json["Disjointness constraints"][0]["Disjoint object type"];
+      $constraints = $json["Constraints"]["Disjointness constraints"]["Disjoint object type"];
 
       foreach ($constraints as $constraint) {
         if (strcasecmp($disj_name,$constraint["name"]) == 0){
@@ -86,7 +86,7 @@ class DLMeta extends Strategy{
     */
     protected function translate_completeness($json, $compl_name, $parent, $builder){
       $complete = [];
-      $constraints = $json["Completeness constraints"];
+      $constraints = $json["Constraints"]["Completeness constraints"];
 
       foreach ($constraints as $constraint) {
         if (strcasecmp($compl_name,$constraint["name"]) == 0){
@@ -103,7 +103,7 @@ class DLMeta extends Strategy{
     }
 
     protected function is_entity_type($json, $objtype){
-      $js_objtype = $json["Entity type"][0]["Object type"];
+      $js_objtype = $json["Entity type"]["Object type"];
 
       foreach ($js_objtype as $ot) {
         if (strcmp($objtype, $ot) == 0){
@@ -125,7 +125,7 @@ class DLMeta extends Strategy{
     }
 
     protected function is_relationship($json, $rel){
-      $js_rel = $json["Relationship"][1]["Relationship"];
+      $js_rel = $json["Relationship"]["Relationship"];
 
       foreach ($js_rel as $r) {
         if (strcmp($r["name"], $rel) == 0){
@@ -156,7 +156,7 @@ class DLMeta extends Strategy{
        constraint are only declared over two or more object types.
     */
     protected function translate_subsumption($json, $builder){
-      $json_subs = $json["Relationship"][0]["Subsumption"];
+      $json_subs = $json["Relationship"]["Subsumption"];
       $already_constrencoded = [];
 
       foreach ($json_subs as $sub){
@@ -228,9 +228,9 @@ class DLMeta extends Strategy{
        Ci \sqsubseteq ∃A \sqcap <= 1 A \sqcap · · · \sqcap ∃An \sqcap <= 1 An
     */
     protected function translate_relationship($json, $builder){
-      $json_rel = $json["Relationship"][1]["Relationship"];
+      $json_rel = $json["Relationship"]["Relationship"];
       $json_role = $json["Role"];
-      $json_ot_card = $json["Cardinality constraints"][0]["Object type cardinality"];
+      $json_ot_card = $json["Constraints"]["Cardinality constraints"]["Object type cardinality"];
 
       foreach ($json_rel as $rel){
           $already_rolencoded = [];
@@ -354,9 +354,9 @@ class DLMeta extends Strategy{
 
         $json = json_decode($json_str, true);
 
-        $js_objtype = $json["Entity type"][0]["Object type"];
+        $js_objtype = $json["Entity type"]["Object type"];
         $js_role = $json["Role"];
-        $js_rel = $json["Relationship"][1]["Relationship"];
+        $js_rel = $json["Relationship"]["Relationship"];
 
         if (!empty($js_objtype)){
             foreach ($js_objtype as $objtype){
