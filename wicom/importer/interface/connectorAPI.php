@@ -125,6 +125,21 @@ class ConnectorAPI {
     }
 
     /**
+       Call API in order to get a objectproperty by id
+     */
+    function getObjectPropertyById($id){
+      $list_path = "";
+      $api_url = $GLOBALS['config']['api_url'];
+      $uuid = uniqid();
+      $list_path .= ConnectorAPI::PROGRAM_CMD . ConnectorAPI::PROGRAM_PARAMS;
+      $commandline = $list_path . " " . "GET" . " " . $api_url . "objectproperties/" . $id . "/";
+
+      exec($commandline, $answer);
+      $this->col_answers = [];
+      array_push($this->col_answers, join($answer));
+    }
+
+    /**
        Call API in order to get a class by id
      */
     function getSubClassById($id){

@@ -46,6 +46,10 @@ class MetaJSONBuilder extends Documents{
 		$this->product->insert_subsumption($parent, $child, $id, $compl, $disj);
 	}
 
+	public function insert_roles($rolename, $domain, $range, $card_min, $card_max){
+		$this->product->insert_roles($rolename, $domain, $range, $card_min, $card_max);
+	}
+
 	public function get_product(){
 		if (\validate_KF_against_JSONSchema($this->product->to_json())){
 			return $this->product;

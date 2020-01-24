@@ -73,7 +73,38 @@ class OWL2Importer extends StrategyImporter{
       }
     }
 
-    function import_object_properties(){}
+    function import_object_properties(){
+      $this->api->getOntologyById($this->onto_id);
+      $opasmeta = $this->api->getObjectProperties();
+
+      foreach ($opasmeta as $anop) { //object property (DL role)
+        $this->api->getObjectPropertyById($this->api->getIDfromAPIElementID($anop));
+        $rolename = $this->api->getObjectPropertyURI();
+
+        $domain_id = "";
+        $range_id = "";
+
+        $domain_id = $this->api->getObjectPropertyDomain();
+        // ¿domain and range only classes?
+        if (\strcmp($domain_id, "") != 0) {
+          $this->api->getClassById($this->api->getIDfromAPIElementID($domain_id));
+          $domain = $this->api->getClassURI();
+        } else {
+          $domain = "http://www.w3.org/2002/07/owl#Thing";
+        }
+
+        $range_id = $this->api->getObjectPropertyRange();
+        if (\strcmp($range_id, "") != 0) {
+          $this->api->getClassById($this->api->getIDfromAPIElementID($range_id));
+          $range = $this->api->getClassURI();
+        } else {
+          $domain = "http://www.w3.org/2002/07/owl#Thing";
+        }
+
+        // cardinalities 0..N default. We should look at them after
+        $this->anmetainstance->insert_roles($rolename, $domain, $range, "0", "N");
+      }
+    }
 
     function import_data_properties(){}
 

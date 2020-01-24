@@ -164,6 +164,56 @@ class UnderstandAPI {
       return $this->class["prefix"];
     }
 
+
+    /**
+       Return a class from the current ontology
+
+       @param an id class number
+       @return a JSON Array containing the class id
+       Array
+       (
+       "ontology" => "http://127.0.0.1:8000/ontology/3/",
+       "uri" => "http://www.w3.org/2006/time#intervalContains",
+       "name" => "time.intervalContains",
+       "prefix" => "time",
+       "op_cdomain" => "http://127.0.0.1:8000/classes/443/",
+       "op_crange" => "http://127.0.0.1:8000/classes/443/",
+       "rdf_label" => "['interval contains']",
+       "rdf_comment" => "['If a proper interval T1 is intervalContains another proper interval T2, then the beginning of T1 is before the beginning of T2, and the end of T1 is after the end of T2.']"
+       )
+     */
+    function getObjectPropertyById($id){
+      $string = "objectproperties/" . $id;
+      if ($this->status($string)) {
+        $this->connector->getObjectPropertyById($id);
+        $this->objprop = json_decode($this->connector->get_col_answers(), true);
+        return $this->objprop;
+      } else {
+          echo "{\"ERROR\": \"restfulAPI returned 404 Not Found.\"}";
+          exit();
+      }
+    }
+
+    function getObjectPropertyName(){
+      return $this->objprop["name"];
+    }
+
+    function getObjectPropertyURI(){
+      return $this->objprop["uri"];
+    }
+
+    function getObjectPropertyPrefix(){
+      return $this->objprop["prefix"];
+    }
+
+    function getObjectPropertyDomain(){
+      return $this->objprop["op_cdomain"];
+    }
+
+    function getObjectPropertyRange(){
+      return $this->objprop["op_crange"];
+    }
+
     /**
        Return a subclass from the current ontology
 

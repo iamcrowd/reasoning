@@ -46,7 +46,7 @@ class MetaJSONDocument extends JSONDocument{
 
        This is used for giving a unique name to each subsumption created.
     */
-    protected $subsumption_number = 0;
+    protected $card_number_id = 0;
 
     /**
        If the ontology IRI is not provided, this will be used as the default.
@@ -112,6 +112,44 @@ class MetaJSONDocument extends JSONDocument{
     public function insert_object_type($otname){
 	     array_push($this->content["Entity type"]["Object type"], $otname);
     }
+
+    /**
+       Insert Roles
+
+       @param $rolename {string} The role name.
+       @param $domain {string} The role domain name (relationship).
+       @param $range {string} The role range name. (entity type)
+       @param $card_min {string} The role min cardinality.
+       @param $card_max {string} The role max cardinality.
+    */
+    public function insert_roles($rolename, $domain, $range, $card_min, $card_max){
+      $data["rolename"] = $rolename;
+      $data["relationship"] = $domain;
+      $data["entity type"] = $range;
+      $data["object type cardinality"] = [];
+      $id_card = $this->insert_object_type_cardinality($card_min, $card_max);
+      array_push($data["object type cardinality"], $id_card);
+      array_push($this->content["Role"], $data);
+    }
+
+    /**
+       Insert Object Type Cardinalities
+
+       @param $card_min {string} A min card.
+       @param $card_max {string} A max card.
+
+       @return an card id to be referenced from roles
+    */
+    public function insert_object_type_cardinality($card_min = "0", $card_max = "N"){
+      $this->card_number_id = $this->card_number_id + 1;
+      $data["name"] = "obj type card number_". $this->card_number_id;
+      $data["minimum"] = $card_min;
+      $data["maximum"] = $card_max;
+      array_push($this->content["Constraints"]["Cardinality constraints"]["Object type cardinality"], $data);
+      return $data["name"];
+    }
+
+
 
     /**
        Insert a Subsumptions.
