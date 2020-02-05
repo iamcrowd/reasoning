@@ -16,14 +16,14 @@
        {
          "name": "http://crowd.fi.uncoma.edu.ar/kb1#s1",
          "entity parent": "http://crowd.fi.uncoma.edu.ar/kb1#Person",
-         "entity children": "http://crowd.fi.uncoma.edu.ar/kb1#Dog",
+         "entity child": "http://crowd.fi.uncoma.edu.ar/kb1#Dog",
          "disjointness constraints": "",
          "completeness constraints": ""
        },
        {
          "name": "http://crowd.fi.uncoma.edu.ar/kb1#s2",
          "entity parent": "http://crowd.fi.uncoma.edu.ar/kb1#Person",
-         "entity children": "http://crowd.fi.uncoma.edu.ar/kb1#Cat",
+         "entity child": "http://crowd.fi.uncoma.edu.ar/kb1#Cat",
          "disjointness constraints": "",
          "completeness constraints": ""
        }

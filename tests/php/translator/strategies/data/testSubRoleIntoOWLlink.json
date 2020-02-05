@@ -40,14 +40,14 @@
        {
          "name": "http://crowd.fi.uncoma.edu.ar/kb1#r1",
          "entity parent": "http://crowd.fi.uncoma.edu.ar/kb1#institution",
-         "entity children": "http://crowd.fi.uncoma.edu.ar/kb1#faculty",
+         "entity child": "http://crowd.fi.uncoma.edu.ar/kb1#faculty",
          "disjointness constraints": "",
          "completeness constraints": ""
        },
        {
          "name": "http://crowd.fi.uncoma.edu.ar/kb1#r2",
          "entity parent": "http://crowd.fi.uncoma.edu.ar/kb1#person",
-         "entity children": "http://crowd.fi.uncoma.edu.ar/kb1#employee",
+         "entity child": "http://crowd.fi.uncoma.edu.ar/kb1#employee",
          "disjointness constraints": "",
          "completeness constraints": ""
        }
