@@ -161,7 +161,7 @@ class DLMeta extends Strategy{
 
       foreach ($json_subs as $sub){
           $parent = $sub["entity parent"];
-          $child = $sub["entity children"];
+          $child = $sub["entity child"];
 
           if ($this->is_entity_type($json,$parent) && $this->is_entity_type($json,$child)){
 
