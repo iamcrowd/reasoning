@@ -283,7 +283,7 @@ class DLMeta extends Strategy{
                       array_push($card_conj, $card_min_ax);
                     }
 
-                    if (strcasecmp($max, "N") != 0){
+                    if ((strcasecmp($max, "N") != 0) && (strcasecmp($max, "*") != 0)){
                       $card_max_ax = [
                         "maxcard" => [$max,
                             ["inverse" => ["role" => $role["rolename"]]]
