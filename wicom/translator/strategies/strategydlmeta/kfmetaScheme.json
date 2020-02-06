@@ -87,7 +87,7 @@
                 "type": "string"
               },
               "entity child": {
-                "type": "string"
+                  "type": "string"
               },
               "disjointness constraints": {
                 "type": "string"
@@ -123,7 +123,7 @@
         }
       }
     },
-    "Constraint": {
+    "Constraints": {
       "description": "",
       "type": "object",
       "properties": {
@@ -219,5 +219,5 @@
       }
     }
   },
-  "required": []
+  "required": ["Entity type","Role","Relationship","Constraints"]
 }
