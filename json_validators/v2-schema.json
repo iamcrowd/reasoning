@@ -1,0 +1,118 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    
+    "definitions": {
+        "position": {
+            "type": "object",
+            "properties": {
+                "x": { "type": "number" },
+                "y": { "type": "number" }
+            },
+            "required": ["x", "y"]
+        }, 
+
+        "size": {
+            "type": "object",
+            "properties": {
+                "height": { "type": "number" },
+                "width": { "type": "number" }
+            },
+            "required": ["height", "width"]
+        }, 
+        
+        "class": {
+            "type": "object",
+            "properties": {
+                "attributes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }, 
+                "id": { "type": "string" },
+                "methods": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "name": { "type": "string" },
+                "size": { "$ref": "#/definitions/size" },
+                "position": { "$ref": "#/definitions/position" }
+            }, 
+            "required": ["id", "name"]
+        },
+        
+        "inheritance": {
+            "type": "object",
+            "properties": {
+                "id": { "type": "string" },
+                "subClasses": {
+                    "type": "array",
+                    "items": { "type": "string" }
+                },
+                "superClasses": {
+                    "type": "array",
+                    "items": { "type": "string" }
+                },
+                "type": { "type": "string" },
+                "size": { "$ref": "#/definitions/size" },
+                "position": { "$ref": "#/definitions/position" }
+            },
+            "required": ["id", "subClasses", "superClasses"]
+        },
+
+        "association_info": {
+            "type": "object",
+            "properties": {
+                "cardDestino": { "type": "string" },
+                "cardOrigin": { "type": "string" },
+                "nameAssociation": { "type": "string" },
+                "roleDestiny": { "type": "string" },
+                "roleOrigin": { "type": "string"} 
+            },
+            "required": ["nameAssociation",
+                         "cardDestino", "cardOrigin",
+                         "roleDestiny", "roleOrigin"]
+        }, 
+        
+        "association": {
+            "type": "object",
+            "properties": {
+                "id": { "type": "string" },
+                "info": { "$ref": "#/definitions/association_info" },
+                "source": { "type": "string" },
+                "target": { "type": "string" },
+                "type": {
+                    "type": "string",
+                    "enum": ["binaryAssociation"]
+                },
+                "size": { "$ref": "#/definitions/size" },
+                "position": { "$ref": "#/definitions/position" }
+            },
+            "required": ["id", "info", "source", "target", "type"]
+        } 
+        
+    }, 
+
+    
+    "type": "object",
+    "properties": {
+        "assocWithClass": {
+            "type": "array"
+        },
+        "associations": {
+            "type": "array",
+            "items": { "$ref": "#/definitions/association" }
+        },
+        "inheritances" : {
+            "type": "array",
+            "items": { "$ref": "#/definitions/inheritance" }
+        },
+        "classes": {
+            "type": "array",
+            "items": { "$ref": "#/definitions/class" }
+        }
+    },
+    "required": ["classes", "associations", "inheritances", "assocWithClass"]
+}
