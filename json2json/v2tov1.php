@@ -122,10 +122,6 @@ class V2toV1 extends UMLConverter{
             }
 
             $link = [
-                'classes' => [
-                    $this->id2class[$assoc['source']],
-                    $this->id2class[$assoc['target']],
-                ],
                 'multiplicity' => [
                     $assoc['info']['cardDestino'],
                     $assoc['info']['cardOrigin'],
@@ -140,9 +136,17 @@ class V2toV1 extends UMLConverter{
 
             if ($this->prefix_iris) {
                 $link['name'] = V2toV1::DEFAULT_IRI .
-                              $assoc['info']['nameAssociation'];
+                                $assoc['info']['nameAssociation'];
+                $link['classes'] = [
+                    V2toV1::DEFAULT_IRI . $this->id2class[$assoc['source']],
+                    V2toV1::DEFAULT_IRI . $this->id2class[$assoc['target']],
+                ];
             }else{
                 $link['name'] = $assoc['info']['nameAssociation'];
+                $link['classes'] = [
+                    $this->id2class[$assoc['source']],
+                    $this->id2class[$assoc['target']],
+                ];
             }
 
             $links[] = $link;
@@ -164,7 +168,12 @@ class V2toV1 extends UMLConverter{
             // Convert each child id into its name.
             $children = [];
             foreach ($gen2['subClasses'] as $child){
-                $children[] = $this->id2class[$child];
+                if ($this->prefix_iris){
+                    $children[] = V2toV1::DEFAULT_IRI .
+                                  $this->id2class[$child];
+                }else{
+                    $children[] = $this->id2class[$child];
+                }
             }
 
             // Set constraint
@@ -182,15 +191,17 @@ class V2toV1 extends UMLConverter{
                 'multiplicity' => null,
                 'name' => V2toV1::DEFAULT_IRI . $gen2['id'],
                 'type' => 'generalization',
-                'parent' => $this->id2class[$gen2['superClasses'][0]],
                 'constraint' => $constraints,
             ];
 
             if ($this->prefix_iris){
                 $gen['name'] = V2toV1::DEFAULT_IRI .
                                $assoc['info']['nameAssociation'];
+                $gen['parent'] = V2toV1::DEFAULT_IRI .
+                                 $this->id2class[$gen2['superClasses'][0]];
             }else{
                 $gen['name'] = $assoc['info']['nameAssociation'];
+                $gen['parent'] = $this->id2class[$gen2['superClasses'][0]];
             }
 
             $gens[] = $gen;
