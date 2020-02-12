@@ -45,7 +45,8 @@ class DLMetaTest extends PHPUnit\Framework\TestCase{
 
     protected function validate_against_scheme($json){
       $data = json_decode($json);
-      $scheme_json = file_get_contents('/var/www/html/reasoning/wicom/translator/strategies/strategydlmeta/kfmetaScheme.json');
+        $scheme_json = file_get_contents(__DIR__ .
+                                         '/../../../../wicom/translator/strategies/strategydlmeta/kfmetaScheme.json');
       $scheme = Schema::fromJsonString($scheme_json);
 
       $validator = new Validator();
