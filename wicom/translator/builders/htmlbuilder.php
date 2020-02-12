@@ -148,8 +148,12 @@ class HTMLBuilder extends DocumentBuilder{
             $this->product->end_inverseof();
             break;
         case "exists" :
-            $this->product->begin_somevaluesfrom();
-            $this->DL_element($elt["exists"][0]);
+                $this->product->begin_somevaluesfrom();
+                if (count($elt["exists"]) > 1){
+                    $this->DL_element($elt["exists"][0]);
+                }else{
+                    $this->DL_element($elt["exists"]);
+                }
             $this->product->insert_class("owl:Thing");
             $this->product->end_somevaluesfrom();
             break;
