@@ -49,6 +49,9 @@ if (!array_key_exists('version', $_GET)){
 $input = $_POST['json'];
 $version = $_GET['version'];
 
+$valid = null;
+$errors = [];
+
 if ($version == "v1"){
 
     /*
