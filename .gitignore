@@ -3,3 +3,4 @@
 docs/doxygen/**
 run/**
 config/config.php
+vendor/**
