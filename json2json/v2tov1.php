@@ -189,18 +189,17 @@ class V2toV1 extends UMLConverter{
             $gen = [
                 'classes' => $children,
                 'multiplicity' => null,
-                'name' => V2toV1::DEFAULT_IRI . $gen2['id'],
                 'type' => 'generalization',
                 'constraint' => $constraints,
             ];
 
             if ($this->prefix_iris){
                 $gen['name'] = V2toV1::DEFAULT_IRI .
-                               $assoc['info']['nameAssociation'];
+                               $gen2['id'];
                 $gen['parent'] = V2toV1::DEFAULT_IRI .
                                  $this->id2class[$gen2['superClasses'][0]];
             }else{
-                $gen['name'] = $assoc['info']['nameAssociation'];
+                $gen['name'] = $gen2['id'];
                 $gen['parent'] = $this->id2class[$gen2['superClasses'][0]];
             }
 
