@@ -35,6 +35,13 @@ use function \json_decode;
  */
 class V2toV1 extends UMLConverter{
 
+    protected const DEFAULT_IRI = "http://fi.uncoma.edu.ar/api#";
+
+    /**
+       Does the output JSON have IRIs as names?
+     */
+    protected $prefix_iris = true;
+    
     /**
        The input as a JSON parsed string. 
 
@@ -62,7 +69,7 @@ class V2toV1 extends UMLConverter{
        Generate mappings between classes and ids.
 
        Create the id2class mapping for converting an id into a class easily.
-    */
+     */
     protected function map_class_with_ids(){
         $this->id2class = [];
         $lst_classes = $this->input['classes'];
@@ -78,13 +85,19 @@ class V2toV1 extends UMLConverter{
         
         $lst_classes = $this->input['classes'];
         foreach ($lst_classes as $class){
-            $ret[] = [
+            $class_v1 = [
                 'attrs' => [],
                 'methods' => [],
-                'name' => $class['name'],
                 'id' => $class['id'],
                 'position' => $class['position'],
             ];
+            if ($this->prefix_iris){
+                $class_v1['name'] = V2toV1::DEFAULT_IRI . $class['name'];
+            }else{
+                $class_v1['name'] = $class['name'];
+            }
+            
+            $ret[] = $class_v1;
         }
 
         return [
@@ -107,8 +120,8 @@ class V2toV1 extends UMLConverter{
             }else{
                 $id = "c$lastid";
             }
-            
-            $links[] = [
+
+            $link = [
                 'classes' => [
                     $this->id2class[$assoc['source']],
                     $this->id2class[$assoc['target']],
@@ -117,7 +130,6 @@ class V2toV1 extends UMLConverter{
                     $assoc['info']['cardDestino'],
                     $assoc['info']['cardOrigin'],
                 ],
-                'name' => $assoc['info']['nameAssociation'],
                 'type' => 'association',
                 'id' => $id,
                 'roles' => [
@@ -125,6 +137,15 @@ class V2toV1 extends UMLConverter{
                     $assoc['info']['roleDestiny'],
                 ],
             ];
+
+            if ($this->prefix_iris) {
+                $link['name'] = V2toV1::DEFAULT_IRI .
+                              $assoc['info']['nameAssociation'];
+            }else{
+                $link['name'] = $assoc['info']['nameAssociation'];
+            }
+
+            $links[] = $link;
         }
 
         return [
@@ -155,15 +176,24 @@ class V2toV1 extends UMLConverter{
             }else if ($gen2['type'] == 'c/d') {
                 $constraints = ['covering', 'disjoint'];
             }
-            
-            $gens[] = [
+
+            $gen = [
                 'classes' => $children,
                 'multiplicity' => null,
-                'name' => $gen2['id'],
+                'name' => V2toV1::DEFAULT_IRI . $gen2['id'],
                 'type' => 'generalization',
                 'parent' => $this->id2class[$gen2['superClasses'][0]],
                 'constraint' => $constraints,
             ];
+
+            if ($this->prefix_iris){
+                $gen['name'] = V2toV1::DEFAULT_IRI .
+                               $assoc['info']['nameAssociation'];
+            }else{
+                $gen['name'] = $assoc['info']['nameAssociation'];
+            }
+
+            $gens[] = $gen;
         }
 
         return [
@@ -183,8 +213,16 @@ class V2toV1 extends UMLConverter{
         return [
             'classes' => $classes,
             'links' => $links,
-            ];
+        ];
     } // convert
+
+    function with_prefix_iris(){
+        $this->prefix_iris = true;
+    }
+
+    function without_prefix_iris(){
+        $this->prefix_iris = false;
+    }
     
 }
 
