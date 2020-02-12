@@ -98,7 +98,7 @@
     
     "type": "object",
     "properties": {
-        "assocWithClass": {
+        "associationWithClass": {
             "type": "array"
         },
         "associations": {
@@ -114,5 +114,6 @@
             "items": { "$ref": "#/definitions/class" }
         }
     },
-    "required": ["classes", "associations", "inheritances", "assocWithClass"]
+    "required": ["classes", "associations", "inheritances",
+                 "associationWithClass"]
 }
