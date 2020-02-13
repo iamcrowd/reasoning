@@ -272,6 +272,11 @@ class V1toV2 extends UMLConverter{
             'inheritances' => $inheritances,
         ];             
     }
+
+    function with_prefix_iris(){
+    }
+    function without_prefix_iris(){
+    }
 }
 
 ?>
