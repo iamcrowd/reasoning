@@ -38,8 +38,7 @@ class V1Validator {
     /**
        An Opis::Schema instance with the loaded V1 schema.
      */
-    protected $schema = Schema::fromJsonString(
-        file_get_contents('./v1-schema.json'));
+    protected $schema = null;
 
     /**
        An Opis::Validator instance.
@@ -55,7 +54,9 @@ class V1Validator {
        @param $input [string] A JSON string.
      */
     function __construct($input=''){
-        $this->input = json_decode($input, true);
+        $this->schema = Schema::fromJsonString(
+            file_get_contents(__DIR__ . './v1-schema.json'));
+        $this->input = json_decode($input);
         $this->validator = new Validator();
     }
 

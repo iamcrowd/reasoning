@@ -35,7 +35,7 @@ use function \json_decode;
  */
 class V2toV1 extends UMLConverter{
 
-    protected const DEFAULT_IRI = "http://fi.uncoma.edu.ar/api#";
+    const DEFAULT_IRI = "http://fi.uncoma.edu.ar/api#";
 
     /**
        Does the output JSON have IRIs as names?
