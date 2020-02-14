@@ -1,0 +1,162 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+
+    "definitions": {
+        "class-attribute": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "class-method": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+
+        "link-multiplicity": {
+            "oneOf": [
+                {
+                    "type": "array",
+                    "items": {
+                        "type": "string",
+                        "patters":
+                        "^(\\*|\\d|\\+|(\\d+|\\*|\\+)\\.\\.(\\d|\\*|\\+)+)$"
+                    }
+                },
+                { "type": "null" }
+            ]
+        },
+        "link-role": {
+            "oneOf": [
+                {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                { "type": "null" }
+            ]
+        },
+        "link-constraint": {
+            "type": "array",
+            "items": {
+                "type": "string",
+                "enum": ["disjoint", "covering"]
+            }
+        },
+
+        "position": {
+            "type": "object",
+            "properties": {
+                "x": { "type": "number" },
+                "y": { "type": "number" }
+            },
+            "required": ["x", "y"]
+        }, 
+
+        "size": {
+            "type": "object",
+            "properties": {
+                "height": { "type": "number" },
+                "width": { "type": "number" }
+            },
+            "required": ["height", "width"]
+        }, 
+
+        "class": {
+            "type": "object",
+            "properties": {
+                "attrs": { "$ref": "#/definitions/class-attribute" },
+                "methods": { "$ref": "#/definitions/class-method" },
+                "name": { "type": "string" },
+                "id" : { "type": "string"},
+                "position": { "$ref": "#/definitions/position" },
+                "size": { "$ref": "#/definitions/size" }
+            },
+            "required": ["name"]
+        },
+        "link": {
+            "type": "object",
+            "properties": {
+                "classes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "constraint": { "$ref": "#/definitions/link-constraint" },
+                "parent": { "type": "string" },
+                "multiplicity": { "$ref": "#/definitions/link-multiplicity" },
+                "name": {
+                    "type": "string"
+                },
+                "roles": { "$ref": "#/definitions/link-role" },
+                "type": {
+                    "type": "string",
+                    "enum": ["association", "generalization"]
+                }
+            },
+            "required": ["name", "classes", "type"],
+
+            "if": {
+                "properties": {
+                    "type": { "const": "generalization" }
+                }
+            },
+            "then": {
+                "required": ["name", "type", "parent", "constraint"]
+            }
+                
+        },
+        "prefix-dec": {
+            "type": "object",
+            "properties": {
+                "prefix": { "type": "string" },
+                "value": {
+                    "type": "string",
+                    "format": "iri"
+                }
+            },
+            "required": ["prefix", "value"]
+        }        
+    },
+
+    "type": "object",
+    "properties": {
+        "classes": {
+            "type": "array",
+            "items": { "$ref": "#/definitions/class" }
+        },
+        "links": {
+            "type": "array",
+            "items": { "$ref": "#/definitions/link" }
+        },
+        "namespaces": {
+            "type": "object",
+            "properties": {
+                "IRIs": {
+                    "type": "array",
+                    "items": { "$ref": "#/definitions/prefix-dec" }
+                },
+                "defaultIRIs": {
+                    "type": "array",
+                    "items": { "$ref": "#/definitions/prefix-dec" }
+                },
+                "ontologyIRI": {
+                    "type": "array",
+                    "items": { "$ref": "#/definitions/prefix-dec" }
+                }
+            },
+            "required": []
+        },
+        "owllink": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        }
+    },
+    "required": ["classes", "links"]
+}

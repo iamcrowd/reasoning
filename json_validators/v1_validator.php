@@ -24,71 +24,14 @@
 namespace JSONValidators;
 
 use function \load;
-use Opis\JsonSchema\{
-    Validator, ValidatorResult, ValidationError, Schema
-};
-use function \json_decode;
-use function \jsone_encode;
+load ("json_validator.php");
 
 /**
    Validate a V1 JSON.
  */
-class V1Validator {
-
-    /**
-       An Opis::Schema instance with the loaded V1 schema.
-     */
-    protected $schema = null;
-
-    /**
-       An Opis::Validator instance.
-     */
-    protected $validator = null;
-
-    /**
-       The Opis::ValidationResult instance. This is the last validation result.
-     */
-    protected $results = null;
-    
-    /**
-       @param $input [string] A JSON string.
-     */
-    function __construct($input=''){
-        $this->schema = Schema::fromJsonString(
-            file_get_contents(__DIR__ . './v1-schema.json'));
-        $this->input = json_decode($input);
-        $this->validator = new Validator();
-    }
-
-    /**
-       @return [boolean] True if the input is successful, False otherwise.
-     */
-    function validate() {
-        $this->results = $this->validator->schemaValidation(
-            $this->input, $this->validator);
-
-        return $this->results->isValid();       
-    }
-
-    /**
-       Generate the error reports in string.
-
-       @return An array of strings with the error descriptions.
-     */
-    function get_errors(){
-        if ($this->results == null){
-            return [];
-        }
-        
-        $arr = [];
-        $lst_errors = $this->results->getErrors();
-
-        foreach ($lst_errors as $error){
-            $arr[] = "Error: " . $error->keyword .
-                     json_encode($error->keywordArgs(), JSON_PRETTY_PRINT);
-        }
-        
-        return $arr;
+class V1Validator extends JSONValidator {
+    function get_schemapath(){
+        return __DIR__ . '/v1-schema.json';
     }
 }
 

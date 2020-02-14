@@ -22,8 +22,10 @@
 
 require_once("../common/import_functions.php");
 
+load("v1_validator.php");
 load("v2_validator.php");
 
+use JSONValidators\V1Validator;
 use JSONValidators\V2Validator;
 
 function show_usage($message){
@@ -54,14 +56,12 @@ $errors = [];
 
 if ($version == "v1"){
 
-    /*
     $validator = new V1Validator($input);
     $valid = $validator->validate();
     
     if (!$valid){
         $errors = $validator->get_errors();
     }
-    */
     
 }else if ($version == "v2"){
 
