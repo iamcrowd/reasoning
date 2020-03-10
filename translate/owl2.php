@@ -36,21 +36,21 @@
    @return An XML web page.
  */
 
-require_once '../../common/import_functions.php';
+require_once '../common/import_functions.php';
 
-load('translator.php', '../../wicom/translator/');
-load('owldocument.php', '../../wicom/translator/documents/');
-load('owllinkdocument.php', '../../wicom/translator/documents/');
-load('crowd_uml.php','../../wicom/translator/strategies/');
-load('owlbuilder.php', '../../wicom/translator/builders/');
-load('htmlbuilder.php', '../../wicom/translator/builders/');
-load('owllinkbuilder.php', '../../wicom/translator/builders/');
-load('berardistrat.php','../../wicom/translator/strategies/');
+load('translator.php', '../wicom/translator/');
+load('owldocument.php', '../wicom/translator/documents/');
+load('owllinkdocument.php', '../wicom/translator/documents/');
+// load('crowd_uml.php','../wicom/translator/strategies/');
+load('owlbuilder.php', '../wicom/translator/builders/');
+load('htmlbuilder.php', '../wicom/translator/builders/');
+load('owllinkbuilder.php', '../wicom/translator/builders/');
+load('berardistrat.php', '../wicom/translator/strategies/');
 
 
 use Wicom\Translator\Translator;
 use Wicom\Translator\Documents\OWLDocument;
-use Wicom\Translator\Strategies\UMLcrowd;
+// use Wicom\Translator\Strategies\UMLcrowd;
 use Wicom\Translator\Strategies\Berardi;
 use Wicom\Translator\Builders\OWLBuilder;
 use Wicom\Translator\Builders\OWLlinkBuilder;
@@ -77,40 +77,41 @@ Use, for example:
 
 
     switch ($strategy){
-    case "crowd" :
-        $strat = new UMLcrowd();
-        break;
-    case "berardi" :
-        $strat = new Berardi();
-        break;
-    default:
-        die("Invalid Strategy!");
+        case "crowd" :
+            /*
+            $strat = new UMLcrowd();
+            break;
+            */
+        case "berardi" :
+            $strat = new Berardi();
+            break;
+        default:
+            die("Invalid Strategy!");
     }
 
     switch ($format){
-    case "owlxml" :
-        $trans = new Translator($strat, new OWLBuilder());
-        $strat->change_min_maxTo_false();
-        $res = $trans->to_owl2($_POST['json']);
-        break;
-    case "html" :
-        $builder = new HTMLBuilder();
-        break;
-    case "owllink" :
-        $trans = new Translator($strat, new OWLlinkBuilder());
-        $res = $trans->to_owllink($_POST['json']);
-        break;
-/*    case "rdfxml" :
-        $builder = new OWLlinkBuilder();
-        break;
-    case "rdfturtle" :
-        $builder = new OWLlinkBuilder();
-        break;
-    case "rdfmanchester" :
-        $builder = new OWLlinkBuilder();
-        break; */
-    default:
-        die("Invalid Format!");
+        case "owlxml" :
+            $trans = new Translator($strat, new OWLBuilder());
+            $res = $trans->to_owl2($_POST['json']);
+            break;
+        case "html" :
+            $builder = new HTMLBuilder();
+            break;
+        case "owllink" :
+            $trans = new Translator($strat, new OWLlinkBuilder());
+            $res = $trans->to_owllink($_POST['json']);
+            break;
+            /*    case "rdfxml" :
+               $builder = new OWLlinkBuilder();
+               break;
+               case "rdfturtle" :
+               $builder = new OWLlinkBuilder();
+               break;
+               case "rdfmanchester" :
+               $builder = new OWLlinkBuilder();
+               break; */
+        default:
+            die("Invalid Format!");
     }
 
     print_r($res);
