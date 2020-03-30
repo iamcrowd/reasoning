@@ -1,11 +1,11 @@
 <?php
 /*
 
-   Copyright 2016 Giménez, Christian
+   Copyright 2020 Rini
 
-   Author: Giménez, Christian
+   Author: Rini
 
-   berardistrat.php
+   crowd_orm_strat.php
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -24,7 +24,6 @@
 namespace Wicom\Translator\Strategies;
 
 use function \load;
-//load('berardipack.php', 'qapackages/');
 load('enzopack.php', 'qapackages/');
 load('strategy.php');
 load('orm.php');
@@ -32,8 +31,6 @@ load('orm.php');
 use Wicom\Translator\Strategies\QAPackages\EnzoPack;
 
 /**
-   I implement the method explained on "Reasoning on UML Class Diagrams" by
-   Daniela Berardi, Diego Calvanesse and Giuseppe De Giacomo.
 
    @see Translator class for description about the JSON format.
  */
@@ -144,16 +141,16 @@ class CrowdORM extends ORM{
 
        @param link A generalization link in a JSON string.
      */
-	 
+
 	protected function translate_generalization_union($link, $builder){
 			$parent = $link["parent"];
 			$lst_entities = [];
 			$lst_union =  [];
-			
+
 			foreach ($link["entities"] as $class){
 				array_push($lst_union, ["class" => $class]);
 			}
-						
+
 			$lst = null;
 			$lst = [
                 ["subclass" => [
@@ -161,25 +158,25 @@ class CrowdORM extends ORM{
                     ["class" => $parent]]]
             ];
             $builder->translate_DL($lst);
-			
+
 			$lst = [
                 ["subclass" => [
 					["class" => $parent],
                     ["union" => $lst_union]]]
             ];
             $builder->translate_DL($lst);
-			
+
 	}
-	
+
 	protected function translate_generalization_exclusive($link, $builder){
 			$parent = $link["parent"];
 			$lst_entities = [];
 			$lst_union =  [];
-			
+
 			foreach ($link["entities"] as $class){
 				array_push($lst_union, ["class" => $class]);
 			}
-						
+
 			$lst = null;
 			$lst = [
                 ["subclass" => [
@@ -187,7 +184,7 @@ class CrowdORM extends ORM{
                     ["class" => $parent]]]
             ];
             $builder->translate_DL($lst);
-			
+
 			$lst = null;
 			$count=1;
 			$count_entities=sizeof($link["entities"]);
@@ -203,16 +200,16 @@ class CrowdORM extends ORM{
 				$count++;
 			}
 	}
-	
+
 	protected function translate_generalization_exlusiveExhaustive($link, $builder){
 			$parent = $link["parent"];
 			$lst_entities = [];
 			$lst_union =  [];
-			
+
 			foreach ($link["entities"] as $class){
 				array_push($lst_union, ["class" => $class]);
 			}
-						
+
 			$lst = null;
 			$lst = [
                 ["subclass" => [
@@ -220,14 +217,14 @@ class CrowdORM extends ORM{
                     ["class" => $parent]]]
             ];
             $builder->translate_DL($lst);
-			
+
 			$lst = [
                 ["subclass" => [
 					["class" => $parent],
                     ["union" => $lst_union]]]
             ];
             $builder->translate_DL($lst);
-			
+
 			$lst = null;
 			$count=1;
 			$count_entities=sizeof($link["entities"]);
@@ -242,10 +239,10 @@ class CrowdORM extends ORM{
 				}
 				$count++;
 			}
-			
+
 	}
-	 
-    protected function translate_generalization($link, $builder){     
+
+  protected function translate_generalization($link, $builder){
 		$parent=$link["parent"];
         foreach ($link["entities"] as $class){
             // Translate the parent-child relation
@@ -254,26 +251,28 @@ class CrowdORM extends ORM{
                     ["class" => $class],
                     ["class" => $parent]]]
             ];
-            $builder->translate_DL($lst);			
+            $builder->translate_DL($lst);
         }
 		//VERIFY "subtypingContraint"
 		//echo "WOW!".strtoupper($link["subtypingContraint"]);
-		switch (strtoupper($link["subtypingContraint"])) {
-			
-			case "UNION":
-				$this->translate_generalization_union($link,$builder);
-				break;
-			case "EXCLUSIVE":
-				$this->translate_generalization_exclusive($link,$builder);
-				break;
-			case "EXCLUSIVEEXHAUSTIVE":				  
-				$this->translate_generalization_exlusiveExhaustive($link,$builder);
-				break;			
-		}
+
+    if (in_array("union", $link["subtypingContraint"])){
+      if (in_array("exclusive", $link["subtypingContraint"])){
+        $this->translate_generalization_exlusiveExhaustive($link, $builder);
+      }
+      else{
+        $this->translate_generalization_union($link, $builder);
+      }
     }
+    else{
+      if (in_array("exclusive", $link["subtypingContraint"])){
+        $this->translate_generalization_exclusive($link, $builder);
+      }
+    }
+  }
 
     protected function translate_attributes($json, $builder){
-      
+
     }
 
     /**
@@ -284,7 +283,7 @@ class CrowdORM extends ORM{
        @return false if no "links" part has been provided.
      */
     protected function translate_links($json, $builder){
-		
+
         if (! array_key_exists("connectors", $json)){
             return false;
         }
