@@ -41,6 +41,7 @@ class v1tov2Test extends PHPUnit\Framework\TestCase{
         $expected = file_get_contents('json2json/data/classes2.json');
 
         $conv = new V1toV2($input);
+        $conv->without_prefix_iris();
         $actual = $conv->classes_str();
         $this->assertJsonStringEqualsJsonString($expected, $actual, true);
     }
@@ -54,6 +55,7 @@ class v1tov2Test extends PHPUnit\Framework\TestCase{
         $expected = file_get_contents('json2json/data/assoc2.json');
 
         $conv = new V1toV2($input);
+        $conv->without_prefix_iris();
         $actual = $conv->associations_str();
         $this->assertJsonStringEqualsJsonString($expected, $actual, true);
     }
@@ -66,6 +68,7 @@ class v1tov2Test extends PHPUnit\Framework\TestCase{
         $expected = file_get_contents('json2json/data/gen2.json');
 
         $conv = new V1toV2($input);
+        $conv->without_prefix_iris();
         $actual = $conv->gen_str();
         $this->assertJsonStringEqualsJsonString($expected, $actual, true);
     }
@@ -78,6 +81,7 @@ class v1tov2Test extends PHPUnit\Framework\TestCase{
         $expected = file_get_contents('json2json/data/v2_model.json');
 
         $conv = new V1toV2($input);
+        $conv->without_prefix_iris();
         $actual = $conv->convert_str();
         $this->assertJsonStringEqualsJsonString($expected, $actual, true);
     }
