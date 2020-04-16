@@ -1,11 +1,11 @@
 <?php
 /*
 
-   Copyright 2016 Giménez, Christian
+   Copyright 2018
 
-   Author: Giménez, Christian
+   Author: GILIA
 
-   wicom.php
+   uml.php
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -23,69 +23,90 @@
 
 namespace Wicom;
 
+
 load("translator.php", "../wicom/translator/");
-load("crowd_uml.php", "../wicom/translator/strategies/");
+load("crowd_orm_strat.php", "../wicom/translator/strategies/");
 load("owllinkbuilder.php", "../wicom/translator/builders/");
+
+load("owlbuilder.php", "../wicom/translator/builders/");
+load("umljsonbuilder.php", "../wicom/translator/builders/");
+
 
 load("runner.php", "../wicom/reasoner/");
 load("racerconnector.php", "../wicom/reasoner/");
 load("koncludeconnector.php", "../wicom/reasoner/");
 
-# load("owllinkanalizer.php", "../wicom/answers/");
+
+load("ansanalizer.php",
+     "../wicom/translator/strategies/qapackages/answeranalizers/");
 
 use Wicom\Translator\Translator;
-use Wicom\Translator\Strategies\UMLcrowd;
+//use Wicom\Translator\Strategies\Berardi;
+use Wicom\Translator\Strategies\CrowdORM;
 use Wicom\Translator\Builders\OWLlinkBuilder;
+use Wicom\Translator\Builders\OWLBuilder;
+use Wicom\Translator\Builders\UMLJSONBuilder;
 
 use Wicom\Reasoner\Runner;
 use Wicom\Reasoner\RacerConnector;
 use Wicom\Reasoner\KoncludeConnector;
 
-# use Wicom\Answers\OWLlinkAnalizer;
+use Wicom\Translator\Strategies\QAPackages\AnswerAnalizers\AnsAnalizer;
+use Wicom\Translator\Strategies\QAPackages\QueriesGenerators\QueriesGenerator;
 
-class EER_Wicom extends Wicom{
+class ORM_Wicom extends Wicom{
 
     function __construct(){
-      parent::__construct();
+	parent::__construct();
     }
 
     /**
-       Check the diagram represented in JSON format for
-       satisfiability.
+       Check the diagram represented in JSON format for satisfiability.
 
        @param $json_str A String with the diagram in JSON format.
+       @param $strategy A String representing an specific Description Logic encoding
        @param $reasoner A String with the reasoner name. We support two: Konclude and Racer.
 
        @return Wicom\Translator\Strategies\QAPackages\AnswerAnalizers\Answer an answer object.
      */
-    function full_reasoning($json_str, $reasoner = 'Konclude'){
-        // Translate using a strategy
-        $strategy = new EERcrowd();
-        $trans = new Translator($strategy, new OWLlinkBuilder());
-        $owllink_str = $trans->to_owllink($json_str);
+    function is_satisfiable($json_str, $strategy = 'CrowdOrm', $reasoner = 'Racer'){
 
-        // Execute the reasoner
-        $reasonerconn = null;
-        if ($reasoner == 'Racer'){
-            // User select the Racer reasoner.
-            $reasonerconn = new RacerConnector();
-        }else{
-            $reasonerconn = new KoncludeConnector();
+        $encoding = null;
+        switch($strategy){
+            case "CrowdOrm" :
+				        $encoding = new CrowdORM();
+                break;
+            default: die("Invalid Encoding");
         }
 
+        $trans = new Translator($encoding, new OWLlinkBuilder());
+        $owllink_str = $trans->to_owllink($json_str);
+
+
+        $reasonerconn = null;
+        switch($reasoner){
+            case "Konclude" :
+		          $reasonerconn = new KoncludeConnector();
+		          break;
+            case "Racer" :
+		          $reasonerconn = new RacerConnector();
+		          break;
+            default: die("Reasoner Not Found!");
+        }
         $runner = new Runner($reasonerconn);
-        $runner->run($owllink_str);
-        $owllink_answer = $runner->get_last_answer();
 
-        // Generate the answer.
-        /*
-          $owllink_analizer = new OWLlinkAnalizer($owllink_str, $owllink_answer);
-          $owllink_analizer->analize();
+		$runner->run($owllink_str);
 
-          return $owllink_analizer->get_answer();
-        */
-        return $strategy->analize_answer($owllink_str, $owllink_answer);
-    }
+		$reasoner_answer = $runner->get_last_answer();
+
+        $owl2_str = '';
+
+        $encoding->analize_answer($owllink_str, $reasoner_answer, $owl2_str);
+		    $answer = $encoding->get_answer();
+
+        return $answer;
+
+	}
 }
 
 ?>
