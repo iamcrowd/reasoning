@@ -45,39 +45,11 @@ class BerardiTest extends PHPUnit\Framework\TestCase
      */
     public function testTranslate(){
         //TODO: Complete JSON!
-        $json = <<<'EOT'
-{
-"classes": [{"attrs":[], "methods":[], "name": "Hi World"}],
-"links": []
-}
-EOT;
+        $json = file_get_contents(__DIR__ .
+                                  '/data/berarditest/translate.json');
         //TODO: Complete XML!
-        $expected = <<<'EOT'
-<?xml version="1.0" encoding="UTF-8"?>
-<RequestMessage xmlns="http://www.owllink.org/owllink#"
-		xmlns:owl="http://www.w3.org/2002/07/owl#"
-		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-		xsi:schemaLocation="http://www.owllink.org/owllink# http://www.owllink.org/owllink-20091116.xsd"
-		xml:base="http://crowd.fi.uncoma.edu.ar/kb1#">
-  <CreateKB kb="http://crowd.fi.uncoma.edu.ar/kb1#">
-    <Prefix fullIRI="http://crowd.fi.uncoma.edu.ar/kb1#" name="" />
-    <Prefix fullIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#" name="rdf"/>
-    <Prefix fullIRI="http://www.w3.org/2000/01/rdf-schema#" name="rdfs"/>
-    <Prefix fullIRI="http://www.w3.org/2001/XMLSchema#" name="xsd"/>
-    <Prefix fullIRI="http://www.w3.org/2002/07/owl#" name="owl"/>
-  </CreateKB>
-  <Set kb="http://crowd.fi.uncoma.edu.ar/kb1#" key="abbreviatesIRIs">
-    <Literal>false</Literal>
-  </Set>
-  <Tell kb="http://crowd.fi.uncoma.edu.ar/kb1#">
-    <owl:SubClassOf>
-      <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Hi World" />
-      <owl:Class IRI="http://www.w3.org/2002/07/owl#Thing" />
-    </owl:SubClassOf>
-  </Tell>
-</RequestMessage>
-EOT;
-
+        $expected = file_get_contents(__DIR__ .
+                                      '/data/berarditest/translate.xml');
         $strategy = new Berardi();
         $builder = new OWLlinkBuilder();
 
@@ -103,102 +75,11 @@ EOT;
      */
     public function testTranslateBinaryRoles(){
         //TODO: Complete JSON!
-        $json = <<<'EOT'
-{"classes": [
-    {"attrs":[], "methods":[], "name": "Person"},
-    {"attrs":[], "methods":[], "name": "Cellphone"}],
- "links": [
-     {"classes": ["Person", "Cellphone"],
-      "multiplicity": ["1..1", "1..*"],
-      "name": "hasCellphone",
-      "type": "association"}
-	]
-}
-EOT;
+        $json = file_get_contents(__DIR__ .
+                                  '/data/berarditest/translate_binary_roles.json');
         //TODO: Complete XML!
-        $expected = <<<'EOT'
-<?xml version="1.0" encoding="UTF-8"?>
-<RequestMessage xmlns="http://www.owllink.org/owllink#"
-		xmlns:owl="http://www.w3.org/2002/07/owl#"
-		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-		xsi:schemaLocation="http://www.owllink.org/owllink# http://www.owllink.org/owllink-20091116.xsd"
-		xml:base="http://crowd.fi.uncoma.edu.ar/kb1#">
-  <CreateKB kb="http://crowd.fi.uncoma.edu.ar/kb1#">
-    <Prefix fullIRI="http://crowd.fi.uncoma.edu.ar/kb1#" name="" />
-    <Prefix fullIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#" name="rdf"/>
-    <Prefix fullIRI="http://www.w3.org/2000/01/rdf-schema#" name="rdfs"/>
-    <Prefix fullIRI="http://www.w3.org/2001/XMLSchema#" name="xsd"/>
-    <Prefix fullIRI="http://www.w3.org/2002/07/owl#" name="owl"/>
-  </CreateKB>
-  <Set kb="http://crowd.fi.uncoma.edu.ar/kb1#" key="abbreviatesIRIs">
-    <Literal>false</Literal>
-  </Set>
-  <Tell kb="http://crowd.fi.uncoma.edu.ar/kb1#">
-    <!-- <owl:ClassAssertion>
-	 <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Person" />
-	 <owl:NamedIndividual IRI="http://crowd.fi.uncoma.edu.ar/kb1#Mary" />
-	 </owl:ClassAssertion>
-    -->
-
-    <owl:SubClassOf>
-      <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Person" />
-      <owl:Class IRI="http://www.w3.org/2002/07/owl#Thing" />
-    </owl:SubClassOf>
-    <owl:SubClassOf>
-      <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Cellphone" />
-      <owl:Class IRI="http://www.w3.org/2002/07/owl#Thing" />
-    </owl:SubClassOf>
-    <owl:SubObjectPropertyOf>
-      <owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#hasCellphone"/>
-      <owl:ObjectProperty IRI="http://www.w3.org/2002/07/owl#topObjectProperty"/>
-    </owl:SubObjectPropertyOf>
-
-    <!-- One person can has lots of cellphones -->
-
-    <owl:SubClassOf>
-      <owl:Class IRI="http://www.w3.org/2002/07/owl#Thing" />
-      <owl:ObjectIntersectionOf>
-	<owl:ObjectAllValuesFrom>
-	  <owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#hasCellphone" />
-	  <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Person" />
-	</owl:ObjectAllValuesFrom>
-	<owl:ObjectAllValuesFrom>
-	  <owl:ObjectInverseOf>
-	    <owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#hasCellphone" />
-	  </owl:ObjectInverseOf>
-	  <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Cellphone" />
-	</owl:ObjectAllValuesFrom>
-      </owl:ObjectIntersectionOf>
-    </owl:SubClassOf>
-
-    <!-- Multiplicity -->
-    <owl:SubClassOf>
-      <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Person" />
-      <owl:ObjectMinCardinality cardinality="1">
-        <owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#hasCellphone" />
-      </owl:ObjectMinCardinality>
-    </owl:SubClassOf>
-
-    <owl:SubClassOf>
-      <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Cellphone" />
-      <owl:ObjectIntersectionOf>
-	<owl:ObjectMinCardinality cardinality="1">
-	  <owl:ObjectInverseOf>
-	    <owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#hasCellphone" />
-	  </owl:ObjectInverseOf>
-	</owl:ObjectMinCardinality>
-	<owl:ObjectMaxCardinality cardinality="1">
-	  <owl:ObjectInverseOf>
-	    <owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#hasCellphone" />
-	  </owl:ObjectInverseOf>
-	</owl:ObjectMaxCardinality>
-      </owl:ObjectIntersectionOf>
-    </owl:SubClassOf>
-
-  </Tell>
-  <!-- <ReleaseKB kb="http://localhost/kb1" /> -->
-</RequestMessage>
-EOT;
+        $expected = file_get_contents(__DIR__ .
+				      '/data/berarditest/translate_binary_roles.xml');
 
         $strategy = new Berardi();
         $builder = new OWLlinkBuilder();
@@ -223,74 +104,14 @@ EOT;
      */
     public function testTranslateRolesManyToMany(){
         //TODO: Complete JSON!
-        $json = <<<'EOT'
-{"classes": [
-    {"attrs":[], "methods":[], "name": "Person"},
-    {"attrs":[], "methods":[], "name": "Cellphone"}],
- "links": [
-     {"classes": ["Person", "Cellphone"],
-      "multiplicity": ["0..*", "0..*"],
-      "name": "hasCellphone",
-      "type": "association"}
-	]
-}
-EOT;
+        $json = file_get_contents(
+	    __DIR__ .
+	    '/data/berarditest/translate_roles_many_to_many.json');
         //TODO: Complete XML!
-        $expected = <<<'EOT'
-<?xml version="1.0" encoding="UTF-8"?>
-<RequestMessage xmlns="http://www.owllink.org/owllink#"
-		xmlns:owl="http://www.w3.org/2002/07/owl#"
-		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-		xsi:schemaLocation="http://www.owllink.org/owllink# http://www.owllink.org/owllink-20091116.xsd"
-		xml:base="http://crowd.fi.uncoma.edu.ar/kb1#">
-  <CreateKB kb="http://crowd.fi.uncoma.edu.ar/kb1#">
-    <Prefix fullIRI="http://crowd.fi.uncoma.edu.ar/kb1#" name="" />
-    <Prefix fullIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#" name="rdf"/>
-    <Prefix fullIRI="http://www.w3.org/2000/01/rdf-schema#" name="rdfs"/>
-    <Prefix fullIRI="http://www.w3.org/2001/XMLSchema#" name="xsd"/>
-    <Prefix fullIRI="http://www.w3.org/2002/07/owl#" name="owl"/>
-  </CreateKB>
-  <Set kb="http://crowd.fi.uncoma.edu.ar/kb1#" key="abbreviatesIRIs">
-    <Literal>false</Literal>
-  </Set>
-  <Tell kb="http://crowd.fi.uncoma.edu.ar/kb1#">
-
-    <owl:SubClassOf>
-      <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Person" />
-      <owl:Class IRI="http://www.w3.org/2002/07/owl#Thing" />
-    </owl:SubClassOf>
-    <owl:SubClassOf>
-      <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Cellphone" />
-      <owl:Class IRI="http://www.w3.org/2002/07/owl#Thing" />
-    </owl:SubClassOf>
-    <owl:SubObjectPropertyOf>
-      <owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#hasCellphone"/>
-      <owl:ObjectProperty IRI="http://www.w3.org/2002/07/owl#topObjectProperty"/>
-    </owl:SubObjectPropertyOf>
-
-    <!-- One person can has lots of cellphones -->
-
-    <owl:SubClassOf>
-      <owl:Class IRI="http://www.w3.org/2002/07/owl#Thing" />
-      <owl:ObjectIntersectionOf>
-	<owl:ObjectAllValuesFrom>
-	  <owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#hasCellphone" />
-	  <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Person" />
-	</owl:ObjectAllValuesFrom>
-	<owl:ObjectAllValuesFrom>
-	  <owl:ObjectInverseOf>
-	    <owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#hasCellphone" />
-	  </owl:ObjectInverseOf>
-	  <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Cellphone" />
-	</owl:ObjectAllValuesFrom>
-      </owl:ObjectIntersectionOf>
-    </owl:SubClassOf>
-
-  </Tell>
-  <!-- <ReleaseKB kb="http://localhost/kb1" /> -->
-</RequestMessage>
-EOT;
-
+        $expected = file_get_contents(
+	    __DIR__ .
+            '/data/berarditest/translate_roles_many_to_many.xml');
+	
         $strategy = new Berardi();
         $builder = new OWLlinkBuilder();
 
@@ -316,60 +137,12 @@ EOT;
      */
     public function testTranslateGeneralization(){
         //TODO: Complete JSON!
-        $json = <<<'EOT'
-{"classes": [
-    {"attrs":[], "methods":[], "name": "Person"},
-    {"attrs":[], "methods":[], "name": "Employee"}],
- "links": [
-     {"classes": ["Employee"],
-      "multiplicity": null,
-      "name": "r1",
-      "type": "generalization",
-      "parent": "Person",
-      "constraint": []}
-	]
-}
-EOT;
-        $expected = <<<'EOT'
-<?xml version="1.0" encoding="UTF-8"?>
-<RequestMessage xmlns="http://www.owllink.org/owllink#"
-		xmlns:owl="http://www.w3.org/2002/07/owl#"
-		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-		xsi:schemaLocation="http://www.owllink.org/owllink# http://www.owllink.org/owllink-20091116.xsd"
-		xml:base="http://crowd.fi.uncoma.edu.ar/kb1#">
-  <CreateKB kb="http://crowd.fi.uncoma.edu.ar/kb1#">
-    <Prefix fullIRI="http://crowd.fi.uncoma.edu.ar/kb1#" name="" />
-    <Prefix fullIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#" name="rdf"/>
-    <Prefix fullIRI="http://www.w3.org/2000/01/rdf-schema#" name="rdfs"/>
-    <Prefix fullIRI="http://www.w3.org/2001/XMLSchema#" name="xsd"/>
-    <Prefix fullIRI="http://www.w3.org/2002/07/owl#" name="owl"/>
-  </CreateKB>
-  <Set kb="http://crowd.fi.uncoma.edu.ar/kb1#" key="abbreviatesIRIs">
-    <Literal>false</Literal>
-  </Set>
-  <Tell kb="http://crowd.fi.uncoma.edu.ar/kb1#">
-
-    <owl:SubClassOf>
-      <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Person" />
-      <owl:Class IRI="http://www.w3.org/2002/07/owl#Thing" />
-    </owl:SubClassOf>
-    <owl:SubClassOf>
-      <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Employee" />
-      <owl:Class IRI="http://www.w3.org/2002/07/owl#Thing" />
-    </owl:SubClassOf>
-
-    <!-- Generalization -->
-
-    <owl:SubClassOf>
-      <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Employee" />
-	  <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Person" />
-    </owl:SubClassOf>
-
-  </Tell>
-  <!-- <ReleaseKB kb="http://localhost/kb1" /> -->
-</RequestMessage>
-EOT;
-
+        $json = file_get_contents(
+	    __DIR__ .
+	    '/data/berarditest/translate_generalization.json');
+        $expected = file_get_contents(
+	    __DIR__ .
+            '/data/berarditest/translate_generalization.xml');
         $strategy = new Berardi();
         $builder = new OWLlinkBuilder();
 
@@ -391,100 +164,15 @@ EOT;
        Test generalization with disjoint constraint is translated properly.
 
        @testdox Translate a disjoint generalizatio into OWL 2
-    */
+     */
     public function testTranslateGenDisjoint(){
         //TODO: Complete JSON!
-        $json = <<<'EOT'
-{"classes": [
-    {"attrs":[], "methods":[], "name": "Person"},
-    {"attrs":[], "methods":[], "name": "Employee"},
-    {"attrs":[], "methods":[], "name": "Employer"},
-    {"attrs":[], "methods":[], "name": "Director"}],
- "links": [
-     {"classes": ["Employee", "Employer", "Director"],
-      "multiplicity": null,
-      "name": "r1",
-      "type": "generalization",
-      "parent": "Person",
-      "constraint": ["disjoint"]}
-	]
-}
-EOT;
-        $expected = <<<'EOT'
-<?xml version="1.0" encoding="UTF-8"?>
-<RequestMessage xmlns="http://www.owllink.org/owllink#"
-		xmlns:owl="http://www.w3.org/2002/07/owl#"
-		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-		xsi:schemaLocation="http://www.owllink.org/owllink# http://www.owllink.org/owllink-20091116.xsd"
-		xml:base="http://crowd.fi.uncoma.edu.ar/kb1#">
-  <CreateKB kb="http://crowd.fi.uncoma.edu.ar/kb1#">
-    <Prefix fullIRI="http://crowd.fi.uncoma.edu.ar/kb1#" name="" />
-    <Prefix fullIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#" name="rdf"/>
-    <Prefix fullIRI="http://www.w3.org/2000/01/rdf-schema#" name="rdfs"/>
-    <Prefix fullIRI="http://www.w3.org/2001/XMLSchema#" name="xsd"/>
-    <Prefix fullIRI="http://www.w3.org/2002/07/owl#" name="owl"/>
-  </CreateKB>
-  <Set kb="http://crowd.fi.uncoma.edu.ar/kb1#" key="abbreviatesIRIs">
-    <Literal>false</Literal>
-  </Set>
-  <Tell kb="http://crowd.fi.uncoma.edu.ar/kb1#">
-
-    <owl:SubClassOf>
-      <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Person" />
-      <owl:Class IRI="http://www.w3.org/2002/07/owl#Thing" />
-    </owl:SubClassOf>
-    <owl:SubClassOf>
-      <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Employee" />
-      <owl:Class IRI="http://www.w3.org/2002/07/owl#Thing" />
-    </owl:SubClassOf>
-    <owl:SubClassOf>
-      <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Employer" />
-      <owl:Class IRI="http://www.w3.org/2002/07/owl#Thing" />
-    </owl:SubClassOf>
-    <owl:SubClassOf>
-      <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Director" />
-      <owl:Class IRI="http://www.w3.org/2002/07/owl#Thing" />
-    </owl:SubClassOf>
-
-    <!-- Generalization -->
-
-    <owl:SubClassOf>
-      <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Employee" />
-	  <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Person" />
-    </owl:SubClassOf>
-    <owl:SubClassOf>
-      <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Employer" />
-	  <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Person" />
-    </owl:SubClassOf>
-    <owl:SubClassOf>
-      <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Director" />
-	  <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Person" />
-    </owl:SubClassOf>
-
-    <owl:SubClassOf>
-      <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Employee" />
-      <owl:ObjectIntersectionOf>
-        <owl:ObjectComplementOf>
-          <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Employer" />
-        </owl:ObjectComplementOf>
-        <owl:ObjectComplementOf>
-          <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Director" />
-        </owl:ObjectComplementOf>
-      </owl:ObjectIntersectionOf>
-    </owl:SubClassOf>
-
-    <owl:SubClassOf>
-      <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Employer" />
-      <owl:ObjectComplementOf>
-        <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Director" />
-      </owl:ObjectComplementOf>
-    </owl:SubClassOf>
-
-  </Tell>
-  <!-- <ReleaseKB kb="http://localhost/kb1" /> -->
-</RequestMessage>
-EOT;
-
+        $json = file_get_contents(
+	    __DIR__ .
+	    '/data/berarditest/translate_gen_disjoint.json');
+        $expected = file_get_contents(
+	    __DIR__ .
+            '/data/berarditest/translate_gen_disjoint.xml');
         $strategy = new Berardi();
         $builder = new OWLlinkBuilder();
 
@@ -505,89 +193,15 @@ EOT;
        Test generalization with covering constraint is translated properly.
 
        @testdox Translate a covering generalization into OWL 2
-    */
+     */
     public function testTranslateGenCovering(){
         //TODO: Complete JSON!
-        $json = <<<'EOT'
-{"classes": [
-    {"attrs":[], "methods":[], "name": "Person"},
-    {"attrs":[], "methods":[], "name": "Employee"},
-    {"attrs":[], "methods":[], "name": "Employer"},
-    {"attrs":[], "methods":[], "name": "Director"}],
- "links": [
-     {"classes": ["Employee", "Employer", "Director"],
-      "multiplicity": null,
-      "name": "r1",
-      "type": "generalization",
-      "parent": "Person",
-      "constraint": ["covering"]}
-	]
-}
-EOT;
-        $expected = <<<'EOT'
-<?xml version="1.0" encoding="UTF-8"?>
-<RequestMessage xmlns="http://www.owllink.org/owllink#"
-		xmlns:owl="http://www.w3.org/2002/07/owl#"
-		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-		xsi:schemaLocation="http://www.owllink.org/owllink# http://www.owllink.org/owllink-20091116.xsd"
-		xml:base="http://crowd.fi.uncoma.edu.ar/kb1#">
-  <CreateKB kb="http://crowd.fi.uncoma.edu.ar/kb1#">
-    <Prefix fullIRI="http://crowd.fi.uncoma.edu.ar/kb1#" name="" />
-    <Prefix fullIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#" name="rdf"/>
-    <Prefix fullIRI="http://www.w3.org/2000/01/rdf-schema#" name="rdfs"/>
-    <Prefix fullIRI="http://www.w3.org/2001/XMLSchema#" name="xsd"/>
-    <Prefix fullIRI="http://www.w3.org/2002/07/owl#" name="owl"/>
-  </CreateKB>
-  <Set kb="http://crowd.fi.uncoma.edu.ar/kb1#" key="abbreviatesIRIs">
-    <Literal>false</Literal>
-  </Set>
-  <Tell kb="http://crowd.fi.uncoma.edu.ar/kb1#">
-
-    <owl:SubClassOf>
-      <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Person" />
-      <owl:Class IRI="http://www.w3.org/2002/07/owl#Thing" />
-    </owl:SubClassOf>
-    <owl:SubClassOf>
-      <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Employee" />
-      <owl:Class IRI="http://www.w3.org/2002/07/owl#Thing" />
-    </owl:SubClassOf>
-    <owl:SubClassOf>
-      <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Employer" />
-      <owl:Class IRI="http://www.w3.org/2002/07/owl#Thing" />
-    </owl:SubClassOf>
-    <owl:SubClassOf>
-      <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Director" />
-      <owl:Class IRI="http://www.w3.org/2002/07/owl#Thing" />
-    </owl:SubClassOf>
-
-    <!-- Generalization -->
-
-    <owl:SubClassOf>
-      <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Employee" />
-	  <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Person" />
-    </owl:SubClassOf>
-    <owl:SubClassOf>
-      <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Employer" />
-	  <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Person" />
-    </owl:SubClassOf>
-    <owl:SubClassOf>
-      <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Director" />
-	  <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Person" />
-    </owl:SubClassOf>
-
-    <owl:SubClassOf>
-      <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Person" />
-      <owl:ObjectUnionOf>
-          <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Employee" />
-          <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Employer" />
-          <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Director" />
-      </owl:ObjectUnionOf>
-    </owl:SubClassOf>
-
-  </Tell>
-  <!-- <ReleaseKB kb="http://localhost/kb1" /> -->
-</RequestMessage>
-EOT;
+        $json = file_get_contents(
+	    __DIR__ .
+            '/data/berarditest/translate_gen_covering.json');
+        $expected = file_get_contents(
+	    __DIR__ .
+            '/data/berarditest/translate_gen_covering.xml');
 
         $strategy = new Berardi();
         $builder = new OWLlinkBuilder();
@@ -612,62 +226,12 @@ EOT;
      */
     public function test_translate_queries(){
         //TODO: Complete JSON!
-        $json = <<<'EOT'
-	{"classes": [
-	    {"attrs":[], "methods":[], "name": "PhoneCall"},
-	    {"attrs":[], "methods":[], "name": "MobileCall"}],
-	 "links": [
-	     {"classes": ["MobileCall"],
-	      "multiplicity": null,
-	      "name": "r1",
-	      "type": "generalization",
-	      "parent": "PhoneCall",
-	      "constraint": []}
-	 ]
-	}
-EOT;
-        $expected = <<<'EOT'
-<?xml version="1.0" encoding="UTF-8"?>
-<RequestMessage xmlns="http://www.owllink.org/owllink#"
-		xmlns:owl="http://www.w3.org/2002/07/owl#"
-		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-		xsi:schemaLocation="http://www.owllink.org/owllink# http://www.owllink.org/owllink-20091116.xsd"
-		xml:base="http://crowd.fi.uncoma.edu.ar/kb1#">
-  <CreateKB kb="http://crowd.fi.uncoma.edu.ar/kb1#">
-    <Prefix fullIRI="http://crowd.fi.uncoma.edu.ar/kb1#" name="" />
-    <Prefix fullIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#" name="rdf"/>
-    <Prefix fullIRI="http://www.w3.org/2000/01/rdf-schema#" name="rdfs"/>
-    <Prefix fullIRI="http://www.w3.org/2001/XMLSchema#" name="xsd"/>
-    <Prefix fullIRI="http://www.w3.org/2002/07/owl#" name="owl"/>
-  </CreateKB>
-  <Set kb="http://crowd.fi.uncoma.edu.ar/kb1#" key="abbreviatesIRIs">
-    <Literal>false</Literal>
-  </Set>
-  <Tell kb="http://crowd.fi.uncoma.edu.ar/kb1#"/>
-  <IsKBSatisfiable kb="http://crowd.fi.uncoma.edu.ar/kb1#"/>
-  <IsClassSatisfiable kb="http://crowd.fi.uncoma.edu.ar/kb1#">
-    <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#PhoneCall"/>
-  </IsClassSatisfiable>
-  <IsClassSatisfiable kb="http://crowd.fi.uncoma.edu.ar/kb1#">
-    <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#MobileCall"/>
-  </IsClassSatisfiable>
-  <GetSubClassHierarchy kb="http://crowd.fi.uncoma.edu.ar/kb1#"/>
-  <GetDisjointClasses kb="http://crowd.fi.uncoma.edu.ar/kb1#">
-    <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#PhoneCall"/>
-  </GetDisjointClasses>
-  <GetDisjointClasses kb="http://crowd.fi.uncoma.edu.ar/kb1#">
-    <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#MobileCall"/>
-  </GetDisjointClasses>
-  <GetEquivalentClasses kb="http://crowd.fi.uncoma.edu.ar/kb1#">
-    <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#PhoneCall"/>
-  </GetEquivalentClasses>
-  <GetEquivalentClasses kb="http://crowd.fi.uncoma.edu.ar/kb1#">
-    <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#MobileCall"/>
-  </GetEquivalentClasses>
-  <GetPrefixes kb="http://crowd.fi.uncoma.edu.ar/kb1#"/>
-</RequestMessage>
-EOT;
-
+        $json =file_get_contents(
+	    __DIR__ .
+            '/data/berarditest/translate_queries.json');
+        $expected = file_get_contents(
+	    __DIR__ .
+            '/data/berarditest/translate_queries.xml');
         $strategy = new Berardi();
         $builder = new OWLlinkBuilder();
 

@@ -1,0 +1,14 @@
+{"classes": [
+    {"attrs":[], "methods":[], "name": "Person"},
+    {"attrs":[], "methods":[], "name": "Employee"},
+    {"attrs":[], "methods":[], "name": "Employer"},
+    {"attrs":[], "methods":[], "name": "Director"}],
+ "links": [
+     {"classes": ["Employee", "Employer", "Director"],
+      "multiplicity": null,
+      "name": "r1",
+      "type": "generalization",
+      "parent": "Person",
+      "constraint": ["covering"]}
+	]
+}

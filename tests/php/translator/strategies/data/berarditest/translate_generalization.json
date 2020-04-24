@@ -1,0 +1,12 @@
+{"classes": [
+    {"attrs":[], "methods":[], "name": "Person"},
+    {"attrs":[], "methods":[], "name": "Employee"}],
+ "links": [
+     {"classes": ["Employee"],
+      "multiplicity": null,
+      "name": "r1",
+      "type": "generalization",
+      "parent": "Person",
+      "constraint": []}
+	]
+}

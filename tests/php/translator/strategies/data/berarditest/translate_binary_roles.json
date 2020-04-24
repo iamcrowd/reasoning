@@ -1,0 +1,10 @@
+{"classes": [
+    {"attrs":[], "methods":[], "name": "Person"},
+    {"attrs":[], "methods":[], "name": "Cellphone"}],
+ "links": [
+     {"classes": ["Person", "Cellphone"],
+      "multiplicity": ["1..1", "1..*"],
+      "name": "hasCellphone",
+      "type": "association"}
+	]
+}

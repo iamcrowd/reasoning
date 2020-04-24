@@ -1,0 +1,12 @@
+{"classes": [
+    {"attrs":[], "methods":[], "name": "PhoneCall"},
+    {"attrs":[], "methods":[], "name": "MobileCall"}],
+ "links": [
+     {"classes": ["MobileCall"],
+      "multiplicity": null,
+      "name": "r1",
+      "type": "generalization",
+      "parent": "PhoneCall",
+      "constraint": []}
+ ]
+}
