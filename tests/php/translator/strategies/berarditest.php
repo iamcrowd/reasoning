@@ -245,4 +245,30 @@ class BerardiTest extends PHPUnit\Framework\TestCase
 
         $this->assertXmlStringEqualsXmlString($expected, $actual, TRUE);
     }
+
+    /**      
+
+       @testdox Insert OWNlink from JSON into XML.
+     */
+    public function test_translate_owllink(){
+        //TODO: Complete JSON!
+        $json =file_get_contents(
+	    __DIR__ .
+            '/data/berarditest/translate_owllink.json');
+        $expected = file_get_contents(
+	    __DIR__ .
+            '/data/berarditest/translate_owllink.xml');
+        $strategy = new Berardi();
+        $builder = new OWLlinkBuilder();
+
+        $builder->insert_header(); // Without this, loading the DOMDocument
+        // will throw error for the owl namespace
+        $strategy->translate_queries($json, $builder);
+        $builder->insert_footer();
+
+        $actual = $builder->get_product();
+        $actual = $actual->to_string();
+
+        $this->assertXmlStringEqualsXmlString($expected, $actual, TRUE);
+    }
 }
