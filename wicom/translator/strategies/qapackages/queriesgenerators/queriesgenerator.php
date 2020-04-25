@@ -46,7 +46,8 @@ abstract class QueriesGenerator{
       $this->gen_getDisjointClasses($json_str, $builder);
       $this->gen_getEquivalentClasses($json_str, $builder);
       $this->gen_getPrefixes($builder);
-//      $this->gen_subObjectPropertyHierarchy($builder);
+	//      $this->gen_subObjectPropertyHierarchy($builder);
+      $this->passthrough_owllink($json_str, $builder);
     }
 
 
@@ -275,6 +276,14 @@ abstract class QueriesGenerator{
     }
 
 
+    /**
+     */
+    public function passthrough_owllink($json_str, $builder){
+        $json = json_decode($json_str, true);
+        if (array_key_exists('owllink', $json)){
+            $builder->insert_owllink(join("\n", $json['owllink']));
+        }
+    } // passthrough_owllink
 
 }
 
