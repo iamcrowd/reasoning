@@ -46,12 +46,12 @@ class BerardiQueries extends QueriesGenerator {
        @param $builder an instance of Wicom\Translator\Builders\DocumentBuilder.
 
      */
-    function generate_all_queries($json_str, $builder){
-/*        $this->gen_satisfiable($builder);
+/*     function generate_all_queries($json_str, $builder){
+        $this->gen_satisfiable($builder);
         $this->gen_class_satisfiable($json_str, $builder);
-        $this->gen_all_classes($builder);*/
-        parent::generate_all_queries($json_str, $builder);
-    }
+        $this->gen_all_classes($builder); 
+	parent::generate_all_queries($json_str, $builder);
+    }*/
 
     /**
        I generate queries for checking diagram satisfability.
