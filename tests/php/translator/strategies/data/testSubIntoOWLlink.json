@@ -1,47 +1,50 @@
 {
-  "Entity type":
-    {
-      "Object type": [
-        "http://crowd.fi.uncoma.edu.ar/kb1#Dog",
-        "http://crowd.fi.uncoma.edu.ar/kb1#Person",
-        "http://crowd.fi.uncoma.edu.ar/kb1#Cat"
-      ],
-      "Data type" : [],
-			"Value property": []
+    "Entity type": {
+        "Value property": {
+            "Value type": []
+        },
+        "Data type": [],
+        "Object type": [
+            "http://crowd.fi.uncoma.edu.ar/kb1#Dog",
+            "http://crowd.fi.uncoma.edu.ar/kb1#Person",
+            "http://crowd.fi.uncoma.edu.ar/kb1#Cat"
+        ]
     },
- "Role": [],
- "Relationship":
-   {
-     "Subsumption": [
-       {
-         "name": "http://crowd.fi.uncoma.edu.ar/kb1#s1",
-         "entity parent": "http://crowd.fi.uncoma.edu.ar/kb1#Person",
-         "entity child": "http://crowd.fi.uncoma.edu.ar/kb1#Dog",
-         "disjointness constraints": "",
-         "completeness constraints": ""
-       },
-       {
-         "name": "http://crowd.fi.uncoma.edu.ar/kb1#s2",
-         "entity parent": "http://crowd.fi.uncoma.edu.ar/kb1#Person",
-         "entity child": "http://crowd.fi.uncoma.edu.ar/kb1#Cat",
-         "disjointness constraints": "",
-         "completeness constraints": ""
-       }
-     ],
-     "Relationship" : [],
-     "Attributive Property": []
-   },
- "Constraints" : {
-   "Disjointness constraints" :
-   {
-     "Disjoint object type": [],
-     "Disjoint role": []
-   },
-   "Completeness constraints" : [],
-   "Cardinality constraints":
-   {
-     "Object type cardinality": [],
-     "Attibutive property cardinality": []
-   }
- }
+    "Role": [],
+    "Constraints": {
+        "Cardinality constraints": {
+            "Attibutive property cardinality": [],
+            "Object type cardinality": []
+        },
+        "Disjointness constraints": {
+            "Disjoint object type": [],
+            "Disjoint role": []
+        },
+        "Completeness constraints": [],
+        "Mandatory constraints": {
+            "Mandatory": []
+        }
+    },
+    "Relationship": {
+        "Attributive property": {
+            "Attributive property": [],
+            "Attribute": {
+                "Attribute": [],
+                "Mapped to": []
+            }
+        },
+        "Subsumption": [
+            {
+                "entity child": "http://crowd.fi.uncoma.edu.ar/kb1#Dog",
+                "name": "http://crowd.fi.uncoma.edu.ar/kb1#S1_xdQB",
+                "entity parent": "http://crowd.fi.uncoma.edu.ar/kb1#Person"
+            },
+            {
+                "entity child": "http://crowd.fi.uncoma.edu.ar/kb1#Cat",
+                "name": "http://crowd.fi.uncoma.edu.ar/kb1#S2_YanV",
+                "entity parent": "http://crowd.fi.uncoma.edu.ar/kb1#Person"
+            }
+        ],
+        "Relationship": []
+    }
 }
