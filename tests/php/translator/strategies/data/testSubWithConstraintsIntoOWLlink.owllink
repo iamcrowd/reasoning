@@ -37,8 +37,8 @@
 
 		<owl:SubClassOf>
 			<owl:ObjectIntersectionOf>
-				<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Cat"/>
 				<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Dog"/>
+				<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Cat"/>
 			</owl:ObjectIntersectionOf>
 			<owl:Class IRI="http://www.w3.org/2002/07/owl#Nothing"/>
 		</owl:SubClassOf>
@@ -46,8 +46,8 @@
 		<owl:SubClassOf>
 			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Person"/>
 			<owl:ObjectUnionOf>
-				<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Cat"/>
 				<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Dog"/>
+				<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Cat"/>
 			</owl:ObjectUnionOf>
 		</owl:SubClassOf>
 

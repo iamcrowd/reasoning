@@ -1,64 +1,70 @@
 {
-  "Entity type":
-    {
-      "Object type": [
-        "http://crowd.fi.uncoma.edu.ar/kb1#Dog",
-        "http://crowd.fi.uncoma.edu.ar/kb1#Person",
-        "http://crowd.fi.uncoma.edu.ar/kb1#Cat"
-      ],
-      "Data type" : [],
-			"Value property": []
-		},
- "Role": [],
- "Relationship":
-   {
-     "Subsumption": [
-       {
-         "name": "http://crowd.fi.uncoma.edu.ar/kb1#s1",
-         "entity parent": "http://crowd.fi.uncoma.edu.ar/kb1#Person",
-         "entity child": "http://crowd.fi.uncoma.edu.ar/kb1#Dog",
-         "disjointness constraints": "http://crowd.fi.uncoma.edu.ar/kb1#dc1",
-         "completeness constraints": "http://crowd.fi.uncoma.edu.ar/kb1#cc1"
-       },
-       {
-         "name": "http://crowd.fi.uncoma.edu.ar/kb1#s2",
-         "entity parent": "http://crowd.fi.uncoma.edu.ar/kb1#Person",
-         "entity child": "http://crowd.fi.uncoma.edu.ar/kb1#Cat",
-         "disjointness constraints": "http://crowd.fi.uncoma.edu.ar/kb1#dc1",
-         "completeness constraints": "http://crowd.fi.uncoma.edu.ar/kb1#cc1"
-       }
-     ],
-     "Relationship" : [],
-     "Attributive Property": []
-   },
- "Constraints" : {
-
-   "Disjointness constraints" :
-   {
-     "Disjoint object type": [
-       {
-         "name": "http://crowd.fi.uncoma.edu.ar/kb1#dc1",
-         "entities" : [
-           "http://crowd.fi.uncoma.edu.ar/kb1#Cat",
-           "http://crowd.fi.uncoma.edu.ar/kb1#Dog"
-         ]
-       }
-     ],
-     "Disjoint role": []
-   },
- "Completeness constraints" : [
-   {
-     "name": "http://crowd.fi.uncoma.edu.ar/kb1#cc1",
-     "entities" : [
-       "http://crowd.fi.uncoma.edu.ar/kb1#Cat",
-       "http://crowd.fi.uncoma.edu.ar/kb1#Dog"
-     ]
-   }
- ],
- "Cardinality constraints":
-   {
-     "Object type cardinality": [],
-     "Attibutive property cardinality": []
-   }
- }
+    "Entity type": {
+        "Value property": {
+            "Value type": []
+        },
+        "Data type": [],
+        "Object type": [
+            "http://crowd.fi.uncoma.edu.ar/kb1#Dog",
+            "http://crowd.fi.uncoma.edu.ar/kb1#Person",
+            "http://crowd.fi.uncoma.edu.ar/kb1#Cat"
+        ]
+    },
+    "Role": [],
+    "Constraints": {
+        "Cardinality constraints": {
+            "Attibutive property cardinality": [],
+            "Object type cardinality": []
+        },
+        "Disjointness constraints": {
+            "Disjoint object type": [
+                {
+                    "entities": [
+                        "http://crowd.fi.uncoma.edu.ar/kb1#Dog",
+                        "http://crowd.fi.uncoma.edu.ar/kb1#Cat"
+                    ],
+                    "name": "dc1"
+                }
+            ],
+            "Disjoint role": []
+        },
+        "Completeness constraints": [
+            {
+                "entities": [
+                    "http://crowd.fi.uncoma.edu.ar/kb1#Dog",
+                    "http://crowd.fi.uncoma.edu.ar/kb1#Cat"
+                ],
+                "name": "cc2"
+            }
+        ],
+        "Mandatory constraints": {
+            "Mandatory": []
+        }
+    },
+    "Relationship": {
+        "Attributive property": {
+            "Attributive property": [],
+            "Attribute": {
+                "Attribute": [],
+                "Mapped to": []
+            }
+        },
+        "Subsumption": [
+            {
+                "entity child": "http://crowd.fi.uncoma.edu.ar/kb1#Dog",
+                "disjointness constraints": "dc1",
+                "completeness constraints": "cc2",
+                "name": "http://crowd.fi.uncoma.edu.ar/kb1#S1_YMgP",
+                "entity parent": "http://crowd.fi.uncoma.edu.ar/kb1#Person"
+            },
+            {
+                "entity child": "http://crowd.fi.uncoma.edu.ar/kb1#Cat",
+                "disjointness constraints": "dc1",
+                "completeness constraints": "cc2",
+                "name": "http://crowd.fi.uncoma.edu.ar/kb1#S1_Tur0",
+                "entity parent": "http://crowd.fi.uncoma.edu.ar/kb1#Person"
+            }
+        ],
+        "Relationship": []
+    }
 }
