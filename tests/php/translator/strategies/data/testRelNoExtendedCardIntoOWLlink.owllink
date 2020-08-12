@@ -61,12 +61,12 @@
 		<owl:SubClassOf>
 			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Person"/>
 			<owl:ObjectIntersectionOf>
-				<owl:ObjectMinCardinality cardinality="1">
+				<owl:ObjectMinCardinality cardinality="2">
 					<owl:ObjectInverseOf>
 						<owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#person"/>
 					</owl:ObjectInverseOf>
 				</owl:ObjectMinCardinality>
-				<owl:ObjectMaxCardinality cardinality="1">
+				<owl:ObjectMaxCardinality cardinality="9">
 					<owl:ObjectInverseOf>
 						<owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#person"/>
 					</owl:ObjectInverseOf>
@@ -95,12 +95,12 @@
 		<owl:SubClassOf>
 			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Institution"/>
 			<owl:ObjectIntersectionOf>
-				<owl:ObjectMinCardinality cardinality="2">
+				<owl:ObjectMinCardinality cardinality="1">
 					<owl:ObjectInverseOf>
 						<owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#institution"/>
 					</owl:ObjectInverseOf>
 				</owl:ObjectMinCardinality>
-				<owl:ObjectMaxCardinality cardinality="9">
+				<owl:ObjectMaxCardinality cardinality="1">
 					<owl:ObjectInverseOf>
 						<owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#institution"/>
 					</owl:ObjectInverseOf>
