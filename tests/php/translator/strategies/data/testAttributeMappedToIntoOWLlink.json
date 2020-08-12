@@ -1,0 +1,85 @@
+{
+    "Entity type": {
+        "Value property": {
+            "Value type": [
+                "http://crowd.fi.uncoma.edu.ar#Name"
+            ]
+        },
+        "Data type": [
+            "string"
+        ],
+        "Object type": [
+            "http://crowd.fi.uncoma.edu.ar#Person"
+        ]
+    },
+    "Role": [
+        {
+            "object type cardinality": [
+                "wT4zDa"
+            ],
+            "rolename": "http://crowd.fi.uncoma.edu.ar#Person_role",
+            "entity type": "http://crowd.fi.uncoma.edu.ar#Person",
+            "relationship": "http://crowd.fi.uncoma.edu.ar#Name_valueTypeRel"
+        },
+        {
+            "object type cardinality": [
+                "VjgvyB"
+            ],
+            "rolename": "http://crowd.fi.uncoma.edu.ar#Name_role",
+            "entity type": "http://crowd.fi.uncoma.edu.ar#Name",
+            "relationship": "http://crowd.fi.uncoma.edu.ar#Name_valueTypeRel"
+        }
+    ],
+    "Constraints": {
+        "Cardinality constraints": {
+            "Attibutive property cardinality": [],
+            "Object type cardinality": [
+                {
+                    "name": "wT4zDa",
+                    "maximum": "1",
+                    "minimum": "0"
+                },
+                {
+                    "name": "VjgvyB",
+                    "maximum": "1",
+                    "minimum": "0"
+                }
+            ]
+        },
+        "Disjointness constraints": {
+            "Disjoint object type": [],
+            "Disjoint role": []
+        },
+        "Completeness constraints": [],
+        "Mandatory constraints": {
+            "Mandatory": []
+        }
+    },
+    "Relationship": {
+        "Attributive property": {
+            "Attributive property": [],
+            "Attribute": {
+                "Attribute": [],
+                "Mapped to": [
+                    {
+                        "domain": [
+                            "http://crowd.fi.uncoma.edu.ar#Name"
+                        ],
+                        "name": "http://crowd.fi.uncoma.edu.ar#Name_mappedTo",
+                        "range": "string"
+                    }
+                ]
+            }
+        },
+        "Subsumption": [],
+        "Relationship": [
+            {
+                "entities": [
+                    "http://crowd.fi.uncoma.edu.ar#Person",
+                    "http://crowd.fi.uncoma.edu.ar#Name"
+                ],
+                "name": "http://crowd.fi.uncoma.edu.ar#Name_valueTypeRel"
+            }
+        ]
+    }
+}

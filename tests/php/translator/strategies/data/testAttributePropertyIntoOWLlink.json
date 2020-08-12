@@ -1,0 +1,47 @@
+{
+    "Entity type": {
+        "Value property": {
+            "Value type": []
+        },
+        "Data type": [
+            "http://www.w3.org/2001/XMLSchema#string"
+        ],
+        "Object type": [
+            "http://crowd.fi.uncoma.edu.ar#Person"
+        ]
+    },
+    "Role": [],
+    "Constraints": {
+        "Cardinality constraints": {
+            "Attibutive property cardinality": [],
+            "Object type cardinality": []
+        },
+        "Disjointness constraints": {
+            "Disjoint object type": [],
+            "Disjoint role": []
+        },
+        "Completeness constraints": [],
+        "Mandatory constraints": {
+            "Mandatory": []
+        }
+    },
+    "Relationship": {
+        "Attributive property": {
+            "Attributive property": [
+                {
+                    "domain": [
+                        "http://crowd.fi.uncoma.edu.ar#Person"
+                    ],
+                    "name": "http://crowd.fi.uncoma.edu.ar#Name",
+                    "range": "http://www.w3.org/2001/XMLSchema#string"
+                }
+            ],
+            "Attribute": {
+                "Attribute": [],
+                "Mapped to": []
+            }
+        },
+        "Subsumption": [],
+        "Relationship": []
+    }
+}
