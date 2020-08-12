@@ -173,21 +173,25 @@ class DLMeta extends Strategy{
                  ]];
                 $builder->translate_DL($lst);
 
-                if ($sub["disjointness constraints"] != ""){
-                  $disj_name = $sub["disjointness constraints"];
+                if (array_key_exists("disjointness constraints", $sub)) {
+                  if ($sub["disjointness constraints"] != ""){
+                    $disj_name = $sub["disjointness constraints"];
 
-                  if (!in_array($disj_name,$already_constrencoded)){
-                    $this->translate_disjointness($json, $disj_name, $builder);
-                    array_push($already_constrencoded, $disj_name);
+                    if (!in_array($disj_name,$already_constrencoded)){
+                      $this->translate_disjointness($json, $disj_name, $builder);
+                      array_push($already_constrencoded, $disj_name);
+                    }
                   }
                 }
 
-                if ($sub["completeness constraints"] != ""){
-                  $comp_name = $sub["completeness constraints"];
+                if (array_key_exists("completeness constraints", $sub)) {
+                  if ($sub["completeness constraints"] != ""){
+                    $comp_name = $sub["completeness constraints"];
 
-                  if (!in_array($comp_name,$already_constrencoded)){
-                    $this->translate_completeness($json, $comp_name, $parent, $builder);
-                    array_push($already_constrencoded, $comp_name);
+                    if (!in_array($comp_name,$already_constrencoded)){
+                      $this->translate_completeness($json, $comp_name, $parent, $builder);
+                      array_push($already_constrencoded, $comp_name);
+                    }
                   }
                 }
 
