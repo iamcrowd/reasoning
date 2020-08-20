@@ -104,6 +104,9 @@
   <IsClassSatisfiable kb="http://crowd.fi.uncoma.edu.ar/kb1#">
     <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Person"/>
   </IsClassSatisfiable>
+	<IsClassSatisfiable kb="http://crowd.fi.uncoma.edu.ar/kb1#">
+		<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#enrolled"/>
+	</IsClassSatisfiable>
 	<IsObjectPropertySatisfiable kb="http://crowd.fi.uncoma.edu.ar/kb1#">
 		<owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#person"/>
 	</IsObjectPropertySatisfiable>

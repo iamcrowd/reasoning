@@ -20,10 +20,10 @@
       <owl:Class IRI="http://www.w3.org/2002/07/owl#Thing"/>
     </owl:SubClassOf>
 
-    <owl:SubClassOf>
+    <owl:SubDataPropertyOf>
       <owl:DataProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#Name"/>
       <owl:DataProperty IRI="http://www.w3.org/2002/07/owl#topDataProperty"/>
-    </owl:SubClassOf>
+    </owl:SubDataPropertyOf>
 
 		<owl:DataPropertyDomain>
 			<owl:DataProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#Name"/>
@@ -34,20 +34,6 @@
 			<owl:DataProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#Name"/>
 			<owl:Datatype IRI="http://www.w3.org/2001/XMLSchema#string"/>
 		</owl:DataPropertyRange>
-
-		<owl:SubClassOf>
-			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Person"/>
-			<owl:DataMinCardinality cardinality="1">
-				<owl:DataProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#Name"/>
-			</owl:DataMinCardinality>
-		</owl:SubClassOf>
-
-		<owl:SubClassOf>
-			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Person"/>
-			<owl:DataMaxCardinality cardinality="1">
-				<owl:DataProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#Name"/>
-			</owl:DataMaxCardinality>
-		</owl:SubClassOf>
 
   </Tell>
 

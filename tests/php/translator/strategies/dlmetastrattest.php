@@ -74,7 +74,7 @@ class DLMetaTest extends PHPUnit\Framework\TestCase{
 
           $builder->insert_header();
           $strategy->translate($json, $builder);
-          $strategy->translate_queries($json, $builder);
+          $strategy->translate_queries($strategy, $builder);
           $builder->insert_footer();
 
           $actual = $builder->get_product();
@@ -99,7 +99,7 @@ class DLMetaTest extends PHPUnit\Framework\TestCase{
 
           $builder->insert_header();
           $strategy->translate($json, $builder);
-          $strategy->translate_queries($json, $builder);
+          $strategy->translate_queries($strategy, $builder);
           $builder->insert_footer();
 
           $actual = $builder->get_product();
@@ -124,7 +124,7 @@ class DLMetaTest extends PHPUnit\Framework\TestCase{
 
           $builder->insert_header();
           $strategy->translate($json, $builder);
-          $strategy->translate_queries($json, $builder);
+          $strategy->translate_queries($strategy, $builder);
           $builder->insert_footer();
 
           $actual = $builder->get_product();
@@ -150,7 +150,7 @@ class DLMetaTest extends PHPUnit\Framework\TestCase{
 
           $builder->insert_header();
           $strategy->translate($json, $builder);
-          $strategy->translate_queries($json, $builder);
+          $strategy->translate_queries($strategy, $builder);
           $builder->insert_footer();
 
           $actual = $builder->get_product();
@@ -176,7 +176,7 @@ class DLMetaTest extends PHPUnit\Framework\TestCase{
 
           $builder->insert_header();
           $strategy->translate($json, $builder);
-          $strategy->translate_queries($json, $builder);
+          $strategy->translate_queries($strategy, $builder);
           $builder->insert_footer();
 
           $actual = $builder->get_product();
@@ -202,7 +202,7 @@ class DLMetaTest extends PHPUnit\Framework\TestCase{
 
           $builder->insert_header();
           $strategy->translate($json, $builder);
-          $strategy->translate_queries($json, $builder);
+          $strategy->translate_queries($strategy, $builder);
           $builder->insert_footer();
 
           $actual = $builder->get_product();
@@ -229,7 +229,7 @@ class DLMetaTest extends PHPUnit\Framework\TestCase{
 
           $builder->insert_header();
           $strategy->translate($json, $builder);
-          $strategy->translate_queries($json, $builder);
+          $strategy->translate_queries($strategy, $builder);
           $builder->insert_footer();
 
           $actual = $builder->get_product();
@@ -257,7 +257,7 @@ class DLMetaTest extends PHPUnit\Framework\TestCase{
 
           $builder->insert_header();
           $strategy->translate($json, $builder);
-          $strategy->translate_queries($json, $builder);
+          $strategy->translate_queries($strategy, $builder);
           $builder->insert_footer();
 
           $actual = $builder->get_product();
@@ -271,8 +271,7 @@ class DLMetaTest extends PHPUnit\Framework\TestCase{
     }
 
     /**
-       @testdox Translate a simple model with some KF Attributes into OWLlink but considering
-       Transformation Rules, which use MappedTo primitive.
+       @testdox Translate a simple model with some KF Attributes into OWLlink but considering Transformation Rules, which use MappedTo primitive.
        @See http://crowd.fi.uncoma.edu.ar/KFDoc/
      */
     public function testAttributeMappedToIntoOWLlink(){
@@ -285,7 +284,7 @@ class DLMetaTest extends PHPUnit\Framework\TestCase{
 
           $builder->insert_header();
           $strategy->translate($json, $builder);
-          $strategy->translate_queries($json, $builder);
+          $strategy->translate_queries($strategy, $builder);
           $builder->insert_footer();
 
           $actual = $builder->get_product();
