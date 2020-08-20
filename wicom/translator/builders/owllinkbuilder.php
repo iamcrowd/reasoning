@@ -44,7 +44,7 @@ class OWLlinkBuilder extends DocumentBuilder{
     /**
        @param $createkb A Boolean flag for setting CreateKB tags
        @param $starttell A Boolean flag for starting Tell elements
-       @param $ontologyIRI {Array} A list with the default URI. A value should 
+       @param $ontologyIRI {Array} A list with the default URI. A value should
          be `[['prefix' => 'crowd', 'value' => 'http://crowd.fi.uncoma.edu.ar/']]`
        @param $uris An Array containing the Request IRIs:
          [["prefix" => "", "value" => ""], ... , ["prefix" => "", "value" => ""]]
