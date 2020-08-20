@@ -146,7 +146,7 @@ class DLMeta extends Strategy{
        @see Translator class for description about the JSON format.
 
        C1 \sqsubseteq C
-       Ci \sqsubseteq ¬Cj (disjointness)
+       Ci \sqcap Cj \sqsubseteq \bot (disjointness)
        C \sqsubseteq C1 \sqcup · · · \sqcup Ck (completeness)
 
        @note complete and disjoint subtypes are declared among
@@ -213,6 +213,47 @@ class DLMeta extends Strategy{
                   ]];
                   $builder->translate_DL($lst);
             }
+      }
+    }
+
+    /**
+       Translate a JSON KF Attibute Property into another format depending on
+       the given Builder.
+
+       @param json_str A String with a KF metamodel containing an attributive property in
+       JSON format.
+       @param builder A Wicom\Translator\Builders\DocumentBuilder subclass instance.
+
+       @see Translator class for description about the JSON format.
+
+       datapropertydomain(DP,A)
+       datapropertyrange(DP,Datatype)
+
+       @note Basic encoding without considering cardinalities.
+       They are translated as dataproperties with domain and range.
+    */
+    protected function translate_attributiveProperty($json, $builder){
+      $json_attrProp = $json["Relationship"]["Attributive property"]["Attributive property"];
+      $already_constrencoded = [];
+
+      foreach ($json_attrProp as $attr_el) {
+        $attr_dom = $attr_el["domain"];
+
+        foreach ($attr_dom as $attr_dom_el) {
+
+          $el = [
+                ["data_domain" => [
+                  ["data_role" => $attr_el["name"]],
+                  ["class" => $attr_dom_el]
+                ]],
+                ["data_range" => [
+                  ["data_role" => $attr_el["name"]],
+                  ["datatype" => $attr_el["range"]]
+                ]],
+                ];
+
+              $builder->translate_DL($el);
+        }
       }
     }
 
@@ -361,26 +402,44 @@ class DLMeta extends Strategy{
         $js_objtype = $json["Entity type"]["Object type"];
         $js_role = $json["Role"];
         $js_rel = $json["Relationship"]["Relationship"];
+        $js_valueType = $json["Entity type"]["Value property"]["Value type"];
+        $js_attrProp = $json["Relationship"]["Attributive property"]["Attributive property"];
 
         if (!empty($js_objtype)){
             foreach ($js_objtype as $objtype){
                 $builder->insert_class_declaration($objtype);
+                array_push($this->classes, $objtype);
+            }
+        }
+        if (!empty($js_valueType)){
+            foreach ($js_valueType as $valuetype){
+                $builder->insert_class_declaration($valuetype);
+                array_push($this->classes, $valuetype);
             }
         }
         if (!empty($js_role)){
             foreach ($js_role as $role){
                 $builder->insert_objectproperty_declaration($role["rolename"]);
+                array_push($this->objectProperties, $role["rolename"]);
             }
         }
         if (!empty($js_rel)){
             foreach ($js_rel as $rel){
                 $builder->insert_class_declaration($rel["name"]);
+                array_push($this->classes, $rel["name"]);
+            }
+        }
+        if (!empty($js_attrProp)){
+            foreach ($js_attrProp as $attrProp_el){
+                $builder->insert_dataproperty_declaration($attrProp_el["name"]);
+                array_push($this->dataProperties, $attrProp_el["name"]);
             }
         }
 
         $this->translate_subsumption($json, $builder);
         $this->translate_relationship($json, $builder);
-
+        $this->translate_attributiveProperty($json, $builder);
+        //$this->translate_attributeMappedTo($json, $builder);
       }
 
 

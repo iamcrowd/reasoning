@@ -53,8 +53,8 @@ abstract class QAPack{
        @param $builder a Wicom\Translator\Builders\DocumentBuilder instance.
 
      */
-    function generate_queries($json_diagram, $builder){
-        $this->query_generator->generate_all_queries($json_diagram, $builder);
+    function generate_queries($el_toQuery, $builder){
+        $this->query_generator->generate_all_queries($el_toQuery, $builder);
     }
 
     /**

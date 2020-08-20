@@ -47,7 +47,7 @@ class CrowdMetaQueries extends QueriesGenerator {
        @param $builder an instance of Wicom\Translator\Builders\DocumentBuilder.
 
      */
-    function generate_all_queries($json_str, $builder){
+    function generate_all_queries($el_toQuery, $builder){
 /*        $this->gen_satisfiable($builder);
         $this->gen_class_satisfiable($json_str, $builder);
         $this->gen_entailed_classes($json_str, $builder);
@@ -57,7 +57,7 @@ class CrowdMetaQueries extends QueriesGenerator {
         $this->gen_equivalent_classes($json_str, $builder);
         $this->gen_sub_classes_hierarchy($builder);*/
 
-        parent::generate_all_queries($json_str, $builder);
+        parent::generate_all_queries($el_toQuery, $builder);
     }
 
 
@@ -69,13 +69,11 @@ class CrowdMetaQueries extends QueriesGenerator {
        @param $builder A Wicom\Translator\Builders\DocumentBuilder
        instance.
     */
-    function gen_class_satisfiable($json_diagram, $builder){
-        $json = json_decode($json_diagram, true);
-        $json_classes = $json["Entity type"]["Object type"];
-
-        foreach ($json_classes as $jelem) {
-            $builder->insert_satisfiable_class($jelem);
-        }
+    function gen_class_satisfiable($el_toQuery, $builder){
+      $classes = $el_toQuery->get_classes();
+      foreach ($classes as $jelem) {
+          $builder->insert_satisfiable_class($jelem);
+      }
     }
 
     /**
@@ -86,13 +84,11 @@ class CrowdMetaQueries extends QueriesGenerator {
        @param $builder A Wicom\Translator\Builders\DocumentBuilder
        instance.
     */
-    function gen_objectProperty_satisfiable($json_meta, $builder){
-        $json = json_decode($json_meta, true);
-        $json_roles = $json["Role"];
-
-        foreach ($json_roles as $role) {
-          $builder->insert_satisfiable_objectProperty($role["rolename"]);
-        }
+    function gen_objectProperty_satisfiable($el_toQuery, $builder){
+      $OP = $el_toQuery->get_objectProperties();
+      foreach ($OP as $jelem) {
+          $builder->insert_satisfiable_objectProperty($jelem);
+      }
     }
 
     /**
@@ -103,8 +99,11 @@ class CrowdMetaQueries extends QueriesGenerator {
        @param $builder A Wicom\Translator\Builders\DocumentBuilder
        instance.
     */
-    function gen_dataProperty_satisfiable($json_diagram, $builder){
-
+    function gen_dataProperty_satisfiable($el_toQuery, $builder){
+      $DP = $el_toQuery->get_dataProperties();
+      foreach ($DP as $jelem) {
+          $builder->insert_satisfiable_dataProperty($jelem);
+      }
     }
 
 

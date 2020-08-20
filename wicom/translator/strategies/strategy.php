@@ -32,6 +32,10 @@ use Wicom\Translator\Builders\UMLJSONBuilder;
 */
 abstract class Strategy{
 
+    protected $classes = [];
+    protected $objectProperties = [];
+    protected $dataProperties = [];
+
     /**
        An instance of any QAPack subclass.
 
@@ -40,6 +44,9 @@ abstract class Strategy{
     protected $qapack = null;
 
     function __construct(){
+      $this->classes = [];
+      $this->objectProperties = [];
+      $this->dataProperties = [];
     }
 
     /**
@@ -56,13 +63,35 @@ abstract class Strategy{
     abstract function decode($owl, $jsonbuild);
 
     /**
+      This function returns classes asserted during the formal encoding.
+      @return an Array of Classes
+    */
+    function get_classes(){
+      return $this->classes;
+    }
+    /**
+      This function returns object properties asserted during the formal encoding.
+      @return an Array of Object Properties
+    */
+    function get_objectProperties(){
+      return $this->objectProperties;
+    }
+    /**
+      This function returns data properties asserted during the formal encoding.
+      @return an Array of Data Properties
+    */
+    function get_dataProperties(){
+      return $this->dataProperties;
+    }
+
+    /**
        Generate queries appropiates for this queries using the Builder to store them in the document.
 
        @param $json a JSON string representing the user's model.
        @param $builder Wicom\Translator\Builders\DocumentBuilder
     */
-    function translate_queries($json, $builder){
-        $this->qapack->generate_queries($json, $builder);
+    function translate_queries($strategy, $builder){
+        $this->qapack->generate_queries($strategy, $builder);
     }
 
     function analize_answer($reasoner_query, $reasoner_answer, $owl2){
