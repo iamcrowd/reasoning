@@ -6,7 +6,7 @@
             ]
         },
         "Data type": [
-            "string"
+            "http://www.w3.org/2001/XMLSchema#string"
         ],
         "Object type": [
             "http://crowd.fi.uncoma.edu.ar#Person"
@@ -66,7 +66,7 @@
                             "http://crowd.fi.uncoma.edu.ar#Name"
                         ],
                         "name": "http://crowd.fi.uncoma.edu.ar#Name_mappedTo",
-                        "range": "string"
+                        "range": "http://www.w3.org/2001/XMLSchema#string"
                     }
                 ]
             }
