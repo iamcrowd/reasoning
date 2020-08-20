@@ -241,4 +241,60 @@ class DLMetaTest extends PHPUnit\Framework\TestCase{
           $this->assertTrue(false, "JSON KF does not match against KF Scheme");
         }
     }
+
+    /**
+       @testdox Translate a simple model with some KF Attribute Property
+       into OWLlink
+       @See http://crowd.fi.uncoma.edu.ar/KFDoc/
+     */
+    public function testAttributePropertyIntoOWLlink(){
+        $json = file_get_contents("translator/strategies/data/testAttributePropertyIntoOWLlink.json");
+        $expected = file_get_contents("translator/strategies/data/testAttributePropertyIntoOWLlink.owllink");
+
+        if ($this->validate_against_scheme($json)){
+          $strategy = new DLMeta();
+          $builder = new OWLlinkBuilder();
+
+          $builder->insert_header();
+          $strategy->translate($json, $builder);
+          $strategy->translate_queries($json, $builder);
+          $builder->insert_footer();
+
+          $actual = $builder->get_product();
+          $actual = $actual->to_string();
+
+          $this->assertXmlStringEqualsXmlString($expected, $actual, true);
+        }
+        else {
+          $this->assertTrue(false, "JSON KF does not match against KF Scheme");
+        }
+    }
+
+    /**
+       @testdox Translate a simple model with some KF Attributes into OWLlink but considering
+       Transformation Rules, which use MappedTo primitive.
+       @See http://crowd.fi.uncoma.edu.ar/KFDoc/
+     */
+    public function testAttributeMappedToIntoOWLlink(){
+        $json = file_get_contents("translator/strategies/data/testAttributeMappedToIntoOWLlink.json");
+        $expected = file_get_contents("translator/strategies/data/testAttributeMappedToIntoOWLlink.owllink");
+
+        if ($this->validate_against_scheme($json)){
+          $strategy = new DLMeta();
+          $builder = new OWLlinkBuilder();
+
+          $builder->insert_header();
+          $strategy->translate($json, $builder);
+          $strategy->translate_queries($json, $builder);
+          $builder->insert_footer();
+
+          $actual = $builder->get_product();
+          $actual = $actual->to_string();
+
+          $this->assertXmlStringEqualsXmlString($expected, $actual, true);
+        }
+        else {
+          $this->assertTrue(false, "JSON KF does not match against KF Scheme");
+        }
+    }
 }
