@@ -2,14 +2,14 @@
     "Entity type": {
         "Value property": {
             "Value type": [
-                "http://crowd.fi.uncoma.edu.ar#Name"
+                "http://crowd.fi.uncoma.edu.ar/kb1#Name"
             ]
         },
         "Data type": [
             "http://www.w3.org/2001/XMLSchema#string"
         ],
         "Object type": [
-            "http://crowd.fi.uncoma.edu.ar#Person"
+            "http://crowd.fi.uncoma.edu.ar/kb1#Person"
         ]
     },
     "Role": [
@@ -17,17 +17,17 @@
             "object type cardinality": [
                 "wT4zDa"
             ],
-            "rolename": "http://crowd.fi.uncoma.edu.ar#Person_role",
-            "entity type": "http://crowd.fi.uncoma.edu.ar#Person",
-            "relationship": "http://crowd.fi.uncoma.edu.ar#Name_valueTypeRel"
+            "rolename": "http://crowd.fi.uncoma.edu.ar/kb1#Person_role",
+            "entity type": "http://crowd.fi.uncoma.edu.ar/kb1#Person",
+            "relationship": "http://crowd.fi.uncoma.edu.ar/kb1#Name_valueTypeRel"
         },
         {
             "object type cardinality": [
                 "VjgvyB"
             ],
-            "rolename": "http://crowd.fi.uncoma.edu.ar#Name_role",
-            "entity type": "http://crowd.fi.uncoma.edu.ar#Name",
-            "relationship": "http://crowd.fi.uncoma.edu.ar#Name_valueTypeRel"
+            "rolename": "http://crowd.fi.uncoma.edu.ar/kb1#Name_role",
+            "entity type": "http://crowd.fi.uncoma.edu.ar/kb1#Name",
+            "relationship": "http://crowd.fi.uncoma.edu.ar/kb1#Name_valueTypeRel"
         }
     ],
     "Constraints": {
@@ -63,9 +63,9 @@
                 "Mapped to": [
                     {
                         "domain": [
-                            "http://crowd.fi.uncoma.edu.ar#Name"
+                            "http://crowd.fi.uncoma.edu.ar/kb1#Name"
                         ],
-                        "name": "http://crowd.fi.uncoma.edu.ar#Name_mappedTo",
+                        "name": "http://crowd.fi.uncoma.edu.ar/kb1#Name_mappedTo",
                         "range": "http://www.w3.org/2001/XMLSchema#string"
                     }
                 ]
@@ -75,10 +75,10 @@
         "Relationship": [
             {
                 "entities": [
-                    "http://crowd.fi.uncoma.edu.ar#Person",
-                    "http://crowd.fi.uncoma.edu.ar#Name"
+                    "http://crowd.fi.uncoma.edu.ar/kb1#Person",
+                    "http://crowd.fi.uncoma.edu.ar/kb1#Name"
                 ],
-                "name": "http://crowd.fi.uncoma.edu.ar#Name_valueTypeRel"
+                "name": "http://crowd.fi.uncoma.edu.ar/kb1#Name_valueTypeRel"
             }
         ]
     }

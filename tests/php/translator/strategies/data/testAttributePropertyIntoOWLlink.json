@@ -7,7 +7,7 @@
             "http://www.w3.org/2001/XMLSchema#string"
         ],
         "Object type": [
-            "http://crowd.fi.uncoma.edu.ar#Person"
+            "http://crowd.fi.uncoma.edu.ar/kb1#Person"
         ]
     },
     "Role": [],
@@ -30,9 +30,9 @@
             "Attributive property": [
                 {
                     "domain": [
-                        "http://crowd.fi.uncoma.edu.ar#Person"
+                        "http://crowd.fi.uncoma.edu.ar/kb1#Person"
                     ],
-                    "name": "http://crowd.fi.uncoma.edu.ar#Name",
+                    "name": "http://crowd.fi.uncoma.edu.ar/kb1#Name",
                     "range": "http://www.w3.org/2001/XMLSchema#string"
                 }
             ],
