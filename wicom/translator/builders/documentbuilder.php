@@ -208,27 +208,28 @@ abstract class DocumentBuilder extends Documents{
                 }
                 $this->product->end_maxcardinality();
                 break;
-	              case "domain" :
-		              $this->product->begin_objectpropertydomain();
-		              $this->DL_element($elt["domain"][0]);
-		              $this->DL_element($elt["domain"][1]);
-		              $this->product->end_objectpropertydomain();
-		              break;
-                case "range" :
-                  $this->product->begin_objectpropertyrange();
-                  $this->DL_element($elt["range"][0]);
-                  $this->DL_element($elt["range"][1]);
-                  $this->product->end_objectpropertyrange();
+
+	          case "domain" :
+		            $this->product->begin_objectpropertydomain();
+		            $this->DL_element($elt["domain"][0]);
+		            $this->DL_element($elt["domain"][1]);
+		            $this->product->end_objectpropertydomain();
 		            break;
-                case "equivalentclasses" :
-		              $this->product->begin_equivalentclasses();
-		              $this->translate_DL($elt["equivalentclasses"]);
-		              $this->product->end_equivalentclasses();
+            case "range" :
+                $this->product->begin_objectpropertyrange();
+                $this->DL_element($elt["range"][0]);
+                $this->DL_element($elt["range"][1]);
+                $this->product->end_objectpropertyrange();
 		            break;
-                case "disjointclasses" :
-   		           $this->product->begin_disjointclasses();
-   		           $this->translate_DL($elt["disjointclasses"]);
-   		           $this->product->end_disjointclasses();
+            case "equivalentclasses" :
+		            $this->product->begin_equivalentclasses();
+		            $this->translate_DL($elt["equivalentclasses"]);
+		            $this->product->end_equivalentclasses();
+		            break;
+            case "disjointclasses" :
+   		          $this->product->begin_disjointclasses();
+   		          $this->translate_DL($elt["disjointclasses"]);
+   		          $this->product->end_disjointclasses();
    		          break;
                 // DataProperties
             case "datatype" :
@@ -282,27 +283,27 @@ abstract class DocumentBuilder extends Documents{
                 }
                 $this->product->end_maxcardinality_dataproperty();
                 break;
-	    case "data_domain" :
-		$this->product->begin_datapropertydomain();
-		$this->DL_element($elt["data_domain"][0]);
-		$this->DL_element($elt["data_domain"][1]);
-		$this->product->end_datapropertydomain();
-		break;
+	          case "data_domain" :
+		            $this->product->begin_datapropertydomain();
+		            $this->DL_element($elt["data_domain"][0]);
+		            $this->DL_element($elt["data_domain"][1]);
+		            $this->product->end_datapropertydomain();
+		            break;
             case "data_domain_exists" :
-   		$this->DL_element($elt["data_domain_exists"][0]);
-   		break;
-	    case "data_range" :
-		$this->product->begin_datapropertyrange();
-		$this->DL_element($elt["data_range"][0]);
-		$this->DL_element($elt["data_range"][1]);
-		$this->product->end_datapropertyrange();
-		break;
+   		          $this->DL_element($elt["data_domain_exists"][0]);
+   		          break;
+	          case "data_range" :
+		            $this->product->begin_datapropertyrange();
+		            $this->DL_element($elt["data_range"][0]);
+		            $this->DL_element($elt["data_range"][1]);
+		            $this->product->end_datapropertyrange();
+		            break;
             case "data_range_exists" :
-		$this->translate_DL($elt["data_range_exists"][0]);
-		break;
+		            $this->translate_DL($elt["data_range_exists"][0]);
+		            break;
             case "data_range_inverse" :
- 		$this->DL_element($elt["data_range_inverse"][0]);
- 		break;
+ 		            $this->DL_element($elt["data_range_inverse"][0]);
+ 		            break;
             default:
                 throw new \Exception("I don't know $key DL operand");
         }

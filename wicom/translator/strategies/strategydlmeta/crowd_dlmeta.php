@@ -228,9 +228,12 @@ class DLMeta extends Strategy{
 
        datapropertydomain(DP,A)
        datapropertyrange(DP,Datatype)
+       A \sqsubseteq \exists DP \sqcap (\leq 1 DP)
 
-       @note Basic encoding without considering cardinalities.
+       @// NOTE:   Basic encoding without considering cardinalities.
        They are translated as dataproperties with domain and range.
+
+       @// TODO: add cardinalities in attributes. Currently, one-to-one
     */
     protected function translate_attributiveProperty($json, $builder){
       $json_attrProp = $json["Relationship"]["Attributive property"]["Attributive property"];
@@ -241,18 +244,59 @@ class DLMeta extends Strategy{
 
         foreach ($attr_dom as $attr_dom_el) {
 
+          $card_conj = [];
+
+          $card_min_ax = [
+                          "mincard" => [
+                              $min,
+                              [
+                                "data_role" => $attr_el["name"]
+                              ]
+                          ]
+          ];
+          array_push($card_conj, $card_min_ax);
+
+          $card_max_ax = [
+                          "maxcard" => [
+                              $max,
+                              [
+                                "data_role" => $attr_el["name"]
+                              ]
+                          ]
+          ];
+          array_push($card_conj, $card_max_ax);
+
           $el = [
-                ["data_domain" => [
-                  ["data_role" => $attr_el["name"]],
-                  ["class" => $attr_dom_el]
-                ]],
-                ["data_range" => [
-                  ["data_role" => $attr_el["name"]],
-                  ["datatype" => $attr_el["range"]]
-                ]],
+                  ["data_domain" => [
+                    ["data_role" => $attr_el["name"]],
+                    ["class" => $attr_dom_el]
+                  ]],
+                  ["data_range" => [
+                    ["data_role" => $attr_el["name"]],
+                    ["datatype" => $attr_el["range"]]
+                  ]],
+                  ["subclass" => [
+                    ["class" => $attr_dom_el],
+                    ["data_mincard" => [
+                          1,
+                          ["data_role" => $attr_el["name"]]
+                          ]
+                        ]
+                    ]
+                  ],
+                  ["subclass" => [
+                    ["class" => $attr_dom_el],
+                    ["data_maxcard" => [
+                          1,
+                          ["data_role" => $attr_el["name"]]
+                          ]
+                        ]
+                    ]
+                  ]
                 ];
 
-              $builder->translate_DL($el);
+            $builder->translate_DL($el);
+
         }
       }
     }

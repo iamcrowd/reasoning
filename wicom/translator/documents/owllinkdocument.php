@@ -712,78 +712,79 @@ class OWLlinkDocument extends Document{
     # Min and Max Cardinalities for DataProperties
     #
     public function begin_mincardinality_dataproperty($cardinality){
-	$this->content->startElement("owl:DataMinCardinality");
-	$this->content->writeAttribute("cardinality", $cardinality);
+	     $this->content->startElement("owl:DataMinCardinality");
+	      $this->content->writeAttribute("cardinality", $cardinality);
     }
     public function end_mincardinality_dataproperty(){
-	$this->content->EndElement();
+	     $this->content->EndElement();
     }
 
     public function begin_maxcardinality_dataproperty($cardinality){
-	$this->content->startElement("owl:DataMaxCardinality");
-	$this->content->writeAttribute("cardinality", $cardinality);
+	     $this->content->startElement("owl:DataMaxCardinality");
+	      $this->content->writeAttribute("cardinality", $cardinality);
     }
     public function end_maxcardinality_dataproperty(){
-	$this->content->EndElement();
+	     $this->content->EndElement();
     }
 
     public function begin_somevaluesfrom_dataproperty(){
-	$this->content->startElement("owl:DataSomeValuesFrom");
+	     $this->content->startElement("owl:DataSomeValuesFrom");
     }
     public function end_somevaluesfrom_dataproperty(){
-	$this->content->EndElement();
+	     $this->content->EndElement();
     }
 
     public function begin_allvaluesfrom_dataproperty(){
-	$this->content->startElement("owl:DataAllValuesFrom");
+	     $this->content->startElement("owl:DataAllValuesFrom");
     }
+
     public function end_allvaluesfrom_dataproperty(){
-	$this->content->EndElement();
+	     $this->content->EndElement();
     }
 
     public function begin_datapropertydomain(){
-	$this->content->startElement("owl:DataPropertyDomain");
+	     $this->content->startElement("owl:DataPropertyDomain");
     }
 
     public function end_datapropertydomain(){
-	$this->content->EndElement();
+	     $this->content->EndElement();
     }
 
     public function begin_datapropertyrange(){
-	$this->content->startElement("owl:DataPropertyRange");
+	     $this->content->startElement("owl:DataPropertyRange");
     }
 
     public function end_datapropertyrange(){
-	$this->content->EndElement();
+	     $this->content->EndElement();
     }
 
     public function begin_intersectionof_dataproperty(){
-	$this->content->startElement("owl:DataIntersectionOf");
+	     $this->content->startElement("owl:DataIntersectionOf");
     }
 
     public function end_intersectionof_dataproperty(){
-	$this->content->EndElement();
+	     $this->content->EndElement();
     }
 
     public function begin_unionof_dataproperty(){
-	$this->content->startElement("owl:DataUnionOf");
+	     $this->content->startElement("owl:DataUnionOf");
     }
     public function end_unionof_dataproperty(){
-	$this->content->EndElement();
+	     $this->content->EndElement();
     }
 
     public function begin_complementof_dataproperty(){
-	$this->content->startElement("owl:DataComplementOf");
+	     $this->content->startElement("owl:DataComplementOf");
     }
     public function end_complementof_dataproperty(){
-	$this->content->EndElement();
+	     $this->content->EndElement();
     }
 
     public function insert_datatype($name, $is_abbreviated=null){
-	if ((! $this->in_tell) && (! $this->in_queries)){
+	     if ((! $this->in_tell) && (! $this->in_queries)){
 	    // We're not in tell mode!!!
-	    return false;
-	}
+	       return false;
+	  }
 
 	if ($is_abbreviated == null){
 	    $has_namespace = $this->name_has_namespace($name);
