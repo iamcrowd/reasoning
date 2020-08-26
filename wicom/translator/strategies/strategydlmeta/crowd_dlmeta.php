@@ -244,28 +244,6 @@ class DLMeta extends Strategy{
 
         foreach ($attr_dom as $attr_dom_el) {
 
-          $card_conj = [];
-
-          $card_min_ax = [
-                          "mincard" => [
-                              $min,
-                              [
-                                "data_role" => $attr_el["name"]
-                              ]
-                          ]
-          ];
-          array_push($card_conj, $card_min_ax);
-
-          $card_max_ax = [
-                          "maxcard" => [
-                              $max,
-                              [
-                                "data_role" => $attr_el["name"]
-                              ]
-                          ]
-          ];
-          array_push($card_conj, $card_max_ax);
-
           $el = [
                   ["data_domain" => [
                     ["data_role" => $attr_el["name"]],
