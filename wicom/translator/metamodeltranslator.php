@@ -94,7 +94,7 @@ class MetamodelTranslator{
         }
 
         if ($this->with_queries){
-            $this->strategy->translate_queries($json, $this->builder);
+            $this->strategy->translate_queries($this->strategy, $this->builder);
         }
 
         $this->builder->insert_footer();
