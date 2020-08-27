@@ -13,7 +13,7 @@
     "Role": [],
     "Constraints": {
         "Cardinality constraints": {
-            "Attibutive property cardinality": [],
+            "Attributive property cardinality": [],
             "Object type cardinality": []
         },
         "Disjointness constraints": {

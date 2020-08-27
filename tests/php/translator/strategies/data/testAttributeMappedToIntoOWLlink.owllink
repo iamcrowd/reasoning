@@ -25,11 +25,6 @@
 			<owl:Class IRI="http://www.w3.org/2002/07/owl#Thing"/>
 		</owl:SubClassOf>
 
-		<owl:SubClassOf>
-			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Name_valueTypeRel"/>
-			<owl:Class IRI="http://www.w3.org/2002/07/owl#Thing"/>
-		</owl:SubClassOf>
-
 		<owl:SubObjectPropertyOf>
 			<owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#Person_role"/>
 			<owl:ObjectProperty IRI="http://www.w3.org/2002/07/owl#topObjectProperty"/>
@@ -40,11 +35,15 @@
 			<owl:ObjectProperty IRI="http://www.w3.org/2002/07/owl#topObjectProperty"/>
 		</owl:SubObjectPropertyOf>
 
-    <owl:SubClassOf>
+		<owl:SubClassOf>
+			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Name_valueTypeRel"/>
+			<owl:Class IRI="http://www.w3.org/2002/07/owl#Thing"/>
+		</owl:SubClassOf>
+
+    <owl:SubDataPropertyOf>
       <owl:DataProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#Name_mappedTo"/>
       <owl:DataProperty IRI="http://www.w3.org/2002/07/owl#topDataProperty"/>
-    </owl:SubClassOf>
-
+    </owl:SubDataPropertyOf>
 
 		<owl:SubClassOf>
 			<owl:ObjectSomeValuesFrom>
@@ -156,14 +155,14 @@
 	<IsClassSatisfiable kb="http://crowd.fi.uncoma.edu.ar/kb1#">
 		<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Name_valueTypeRel"/>
 	</IsClassSatisfiable>
-	<IsDataPropertySatisfiable kb="http://crowd.fi.uncoma.edu.ar/kb1#">
-		<owl:DataProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#Name_mappedTo"/>
-	</IsDataPropertySatisfiable>
 	<IsObjectPropertySatisfiable kb="http://crowd.fi.uncoma.edu.ar/kb1#">
 		<owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#Person_role"/>
 	</IsObjectPropertySatisfiable>
   <IsObjectPropertySatisfiable kb="http://crowd.fi.uncoma.edu.ar/kb1#">
     <owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#Name_role"/>
   </IsObjectPropertySatisfiable>
+	<IsDataPropertySatisfiable kb="http://crowd.fi.uncoma.edu.ar/kb1#">
+		<owl:DataProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#Name_mappedTo"/>
+	</IsDataPropertySatisfiable>
   <GetPrefixes kb="http://crowd.fi.uncoma.edu.ar/kb1#"/>
 </RequestMessage>
