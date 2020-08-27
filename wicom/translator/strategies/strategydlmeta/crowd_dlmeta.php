@@ -237,7 +237,6 @@ class DLMeta extends Strategy{
     */
     protected function translate_attributiveProperty($json, $builder){
       $json_attrProp = $json["Relationship"]["Attributive property"]["Attributive property"];
-      $already_constrencoded = [];
 
       foreach ($json_attrProp as $attr_el) {
         $attr_dom = $attr_el["domain"];
@@ -304,15 +303,15 @@ class DLMeta extends Strategy{
           $relname = $rel["name"];
           $entities = $rel["entities"];
 
+          // Roles with cardinalities
           foreach ($json_role as $role) {
             $lst = [];
             $lst_dom = [];
             $lst_range = [];
             $role_ot_card = $role["object type cardinality"];
 
-            if (strcasecmp($role["relationship"], $relname) == 0){
-              array_push($already_rolencoded, $role);
-              $lst_dom = [
+            array_push($already_rolencoded, $role);
+            $lst_dom = [
                 "subclass" => [
                   ["exists" => [
                     ["role" => $role["rolename"]],
@@ -321,7 +320,7 @@ class DLMeta extends Strategy{
                   ]
                 ];
 
-              $lst_range = [
+            $lst_range = [
                 "subclass" => [
                   ["exists" => [
                     ["inverse" => ["role" => $role["rolename"]]],
@@ -329,13 +328,14 @@ class DLMeta extends Strategy{
                   ["class" => $role["entity type"]]
                   ]
                 ];
-              array_push($lst, $lst_dom);
-              array_push($lst, $lst_range);
-              $builder->translate_DL($lst);
 
-              foreach ($role_ot_card as $role_card) {
+            array_push($lst, $lst_dom);
+            array_push($lst, $lst_range);
+            $builder->translate_DL($lst);
 
+            foreach ($role_ot_card as $role_card) {
                 foreach ($json_ot_card as $ot_card) {
+
                   if (strcasecmp($ot_card["name"], $role_card) == 0){
                     $card_conj = [];
                     $min = $ot_card["minimum"];
@@ -343,41 +343,37 @@ class DLMeta extends Strategy{
 
                     if (strcasecmp($min, "0") != 0){
                       $card_min_ax = [
-                        "mincard" => [$min,
-                            ["inverse" => ["role" => $role["rolename"]]]
-                          ]
-                        ];
-                      array_push($card_conj, $card_min_ax);
+                                      ["subclass" => [
+                                        ["class" => $role["entity type"]],
+                                        ["mincard" => [$min, ["inverse" => ["role" => $role["rolename"]]]]]
+                                      ]
+                                     ]
+                                    ];
+
+                      $builder->translate_DL($card_min_ax);
                     }
 
                     if ((strcasecmp($max, "N") != 0) && (strcasecmp($max, "*") != 0)){
                       $card_max_ax = [
-                        "maxcard" => [$max,
-                            ["inverse" => ["role" => $role["rolename"]]]
-                          ]
-                        ];
-                      array_push($card_conj, $card_max_ax);
-                    }
+                                      ["subclass" => [
+                                        ["class" => $role["entity type"]],
+                                        ["maxcard" => [
+                                                      $max, ["inverse" => ["role" => $role["rolename"]]]
+                                                      ]]
+                                        ]
+                                      ]
+                                    ];
 
-                    if (count($card_conj) > 0){
-                      $lst_card_a = [
-                        ["subclass" => [
-                              ["class" => $role["entity type"]],
-                              ["intersection" => $card_conj]
-                            ]
-                          ]
-                        ];
-                        $builder->translate_DL($lst_card_a);
+                      $builder->translate_DL($card_max_ax);
                     }
-
-                  }
                 }
               }
-
             }
           }
 
+          // Relationships after encoding each role in the instance
           $conjunction = [];
+
           foreach ($already_rolencoded as $erole) {
             $exists_temp = [
               "exists" => [
@@ -406,6 +402,65 @@ class DLMeta extends Strategy{
     }
 
     /**
+       Translate a JSON KF Relationship and its Roles into another format depending on
+       the given Builder.
+
+       @param json_str A String with a KF metamodel containing a relationship and its roles in
+       JSON format.
+       @param builder A Wicom\Translator\Builders\DocumentBuilder subclass instance.
+
+       @see Translator class for description about the JSON format.
+
+       ∃Ai \sqsubseteq A
+       ∃Ai- \sqsubseteq Ci
+       for i ∈ {1, . . . , n}
+       Ci \sqsubseteq ∃A \sqcap <= 1 A \sqcap · · · \sqcap ∃An \sqcap <= 1 An
+    */
+    protected function translate_attributeMappedTo($json, $builder){
+      $json_mappedTo = $json["Relationship"]["Attributive property"]["Attribute"]["Mapped to"];
+
+      foreach ($json_mappedTo as $mapped){
+          $attrname = $mapped["name"];
+          $attrrange = $mapped["range"];
+          $attrdomains = $mapped["domain"];
+
+          foreach ($attrdomains as $domain_el) {
+            // encoded as Attributive Property
+            $el = [
+                    ["data_domain" => [
+                      ["data_role" => $attrname],
+                      ["class" => $domain_el]
+                    ]],
+                    ["data_range" => [
+                      ["data_role" => $attrname],
+                      ["datatype" => $attrrange]
+                    ]],
+                    ["subclass" => [
+                      ["class" => $domain_el],
+                      ["data_mincard" => [
+                            1,
+                            ["data_role" => $attrname]
+                            ]
+                          ]
+                      ]
+                    ],
+                    ["subclass" => [
+                      ["class" => $domain_el],
+                      ["data_maxcard" => [
+                            1,
+                            ["data_role" => $attrname]
+                            ]
+                          ]
+                      ]
+                    ]
+                  ];
+
+              $builder->translate_DL($el);
+          }
+        }
+    }
+
+    /**
        Translate a JSON KF Metamodel String into another format depending on
        the given Builder.
 
@@ -426,6 +481,7 @@ class DLMeta extends Strategy{
         $js_rel = $json["Relationship"]["Relationship"];
         $js_valueType = $json["Entity type"]["Value property"]["Value type"];
         $js_attrProp = $json["Relationship"]["Attributive property"]["Attributive property"];
+        $js_attrMappedTo = $json["Relationship"]["Attributive property"]["Attribute"]["Mapped to"];
 
         if (!empty($js_objtype)){
             foreach ($js_objtype as $objtype){
@@ -458,10 +514,17 @@ class DLMeta extends Strategy{
             }
         }
 
+        if (!empty($js_attrMappedTo)){
+            foreach ($js_attrMappedTo as $attrMappedTo_el){
+                $builder->insert_dataproperty_declaration($attrMappedTo_el["name"]);
+                array_push($this->dataProperties, $attrMappedTo_el["name"]);
+            }
+        }
+
         $this->translate_subsumption($json, $builder);
         $this->translate_relationship($json, $builder);
         $this->translate_attributiveProperty($json, $builder);
-        //$this->translate_attributeMappedTo($json, $builder);
+        $this->translate_attributeMappedTo($json, $builder);
       }
 
 

@@ -169,6 +169,18 @@ class HTMLBuilder extends DocumentBuilder{
             $this->DL_element($elt["maxcard"][1]);
             $this->product->end_maxcardinality();
             break;
+        case "data_domain" :
+		        $this->product->begin_somevaluesfrom();
+		        $this->DL_element($elt["data_domain"][0]);
+		        $this->DL_element($elt["data_domain"][1]);
+		        $this->product->end_datapropertydomain();
+		        break;
+        case "data_range" :
+		        $this->product->begin_datapropertyrange();
+		        $this->DL_element($elt["data_range"][0]);
+		        $this->DL_element($elt["data_range"][1]);
+		        $this->product->end_datapropertyrange();
+		        break;
         default:
             throw new \Exception("I don't know $key DL operand");
         }
