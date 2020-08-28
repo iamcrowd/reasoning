@@ -1,0 +1,196 @@
+{
+    "Entity type": {
+        "Value property": {
+            "Value type": [
+                "http://crowd.fi.uncoma.edu.ar#N"
+            ]
+        },
+        "Data type": [
+            "string"
+        ],
+        "Object type": [
+            "http://crowd.fi.uncoma.edu.ar#A",
+            "http://crowd.fi.uncoma.edu.ar#C",
+            "http://crowd.fi.uncoma.edu.ar#B",
+            "http://crowd.fi.uncoma.edu.ar#D",
+            "http://crowd.fi.uncoma.edu.ar#E"
+        ]
+    },
+    "Role": [
+        {
+            "object type cardinality": [
+                "card1"
+            ],
+            "rolename": "http://crowd.fi.uncoma.edu.ar#R1role0",
+            "entity type": "http://crowd.fi.uncoma.edu.ar#A",
+            "relationship": "http://crowd.fi.uncoma.edu.ar#R1"
+        },
+        {
+            "object type cardinality": [
+                "card2"
+            ],
+            "rolename": "http://crowd.fi.uncoma.edu.ar#R1role1",
+            "entity type": "http://crowd.fi.uncoma.edu.ar#C",
+            "relationship": "http://crowd.fi.uncoma.edu.ar#R1"
+        },
+        {
+            "object type cardinality": [
+                "card3"
+            ],
+            "rolename": "http://crowd.fi.uncoma.edu.ar#R2role0",
+            "entity type": "http://crowd.fi.uncoma.edu.ar#B",
+            "relationship": "http://crowd.fi.uncoma.edu.ar#R2"
+        },
+        {
+            "object type cardinality": [
+                "card4"
+            ],
+            "rolename": "http://crowd.fi.uncoma.edu.ar#R2role1",
+            "entity type": "http://crowd.fi.uncoma.edu.ar#D",
+            "relationship": "http://crowd.fi.uncoma.edu.ar#R2"
+        },
+        {
+            "object type cardinality": [
+                "LGxDpV"
+            ],
+            "rolename": "http://crowd.fi.uncoma.edu.ar#A_role",
+            "entity type": "http://crowd.fi.uncoma.edu.ar#A",
+            "relationship": "http://crowd.fi.uncoma.edu.ar#N_valueTypeRel"
+        },
+        {
+            "object type cardinality": [
+                "AmGq0i"
+            ],
+            "rolename": "http://crowd.fi.uncoma.edu.ar#N_role",
+            "entity type": "http://crowd.fi.uncoma.edu.ar#N",
+            "relationship": "http://crowd.fi.uncoma.edu.ar#N_valueTypeRel"
+        }
+    ],
+    "Constraints": {
+        "Cardinality constraints": {
+            "Attibutive property cardinality": [],
+            "Object type cardinality": [
+                {
+                    "name": "card1",
+                    "maximum": "1",
+                    "minimum": "0"
+                },
+                {
+                    "name": "card2",
+                    "maximum": "1",
+                    "minimum": "0"
+                },
+                {
+                    "name": "card3",
+                    "maximum": "1",
+                    "minimum": "0"
+                },
+                {
+                    "name": "card4",
+                    "maximum": "1",
+                    "minimum": "0"
+                },
+                {
+                    "name": "LGxDpV",
+                    "maximum": "1",
+                    "minimum": "0"
+                },
+                {
+                    "name": "AmGq0i",
+                    "maximum": "1",
+                    "minimum": "0"
+                }
+            ]
+        },
+        "Disjointness constraints": {
+            "Disjoint object type": [
+                {
+                    "entities": [
+                        "http://crowd.fi.uncoma.edu.ar#E",
+                        "http://crowd.fi.uncoma.edu.ar#D"
+                    ],
+                    "name": "dc7"
+                }
+            ],
+            "Disjoint role": []
+        },
+        "Completeness constraints": [
+            {
+                "entities": [
+                    "http://crowd.fi.uncoma.edu.ar#E",
+                    "http://crowd.fi.uncoma.edu.ar#D"
+                ],
+                "name": "cc8"
+            }
+        ],
+        "Mandatory constraints": {
+            "Mandatory": []
+        }
+    },
+    "Relationship": {
+        "Attributive property": {
+            "Attributive property": [],
+            "Attribute": {
+                "Attribute": [],
+                "Mapped to": [
+                    {
+                        "domain": [
+                            "http://crowd.fi.uncoma.edu.ar#N"
+                        ],
+                        "name": "http://crowd.fi.uncoma.edu.ar#N_mappedTo",
+                        "range": "string"
+                    }
+                ]
+            }
+        },
+        "Subsumption": [
+            {
+                "entity child": "http://crowd.fi.uncoma.edu.ar#E",
+                "disjointness constraints": "dc7",
+                "completeness constraints": "cc8",
+                "name": "http://crowd.fi.uncoma.edu.ar#S1_UbXY",
+                "entity parent": "http://crowd.fi.uncoma.edu.ar#C"
+            },
+            {
+                "entity child": "http://crowd.fi.uncoma.edu.ar#D",
+                "disjointness constraints": "dc7",
+                "completeness constraints": "cc8",
+                "name": "http://crowd.fi.uncoma.edu.ar#S1_pgt7",
+                "entity parent": "http://crowd.fi.uncoma.edu.ar#C"
+            },
+            {
+                "entity child": "http://crowd.fi.uncoma.edu.ar#B",
+                "name": "http://crowd.fi.uncoma.edu.ar#S2_EXZw",
+                "entity parent": "http://crowd.fi.uncoma.edu.ar#A"
+            },
+            {
+                "entity child": "http://crowd.fi.uncoma.edu.ar#D",
+                "name": "http://crowd.fi.uncoma.edu.ar#S3_EyPE",
+                "entity parent": "http://crowd.fi.uncoma.edu.ar#E"
+            }
+        ],
+        "Relationship": [
+            {
+                "entities": [
+                    "http://crowd.fi.uncoma.edu.ar#A",
+                    "http://crowd.fi.uncoma.edu.ar#C"
+                ],
+                "name": "http://crowd.fi.uncoma.edu.ar#R1"
+            },
+            {
+                "entities": [
+                    "http://crowd.fi.uncoma.edu.ar#B",
+                    "http://crowd.fi.uncoma.edu.ar#D"
+                ],
+                "name": "http://crowd.fi.uncoma.edu.ar#R2"
+            },
+            {
+                "entities": [
+                    "http://crowd.fi.uncoma.edu.ar#A",
+                    "http://crowd.fi.uncoma.edu.ar#N"
+                ],
+                "name": "http://crowd.fi.uncoma.edu.ar#N_valueTypeRel"
+            }
+        ]
+    }
+}

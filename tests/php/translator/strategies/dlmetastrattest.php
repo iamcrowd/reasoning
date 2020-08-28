@@ -296,4 +296,32 @@ class DLMetaTest extends PHPUnit\Framework\TestCase{
           $this->assertTrue(false, "JSON KF does not match against KF Scheme");
         }
     }
+
+    /**
+       @testdox Translate a more complex model with (more than 1) KF Attributes, MappedTo, Relationships, Object Types and Subsumptions.
+       @See http://crowd.fi.uncoma.edu.ar/KFDoc/
+     */
+    public function testKFtoOWLlink(){
+        $json = file_get_contents("translator/strategies/data/testKFtoOWLlink.json");
+        $expected = file_get_contents("translator/strategies/data/testKFtoOWLlink.owllink");
+
+        if ($this->validate_against_scheme($json)){
+          $strategy = new DLMeta();
+          $builder = new OWLlinkBuilder();
+
+          $builder->insert_header();
+          $strategy->translate($json, $builder);
+          $strategy->translate_queries($strategy, $builder);
+          $builder->insert_footer();
+
+          $actual = $builder->get_product();
+          $actual = $actual->to_string();
+
+          $this->assertXmlStringEqualsXmlString($expected, $actual, true);
+        }
+        else {
+          $this->assertTrue(false, "JSON KF does not match against KF Scheme");
+        }
+    }
+
 }
