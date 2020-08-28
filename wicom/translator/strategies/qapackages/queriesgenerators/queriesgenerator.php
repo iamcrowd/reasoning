@@ -45,6 +45,10 @@ abstract class QueriesGenerator{
       $this->gen_subClassHierarchy($builder);
       $this->gen_getDisjointClasses($json_str, $builder);
       $this->gen_getEquivalentClasses($json_str, $builder);
+      $this->gen_getDisjointObjProp($json_str, $builder);
+      $this->gen_getEquivalentObjProp($json_str, $builder);
+      $this->gen_getDisjointDataProp($json_str, $builder);
+      $this->gen_getEquivalentDataProp($json_str, $builder);    
       $this->gen_getPrefixes($builder);
 //      $this->gen_subObjectPropertyHierarchy($builder);
     }

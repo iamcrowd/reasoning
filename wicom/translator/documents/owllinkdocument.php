@@ -1107,23 +1107,95 @@ class OWLlinkDocument extends Document{
        @note not supported by konclude reasoner
      */
     public function insert_get_disjointClasses_query($classname){
-	$this->content->startElement("GetDisjointClasses");
-	$this->content->writeAttribute("kb", $this->actual_kb);
+      $this->content->startElement("GetDisjointClasses");
+	    $this->content->writeAttribute("kb", $this->actual_kb);
 
-	$this->insert_class($classname);
-
-	$this->content->endElement();
+	    $this->insert_class($classname);
+	     $this->content->endElement();
     }
 
 
-    public function insert_owllink($text){
-	$this->content->writeRaw($text);
+    /**
+       Insert a query denominated GetEquivalentObjectProperties for all the OP
 
+       OWLlink query:
+
+       <GetEquivalentObjectProperties kb="http://localhost/kb1">
+        <owl:ObjectProperty IRI="Person"/>
+       </GetEquivalentObjectProperties>
+
+       @param $op an OP.
+     */
+    public function insert_getEquivalentObjProp_query($op){
+      $this->content->startElement("GetEquivalentObjectProperties");
+      $this->content->writeAttribute("kb", $this->actual_kb);
+      $this->insert_objectproperty($op);
+      $this->content->endElement();
+    }
+
+
+    /**
+      Insert a query denominated GetDisjointObjectProperties for all the OP
+
+      OWLlink query:
+
+      <GetDisjointObjectProperties kb="http://localhost/kb1">
+        <owl:ObjectProperty IRI="Person"/>
+      </GetDisjointObjectProperties>
+
+      @param $op an OP.
+     */
+    public function insert_getDisjointObjProp_query($op){
+      $this->content->startElement("GetDisjointObjectProperties");
+	    $this->content->writeAttribute("kb", $this->actual_kb);
+	    $this->insert_objectproperty($op);
+	    $this->content->endElement();
+    }
+
+    /**
+       Insert a query denominated GetEquivalentDataProperties for all the DP
+
+       OWLlink query:
+
+       <GetEquivalentDataProperties kb="http://localhost/kb1">
+        <owl:DataProperty IRI="Person"/>
+       </GetEquivalentDataProperties>
+
+       @param $dp an DP.
+     */
+    public function insert_getEquivalentDataProp_query($dp){
+      $this->content->startElement("GetEquivalentDataProperties");
+      $this->content->writeAttribute("kb", $this->actual_kb);
+      $this->insert_dataproperty($dp);
+      $this->content->endElement();
+    }
+
+
+    /**
+      Insert a query denominated GetDisjointDataProperties for all the DP
+
+      OWLlink query:
+
+      <GetDisjointDataProperties kb="http://localhost/kb1">
+        <owl:DataProperty IRI="Person"/>
+      </GetDisjointDataProperties>
+
+      @param $dp an DP.
+     */
+    public function insert_getDisjointDataProp_query($dp){
+      $this->content->startElement("GetDisjointDataProperties");
+      $this->content->writeAttribute("kb", $this->actual_kb);
+      $this->insert_dataproperty($dp);
+      $this->content->endElement();
+    }
+
+    public function insert_owllink($text){
+	     $this->content->writeRaw($text);
     }
 
     public function to_string(){
-	$str = $this->content->outputMemory();
-	return $str;
+      $str = $this->content->outputMemory();
+      return $str;
     }
 
 

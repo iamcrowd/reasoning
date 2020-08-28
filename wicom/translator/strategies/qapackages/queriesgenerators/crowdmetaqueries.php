@@ -115,7 +115,11 @@ class CrowdMetaQueries extends QueriesGenerator {
        @param $builder A Wicom\Translator\Builders\DocumentBuilder
        instance.
     */
-    function gen_getDisjointClasses($json_diagram, $builder){
+    function gen_getDisjointClasses($el_toQuery, $builder){
+      $classes = $el_toQuery->get_classes();
+      foreach ($classes as $jelem) {
+          $builder->insert_get_disjointClasses_query($jelem);
+      }
     }
 
     /**
@@ -125,7 +129,69 @@ class CrowdMetaQueries extends QueriesGenerator {
        @param $builder A Wicom\Translator\Builders\DocumentBuilder
        instance.
     */
-    function gen_getEquivalentClasses($json_diagram, $builder){
+    function gen_getEquivalentClasses($el_toQuery, $builder){
+      $classes = $el_toQuery->get_classes();
+      foreach ($classes as $jelem) {
+          $builder->insert_get_equivalentClasses_query($jelem);
+      }
+    }
+
+    /**
+       Generate queries for checking disjointness for each OP
+       generated after encoding a KF instance.
+
+       @param $json_diagram a String in JSON format with the diagram.
+       @param $builder A Wicom\Translator\Builders\DocumentBuilder
+       instance.
+    */
+    function gen_getDisjointObjProp($el_toQuery, $builder){
+      $OP = $el_toQuery->get_objectProperties();
+      foreach ($OP as $jelem) {
+          $builder->insert_getDisjointObjProp_query($jelem);
+      }
+    }
+
+    /**
+       Generate queries for checking equivalence for each OP
+       generated after encoding a KF instance.
+
+       @param $json_diagram a String in JSON format with the diagram.
+       @param $builder A Wicom\Translator\Builders\DocumentBuilder
+       instance.
+    */
+    function gen_getEquivalentObjProp($el_toQuery, $builder){
+      $OP = $el_toQuery->get_objectProperties();
+      foreach ($OP as $jelem) {
+          $builder->insert_getEquivalentObjProp_query($jelem);
+      }
+    }
+
+    /**
+       Generate queries for checking disjointness for each DP generated after encoding a KF instance.
+
+       @param $json_diagram a String in JSON format with the diagram.
+       @param $builder A Wicom\Translator\Builders\DocumentBuilder
+       instance.
+    */
+    function gen_getDisjointDataProp($el_toQuery, $builder){
+      $OP = $el_toQuery->get_dataProperties();
+      foreach ($OP as $jelem) {
+          $builder->insert_getDisjointDataProp_query($jelem);
+      }
+    }
+
+    /**
+       Generate queries for checking equivalence for each DP generated after encoding a KF instance.
+
+       @param $json_diagram a String in JSON format with the diagram.
+       @param $builder A Wicom\Translator\Builders\DocumentBuilder
+       instance.
+    */
+    function gen_getEquivalentDataProp($el_toQuery, $builder){
+      $OP = $el_toQuery->get_dataProperties();
+      foreach ($OP as $jelem) {
+          $builder->insert_getEquivalentDataProp_query($jelem);
+      }
     }
 
     /**

@@ -268,13 +268,53 @@ class OWLlinkBuilder extends DocumentBuilder{
     }
 
     /**
-       Insert a query denominated GetDisjointClasses for all the classes in the array.
+       Insert a query denominated GetDisjointObjectProperties for all the OP.
 
        @param $array An array of Strings with classnames.
      */
     public function insert_get_disjointClasses_query($array){
         $this->ensure_end_tell();
         $this->product->insert_get_disjointClasses_query($array);
+    }
+
+    /**
+       Insert a query denominated GetEquivalentObjectProperties for all the OP.
+
+       @param $array An array of Strings with classnames.
+     */
+    public function insert_getEquivalentObjProp_query($array){
+        $this->ensure_end_tell();
+        $this->product->insert_getEquivalentObjProp_query($array);
+    }
+
+    /**
+       Insert a query denominated GetDisjointClasses for all the classes in the array.
+
+       @param $array An array of Strings with classnames.
+     */
+    public function insert_getDisjointObjProp_query($array){
+        $this->ensure_end_tell();
+        $this->product->insert_getDisjointObjProp_query($array);
+    }
+
+    /**
+       Insert a query denominated GetEquivalentDataProperties for all the DP.
+
+       @param $array An array of Strings with classnames.
+     */
+    public function insert_getEquivalentDataProp_query($array){
+        $this->ensure_end_tell();
+        $this->product->insert_getEquivalentDataProp_query($array);
+    }
+
+    /**
+       Insert a query denominated GetDisjointDataProperties for all the DP.
+
+       @param $array An array of Strings with classnames.
+     */
+    public function insert_getDisjointDataProp_query($array){
+        $this->ensure_end_tell();
+        $this->product->insert_getDisjointDataProp_query($array);
     }
 
     /**
