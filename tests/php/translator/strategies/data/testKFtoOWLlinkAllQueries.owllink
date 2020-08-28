@@ -402,5 +402,108 @@
 	<IsDataPropertySatisfiable kb="http://crowd.fi.uncoma.edu.ar/kb1#">
 		<owl:DataProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#N_mappedTo"/>
 	</IsDataPropertySatisfiable>
+
+	<GetDisjointClasses kb="http://crowd.fi.uncoma.edu.ar/kb1#">
+		<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#A"/>
+	</GetDisjointClasses>
+	<GetDisjointClasses kb="http://crowd.fi.uncoma.edu.ar/kb1#">
+		<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#C"/>
+	</GetDisjointClasses>
+	<GetDisjointClasses kb="http://crowd.fi.uncoma.edu.ar/kb1#">
+		<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#B"/>
+	</GetDisjointClasses>
+	<GetDisjointClasses kb="http://crowd.fi.uncoma.edu.ar/kb1#">
+		<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#D"/>
+	</GetDisjointClasses>
+	<GetDisjointClasses kb="http://crowd.fi.uncoma.edu.ar/kb1#">
+		<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#E"/>
+	</GetDisjointClasses>
+	<GetDisjointClasses kb="http://crowd.fi.uncoma.edu.ar/kb1#">
+		<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#N"/>
+	</GetDisjointClasses>
+	<GetDisjointClasses kb="http://crowd.fi.uncoma.edu.ar/kb1#">
+		<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#R1"/>
+	</GetDisjointClasses>
+	<GetDisjointClasses kb="http://crowd.fi.uncoma.edu.ar/kb1#">
+		<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#R2"/>
+	</GetDisjointClasses>
+	<GetDisjointClasses kb="http://crowd.fi.uncoma.edu.ar/kb1#">
+		<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#N_valueTypeRel"/>
+	</GetDisjointClasses>
+
+	<GetEquivalentClasses kb="http://crowd.fi.uncoma.edu.ar/kb1#">
+		<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#A"/>
+	</GetEquivalentClasses>
+	<GetEquivalentClasses kb="http://crowd.fi.uncoma.edu.ar/kb1#">
+		<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#C"/>
+	</GetEquivalentClasses>
+	<GetEquivalentClasses kb="http://crowd.fi.uncoma.edu.ar/kb1#">
+		<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#B"/>
+	</GetEquivalentClasses>
+	<GetEquivalentClasses kb="http://crowd.fi.uncoma.edu.ar/kb1#">
+		<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#D"/>
+	</GetEquivalentClasses>
+	<GetEquivalentClasses kb="http://crowd.fi.uncoma.edu.ar/kb1#">
+		<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#E"/>
+	</GetEquivalentClasses>
+	<GetEquivalentClasses kb="http://crowd.fi.uncoma.edu.ar/kb1#">
+		<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#N"/>
+	</GetEquivalentClasses>
+	<GetEquivalentClasses kb="http://crowd.fi.uncoma.edu.ar/kb1#">
+		<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#R1"/>
+	</GetEquivalentClasses>
+	<GetEquivalentClasses kb="http://crowd.fi.uncoma.edu.ar/kb1#">
+		<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#R2"/>
+	</GetEquivalentClasses>
+	<GetEquivalentClasses kb="http://crowd.fi.uncoma.edu.ar/kb1#">
+		<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#N_valueTypeRel"/>
+	</GetEquivalentClasses>
+
+	<GetDisjointObjectProperties kb="http://crowd.fi.uncoma.edu.ar/kb1#">
+		<owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#R1role0"/>
+	</GetDisjointObjectProperties>
+	<GetDisjointObjectProperties kb="http://crowd.fi.uncoma.edu.ar/kb1#">
+		<owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#R1role1"/>
+	</GetDisjointObjectProperties>
+	<GetDisjointObjectProperties kb="http://crowd.fi.uncoma.edu.ar/kb1#">
+		<owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#R2role0"/>
+	</GetDisjointObjectProperties>
+	<GetDisjointObjectProperties kb="http://crowd.fi.uncoma.edu.ar/kb1#">
+		<owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#R2role1"/>
+	</GetDisjointObjectProperties>
+	<GetDisjointObjectProperties kb="http://crowd.fi.uncoma.edu.ar/kb1#">
+		<owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#A_role"/>
+	</GetDisjointObjectProperties>
+	<GetDisjointObjectProperties kb="http://crowd.fi.uncoma.edu.ar/kb1#">
+		<owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#N_role"/>
+	</GetDisjointObjectProperties>
+
+	<GetEquivalentObjectProperties kb="http://crowd.fi.uncoma.edu.ar/kb1#">
+		<owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#R1role0"/>
+	</GetEquivalentObjectProperties>
+	<GetEquivalentObjectProperties kb="http://crowd.fi.uncoma.edu.ar/kb1#">
+		<owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#R1role1"/>
+	</GetEquivalentObjectProperties>
+	<GetEquivalentObjectProperties kb="http://crowd.fi.uncoma.edu.ar/kb1#">
+		<owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#R2role0"/>
+	</GetEquivalentObjectProperties>
+	<GetEquivalentObjectProperties kb="http://crowd.fi.uncoma.edu.ar/kb1#">
+		<owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#R2role1"/>
+	</GetEquivalentObjectProperties>
+	<GetEquivalentObjectProperties kb="http://crowd.fi.uncoma.edu.ar/kb1#">
+		<owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#A_role"/>
+	</GetEquivalentObjectProperties>
+	<GetEquivalentObjectProperties kb="http://crowd.fi.uncoma.edu.ar/kb1#">
+		<owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#N_role"/>
+	</GetEquivalentObjectProperties>
+
+	<GetDisjointDataProperties kb="http://crowd.fi.uncoma.edu.ar/kb1#">
+		<owl:DataProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#N_mappedTo"/>
+	</GetDisjointDataProperties>
+
+	<GetEquivalentDataProperties kb="http://crowd.fi.uncoma.edu.ar/kb1#">
+		<owl:DataProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#N_mappedTo"/>
+	</GetEquivalentDataProperties>
+
 	<GetPrefixes kb="http://crowd.fi.uncoma.edu.ar/kb1#"/>
 </RequestMessage>
