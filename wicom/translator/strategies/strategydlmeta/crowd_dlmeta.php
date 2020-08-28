@@ -310,8 +310,9 @@ class DLMeta extends Strategy{
             $lst_range = [];
             $role_ot_card = $role["object type cardinality"];
 
-            array_push($already_rolencoded, $role);
-            $lst_dom = [
+            if (strcasecmp($role["relationship"], $relname) == 0){
+              array_push($already_rolencoded, $role);
+              $lst_dom = [
                 "subclass" => [
                   ["exists" => [
                     ["role" => $role["rolename"]],
@@ -320,7 +321,7 @@ class DLMeta extends Strategy{
                   ]
                 ];
 
-            $lst_range = [
+              $lst_range = [
                 "subclass" => [
                   ["exists" => [
                     ["inverse" => ["role" => $role["rolename"]]],
@@ -329,20 +330,20 @@ class DLMeta extends Strategy{
                   ]
                 ];
 
-            array_push($lst, $lst_dom);
-            array_push($lst, $lst_range);
-            $builder->translate_DL($lst);
+                array_push($lst, $lst_dom);
+                array_push($lst, $lst_range);
+                $builder->translate_DL($lst);
 
-            foreach ($role_ot_card as $role_card) {
-                foreach ($json_ot_card as $ot_card) {
+                foreach ($role_ot_card as $role_card) {
+                  foreach ($json_ot_card as $ot_card) {
 
-                  if (strcasecmp($ot_card["name"], $role_card) == 0){
-                    $card_conj = [];
-                    $min = $ot_card["minimum"];
-                    $max = $ot_card["maximum"];
+                    if (strcasecmp($ot_card["name"], $role_card) == 0){
+                      $card_conj = [];
+                      $min = $ot_card["minimum"];
+                      $max = $ot_card["maximum"];
 
-                    if (strcasecmp($min, "0") != 0){
-                      $card_min_ax = [
+                      if (strcasecmp($min, "0") != 0){
+                        $card_min_ax = [
                                       ["subclass" => [
                                         ["class" => $role["entity type"]],
                                         ["mincard" => [$min, ["inverse" => ["role" => $role["rolename"]]]]]
@@ -350,11 +351,11 @@ class DLMeta extends Strategy{
                                      ]
                                     ];
 
-                      $builder->translate_DL($card_min_ax);
-                    }
+                        $builder->translate_DL($card_min_ax);
+                      }
 
-                    if ((strcasecmp($max, "N") != 0) && (strcasecmp($max, "*") != 0)){
-                      $card_max_ax = [
+                      if ((strcasecmp($max, "N") != 0) && (strcasecmp($max, "*") != 0)){
+                        $card_max_ax = [
                                       ["subclass" => [
                                         ["class" => $role["entity type"]],
                                         ["maxcard" => [
@@ -363,41 +364,41 @@ class DLMeta extends Strategy{
                                         ]
                                       ]
                                     ];
-
-                      $builder->translate_DL($card_max_ax);
+                        $builder->translate_DL($card_max_ax);
+                      }
                     }
+                  }
                 }
               }
             }
-          }
 
-          // Relationships after encoding each role in the instance
-          $conjunction = [];
+            // Relationships after encoding each role in the instance
+            $conjunction = [];
 
-          foreach ($already_rolencoded as $erole) {
-            $exists_temp = [
-              "exists" => [
+            foreach ($already_rolencoded as $erole) {
+              $exists_temp = [
+                "exists" => [
                   ["role" => $erole["rolename"]],
                   ["class" => "owl:Thing"]
                 ]
               ];
-            $card_temp = [
-              "maxcard" => [1,
+              $card_temp = [
+                "maxcard" => [1,
                   ["role" => $erole["rolename"]]
                 ]
               ];
-            array_push($conjunction, $exists_temp);
-            array_push($conjunction, $card_temp);
-          }
+              array_push($conjunction, $exists_temp);
+              array_push($conjunction, $card_temp);
+            }
 
-          $lst_card = [
-            ["subclass" => [
+            $lst_card = [
+              ["subclass" => [
                   ["class" => $relname],
                   ["intersection" => $conjunction]
                 ]
-            ]
-          ];
-          $builder->translate_DL($lst_card);
+              ]
+            ];
+            $builder->translate_DL($lst_card);
         }
     }
 
