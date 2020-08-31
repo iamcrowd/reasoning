@@ -120,4 +120,27 @@ class CrowdMetaAnalizerTest extends PHPUnit\Framework\TestCase{
     $this->assertJsonStringEqualsJsonString($expected, $actual, true);
   }
 
+  /**
+     @testdox Parse owllink answers for KF Binary Relationship with Cardinalities. This test should out the very same JSON than 0..N
+   */
+  public function testAnswerOWLlinkOutputKFBinaryRelationshipCardinalities(){
+
+    $input = file_get_contents("answers/data/testRelNoExtendedCardIntoOWLlink.owllink");
+    $output = file_get_contents("answers/data/testRelNoExtendedCardIntoOWLlinkOut.owllink");
+    $expected = file_get_contents("answers/data/testRelNoExtendedCardIntoOWLlinkOut.json");
+
+    $oa = new CrowdMetaAnalizer();
+    $oa->generate_answer($input, $output);
+    $oa->analize();
+    $answer = $oa->get_answer();
+
+    $answer->set_reasoner_input("");
+    $answer->set_reasoner_output("");
+    $actual = $answer->to_json();
+
+    //var_dump($actual);
+
+    $this->assertJsonStringEqualsJsonString($expected, $actual, true);
+  }
+
 }

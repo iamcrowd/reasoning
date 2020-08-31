@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ResponseMessage xmlns="http://www.owllink.org/owllink#"
+                 xmlns:owl="http://www.w3.org/2002/07/owl#">
+  <KB kb="http://crowd.fi.uncoma.edu.ar/kb1#"/>
+  <OK/>
+  <OK/>
+  <BooleanResponse result="true"/>
+  <BooleanResponse result="true"/>
+  <BooleanResponse result="true"/>
+  <BooleanResponse result="true"/>
+  <BooleanResponse result="true"/>
+  <BooleanResponse result="true"/>
+  <ClassSynsets>
+    <ClassSynset>
+      <owl:Class IRI="http://www.w3.org/2002/07/owl#Nothing"/>
+    </ClassSynset>
+  </ClassSynsets>
+  <ClassSynsets>
+    <ClassSynset>
+      <owl:Class IRI="http://www.w3.org/2002/07/owl#Nothing"/>
+    </ClassSynset>
+  </ClassSynsets>
+  <ClassSynsets>
+    <ClassSynset>
+      <owl:Class IRI="http://www.w3.org/2002/07/owl#Nothing"/>
+    </ClassSynset>
+  </ClassSynsets>
+  <SetOfClasses>
+    <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Institution"/>
+  </SetOfClasses>
+  <SetOfClasses>
+    <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Person"/>
+  </SetOfClasses>
+  <SetOfClasses>
+    <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#enrolled"/>
+  </SetOfClasses>
+  <SetOfObjectPropertySynsets>
+    <ObjectPropertySynset>
+      <owl:ObjectProperty IRI="http://www.w3.org/2002/07/owl#bottomObjectProperty"/>
+    </ObjectPropertySynset>
+  </SetOfObjectPropertySynsets>
+  <SetOfObjectPropertySynsets>
+    <ObjectPropertySynset>
+      <owl:ObjectProperty IRI="http://www.w3.org/2002/07/owl#bottomObjectProperty"/>
+    </ObjectPropertySynset>
+  </SetOfObjectPropertySynsets>
+  <SetOfObjectProperties>
+    <owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#person"/>
+  </SetOfObjectProperties>
+  <SetOfObjectProperties>
+    <owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#institution"/>
+  </SetOfObjectProperties>
+  <Prefixes>
+    <Prefix name=""
+            fullIRI="http://crowd.fi.uncoma.edu.ar/kb1#"/>
+    <Prefix name="rdf"
+            fullIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="rdfs"
+            fullIRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Prefix name="xsd"
+            fullIRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="owl"
+            fullIRI="http://www.w3.org/2002/07/owl#"/>
+  </Prefixes>
+</ResponseMessage>
