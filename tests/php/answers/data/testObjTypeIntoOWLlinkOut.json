@@ -23,6 +23,7 @@
     ]
   ],
   "disjunctions_op": [],
+  "disjunctions_dp": [],
   "equivalences": [
     [
       "http://crowd.fi.uncoma.edu.ar/kb1#Dog"
@@ -32,6 +33,7 @@
     ]
   ],
   "equivalences_op": [],
+  "equivalences_dp": [],
   "reasoner": {
     "input": "",
     "output": ""

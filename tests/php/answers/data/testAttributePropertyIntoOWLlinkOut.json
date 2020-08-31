@@ -21,12 +21,22 @@
     ]
   ],
   "disjunctions_op": [],
+  "disjunctions_dp": [
+    [
+      "http://www.w3.org/2002/07/owl#bottomDataProperty"
+    ]
+  ],
   "equivalences": [
     [
       "http://crowd.fi.uncoma.edu.ar/kb1#Person"
     ]
   ],
   "equivalences_op": [],
+  "equivalences_dp": [
+    [
+      "http://crowd.fi.uncoma.edu.ar/kb1#Name"
+    ]
+  ],
   "reasoner": {
     "input": "",
     "output": ""

@@ -37,6 +37,7 @@
       "http://www.w3.org/2002/07/owl#bottomObjectProperty"
     ]
   ],
+  "disjunctions_dp": [],
   "equivalences": [
     [
       "http://crowd.fi.uncoma.edu.ar/kb1#Institution"
@@ -56,6 +57,7 @@
       "http://crowd.fi.uncoma.edu.ar/kb1#institution"
     ]
   ],
+  "equivalences_dp": [],
   "reasoner": {
     "input": "",
     "output": ""

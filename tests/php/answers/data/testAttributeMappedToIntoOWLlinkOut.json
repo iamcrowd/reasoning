@@ -2,15 +2,17 @@
   "satisfiable": {
     "kb": true,
     "classes": [
-      "http://crowd.fi.uncoma.edu.ar/kb1#Institution",
       "http://crowd.fi.uncoma.edu.ar/kb1#Person",
-      "http://crowd.fi.uncoma.edu.ar/kb1#enrolled"
+      "http://crowd.fi.uncoma.edu.ar/kb1#Name",
+      "http://crowd.fi.uncoma.edu.ar/kb1#Name_valueTypeRel"
     ],
     "objectproperties": [
-      "http://crowd.fi.uncoma.edu.ar/kb1#person",
-      "http://crowd.fi.uncoma.edu.ar/kb1#institution"
+      "http://crowd.fi.uncoma.edu.ar/kb1#Person_role",
+      "http://crowd.fi.uncoma.edu.ar/kb1#Name_role"
     ],
-    "dataproperties": []
+    "dataproperties": [
+      "http://crowd.fi.uncoma.edu.ar/kb1#Name_mappedTo"
+    ]
   },
   "unsatisfiable": {
     "classes": [],
@@ -37,27 +39,35 @@
       "http://www.w3.org/2002/07/owl#bottomObjectProperty"
     ]
   ],
-  "disjunctions_dp": [],
-  "equivalences": [
+  "disjunctions_dp": [
     [
-      "http://crowd.fi.uncoma.edu.ar/kb1#Institution"
-    ],
+      "http://www.w3.org/2002/07/owl#bottomDataProperty"
+    ]
+  ],
+  "equivalences": [
     [
       "http://crowd.fi.uncoma.edu.ar/kb1#Person"
     ],
     [
-      "http://crowd.fi.uncoma.edu.ar/kb1#enrolled"
+      "http://crowd.fi.uncoma.edu.ar/kb1#Name"
+    ],
+    [
+      "http://crowd.fi.uncoma.edu.ar/kb1#Name_valueTypeRel"
     ]
   ],
   "equivalences_op": [
     [
-      "http://crowd.fi.uncoma.edu.ar/kb1#person"
+      "http://crowd.fi.uncoma.edu.ar/kb1#Person_role"
     ],
     [
-      "http://crowd.fi.uncoma.edu.ar/kb1#institution"
+      "http://crowd.fi.uncoma.edu.ar/kb1#Name_role"
     ]
   ],
-  "equivalences_dp": [],
+  "equivalences_dp": [
+    [
+      "http://crowd.fi.uncoma.edu.ar/kb1#Name_mappedTo"
+    ]
+  ],
   "reasoner": {
     "input": "",
     "output": ""
