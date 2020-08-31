@@ -123,7 +123,7 @@ class Answer{
 	    "constraint" => $restrictions
 	];
     }
-    
+
     function add_subsumptions($subsumptions_n){
 	foreach($subsumptions_n as $s){
             array_push($this->subsumptions, $s);
@@ -134,7 +134,7 @@ class Answer{
        Add a disjoint relationship between concepts/classes.
 
        @param $name {string} The relationship name.
-       @param $classes {array} An array of strings with class names. 
+       @param $classes {array} An array of strings with class names.
        For example: `['class1', 'class2']`
     */
     function add_disjoint($name, $classes){
@@ -144,7 +144,7 @@ class Answer{
 	    "classes" => $classes
 	];
     }
-    
+
     function add_disjunctions($disjunctions_n){
 	foreach($disjunctions_n as $d){
             array_push($this->disjunctions, $d);
@@ -175,35 +175,35 @@ class Answer{
     }
 
     function set_original_owl2($owl2_srt){
-	$owl = new OWLBuilder();
-	$owl->insert_owl2($owl2_srt);
-	$xml = $owl->get_product();
-	$this->orig_owl2 = $xml->to_string();
+	     $owl = new OWLBuilder();
+	      $owl->insert_owl2($owl2_srt);
+	       $xml = $owl->get_product();
+	        $this->orig_owl2 = $xml->to_string();
     }
 
     function get_new_owl2(){
-	return $this->new_owl2->get_product(true);
+	     return $this->new_owl2->get_product(true);
     }
 
     function start_owl2_answer($ontologyIRI, $iris, $prefixes){
-	$this->new_owl2->insert_header_owl2($ontologyIRI, $iris, $prefixes);
+	     $this->new_owl2->insert_header_owl2($ontologyIRI, $iris, $prefixes);
     }
 
     function end_owl2_answer(){
-	$this->new_owl2->insert_footer();
+	     $this->new_owl2->insert_footer();
     }
 
     function translate_responses($dl_responses){
-	$this->new_owl2->translate_DL($dl_responses);
+	     $this->new_owl2->translate_DL($dl_responses);
     }
 
     function copyowl2_to_response(){
-	$owl_xml = new SimpleXMLIterator($this->orig_owl2);
-	$owl_xml->rewind();
+	     $owl_xml = new SimpleXMLIterator($this->orig_owl2);
+	      $owl_xml->rewind();
 
-	foreach ($owl_xml->children() as $child){
+	       foreach ($owl_xml->children() as $child){
             $this->new_owl2->insert_owl2($child->asXML());
-	}
+	         }
     }
 
     function get_equiv($primitive){

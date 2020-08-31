@@ -1,11 +1,11 @@
 <?php
 /*
 
-   Copyright 2016 GILIA
+   Copyright 2020 GILIA
 
-   Author: Giménez, Christian. Braun, Germán
+   Author: Braun, Germán
 
-   crowdanalizer.php
+   crowdmetaanalizer.php
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -113,7 +113,7 @@ class CrowdMetaAnalizer extends AnsAnalizer{
 
     function goto_first_query(){
       $this->owllink_queries->rewind();
-      $first_query = key(CrowdAnalizer::ANSWERS_MAP);
+      $first_query = key(CrowdMetaAnalizer::ANSWERS_MAP);
 
       while (($this->owllink_queries->valid()) and ($first_query != NULL) and
              ($this->owllink_queries->current()->getName() != $first_query)){
@@ -129,7 +129,7 @@ class CrowdMetaAnalizer extends AnsAnalizer{
 
     function goto_first_response(){
       $this->owllink_responses->rewind();
-      $first_response = CrowdAnalizer::ANSWERS_MAP[key(CrowdAnalizer::ANSWERS_MAP)];
+      $first_response = CrowdMetaAnalizer::ANSWERS_MAP[key(CrowdMetaAnalizer::ANSWERS_MAP)];
 
       if ($this->owllink_responses->current()->getName() == "KB"){
         $ontologyIRI = $this->owllink_responses->current()->attributes()[0]->__toString();
@@ -511,7 +511,7 @@ class CrowdMetaAnalizer extends AnsAnalizer{
 
         // $this->answer->start_owl2_answer($ontologyIRI, [], $prefixes);
         $this->answer->translate_responses($responses["DL"]);
-        $this->answer->copyowl2_to_response();
+        //$this->answer->copyowl2_to_response();
         $this->answer->end_owl2_answer();
 
         return $this->answer;
