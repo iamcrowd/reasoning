@@ -26,7 +26,7 @@
       "http://www.w3.org/2002/07/owl#Nothing"
     ]
   ],
-  "disjunctions_op": [],  
+  "disjunctions_op": [],
   "equivalences": [
     [
       "http://crowd.fi.uncoma.edu.ar/kb1#Dog"
@@ -38,6 +38,7 @@
       "http://crowd.fi.uncoma.edu.ar/kb1#Cat"
     ]
   ],
+  "equivalences_op": [],
   "reasoner": {
     "input": "",
     "output": ""

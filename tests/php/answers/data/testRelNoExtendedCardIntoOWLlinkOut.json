@@ -48,6 +48,14 @@
       "http://crowd.fi.uncoma.edu.ar/kb1#enrolled"
     ]
   ],
+  "equivalences_op": [
+    [
+      "http://crowd.fi.uncoma.edu.ar/kb1#person"
+    ],
+    [
+      "http://crowd.fi.uncoma.edu.ar/kb1#institution"
+    ]
+  ],
   "reasoner": {
     "input": "",
     "output": ""
