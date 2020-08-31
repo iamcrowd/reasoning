@@ -302,6 +302,25 @@ class CrowdMetaAnalizer extends AnsAnalizer{
     }
 
     /**
+    Parsing OWLlink <SetOfObjectProperties> tag. This function returns an array of equivalent object properties.
+    <SetOfObjectProperties>
+      <owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#person"/>
+    </SetOfObjectProperties>
+    */
+    function parse_owllinkOPequivalent(){
+      $op_equivalent = [];
+
+      $owl_children = $this->owllink_responses->current()->children("owl",TRUE);
+
+      foreach ($owl_children as $child){
+        $op_name = $child[0]->attributes()[0];
+        array_push($op_equivalent, $op_name->__toString());
+      }
+
+      return $op_equivalent;
+    }
+
+    /**
     Parsing OWLlink <Prefixes> tag. This function returns an array of prefixes.
     <Prefixes>
       <Prefix name="rdf" fullIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
@@ -497,6 +516,25 @@ class CrowdMetaAnalizer extends AnsAnalizer{
                 }
                 break;
 
+              case "GetEquivalentObjectProperties":
+                $name_response = $this->owllink_responses->current()->getName();
+                if ($name_response = "SetOfObjectProperties"){
+                  $op_query = $this->get_current_owlclass();
+                  if ($op_query->count() > 0){
+                    $op_name = $op_query[0]->attributes()["IRI"];
+                    $op_equivalent = $this->parse_owllinkOPequivalent();
+                    $op_e = $op_name->__toString();
+                    // [[op1, op2], [op3, op4, op5]]
+                    array_push($bool_responses[$name_query], $op_equivalent);
+                  }
+                }
+                foreach ($op_equivalent as $equiv_op_el) {
+                  array_push($bool_responses["DL"],["equivalentclasses" => [
+                                                      ["class" => $op_e],
+                                                      ["class" => $equiv_op_el]]]);
+                }
+                break;
+
               case "GetPrefixes":
                 $name_response = $this->owllink_responses->current()->getName();
                 if ($name_response = "Prefixes"){
@@ -555,6 +593,7 @@ class CrowdMetaAnalizer extends AnsAnalizer{
         $this->answer->add_disjunctions($responses["GetDisjointClasses"]);
         $this->answer->add_disjunctions_op($responses["GetDisjointObjectProperties"]);
         $this->answer->add_equivalences($responses["GetEquivalentClasses"]);
+        $this->answer->add_equivalences_op($responses["GetEquivalentObjectProperties"]);
 
         $ontologyIRI = $responses["GetOntologyIRI"][0];
         $prefixes = $responses["GetPrefixes"];

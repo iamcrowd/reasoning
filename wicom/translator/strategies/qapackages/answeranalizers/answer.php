@@ -61,6 +61,7 @@ class Answer{
     protected $unsatis_dp = [];
     protected $subsumptions = [];
     protected $equivalences = [];
+    protected $equivalences_op = [];
     protected $disjunctions = [];
     protected $disjunctions_op = [];
     protected $reasoner_input = null;
@@ -161,6 +162,12 @@ class Answer{
     function add_equivalences($equivalences_n){
 	     foreach($equivalences_n as $e){
             array_push($this->equivalences, $e);
+	     }
+    }
+
+    function add_equivalences_op($equivalences_n){
+	     foreach($equivalences_n as $e){
+            array_push($this->equivalences_op, $e);
 	     }
     }
 
@@ -295,6 +302,7 @@ class Answer{
              "disjunctions" => $this->disjunctions,
              "disjunctions_op" => $this->disjunctions_op,
              "equivalences" => $this->equivalences,
+             "equivalences_op" => $this->equivalences_op,
              "reasoner" => [
                  "input" => $this->reasoner_input,
                  "output" => $this->reasoner_output,
