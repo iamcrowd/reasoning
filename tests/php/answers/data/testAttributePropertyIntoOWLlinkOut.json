@@ -2,12 +2,12 @@
   "satisfiable": {
     "kb": true,
     "classes": [
-      "http://crowd.fi.uncoma.edu.ar/kb1#Dog",
-      "http://crowd.fi.uncoma.edu.ar/kb1#Person",
-      "http://crowd.fi.uncoma.edu.ar/kb1#Cat"
+      "http://crowd.fi.uncoma.edu.ar/kb1#Person"
     ],
     "objectproperties": [],
-    "dataproperties": []
+    "dataproperties": [
+      "http://crowd.fi.uncoma.edu.ar/kb1#Name"
+    ]
   },
   "unsatisfiable": {
     "classes": [],
@@ -18,24 +18,12 @@
   "disjunctions": [
     [
       "http://www.w3.org/2002/07/owl#Nothing"
-    ],
-    [
-      "http://www.w3.org/2002/07/owl#Nothing"
-    ],
-    [
-      "http://www.w3.org/2002/07/owl#Nothing"
     ]
   ],
-  "disjunctions_op": [],  
+  "disjunctions_op": [],
   "equivalences": [
     [
-      "http://crowd.fi.uncoma.edu.ar/kb1#Dog"
-    ],
-    [
       "http://crowd.fi.uncoma.edu.ar/kb1#Person"
-    ],
-    [
-      "http://crowd.fi.uncoma.edu.ar/kb1#Cat"
     ]
   ],
   "reasoner": {

@@ -28,6 +28,7 @@
       "http://crowd.fi.uncoma.edu.ar/kb1#Dog"
     ]
   ],
+  "disjunctions_op": [],
   "equivalences": [
     [
       "http://crowd.fi.uncoma.edu.ar/kb1#Dog"

@@ -29,6 +29,14 @@
       "http://www.w3.org/2002/07/owl#Nothing"
     ]
   ],
+  "disjunctions_op": [
+    [
+      "http://www.w3.org/2002/07/owl#bottomObjectProperty"
+    ],
+    [
+      "http://www.w3.org/2002/07/owl#bottomObjectProperty"
+    ]
+  ],
   "equivalences": [
     [
       "http://crowd.fi.uncoma.edu.ar/kb1#Institution"
