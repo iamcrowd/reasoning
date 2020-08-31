@@ -61,6 +61,7 @@ class DLMetaTest extends PHPUnit\Framework\TestCase{
         return false;
       }
     }
+    
     /**
        @testdox Translate a simple model with some KF OBJECT TYPES into OWLlink with SAT queries
      */
