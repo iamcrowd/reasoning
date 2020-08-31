@@ -69,6 +69,13 @@ abstract class QAPack{
         $this->ans_analizer->analize();
     }
 
+    public function get_query_generator(){
+      return $this->query_generator;
+    }
+
+    public function get_ans_analizer(){
+      return $this->ans_analizer;
+    }
 
 	  function incorporate_inferredSubs($inferredSubs){
 		   $this->ans_analizer->incorporate_inferredSubs($inferredSubs);
@@ -78,11 +85,11 @@ abstract class QAPack{
       $this->ans_analizer->incorporate_inferredCards($inferredCards);
     }
 
-    function get_equiv($primitive){
+    public function get_equiv($primitive){
       return $this->ans_analizer->get_equiv($primitive);
     }
 
-    function get_unsatClasses(){
+    public function get_unsatClasses(){
       return $this->ans_analizer->get_unsatClasses();
     }
     /**

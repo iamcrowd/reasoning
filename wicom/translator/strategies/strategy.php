@@ -49,6 +49,10 @@ abstract class Strategy{
       $this->dataProperties = [];
     }
 
+    public function get_qa_pack(){
+      return $this->qapack;
+    }
+
     /**
        Translate the given JSON String into the OWLlink XML string.
 

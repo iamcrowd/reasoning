@@ -142,11 +142,11 @@ class Answer{
        For example: `['class1', 'class2']`
     */
     function add_disjoint($name, $classes){
-	$this->disjunctions[] = [
-	    "type" => "disjoint",
-	    "name" => $name,
-	    "classes" => $classes
-	];
+	     $this->disjunctions[] = [
+	        "type" => "disjoint",
+	        "name" => $name,
+	        "classes" => $classes
+	       ];
     }
 
     function add_disjunctions($disjunctions_n){
@@ -234,26 +234,29 @@ class Answer{
 	         }
     }
 
-    function get_equiv($primitive){
-	$arr_eq = [];
-	$meqs = [];
+    /**
 
-	foreach ($this->equivalences as $e){
+    */
+    function get_equiv($primitive){
+	     $arr_eq = [];
+	     $meqs = [];
+
+	     foreach ($this->equivalences as $e){
             $eqs = [];
 
             if (in_array($primitive, $e)){
-		$eqs = array_filter($e, function($v, $primitive) {
-                    if (strcmp($v, $primitive) !== 0)
+		             $eqs = array_filter($e, function($v, $primitive) {
+                  if (strcmp($v, $primitive) !== 0)
                         return $v;
                 }, ARRAY_FILTER_USE_BOTH);
-		$meqs = array_merge($arr_eq, $eqs);
+		        $meqs = array_merge($arr_eq, $eqs);
             }
-	}
-	return $meqs;
+	      }
+	       return $meqs;
     }
 
     function get_unsatClasses(){
-	return $this->unsatis_classes;
+	     return $this->unsatis_classes;
     }
 
     // $answer->incorporate_inferredSubs();
