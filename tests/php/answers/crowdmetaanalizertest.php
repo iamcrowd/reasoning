@@ -143,4 +143,27 @@ class CrowdMetaAnalizerTest extends PHPUnit\Framework\TestCase{
     $this->assertJsonStringEqualsJsonString($expected, $actual, true);
   }
 
+  /**
+     @testdox Parse owllink answers for KF Attributive Properties
+   */
+  public function testAnswerOWLlinkOutputKFAttributiveProperties(){
+
+    $input = file_get_contents("answers/data/testAttributePropertyIntoOWLlink.owllink");
+    $output = file_get_contents("answers/data/testAttributePropertyIntoOWLlinkOut.owllink");
+    $expected = file_get_contents("answers/data/testAttributePropertyIntoOWLlinkOut.json");
+
+    $oa = new CrowdMetaAnalizer();
+    $oa->generate_answer($input, $output);
+    $oa->analize();
+    $answer = $oa->get_answer();
+
+    $answer->set_reasoner_input("");
+    $answer->set_reasoner_output("");
+    $actual = $answer->to_json();
+
+    var_dump($actual);
+
+    //$this->assertJsonStringEqualsJsonString($expected, $actual, true);
+  }
+
 }
