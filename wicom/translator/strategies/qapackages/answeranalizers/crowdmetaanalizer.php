@@ -98,8 +98,10 @@ class CrowdMetaAnalizer extends AnsAnalizer{
         "IsObjectPropertySatisfiable" => "BooleanResponse",
         "IsDataPropertySatisfiable" => "BooleanResponse",
         "GetSubObjectPropertyHierarchy" => "ObjectPropertyHierarchy",
-        "GetDisjointObjectProperties" => "ObjectPropertySynsets",
+        "GetDisjointObjectProperties" => "SetOfObjectPropertySynsets",
         "GetEquivalentObjectProperties" => "SetOfObjectProperties",
+        "GetDisjointDataProperties" => "DataPropertySynsets",
+        "GetEquivalentDataProperties" => "DataPropertySynonyms",
         "GetPrefixes" => "Prefixes",
     ];
 
@@ -253,6 +255,33 @@ class CrowdMetaAnalizer extends AnsAnalizer{
     }
 
     /**
+    Parsing OWLlink <SetOfObjectPropertySynsets> tag. This function returns an array of disjoint object properties.
+    <SetOfObjectPropertySynsets>
+      <ObjectPropertySynset>
+        <owl:ObjectProperty IRI="http://www.w3.org/2002/07/owl#bottomObjectProperty"/>
+      </ObjectPropertySynset>
+    </SetOfObjectPropertySynsets>
+    */
+
+    function parse_owllinkOPdisjoint(){
+      $op_disjoint = [];
+
+      foreach ($this->owllink_responses->current()->children() as $children){ //<ClassSynset>
+        $tag_child = $children->getName();
+
+        if ($tag_child = "ObjectPropertySynset"){
+            $op = $children->children("owl",TRUE);
+
+            if ($op->count() > 0){
+              $op_name = $op[0]->attributes()[0];
+            }
+            array_push($op_disjoint,$op_name->__toString());
+        }
+      }
+      return $op_disjoint;
+    }
+
+    /**
     Parsing OWLlink <SetOfClasses> tag. This function returns an array of equivalent classes.
     <SetOfClasses>
       <owl:Class IRI="D"/>
@@ -316,6 +345,8 @@ class CrowdMetaAnalizer extends AnsAnalizer{
           "GetSubClassHierarchy" => [],
           "GetDisjointClasses" => [],
           "GetEquivalentClasses" => [],
+          "GetDisjointObjectProperties" => [],
+          "GetEquivalentObjectProperties" => [],
           "GetPrefixes" => [],
           "GetOntologyIRI" => [],
           "DL" => []
@@ -429,6 +460,24 @@ class CrowdMetaAnalizer extends AnsAnalizer{
                 }
                 break;
 
+              case "GetDisjointObjectProperties":   // {op,[disjointop]}
+                $name_response = $this->owllink_responses->current()->getName();
+                if ($name_response = "SetOfObjectPropertySynsets"){
+                  $op_query = $this->get_current_owlclass();
+                  if ($op_query->count() > 0){
+                    $op_name = $op_query[0]->attributes()["IRI"];
+                    $op_disjoint = $this->parse_owllinkOPdisjoint();
+                    $op_d = $op_name->__toString();
+                    array_push($bool_responses[$name_query], $op_disjoint);
+                  }
+                }
+                foreach ($op_disjoint as $disjoint_op_el) {
+                  array_push($bool_responses["DL"],["disjointop" => [
+                                                      ["objectproperty" => $op_d],
+                                                      ["objectproperty" => $disjoint_op_el]]]);
+                }
+                break;
+
               case "GetEquivalentClasses":
                 $name_response = $this->owllink_responses->current()->getName();
                 if ($name_response = "SetOfClasses"){
@@ -504,6 +553,7 @@ class CrowdMetaAnalizer extends AnsAnalizer{
 
         $this->answer->add_subsumptions($responses["GetSubClassHierarchy"]);
         $this->answer->add_disjunctions($responses["GetDisjointClasses"]);
+        $this->answer->add_disjunctions_op($responses["GetDisjointObjectProperties"]);
         $this->answer->add_equivalences($responses["GetEquivalentClasses"]);
 
         $ontologyIRI = $responses["GetOntologyIRI"][0];

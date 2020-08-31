@@ -62,6 +62,7 @@ class Answer{
     protected $subsumptions = [];
     protected $equivalences = [];
     protected $disjunctions = [];
+    protected $disjunctions_op = [];
     protected $reasoner_input = null;
     protected $reasoner_output = null;
     protected $new_owl2 = null;
@@ -146,15 +147,21 @@ class Answer{
     }
 
     function add_disjunctions($disjunctions_n){
-	foreach($disjunctions_n as $d){
+	     foreach($disjunctions_n as $d){
             array_push($this->disjunctions, $d);
-	}
+	     }
+    }
+
+    function add_disjunctions_op($disjunctions_n){
+       foreach($disjunctions_n as $d){
+            array_push($this->disjunctions_op, $d);
+       }
     }
 
     function add_equivalences($equivalences_n){
-	foreach($equivalences_n as $e){
+	     foreach($equivalences_n as $e){
             array_push($this->equivalences, $e);
-	}
+	     }
     }
 
     function add_cardinality_link_sugges($linkname, $col_classnames, $multiplicity,$roles){
@@ -194,7 +201,7 @@ class Answer{
     }
 
     function translate_responses($dl_responses){
-	     $this->new_owl2->translate_DL($dl_responses);
+//	     $this->new_owl2->translate_DL($dl_responses);
     }
 
     function copyowl2_to_response(){
@@ -286,6 +293,7 @@ class Answer{
                  "dataproperties" => $this->unsatis_dp],
              "subsumptions" => $this->subsumptions,
              "disjunctions" => $this->disjunctions,
+             "disjunctions_op" => $this->disjunctions_op,
              "equivalences" => $this->equivalences,
              "reasoner" => [
                  "input" => $this->reasoner_input,
