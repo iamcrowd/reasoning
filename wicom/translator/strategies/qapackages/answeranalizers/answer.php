@@ -62,8 +62,10 @@ class Answer{
     protected $subsumptions = [];
     protected $equivalences = [];
     protected $equivalences_op = [];
+    protected $equivalences_dp = [];
     protected $disjunctions = [];
     protected $disjunctions_op = [];
+    protected $disjunctions_dp = [];
     protected $reasoner_input = null;
     protected $reasoner_output = null;
     protected $new_owl2 = null;
@@ -159,6 +161,12 @@ class Answer{
        }
     }
 
+    function add_disjunctions_dp($disjunctions_n){
+       foreach($disjunctions_n as $d){
+            array_push($this->disjunctions_dp, $d);
+       }
+    }
+
     function add_equivalences($equivalences_n){
 	     foreach($equivalences_n as $e){
             array_push($this->equivalences, $e);
@@ -169,6 +177,12 @@ class Answer{
 	     foreach($equivalences_n as $e){
             array_push($this->equivalences_op, $e);
 	     }
+    }
+
+    function add_equivalences_dp($equivalences_n){
+       foreach($equivalences_n as $e){
+            array_push($this->equivalences_dp, $e);
+       }
     }
 
     function add_cardinality_link_sugges($linkname, $col_classnames, $multiplicity,$roles){
@@ -301,8 +315,10 @@ class Answer{
              "subsumptions" => $this->subsumptions,
              "disjunctions" => $this->disjunctions,
              "disjunctions_op" => $this->disjunctions_op,
+             "disjunctions_dp" => $this->disjunctions_dp,
              "equivalences" => $this->equivalences,
              "equivalences_op" => $this->equivalences_op,
+             "equivalences_dp" => $this->equivalences_dp,
              "reasoner" => [
                  "input" => $this->reasoner_input,
                  "output" => $this->reasoner_output,

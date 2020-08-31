@@ -282,6 +282,33 @@ class CrowdMetaAnalizer extends AnsAnalizer{
     }
 
     /**
+    Parsing OWLlink <DataPropertySynsets> tag. This function returns an array of disjoint data properties.
+    <DataPropertySynsets>
+      <DataPropertySynset>
+        <owl:DataProperty IRI="http://www.w3.org/2002/07/owl#bottomDataProperty"/>
+      </DataPropertySynset>
+    </DataPropertySynsets>
+    */
+
+    function parse_owllinkDPdisjoint(){
+      $dp_disjoint = [];
+
+      foreach ($this->owllink_responses->current()->children() as $children){ //<DataPropertySynset>
+        $tag_child = $children->getName();
+
+        if ($tag_child = "DataPropertySynset"){
+            $dp = $children->children("owl",TRUE);
+
+            if ($dp->count() > 0){
+              $dp_name = $dp[0]->attributes()[0];
+            }
+            array_push($dp_disjoint,$dp_name->__toString());
+        }
+      }
+      return $dp_disjoint;
+    }
+
+    /**
     Parsing OWLlink <SetOfClasses> tag. This function returns an array of equivalent classes.
     <SetOfClasses>
       <owl:Class IRI="D"/>
@@ -318,6 +345,25 @@ class CrowdMetaAnalizer extends AnsAnalizer{
       }
 
       return $op_equivalent;
+    }
+
+    /**
+    Parsing OWLlink <DataPropertySynonyms> tag. This function returns an array of equivalent data properties.
+    <DataPropertySynonyms>
+      <owl:DataProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#Name"/>
+    </DataPropertySynonyms>
+    */
+    function parse_owllinkDPequivalent(){
+      $dp_equivalent = [];
+
+      $owl_children = $this->owllink_responses->current()->children("owl",TRUE);
+
+      foreach ($owl_children as $child){
+        $dp_name = $child[0]->attributes()[0];
+        array_push($dp_equivalent, $dp_name->__toString());
+      }
+
+      return $dp_equivalent;
     }
 
     /**
@@ -366,6 +412,8 @@ class CrowdMetaAnalizer extends AnsAnalizer{
           "GetEquivalentClasses" => [],
           "GetDisjointObjectProperties" => [],
           "GetEquivalentObjectProperties" => [],
+          "GetDisjointDataProperties" => [],
+          "GetEquivalentDataProperties" => [],
           "GetPrefixes" => [],
           "GetOntologyIRI" => [],
           "DL" => []
@@ -497,6 +545,24 @@ class CrowdMetaAnalizer extends AnsAnalizer{
                 }
                 break;
 
+              case "GetDisjointDataProperties":   // {dp,[disjointdp]}
+                $name_response = $this->owllink_responses->current()->getName();
+                if ($name_response = "DataPropertySynsets"){
+                  $dp_query = $this->get_current_owlclass();
+                  if ($dp_query->count() > 0){
+                    $dp_name = $dp_query[0]->attributes()["IRI"];
+                    $dp_disjoint = $this->parse_owllinkDPdisjoint();
+                    $dp_d = $dp_name->__toString();
+                    array_push($bool_responses[$name_query], $dp_disjoint);
+                  }
+                }
+                foreach ($dp_disjoint as $disjoint_dp_el) {
+                  array_push($bool_responses["DL"],["disjointdp" => [
+                                                      ["dataproperty" => $dp_d],
+                                                      ["dataproperty" => $disjoint_dp_el]]]);
+                }
+                break;
+
               case "GetEquivalentClasses":
                 $name_response = $this->owllink_responses->current()->getName();
                 if ($name_response = "SetOfClasses"){
@@ -529,9 +595,28 @@ class CrowdMetaAnalizer extends AnsAnalizer{
                   }
                 }
                 foreach ($op_equivalent as $equiv_op_el) {
-                  array_push($bool_responses["DL"],["equivalentclasses" => [
-                                                      ["class" => $op_e],
-                                                      ["class" => $equiv_op_el]]]);
+                  array_push($bool_responses["DL"],["equivalentop" => [
+                                                      ["objectproperty" => $op_e],
+                                                      ["objectproperty" => $equiv_op_el]]]);
+                }
+                break;
+
+              case "GetEquivalentDataProperties":
+                $name_response = $this->owllink_responses->current()->getName();
+                if ($name_response = "DataPropertySynonyms"){
+                  $dp_query = $this->get_current_owlclass();
+                  if ($dp_query->count() > 0){
+                    $dp_name = $dp_query[0]->attributes()["IRI"];
+                    $dp_equivalent = $this->parse_owllinkDPequivalent();
+                    $dp_e = $dp_name->__toString();
+                    // [[op1, op2], [op3, op4, op5]]
+                    array_push($bool_responses[$name_query], $dp_equivalent);
+                  }
+                }
+                foreach ($dp_equivalent as $equiv_dp_el) {
+                  array_push($bool_responses["DL"],["equivalentdp" => [
+                                                      ["dataproperty" => $dp_e],
+                                                      ["dataproperty" => $equiv_dp_el]]]);
                 }
                 break;
 
@@ -592,8 +677,10 @@ class CrowdMetaAnalizer extends AnsAnalizer{
         $this->answer->add_subsumptions($responses["GetSubClassHierarchy"]);
         $this->answer->add_disjunctions($responses["GetDisjointClasses"]);
         $this->answer->add_disjunctions_op($responses["GetDisjointObjectProperties"]);
+        $this->answer->add_disjunctions_dp($responses["GetDisjointDataProperties"]);
         $this->answer->add_equivalences($responses["GetEquivalentClasses"]);
         $this->answer->add_equivalences_op($responses["GetEquivalentObjectProperties"]);
+        $this->answer->add_equivalences_dp($responses["GetEquivalentDataProperties"]);
 
         $ontologyIRI = $responses["GetOntologyIRI"][0];
         $prefixes = $responses["GetPrefixes"];
