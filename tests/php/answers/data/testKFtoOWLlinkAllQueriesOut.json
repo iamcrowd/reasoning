@@ -1,0 +1,181 @@
+{
+  "satisfiable": {
+    "kb": true,
+    "classes": [
+      "http://crowd.fi.uncoma.edu.ar/kb1#A",
+      "http://crowd.fi.uncoma.edu.ar/kb1#C",
+      "http://crowd.fi.uncoma.edu.ar/kb1#B",
+      "http://crowd.fi.uncoma.edu.ar/kb1#E",
+      "http://crowd.fi.uncoma.edu.ar/kb1#N",
+      "http://crowd.fi.uncoma.edu.ar/kb1#R1",
+      "http://crowd.fi.uncoma.edu.ar/kb1#N_valueTypeRel"
+    ],
+    "objectproperties": [
+      "http://crowd.fi.uncoma.edu.ar/kb1#R1role0",
+      "http://crowd.fi.uncoma.edu.ar/kb1#R1role1",
+      "http://crowd.fi.uncoma.edu.ar/kb1#A_role",
+      "http://crowd.fi.uncoma.edu.ar/kb1#N_role"
+    ],
+    "dataproperties": [
+      "http://crowd.fi.uncoma.edu.ar/kb1#N_mappedTo"
+    ]
+  },
+  "unsatisfiable": {
+    "classes": [
+      "http://crowd.fi.uncoma.edu.ar/kb1#D",
+      "http://crowd.fi.uncoma.edu.ar/kb1#R2"
+    ],
+    "objectproperties": [
+      "http://crowd.fi.uncoma.edu.ar/kb1#R2role0",
+      "http://crowd.fi.uncoma.edu.ar/kb1#R2role1"
+    ],
+    "dataproperties": []
+  },
+  "subsumptions": [],
+  "disjunctions": [
+    [
+      "http://www.w3.org/2002/07/owl#Nothing"
+    ],
+    [
+      "http://www.w3.org/2002/07/owl#Nothing"
+    ],
+    [
+      "http://www.w3.org/2002/07/owl#Nothing"
+    ],
+    [
+      "http://www.w3.org/2002/07/owl#Thing",
+      "http://crowd.fi.uncoma.edu.ar/kb1#N_valueTypeRel",
+      "http://crowd.fi.uncoma.edu.ar/kb1#R1",
+      "http://crowd.fi.uncoma.edu.ar/kb1#A",
+      "http://crowd.fi.uncoma.edu.ar/kb1#B",
+      "http://crowd.fi.uncoma.edu.ar/kb1#C",
+      "http://www.w3.org/2002/07/owl#Nothing",
+      "http://crowd.fi.uncoma.edu.ar/kb1#N"
+    ],
+    [
+      "http://www.w3.org/2002/07/owl#Nothing"
+    ],
+    [
+      "http://www.w3.org/2002/07/owl#Nothing"
+    ],
+    [
+      "http://www.w3.org/2002/07/owl#Nothing"
+    ],
+    [
+      "http://www.w3.org/2002/07/owl#Thing",
+      "http://crowd.fi.uncoma.edu.ar/kb1#N_valueTypeRel",
+      "http://crowd.fi.uncoma.edu.ar/kb1#R1",
+      "http://crowd.fi.uncoma.edu.ar/kb1#A",
+      "http://crowd.fi.uncoma.edu.ar/kb1#B",
+      "http://crowd.fi.uncoma.edu.ar/kb1#C",
+      "http://www.w3.org/2002/07/owl#Nothing",
+      "http://crowd.fi.uncoma.edu.ar/kb1#N"
+    ],
+    [
+      "http://www.w3.org/2002/07/owl#Nothing"
+    ]
+  ],
+  "disjunctions_op": [
+    [
+      "http://www.w3.org/2002/07/owl#bottomObjectProperty"
+    ],
+    [
+      "http://www.w3.org/2002/07/owl#bottomObjectProperty"
+    ],
+    [
+      "http://crowd.fi.uncoma.edu.ar/kb1#N_role",
+      "http://crowd.fi.uncoma.edu.ar/kb1#A_role",
+      "http://www.w3.org/2002/07/owl#bottomObjectProperty",
+      "http://crowd.fi.uncoma.edu.ar/kb1#R1role1",
+      "http://crowd.fi.uncoma.edu.ar/kb1#R1role0",
+      "http://www.w3.org/2002/07/owl#topObjectProperty"
+    ],
+    [
+      "http://crowd.fi.uncoma.edu.ar/kb1#N_role",
+      "http://crowd.fi.uncoma.edu.ar/kb1#A_role",
+      "http://www.w3.org/2002/07/owl#bottomObjectProperty",
+      "http://crowd.fi.uncoma.edu.ar/kb1#R1role1",
+      "http://crowd.fi.uncoma.edu.ar/kb1#R1role0",
+      "http://www.w3.org/2002/07/owl#topObjectProperty"
+    ],
+    [
+      "http://www.w3.org/2002/07/owl#bottomObjectProperty"
+    ],
+    [
+      "http://www.w3.org/2002/07/owl#bottomObjectProperty"
+    ]
+  ],
+  "disjunctions_dp": [
+    [
+      "http://www.w3.org/2002/07/owl#bottomDataProperty"
+    ]
+  ],
+  "equivalences": [
+    [
+      "http://crowd.fi.uncoma.edu.ar/kb1#A"
+    ],
+    [
+      "http://crowd.fi.uncoma.edu.ar/kb1#C",
+      "http://crowd.fi.uncoma.edu.ar/kb1#E"
+    ],
+    [
+      "http://crowd.fi.uncoma.edu.ar/kb1#B"
+    ],
+    [
+      "http://www.w3.org/2002/07/owl#Nothing",
+      "http://crowd.fi.uncoma.edu.ar/kb1#D",
+      "http://crowd.fi.uncoma.edu.ar/kb1#R2"
+    ],
+    [
+      "http://crowd.fi.uncoma.edu.ar/kb1#C",
+      "http://crowd.fi.uncoma.edu.ar/kb1#E"
+    ],
+    [
+      "http://crowd.fi.uncoma.edu.ar/kb1#N"
+    ],
+    [
+      "http://crowd.fi.uncoma.edu.ar/kb1#R1"
+    ],
+    [
+      "http://www.w3.org/2002/07/owl#Nothing",
+      "http://crowd.fi.uncoma.edu.ar/kb1#D",
+      "http://crowd.fi.uncoma.edu.ar/kb1#R2"
+    ],
+    [
+      "http://crowd.fi.uncoma.edu.ar/kb1#N_valueTypeRel"
+    ]
+  ],
+  "equivalences_op": [
+    [
+      "http://crowd.fi.uncoma.edu.ar/kb1#R1role0"
+    ],
+    [
+      "http://crowd.fi.uncoma.edu.ar/kb1#R1role1"
+    ],
+    [
+      "http://www.w3.org/2002/07/owl#bottomObjectProperty"
+    ],
+    [
+      "http://www.w3.org/2002/07/owl#bottomObjectProperty"
+    ],
+    [
+      "http://crowd.fi.uncoma.edu.ar/kb1#A_role"
+    ],
+    [
+      "http://crowd.fi.uncoma.edu.ar/kb1#N_role"
+    ]
+  ],
+  "equivalences_dp": [
+    [
+      "http://crowd.fi.uncoma.edu.ar/kb1#N_mappedTo"
+    ]
+  ],
+  "reasoner": {
+    "input": "",
+    "output": ""
+  },
+  "inferredSubs": [],
+  "inferredCards": [],
+  "inferredDisj": [],
+  "inferredEquiv": []
+}
