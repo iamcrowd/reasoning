@@ -28,8 +28,7 @@ load("crowdanalizer.php", "wicom/translator/strategies/qapackages/answeranalizer
 
 use Wicom\Translator\Strategies\QAPackages\AnswerAnalizers\CrowdAnalizer;
 
-class CrowdAnalizerTest extends PHPUnit\Framework\TestCase
-{
+class CrowdAnalizerTest extends PHPUnit\Framework\TestCase{
 
 /*    public function testFilterXML(){
         $query_input = <<<'EOT'
@@ -1199,16 +1198,16 @@ XML;
      }
 EOT;
 
-      /* 
+      /*
 	 Germán: I don't know how to fix this!!!
 	 - Christian. September, 4th 2019.
 	 ____________________
-      
+
       $oa = new CrowdAnalizer();
       $oa->generate_answer($query_input, $answer_output, $owl2_input);
       $oa->analize();
       $answer = $oa->get_answer();
-      
+
 
       $actual = $answer->to_json();
       var_dump($actual);

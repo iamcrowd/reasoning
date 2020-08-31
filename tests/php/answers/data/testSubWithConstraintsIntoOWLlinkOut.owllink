@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ResponseMessage xmlns="http://www.owllink.org/owllink#"
+                 xmlns:owl="http://www.w3.org/2002/07/owl#">
+  <KB kb="http://crowd.fi.uncoma.edu.ar/kb1#"/>
+  <OK/>
+  <OK/>
+  <BooleanResponse result="true"/>
+  <BooleanResponse result="true"/>
+  <BooleanResponse result="true"/>
+  <BooleanResponse result="true"/>
+  <ClassSynsets>
+    <ClassSynset>
+      <owl:Class IRI="http://www.w3.org/2002/07/owl#Nothing"/>
+    </ClassSynset>
+    <ClassSynset>
+      <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Cat"/>
+    </ClassSynset>
+  </ClassSynsets>
+  <ClassSynsets>
+    <ClassSynset>
+      <owl:Class IRI="http://www.w3.org/2002/07/owl#Nothing"/>
+    </ClassSynset>
+  </ClassSynsets>
+  <ClassSynsets>
+    <ClassSynset>
+      <owl:Class IRI="http://www.w3.org/2002/07/owl#Nothing"/>
+    </ClassSynset>
+    <ClassSynset>
+      <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Dog"/>
+    </ClassSynset>
+  </ClassSynsets>
+  <SetOfClasses>
+    <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Dog"/>
+  </SetOfClasses>
+  <SetOfClasses>
+    <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Person"/>
+  </SetOfClasses>
+  <SetOfClasses>
+    <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Cat"/>
+  </SetOfClasses>
+  <Prefixes>
+    <Prefix name=""
+            fullIRI="http://crowd.fi.uncoma.edu.ar/kb1#"/>
+    <Prefix name="rdf"
+            fullIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="rdfs"
+            fullIRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Prefix name="xsd"
+            fullIRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="owl"
+            fullIRI="http://www.w3.org/2002/07/owl#"/>
+  </Prefixes>
+</ResponseMessage>

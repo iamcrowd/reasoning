@@ -1,0 +1,50 @@
+{
+  "satisfiable": {
+    "kb": true,
+    "classes": [
+      "http://crowd.fi.uncoma.edu.ar/kb1#Dog",
+      "http://crowd.fi.uncoma.edu.ar/kb1#Person",
+      "http://crowd.fi.uncoma.edu.ar/kb1#Cat"
+    ],
+    "objectproperties": [],
+    "dataproperties": []
+  },
+  "unsatisfiable": {
+    "classes": [],
+    "objectproperties": [],
+    "dataproperties": []
+  },
+  "subsumptions": [],
+  "disjunctions": [
+    [
+      "http://www.w3.org/2002/07/owl#Nothing",
+      "http://crowd.fi.uncoma.edu.ar/kb1#Cat"
+    ],
+    [
+      "http://www.w3.org/2002/07/owl#Nothing"
+    ],
+    [
+      "http://www.w3.org/2002/07/owl#Nothing",
+      "http://crowd.fi.uncoma.edu.ar/kb1#Dog"
+    ]
+  ],
+  "equivalences": [
+    [
+      "http://crowd.fi.uncoma.edu.ar/kb1#Dog"
+    ],
+    [
+      "http://crowd.fi.uncoma.edu.ar/kb1#Person"
+    ],
+    [
+      "http://crowd.fi.uncoma.edu.ar/kb1#Cat"
+    ]
+  ],
+  "reasoner": {
+    "input": "",
+    "output": ""
+  },
+  "inferredSubs": [],
+  "inferredCards": [],
+  "inferredDisj": [],
+  "inferredEquiv": []
+}
