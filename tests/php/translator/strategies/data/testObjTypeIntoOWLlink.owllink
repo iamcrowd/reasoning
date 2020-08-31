@@ -32,5 +32,20 @@
   <IsClassSatisfiable kb="http://crowd.fi.uncoma.edu.ar/kb1#">
     <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Person"/>
   </IsClassSatisfiable>
+
+	<GetDisjointClasses kb="http://crowd.fi.uncoma.edu.ar/kb1#">
+		<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Dog"/>
+	</GetDisjointClasses>
+	<GetDisjointClasses kb="http://crowd.fi.uncoma.edu.ar/kb1#">
+		<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Person"/>
+	</GetDisjointClasses>
+
+	<GetEquivalentClasses kb="http://crowd.fi.uncoma.edu.ar/kb1#">
+		<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Dog"/>
+	</GetEquivalentClasses>
+	<GetEquivalentClasses kb="http://crowd.fi.uncoma.edu.ar/kb1#">
+		<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Person"/>
+	</GetEquivalentClasses>
+
   <GetPrefixes kb="http://crowd.fi.uncoma.edu.ar/kb1#"/>
 </RequestMessage>

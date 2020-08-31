@@ -164,5 +164,48 @@
 	<IsDataPropertySatisfiable kb="http://crowd.fi.uncoma.edu.ar/kb1#">
 		<owl:DataProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#Name_mappedTo"/>
 	</IsDataPropertySatisfiable>
+
+	<GetDisjointClasses kb="http://crowd.fi.uncoma.edu.ar/kb1#">
+		<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Person"/>
+	</GetDisjointClasses>
+	<GetDisjointClasses kb="http://crowd.fi.uncoma.edu.ar/kb1#">
+		<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Name"/>
+	</GetDisjointClasses>
+	<GetDisjointClasses kb="http://crowd.fi.uncoma.edu.ar/kb1#">
+		<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Name_valueTypeRel"/>
+	</GetDisjointClasses>
+
+	<GetEquivalentClasses kb="http://crowd.fi.uncoma.edu.ar/kb1#">
+		<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Person"/>
+	</GetEquivalentClasses>
+	<GetEquivalentClasses kb="http://crowd.fi.uncoma.edu.ar/kb1#">
+		<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Name"/>
+	</GetEquivalentClasses>
+	<GetEquivalentClasses kb="http://crowd.fi.uncoma.edu.ar/kb1#">
+		<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Name_valueTypeRel"/>
+	</GetEquivalentClasses>
+
+	<GetDisjointObjectProperties kb="http://crowd.fi.uncoma.edu.ar/kb1#">
+		<owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#Person_role"/>
+	</GetDisjointObjectProperties>
+	<GetDisjointObjectProperties kb="http://crowd.fi.uncoma.edu.ar/kb1#">
+		<owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#Name_role"/>
+	</GetDisjointObjectProperties>
+
+	<GetEquivalentObjectProperties kb="http://crowd.fi.uncoma.edu.ar/kb1#">
+		<owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#Person_role"/>
+	</GetEquivalentObjectProperties>
+	<GetEquivalentObjectProperties kb="http://crowd.fi.uncoma.edu.ar/kb1#">
+		<owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#Name_role"/>
+	</GetEquivalentObjectProperties>
+
+	<GetDisjointDataProperties kb="http://crowd.fi.uncoma.edu.ar/kb1#">
+		<owl:DataProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#Name_mappedTo"/>
+	</GetDisjointDataProperties>
+
+	<GetEquivalentDataProperties kb="http://crowd.fi.uncoma.edu.ar/kb1#">
+		<owl:DataProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#Name_mappedTo"/>
+	</GetEquivalentDataProperties>
+
   <GetPrefixes kb="http://crowd.fi.uncoma.edu.ar/kb1#"/>
 </RequestMessage>

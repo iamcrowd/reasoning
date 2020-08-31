@@ -58,5 +58,22 @@
   <IsDataPropertySatisfiable kb="http://crowd.fi.uncoma.edu.ar/kb1#">
     <owl:DataProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#Name"/>
   </IsDataPropertySatisfiable>
+
+	<GetDisjointClasses kb="http://crowd.fi.uncoma.edu.ar/kb1#">
+		<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Person"/>
+	</GetDisjointClasses>
+
+	<GetEquivalentClasses kb="http://crowd.fi.uncoma.edu.ar/kb1#">
+		<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Person"/>
+	</GetEquivalentClasses>
+
+	<GetDisjointDataProperties kb="http://crowd.fi.uncoma.edu.ar/kb1#">
+		<owl:DataProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#Name"/>
+	</GetDisjointDataProperties>
+
+	<GetEquivalentDataProperties kb="http://crowd.fi.uncoma.edu.ar/kb1#">
+		<owl:DataProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#Name"/>
+	</GetEquivalentDataProperties>
+
   <GetPrefixes kb="http://crowd.fi.uncoma.edu.ar/kb1#"/>
 </RequestMessage>
