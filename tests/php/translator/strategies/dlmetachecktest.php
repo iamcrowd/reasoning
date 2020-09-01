@@ -67,14 +67,15 @@ class DLMetaCheckTest extends PHPUnit\Framework\TestCase{
 
 
     /**
-       @testdox Translate a more complex model. Adding all queries
+       @testdox test for beauty_responses
        @See http://crowd.fi.uncoma.edu.ar/KFDoc/
      */
     public function testKFtoOWLlinkAllQueries(){
-        $json = file_get_contents("translator/strategies/data/testKFtoOWLlinkAllQueries.json");
-        $input = file_get_contents("answers/data/testKFtoOWLlinkAllQueries.owllink");
-        $output = file_get_contents("answers/data/testKFtoOWLlinkAllQueriesOut.owllink");
-        $responses = file_get_contents("answers/data/testKFtoOWLlinkAllQueriesOut.json");
+        $json = file_get_contents("translator/strategies/data_inf/testKFtoOWLlinkAllQueries.json");
+        $input = file_get_contents("translator/strategies/data_inf/testKFtoOWLlinkAllQueries.owllink");
+        $output = file_get_contents("translator/strategies/data_inf/testKFtoOWLlinkAllQueriesOut.owllink");
+//        $responses = file_get_contents("translator/strategies/data_inf/testKFtoOWLlinkAllQueriesOut.json");
+        $beauty_out = file_get_contents("translator/strategies/data_inf/testKFtoOWLlinkAllQueriesBeautyOut.json");
 
         if ($this->validate_against_scheme($json)){
           $strategy = new DLMeta();
@@ -100,10 +101,16 @@ class DLMetaCheckTest extends PHPUnit\Framework\TestCase{
           $answer->set_reasoner_output("");
           $actual_o = $answer->to_json();
 
-          $this->assertJsonStringEqualsJsonString($responses, $actual_o, true);
+//          $this->assertJsonStringEqualsJsonString($responses, $actual_o, true);
 
-          $inferred = new DLCheckMeta($strategy, $answer, $builder);
-          $inferred->inferred_equivalent_classes($json);
+          $beauty_out_json = $oa->get_beatified_responses();
+          $this->assertJsonStringEqualsJsonString($beauty_out, $beauty_out_json, true);
+
+//          $inferred = new DLCheckMeta($strategy, $answer, $builder);
+//          $inferred->inferred_equivalent_classes($json);
+//          $inferred->inferred_disjoint_classes($json);
+
+
         }
         else {
           $this->assertTrue(false, "JSON KF does not match against KF Scheme");
