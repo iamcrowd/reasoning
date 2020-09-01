@@ -104,8 +104,15 @@ class DLMetaCheckTest extends PHPUnit\Framework\TestCase{
 //          $this->assertJsonStringEqualsJsonString($responses, $actual_o, true);
 
           $beauty_out_json = $oa->get_beatified_responses();
+          //var_dump($beauty_out_json);
           $this->assertJsonStringEqualsJsonString($beauty_out, $beauty_out_json, true);
 
+          var_dump($oa->get_subclass("http://www.w3.org/2002/07/owl#Thing"));
+          var_dump($oa->get_disjoint_class("http://www.w3.org/2002/07/owl#Nothing"));
+          var_dump($oa->get_disjoint_class("http://www.w3.org/2002/07/owl#Thing"));
+          var_dump($oa->get_disjoint_class("http://crowd.fi.uncoma.edu.ar/kb1#D"));
+          var_dump($oa->get_equivalent_class("http://crowd.fi.uncoma.edu.ar/kb1#D"));
+          
 //          $inferred = new DLCheckMeta($strategy, $answer, $builder);
 //          $inferred->inferred_equivalent_classes($json);
 //          $inferred->inferred_disjoint_classes($json);
