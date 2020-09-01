@@ -696,10 +696,6 @@ class CrowdMetaAnalizer extends AnsAnalizer{
         return $this->answer;
     }
 
-    public function get_beatified_responses(){
-      return $this->answer->to_beatified_json();
-    }
-
 
 	  function incorporate_inferredSubs($iSubs){
 		    $this->answer->incorporate_inferredSubs($iSubs);
@@ -709,18 +705,29 @@ class CrowdMetaAnalizer extends AnsAnalizer{
         $this->answer->incorporate_inferredCards($iCards);
     }
 
-
-
     function get_equiv($primitive){
       return $this->answer->get_equiv($primitive);
     }
 
-    function get_disjoint_classes(){
-      return $this->answer->get_disjoint_classes();
+
+    public function get_beatified_responses(){
+      return $this->answer->to_beatified_json();
     }
 
     function get_unsatClasses(){
       return $this->answer->get_unsatClasses();
+    }
+
+    function get_subclass($class){
+        return $this->answer->get_subclass($class);
+    }
+
+    function get_disjoint_class($class){
+      return $this->answer->get_disjoint_class($class);
+    }
+
+    function get_equivalent_class($class){
+      return $this->answer->get_equivalent_class($class);
     }
 
 }

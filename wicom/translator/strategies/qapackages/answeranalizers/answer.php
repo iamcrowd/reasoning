@@ -351,6 +351,22 @@ class Answer{
         );
     }
 
+    /**
+      This function returns a beautified json with OWLlink responses.
+      "beauty_responses" is an array of elements (DL axioms-like) together with its related equivalent, disjoint or sub/super class
+
+      @// NOTE:
+          {
+            "subclass": [
+              {
+                "class": "http://crowd.fi.uncoma.edu.ar/kb1#F"
+              },
+              {
+                "class": "http://crowd.fi.uncoma.edu.ar/kb1#C"
+              }
+            ]
+          },
+    */
     function to_beatified_json(){
         return json_encode(
             ["satisfiable" => [
@@ -365,6 +381,78 @@ class Answer{
               "beauty_responses" => $this->beauty_responses,
             ]
         );
+    }
+
+
+    /**
+      This functions return specific axioms from the beauty responses
+    */
+
+    /**
+      Get a subclass given a class as father
+    */
+    function get_subclass($class){
+      $all_sub = [];
+      foreach ($this->beauty_responses as $el) {
+        if (array_key_exists('subclass', $el)){
+          if (\strcmp($el["subclass"][1]["class"],$class) == 0){
+            array_push($all_sub, $el["subclass"][0]["class"]);
+          }
+        }
+      }
+      return $all_sub;
+    }
+
+    /**
+      Get the respective disjoint for the class given as parameter
+    */
+    function get_disjoint_class($class){
+      $all_disj = [];
+      foreach ($this->beauty_responses as $el) {
+        if (array_key_exists('disjointclasses', $el)){
+          $aux = "";
+
+          if (\strcmp($el["disjointclasses"][0]["class"],$class) == 0){
+            $aux = $el["disjointclasses"][1]["class"];
+
+          } elseif (\strcmp($el["disjointclasses"][1]["class"],$class) == 0) {
+              $aux = $el["disjointclasses"][0]["class"];
+          }
+
+          if (\strcmp($aux,"") !== 0){
+            if (!\in_array($aux, $all_disj)){
+              array_push($all_disj, $aux);
+            }
+          }
+        }
+      }
+      return $all_disj;
+    }
+
+    /**
+      Get the respective equivalent for the class given as parameter
+    */
+    function get_equivalent_class($class){
+      $all_equiv = [];
+      foreach ($this->beauty_responses as $el) {
+        if (array_key_exists('equivalentclasses', $el)){
+          $aux = "";
+
+          if (\strcmp($el["equivalentclasses"][0]["class"],$class) == 0){
+            $aux = $el["equivalentclasses"][1]["class"];
+
+          } elseif (\strcmp($el["equivalentclasses"][1]["class"],$class) == 0) {
+              $aux = $el["equivalentclasses"][0]["class"];
+          }
+
+          if (\strcmp($aux,"") !== 0){
+            if (!\in_array($aux, $all_equiv)){
+              array_push($all_equiv, $aux);
+            }
+          }
+        }
+      }
+      return $all_equiv;
     }
 
     public function responses_to_json($dl_responses){
