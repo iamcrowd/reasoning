@@ -28,11 +28,13 @@ load("autoload.php", "vendor/");
 load("crowd_dlmeta.php", "wicom/translator/strategies/strategydlmeta/");
 load("crowd_checkmeta.php", "wicom/translator/strategies/strategydlmeta/");
 load("owllinkbuilder.php", "wicom/translator/builders/");
+load("metajsonbuilder.php", "wicom/translator/builders/");
 load("crowdmetaanalizer.php", "wicom/translator/strategies/qapackages/answeranalizers/");
 
 use Wicom\Translator\Strategies\Strategydlmeta\DLMeta;
 use Wicom\Translator\Strategies\Strategydlmeta\DLCheckMeta;
 use Wicom\Translator\Builders\OWLlinkBuilder;
+use Wicom\Translator\Builders\MetaJSONBuilder;
 use Wicom\Translator\Strategies\QAPackages\AnswerAnalizers\CrowdMetaAnalizer;
 
 use Opis\JsonSchema\Validator;
@@ -101,8 +103,6 @@ class DLMetaCheckTest extends PHPUnit\Framework\TestCase{
           $answer->set_reasoner_output("");
           $actual_o = $answer->to_json();
 
-//          $this->assertJsonStringEqualsJsonString($responses, $actual_o, true);
-
           $beauty_out_json = $oa->get_beatified_responses();
           //var_dump($beauty_out_json);
           $this->assertJsonStringEqualsJsonString($beauty_out, $beauty_out_json, true);
@@ -112,11 +112,14 @@ class DLMetaCheckTest extends PHPUnit\Framework\TestCase{
           var_dump($oa->get_disjoint_class("http://www.w3.org/2002/07/owl#Thing"));
           var_dump($oa->get_disjoint_class("http://crowd.fi.uncoma.edu.ar/kb1#D"));
           var_dump($oa->get_equivalent_class("http://crowd.fi.uncoma.edu.ar/kb1#D"));
-          
+
+          $metabuilder = new MetaJSONBuilder($json);
+          $metabuilder->insert_subsumption("http://crowd.fi.uncoma.edu.ar/kb1#F", "http://crowd.fi.uncoma.edu.ar/kb1#E");
+          var_dump($metabuilder->get_product()->to_json());
+
 //          $inferred = new DLCheckMeta($strategy, $answer, $builder);
 //          $inferred->inferred_equivalent_classes($json);
 //          $inferred->inferred_disjoint_classes($json);
-
 
         }
         else {
