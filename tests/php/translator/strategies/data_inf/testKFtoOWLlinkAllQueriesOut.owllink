@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ResponseMessage xmlns="http://www.owllink.org/owllink#"
+                 xmlns:owl="http://www.w3.org/2002/07/owl#">
+  <KB kb="http://crowd.fi.uncoma.edu.ar/kb1#"/>
+  <OK/>
+  <OK/>
+  <BooleanResponse result="true"
+                   warning="Unsatisfiable classes: (*BOTTOM* BOTTOM http://crowd.fi.uncoma.edu.ar/kb1#D http://crowd.fi.uncoma.edu.ar/kb1#R2)"/>
+  <BooleanResponse result="true"/>
+  <BooleanResponse result="true"/>
+  <BooleanResponse result="true"/>
+  <BooleanResponse result="false"/>
+  <BooleanResponse result="true"/>
+  <BooleanResponse result="true"/>
+  <BooleanResponse result="true"/>
+  <BooleanResponse result="false"/>
+  <BooleanResponse result="true"/>
+  <BooleanResponse result="true"/>
+  <BooleanResponse result="true"/>
+  <BooleanResponse result="false"/>
+  <BooleanResponse result="false"/>
+  <BooleanResponse result="true"/>
+  <BooleanResponse result="true"/>
+  <BooleanResponse result="true"/>
+  <ClassHierarchy>
+    <ClassSynset>
+      <owl:Class IRI="http://www.w3.org/2002/07/owl#Nothing"/>
+      <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#D"/>
+      <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#R2"/>
+    </ClassSynset>
+    <ClassSubClassesPair>
+      <ClassSynset>
+        <owl:Class IRI="http://www.w3.org/2002/07/owl#Thing"/>
+      </ClassSynset>
+      <SubClassSynsets>
+        <ClassSynset>
+          <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#N_valueTypeRel"/>
+        </ClassSynset>
+        <ClassSynset>
+          <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#R1"/>
+        </ClassSynset>
+        <ClassSynset>
+          <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#N"/>
+        </ClassSynset>
+        <ClassSynset>
+          <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#C"/>
+          <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#E"/>
+        </ClassSynset>
+        <ClassSynset>
+          <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#A"/>
+        </ClassSynset>
+      </SubClassSynsets>
+    </ClassSubClassesPair>
+    <ClassSubClassesPair>
+      <ClassSynset>
+        <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#A"/>
+      </ClassSynset>
+      <SubClassSynsets>
+        <ClassSynset>
+          <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#B"/>
+        </ClassSynset>
+      </SubClassSynsets>
+    </ClassSubClassesPair>
+  </ClassHierarchy>
+  <ClassSynsets>
+    <ClassSynset>
+      <owl:Class IRI="http://www.w3.org/2002/07/owl#Nothing"/>
+      <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#D"/>
+      <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#R2"/>
+    </ClassSynset>
+  </ClassSynsets>
+  <ClassSynsets>
+    <ClassSynset>
+      <owl:Class IRI="http://www.w3.org/2002/07/owl#Nothing"/>
+      <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#D"/>
+      <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#R2"/>
+    </ClassSynset>
+  </ClassSynsets>
+  <ClassSynsets>
+    <ClassSynset>
+      <owl:Class IRI="http://www.w3.org/2002/07/owl#Nothing"/>
+      <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#D"/>
+      <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#R2"/>
+    </ClassSynset>
+  </ClassSynsets>
+  <ClassSynsets>
+    <ClassSynset>
+      <owl:Class IRI="http://www.w3.org/2002/07/owl#Thing"/>
+    </ClassSynset>
+    <ClassSynset>
+      <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#N_valueTypeRel"/>
+    </ClassSynset>
+    <ClassSynset>
+      <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#R1"/>
+    </ClassSynset>
+    <ClassSynset>
+      <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#A"/>
+    </ClassSynset>
+    <ClassSynset>
+      <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#B"/>
+    </ClassSynset>
+    <ClassSynset>
+      <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#C"/>
+      <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#E"/>
+    </ClassSynset>
+    <ClassSynset>
+      <owl:Class IRI="http://www.w3.org/2002/07/owl#Nothing"/>
+      <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#D"/>
+      <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#R2"/>
+    </ClassSynset>
+    <ClassSynset>
+      <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#N"/>
+    </ClassSynset>
+  </ClassSynsets>
+  <ClassSynsets>
+    <ClassSynset>
+      <owl:Class IRI="http://www.w3.org/2002/07/owl#Nothing"/>
+      <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#D"/>
+      <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#R2"/>
+    </ClassSynset>
+  </ClassSynsets>
+  <ClassSynsets>
+    <ClassSynset>
+      <owl:Class IRI="http://www.w3.org/2002/07/owl#Nothing"/>
+      <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#D"/>
+      <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#R2"/>
+    </ClassSynset>
+  </ClassSynsets>
+  <ClassSynsets>
+    <ClassSynset>
+      <owl:Class IRI="http://www.w3.org/2002/07/owl#Nothing"/>
+      <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#D"/>
+      <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#R2"/>
+    </ClassSynset>
+  </ClassSynsets>
+  <ClassSynsets>
+    <ClassSynset>
+      <owl:Class IRI="http://www.w3.org/2002/07/owl#Thing"/>
+    </ClassSynset>
+    <ClassSynset>
+      <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#N_valueTypeRel"/>
+    </ClassSynset>
+    <ClassSynset>
+      <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#R1"/>
+    </ClassSynset>
+    <ClassSynset>
+      <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#A"/>
+    </ClassSynset>
+    <ClassSynset>
+      <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#B"/>
+    </ClassSynset>
+    <ClassSynset>
+      <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#C"/>
+      <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#E"/>
+    </ClassSynset>
+    <ClassSynset>
+      <owl:Class IRI="http://www.w3.org/2002/07/owl#Nothing"/>
+      <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#D"/>
+      <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#R2"/>
+    </ClassSynset>
+    <ClassSynset>
+      <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#N"/>
+    </ClassSynset>
+  </ClassSynsets>
+  <ClassSynsets>
+    <ClassSynset>
+      <owl:Class IRI="http://www.w3.org/2002/07/owl#Nothing"/>
+      <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#D"/>
+      <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#R2"/>
+    </ClassSynset>
+  </ClassSynsets>
+  <SetOfClasses>
+    <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#A"/>
+  </SetOfClasses>
+  <SetOfClasses>
+    <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#C"/>
+    <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#E"/>
+  </SetOfClasses>
+  <SetOfClasses>
+    <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#B"/>
+  </SetOfClasses>
+  <SetOfClasses>
+    <owl:Class IRI="http://www.w3.org/2002/07/owl#Nothing"/>
+    <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#D"/>
+    <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#R2"/>
+  </SetOfClasses>
+  <SetOfClasses>
+    <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#C"/>
+    <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#E"/>
+  </SetOfClasses>
+  <SetOfClasses>
+    <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#N"/>
+  </SetOfClasses>
+  <SetOfClasses>
+    <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#R1"/>
+  </SetOfClasses>
+  <SetOfClasses>
+    <owl:Class IRI="http://www.w3.org/2002/07/owl#Nothing"/>
+    <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#D"/>
+    <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#R2"/>
+  </SetOfClasses>
+  <SetOfClasses>
+    <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#N_valueTypeRel"/>
+  </SetOfClasses>
+  <SetOfObjectPropertySynsets>
+    <ObjectPropertySynset>
+      <owl:ObjectProperty IRI="http://www.w3.org/2002/07/owl#bottomObjectProperty"/>
+    </ObjectPropertySynset>
+  </SetOfObjectPropertySynsets>
+  <SetOfObjectPropertySynsets>
+    <ObjectPropertySynset>
+      <owl:ObjectProperty IRI="http://www.w3.org/2002/07/owl#bottomObjectProperty"/>
+    </ObjectPropertySynset>
+  </SetOfObjectPropertySynsets>
+  <SetOfObjectPropertySynsets>
+    <ObjectPropertySynset>
+      <owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#N_role"/>
+    </ObjectPropertySynset>
+    <ObjectPropertySynset>
+      <owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#A_role"/>
+    </ObjectPropertySynset>
+    <ObjectPropertySynset>
+      <owl:ObjectProperty IRI="http://www.w3.org/2002/07/owl#bottomObjectProperty"/>
+    </ObjectPropertySynset>
+    <ObjectPropertySynset>
+      <owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#R1role1"/>
+    </ObjectPropertySynset>
+    <ObjectPropertySynset>
+      <owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#R1role0"/>
+    </ObjectPropertySynset>
+    <ObjectPropertySynset>
+      <owl:ObjectProperty IRI="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+    </ObjectPropertySynset>
+  </SetOfObjectPropertySynsets>
+  <SetOfObjectPropertySynsets>
+    <ObjectPropertySynset>
+      <owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#N_role"/>
+    </ObjectPropertySynset>
+    <ObjectPropertySynset>
+      <owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#A_role"/>
+    </ObjectPropertySynset>
+    <ObjectPropertySynset>
+      <owl:ObjectProperty IRI="http://www.w3.org/2002/07/owl#bottomObjectProperty"/>
+    </ObjectPropertySynset>
+    <ObjectPropertySynset>
+      <owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#R1role1"/>
+    </ObjectPropertySynset>
+    <ObjectPropertySynset>
+      <owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#R1role0"/>
+    </ObjectPropertySynset>
+    <ObjectPropertySynset>
+      <owl:ObjectProperty IRI="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+    </ObjectPropertySynset>
+  </SetOfObjectPropertySynsets>
+  <SetOfObjectPropertySynsets>
+    <ObjectPropertySynset>
+      <owl:ObjectProperty IRI="http://www.w3.org/2002/07/owl#bottomObjectProperty"/>
+    </ObjectPropertySynset>
+  </SetOfObjectPropertySynsets>
+  <SetOfObjectPropertySynsets>
+    <ObjectPropertySynset>
+      <owl:ObjectProperty IRI="http://www.w3.org/2002/07/owl#bottomObjectProperty"/>
+    </ObjectPropertySynset>
+  </SetOfObjectPropertySynsets>
+  <SetOfObjectProperties>
+    <owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#R1role0"/>
+  </SetOfObjectProperties>
+  <SetOfObjectProperties>
+    <owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#R1role1"/>
+  </SetOfObjectProperties>
+  <SetOfObjectProperties>
+    <owl:ObjectProperty IRI="http://www.w3.org/2002/07/owl#bottomObjectProperty"/>
+  </SetOfObjectProperties>
+  <SetOfObjectProperties>
+    <owl:ObjectProperty IRI="http://www.w3.org/2002/07/owl#bottomObjectProperty"/>
+  </SetOfObjectProperties>
+  <SetOfObjectProperties>
+    <owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#A_role"/>
+  </SetOfObjectProperties>
+  <SetOfObjectProperties>
+    <owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#N_role"/>
+  </SetOfObjectProperties>
+  <DataPropertySynsets>
+    <DataPropertySynset>
+      <owl:DataProperty IRI="http://www.w3.org/2002/07/owl#bottomDataProperty"/>
+    </DataPropertySynset>
+  </DataPropertySynsets>
+  <DataPropertySynonyms>
+    <owl:DataProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#N_mappedTo"/>
+  </DataPropertySynonyms>
+  <Prefixes>
+    <Prefix name=""
+            fullIRI="http://crowd.fi.uncoma.edu.ar/kb1#"/>
+    <Prefix name="rdf"
+            fullIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="rdfs"
+            fullIRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Prefix name="xsd"
+            fullIRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="owl"
+            fullIRI="http://www.w3.org/2002/07/owl#"/>
+  </Prefixes>
+</ResponseMessage>

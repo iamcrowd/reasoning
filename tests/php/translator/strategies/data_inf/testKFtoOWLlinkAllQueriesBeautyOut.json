@@ -1,0 +1,716 @@
+{
+  "satisfiable": {
+    "kb": true,
+    "classes": [
+      "http://crowd.fi.uncoma.edu.ar/kb1#A",
+      "http://crowd.fi.uncoma.edu.ar/kb1#C",
+      "http://crowd.fi.uncoma.edu.ar/kb1#B",
+      "http://crowd.fi.uncoma.edu.ar/kb1#E",
+      "http://crowd.fi.uncoma.edu.ar/kb1#N",
+      "http://crowd.fi.uncoma.edu.ar/kb1#R1",
+      "http://crowd.fi.uncoma.edu.ar/kb1#N_valueTypeRel"
+    ],
+    "objectproperties": [
+      "http://crowd.fi.uncoma.edu.ar/kb1#R1role0",
+      "http://crowd.fi.uncoma.edu.ar/kb1#R1role1",
+      "http://crowd.fi.uncoma.edu.ar/kb1#A_role",
+      "http://crowd.fi.uncoma.edu.ar/kb1#N_role"
+    ],
+    "dataproperties": [
+      "http://crowd.fi.uncoma.edu.ar/kb1#N_mappedTo"
+    ]
+  },
+  "unsatisfiable": {
+    "classes": [
+      "http://crowd.fi.uncoma.edu.ar/kb1#D",
+      "http://crowd.fi.uncoma.edu.ar/kb1#R2"
+    ],
+    "objectproperties": [
+      "http://crowd.fi.uncoma.edu.ar/kb1#R2role0",
+      "http://crowd.fi.uncoma.edu.ar/kb1#R2role1"
+    ],
+    "dataproperties": []
+  },
+  "beauty_responses": [
+    {
+      "subclass": [
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#N_valueTypeRel"
+        },
+        {
+          "class": "http://www.w3.org/2002/07/owl#Thing"
+        }
+      ]
+    },
+    {
+      "subclass": [
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#R1"
+        },
+        {
+          "class": "http://www.w3.org/2002/07/owl#Thing"
+        }
+      ]
+    },
+    {
+      "subclass": [
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#N"
+        },
+        {
+          "class": "http://www.w3.org/2002/07/owl#Thing"
+        }
+      ]
+    },
+    {
+      "subclass": [
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#C"
+        },
+        {
+          "class": "http://www.w3.org/2002/07/owl#Thing"
+        }
+      ]
+    },
+    {
+      "subclass": [
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#A"
+        },
+        {
+          "class": "http://www.w3.org/2002/07/owl#Thing"
+        }
+      ]
+    },
+    {
+      "subclass": [
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#B"
+        },
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#A"
+        }
+      ]
+    },
+    {
+      "disjointclasses": [
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#A"
+        },
+        {
+          "class": "http://www.w3.org/2002/07/owl#Nothing"
+        }
+      ]
+    },
+    {
+      "disjointclasses": [
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#C"
+        },
+        {
+          "class": "http://www.w3.org/2002/07/owl#Nothing"
+        }
+      ]
+    },
+    {
+      "disjointclasses": [
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#B"
+        },
+        {
+          "class": "http://www.w3.org/2002/07/owl#Nothing"
+        }
+      ]
+    },
+    {
+      "disjointclasses": [
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#D"
+        },
+        {
+          "class": "http://www.w3.org/2002/07/owl#Thing"
+        }
+      ]
+    },
+    {
+      "disjointclasses": [
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#D"
+        },
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#N_valueTypeRel"
+        }
+      ]
+    },
+    {
+      "disjointclasses": [
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#D"
+        },
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#R1"
+        }
+      ]
+    },
+    {
+      "disjointclasses": [
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#D"
+        },
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#A"
+        }
+      ]
+    },
+    {
+      "disjointclasses": [
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#D"
+        },
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#B"
+        }
+      ]
+    },
+    {
+      "disjointclasses": [
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#D"
+        },
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#C"
+        }
+      ]
+    },
+    {
+      "disjointclasses": [
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#D"
+        },
+        {
+          "class": "http://www.w3.org/2002/07/owl#Nothing"
+        }
+      ]
+    },
+    {
+      "disjointclasses": [
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#D"
+        },
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#N"
+        }
+      ]
+    },
+    {
+      "disjointclasses": [
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#E"
+        },
+        {
+          "class": "http://www.w3.org/2002/07/owl#Nothing"
+        }
+      ]
+    },
+    {
+      "disjointclasses": [
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#N"
+        },
+        {
+          "class": "http://www.w3.org/2002/07/owl#Nothing"
+        }
+      ]
+    },
+    {
+      "disjointclasses": [
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#R1"
+        },
+        {
+          "class": "http://www.w3.org/2002/07/owl#Nothing"
+        }
+      ]
+    },
+    {
+      "disjointclasses": [
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#R2"
+        },
+        {
+          "class": "http://www.w3.org/2002/07/owl#Thing"
+        }
+      ]
+    },
+    {
+      "disjointclasses": [
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#R2"
+        },
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#N_valueTypeRel"
+        }
+      ]
+    },
+    {
+      "disjointclasses": [
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#R2"
+        },
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#R1"
+        }
+      ]
+    },
+    {
+      "disjointclasses": [
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#R2"
+        },
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#A"
+        }
+      ]
+    },
+    {
+      "disjointclasses": [
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#R2"
+        },
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#B"
+        }
+      ]
+    },
+    {
+      "disjointclasses": [
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#R2"
+        },
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#C"
+        }
+      ]
+    },
+    {
+      "disjointclasses": [
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#R2"
+        },
+        {
+          "class": "http://www.w3.org/2002/07/owl#Nothing"
+        }
+      ]
+    },
+    {
+      "disjointclasses": [
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#R2"
+        },
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#N"
+        }
+      ]
+    },
+    {
+      "disjointclasses": [
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#N_valueTypeRel"
+        },
+        {
+          "class": "http://www.w3.org/2002/07/owl#Nothing"
+        }
+      ]
+    },
+    {
+      "equivalentclasses": [
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#A"
+        },
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#A"
+        }
+      ]
+    },
+    {
+      "equivalentclasses": [
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#C"
+        },
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#C"
+        }
+      ]
+    },
+    {
+      "equivalentclasses": [
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#C"
+        },
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#E"
+        }
+      ]
+    },
+    {
+      "equivalentclasses": [
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#B"
+        },
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#B"
+        }
+      ]
+    },
+    {
+      "equivalentclasses": [
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#D"
+        },
+        {
+          "class": "http://www.w3.org/2002/07/owl#Nothing"
+        }
+      ]
+    },
+    {
+      "equivalentclasses": [
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#D"
+        },
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#D"
+        }
+      ]
+    },
+    {
+      "equivalentclasses": [
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#D"
+        },
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#R2"
+        }
+      ]
+    },
+    {
+      "equivalentclasses": [
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#E"
+        },
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#C"
+        }
+      ]
+    },
+    {
+      "equivalentclasses": [
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#E"
+        },
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#E"
+        }
+      ]
+    },
+    {
+      "equivalentclasses": [
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#N"
+        },
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#N"
+        }
+      ]
+    },
+    {
+      "equivalentclasses": [
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#R1"
+        },
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#R1"
+        }
+      ]
+    },
+    {
+      "equivalentclasses": [
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#R2"
+        },
+        {
+          "class": "http://www.w3.org/2002/07/owl#Nothing"
+        }
+      ]
+    },
+    {
+      "equivalentclasses": [
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#R2"
+        },
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#D"
+        }
+      ]
+    },
+    {
+      "equivalentclasses": [
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#R2"
+        },
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#R2"
+        }
+      ]
+    },
+    {
+      "equivalentclasses": [
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#N_valueTypeRel"
+        },
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#N_valueTypeRel"
+        }
+      ]
+    },
+    {
+      "disjointobjectproperty": [
+        {
+          "objectproperty": "http://crowd.fi.uncoma.edu.ar/kb1#R1role0"
+        },
+        {
+          "objectproperty": "http://www.w3.org/2002/07/owl#bottomObjectProperty"
+        }
+      ]
+    },
+    {
+      "disjointobjectproperty": [
+        {
+          "objectproperty": "http://crowd.fi.uncoma.edu.ar/kb1#R1role1"
+        },
+        {
+          "objectproperty": "http://www.w3.org/2002/07/owl#bottomObjectProperty"
+        }
+      ]
+    },
+    {
+      "disjointobjectproperty": [
+        {
+          "objectproperty": "http://crowd.fi.uncoma.edu.ar/kb1#R2role0"
+        },
+        {
+          "objectproperty": "http://crowd.fi.uncoma.edu.ar/kb1#N_role"
+        }
+      ]
+    },
+    {
+      "disjointobjectproperty": [
+        {
+          "objectproperty": "http://crowd.fi.uncoma.edu.ar/kb1#R2role0"
+        },
+        {
+          "objectproperty": "http://crowd.fi.uncoma.edu.ar/kb1#A_role"
+        }
+      ]
+    },
+    {
+      "disjointobjectproperty": [
+        {
+          "objectproperty": "http://crowd.fi.uncoma.edu.ar/kb1#R2role0"
+        },
+        {
+          "objectproperty": "http://www.w3.org/2002/07/owl#bottomObjectProperty"
+        }
+      ]
+    },
+    {
+      "disjointobjectproperty": [
+        {
+          "objectproperty": "http://crowd.fi.uncoma.edu.ar/kb1#R2role0"
+        },
+        {
+          "objectproperty": "http://crowd.fi.uncoma.edu.ar/kb1#R1role1"
+        }
+      ]
+    },
+    {
+      "disjointobjectproperty": [
+        {
+          "objectproperty": "http://crowd.fi.uncoma.edu.ar/kb1#R2role0"
+        },
+        {
+          "objectproperty": "http://crowd.fi.uncoma.edu.ar/kb1#R1role0"
+        }
+      ]
+    },
+    {
+      "disjointobjectproperty": [
+        {
+          "objectproperty": "http://crowd.fi.uncoma.edu.ar/kb1#R2role0"
+        },
+        {
+          "objectproperty": "http://www.w3.org/2002/07/owl#topObjectProperty"
+        }
+      ]
+    },
+    {
+      "disjointobjectproperty": [
+        {
+          "objectproperty": "http://crowd.fi.uncoma.edu.ar/kb1#R2role1"
+        },
+        {
+          "objectproperty": "http://crowd.fi.uncoma.edu.ar/kb1#N_role"
+        }
+      ]
+    },
+    {
+      "disjointobjectproperty": [
+        {
+          "objectproperty": "http://crowd.fi.uncoma.edu.ar/kb1#R2role1"
+        },
+        {
+          "objectproperty": "http://crowd.fi.uncoma.edu.ar/kb1#A_role"
+        }
+      ]
+    },
+    {
+      "disjointobjectproperty": [
+        {
+          "objectproperty": "http://crowd.fi.uncoma.edu.ar/kb1#R2role1"
+        },
+        {
+          "objectproperty": "http://www.w3.org/2002/07/owl#bottomObjectProperty"
+        }
+      ]
+    },
+    {
+      "disjointobjectproperty": [
+        {
+          "objectproperty": "http://crowd.fi.uncoma.edu.ar/kb1#R2role1"
+        },
+        {
+          "objectproperty": "http://crowd.fi.uncoma.edu.ar/kb1#R1role1"
+        }
+      ]
+    },
+    {
+      "disjointobjectproperty": [
+        {
+          "objectproperty": "http://crowd.fi.uncoma.edu.ar/kb1#R2role1"
+        },
+        {
+          "objectproperty": "http://crowd.fi.uncoma.edu.ar/kb1#R1role0"
+        }
+      ]
+    },
+    {
+      "disjointobjectproperty": [
+        {
+          "objectproperty": "http://crowd.fi.uncoma.edu.ar/kb1#R2role1"
+        },
+        {
+          "objectproperty": "http://www.w3.org/2002/07/owl#topObjectProperty"
+        }
+      ]
+    },
+    {
+      "disjointobjectproperty": [
+        {
+          "objectproperty": "http://crowd.fi.uncoma.edu.ar/kb1#A_role"
+        },
+        {
+          "objectproperty": "http://www.w3.org/2002/07/owl#bottomObjectProperty"
+        }
+      ]
+    },
+    {
+      "disjointobjectproperty": [
+        {
+          "objectproperty": "http://crowd.fi.uncoma.edu.ar/kb1#N_role"
+        },
+        {
+          "objectproperty": "http://www.w3.org/2002/07/owl#bottomObjectProperty"
+        }
+      ]
+    },
+    {
+      "equivalentobjectproperty": [
+        {
+          "objectproperty": "http://crowd.fi.uncoma.edu.ar/kb1#R1role0"
+        },
+        {
+          "objectproperty": "http://crowd.fi.uncoma.edu.ar/kb1#R1role0"
+        }
+      ]
+    },
+    {
+      "equivalentobjectproperty": [
+        {
+          "objectproperty": "http://crowd.fi.uncoma.edu.ar/kb1#R1role1"
+        },
+        {
+          "objectproperty": "http://crowd.fi.uncoma.edu.ar/kb1#R1role1"
+        }
+      ]
+    },
+    {
+      "equivalentobjectproperty": [
+        {
+          "objectproperty": "http://crowd.fi.uncoma.edu.ar/kb1#R2role0"
+        },
+        {
+          "objectproperty": "http://www.w3.org/2002/07/owl#bottomObjectProperty"
+        }
+      ]
+    },
+    {
+      "equivalentobjectproperty": [
+        {
+          "objectproperty": "http://crowd.fi.uncoma.edu.ar/kb1#R2role1"
+        },
+        {
+          "objectproperty": "http://www.w3.org/2002/07/owl#bottomObjectProperty"
+        }
+      ]
+    },
+    {
+      "equivalentobjectproperty": [
+        {
+          "objectproperty": "http://crowd.fi.uncoma.edu.ar/kb1#A_role"
+        },
+        {
+          "objectproperty": "http://crowd.fi.uncoma.edu.ar/kb1#A_role"
+        }
+      ]
+    },
+    {
+      "equivalentobjectproperty": [
+        {
+          "objectproperty": "http://crowd.fi.uncoma.edu.ar/kb1#N_role"
+        },
+        {
+          "objectproperty": "http://crowd.fi.uncoma.edu.ar/kb1#N_role"
+        }
+      ]
+    },
+    {
+      "disjointdataproperty": [
+        {
+          "dataproperty": "http://crowd.fi.uncoma.edu.ar/kb1#N_mappedTo"
+        },
+        {
+          "dataproperty": "http://www.w3.org/2002/07/owl#bottomDataProperty"
+        }
+      ]
+    },
+    {
+      "equivalentdataproperty": [
+        {
+          "dataproperty": "http://crowd.fi.uncoma.edu.ar/kb1#N_mappedTo"
+        },
+        {
+          "dataproperty": "http://crowd.fi.uncoma.edu.ar/kb1#N_mappedTo"
+        }
+      ]
+    }
+  ]
+}
