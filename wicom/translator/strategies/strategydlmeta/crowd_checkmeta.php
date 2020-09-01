@@ -55,7 +55,9 @@ class DLCheckMeta extends Strategy{
     }
 
     /**
-       Looking for inferred equivalent classes
+       Looking for inferred equivalent classes. At the beginning we will consider each "new" equivalence as inferred one because
+       we do not have primitives for such axiom in KF. So that we will not compare them against the input model.
+       Every class is self-equivalent so that we will not consider them as an inference.
 
        @param
        @param
@@ -67,11 +69,25 @@ class DLCheckMeta extends Strategy{
       $classes = $this->strategy->get_classes();
 
       foreach ($classes as $jelem) {
-        var_dump($jelem);
-        var_dump($this->strategy->get_qa_pack()->get_equiv($jelem));
+        //var_dump($jelem);
         $eq_arr = $this->strategy->get_qa_pack()->get_equiv($jelem);
-        var_dump($eq_arr);
+        //var_dump($eq_arr);
       }
+    }
+
+    /**
+       Looking for inferred disjoint classes.
+
+       @param
+       @param
+
+       @see
+    */
+    public function inferred_disjoint_classes($json_input){
+      $this->strategy->get_qa_pack()->get_unsatClasses();
+      $classes = $this->strategy->get_classes();
+      $disj_arr = $this->strategy->get_qa_pack()->get_disjoint_classes();
+      //var_dump($disj_arr);
     }
 }
 ?>

@@ -74,6 +74,7 @@ class Answer{
     protected $inferredCards = [];
     protected $inferredDisj = [];
     protected $inferredEquivs = [];
+    protected $beauty_responses = null;
 
     function __construct($builder){
         $this->new_owl2 = $builder;
@@ -107,6 +108,10 @@ class Answer{
         array_push($this->unsatis_dp, $dpname);
     }
 
+    function add_beauty_responses($dl_like){
+      $this->beauty_responses = $dl_like;
+    }
+
     /**
        Add a subsumption/generalization suggestion.
 
@@ -117,7 +122,7 @@ class Answer{
        `['total', 'disjoint']`
      */
     function add_subsumption($name, $children, $parent, $restrictions){
-	$this->subsumptions[] = [
+	     $this->subsumptions[] = [
 	    "name" => $name,
 	    "classes" => $children,
 	    "multiplicity" => null,
@@ -125,13 +130,13 @@ class Answer{
 	    "type" => "generalization",
 	    "parent" => $parent,
 	    "constraint" => $restrictions
-	];
+	   ];
     }
 
     function add_subsumptions($subsumptions_n){
-	foreach($subsumptions_n as $s){
+	     foreach($subsumptions_n as $s){
             array_push($this->subsumptions, $s);
-	}
+	         }
     }
 
     /**
@@ -235,7 +240,7 @@ class Answer{
     }
 
     /**
-
+      Get Equivalent Classes from Answer
     */
     function get_equiv($primitive){
 	     $arr_eq = [];
@@ -255,27 +260,37 @@ class Answer{
 	       return $meqs;
     }
 
+    /**
+      Get Disjoint Classes from Answer
+    */
+    function get_disjoint_classes(){
+	     return $this->disjunctions;
+    }
+
     function get_unsatClasses(){
 	     return $this->unsatis_classes;
     }
 
     // $answer->incorporate_inferredSubs();
     function incorporate_inferredSubs($infSubs){
-	$this->inferredSubs = $infSubs;
+	     $this->inferredSubs = $infSubs;
     }
+
     // $answer->incorporate_inferredCards();
     function incorporate_inferredCards($infCards){
-	if (count($infCards) > 0){
+	     if (count($infCards) > 0){
             $this->inferredCards = $infCards;
-	}
+	         }
     }
+
     // $answer->incorporate_inferredDisj();
     function incorporate_inferredDisj($infDisj){
-	$this->inferredDisj = $infDisj;
+	     $this->inferredDisj = $infDisj;
     }
+
     // $answer->incorporate_inferredEquiv();
     function incorporate_inferredEquivs($infEquivs){
-	$this->inferredEquivs = $infEquivs;
+	     $this->inferredEquivs = $infEquivs;
     }
 
 
@@ -334,5 +349,25 @@ class Answer{
 
             ]
         );
+    }
+
+    function to_beatified_json(){
+        return json_encode(
+            ["satisfiable" => [
+                "kb" => $this->kb_satis,
+                "classes" => $this->satis_classes,
+                "objectproperties" => $this->satis_op,
+                "dataproperties" => $this->satis_dp],
+             "unsatisfiable" => [
+                 "classes" => $this->unsatis_classes,
+                 "objectproperties" => $this->unsatis_op,
+                 "dataproperties" => $this->unsatis_dp],
+              "beauty_responses" => $this->beauty_responses,
+            ]
+        );
+    }
+
+    public function responses_to_json($dl_responses){
+      return json_encode($dl_responses);
     }
 }

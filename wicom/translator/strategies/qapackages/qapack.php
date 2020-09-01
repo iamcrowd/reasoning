@@ -89,6 +89,11 @@ abstract class QAPack{
       return $this->ans_analizer->get_equiv($primitive);
     }
 
+    public function get_disjoint_classes(){
+      return $this->ans_analizer->get_disjoint_classes();
+    }
+
+
     public function get_unsatClasses(){
       return $this->ans_analizer->get_unsatClasses();
     }

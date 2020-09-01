@@ -539,7 +539,7 @@ class CrowdMetaAnalizer extends AnsAnalizer{
                   }
                 }
                 foreach ($op_disjoint as $disjoint_op_el) {
-                  array_push($bool_responses["DL"],["disjointop" => [
+                  array_push($bool_responses["DL"],["disjointobjectproperty" => [
                                                       ["objectproperty" => $op_d],
                                                       ["objectproperty" => $disjoint_op_el]]]);
                 }
@@ -557,7 +557,7 @@ class CrowdMetaAnalizer extends AnsAnalizer{
                   }
                 }
                 foreach ($dp_disjoint as $disjoint_dp_el) {
-                  array_push($bool_responses["DL"],["disjointdp" => [
+                  array_push($bool_responses["DL"],["disjointdataproperty" => [
                                                       ["dataproperty" => $dp_d],
                                                       ["dataproperty" => $disjoint_dp_el]]]);
                 }
@@ -595,7 +595,7 @@ class CrowdMetaAnalizer extends AnsAnalizer{
                   }
                 }
                 foreach ($op_equivalent as $equiv_op_el) {
-                  array_push($bool_responses["DL"],["equivalentop" => [
+                  array_push($bool_responses["DL"],["equivalentobjectproperty" => [
                                                       ["objectproperty" => $op_e],
                                                       ["objectproperty" => $equiv_op_el]]]);
                 }
@@ -614,7 +614,7 @@ class CrowdMetaAnalizer extends AnsAnalizer{
                   }
                 }
                 foreach ($dp_equivalent as $equiv_dp_el) {
-                  array_push($bool_responses["DL"],["equivalentdp" => [
+                  array_push($bool_responses["DL"],["equivalentdataproperty" => [
                                                       ["dataproperty" => $dp_e],
                                                       ["dataproperty" => $equiv_dp_el]]]);
                 }
@@ -685,12 +685,19 @@ class CrowdMetaAnalizer extends AnsAnalizer{
         $ontologyIRI = $responses["GetOntologyIRI"][0];
         $prefixes = $responses["GetPrefixes"];
 
+        //var_dump($responses["DL"]);
         // $this->answer->start_owl2_answer($ontologyIRI, [], $prefixes);
         $this->answer->translate_responses($responses["DL"]);
         //$this->answer->copyowl2_to_response();
         $this->answer->end_owl2_answer();
 
+        $this->answer->add_beauty_responses($responses["DL"]);
+
         return $this->answer;
+    }
+
+    public function get_beatified_responses(){
+      return $this->answer->to_beatified_json();
     }
 
 
@@ -702,8 +709,14 @@ class CrowdMetaAnalizer extends AnsAnalizer{
         $this->answer->incorporate_inferredCards($iCards);
     }
 
+
+
     function get_equiv($primitive){
       return $this->answer->get_equiv($primitive);
+    }
+
+    function get_disjoint_classes(){
+      return $this->answer->get_disjoint_classes();
     }
 
     function get_unsatClasses(){
