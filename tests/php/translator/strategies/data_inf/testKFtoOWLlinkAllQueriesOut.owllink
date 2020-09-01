@@ -13,6 +13,7 @@
   <BooleanResponse result="true"/>
   <BooleanResponse result="true"/>
   <BooleanResponse result="true"/>
+  <BooleanResponse result="true"/>
   <BooleanResponse result="false"/>
   <BooleanResponse result="true"/>
   <BooleanResponse result="true"/>
@@ -53,6 +54,17 @@
     </ClassSubClassesPair>
     <ClassSubClassesPair>
       <ClassSynset>
+        <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#C"/>
+        <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#E"/>
+      </ClassSynset>
+      <SubClassSynsets>
+        <ClassSynset>
+          <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#F"/>
+        </ClassSynset>
+      </SubClassSynsets>
+    </ClassSubClassesPair>
+    <ClassSubClassesPair>
+      <ClassSynset>
         <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#A"/>
       </ClassSynset>
       <SubClassSynsets>
@@ -88,13 +100,16 @@
       <owl:Class IRI="http://www.w3.org/2002/07/owl#Thing"/>
     </ClassSynset>
     <ClassSynset>
-      <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#N_valueTypeRel"/>
-    </ClassSynset>
-    <ClassSynset>
       <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#R1"/>
     </ClassSynset>
     <ClassSynset>
+      <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#N_valueTypeRel"/>
+    </ClassSynset>
+    <ClassSynset>
       <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#A"/>
+    </ClassSynset>
+    <ClassSynset>
+      <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#N"/>
     </ClassSynset>
     <ClassSynset>
       <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#B"/>
@@ -109,7 +124,14 @@
       <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#R2"/>
     </ClassSynset>
     <ClassSynset>
-      <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#N"/>
+      <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#F"/>
+    </ClassSynset>
+  </ClassSynsets>
+  <ClassSynsets>
+    <ClassSynset>
+      <owl:Class IRI="http://www.w3.org/2002/07/owl#Nothing"/>
+      <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#D"/>
+      <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#R2"/>
     </ClassSynset>
   </ClassSynsets>
   <ClassSynsets>
@@ -138,28 +160,31 @@
       <owl:Class IRI="http://www.w3.org/2002/07/owl#Thing"/>
     </ClassSynset>
     <ClassSynset>
-      <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#N_valueTypeRel"/>
-    </ClassSynset>
-    <ClassSynset>
-      <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#R1"/>
-    </ClassSynset>
-    <ClassSynset>
       <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#A"/>
     </ClassSynset>
     <ClassSynset>
-      <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#B"/>
+      <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#F"/>
     </ClassSynset>
     <ClassSynset>
       <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#C"/>
       <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#E"/>
     </ClassSynset>
     <ClassSynset>
-      <owl:Class IRI="http://www.w3.org/2002/07/owl#Nothing"/>
-      <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#D"/>
-      <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#R2"/>
+      <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#B"/>
+    </ClassSynset>
+    <ClassSynset>
+      <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#N_valueTypeRel"/>
+    </ClassSynset>
+    <ClassSynset>
+      <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#R1"/>
     </ClassSynset>
     <ClassSynset>
       <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#N"/>
+    </ClassSynset>
+    <ClassSynset>
+      <owl:Class IRI="http://www.w3.org/2002/07/owl#Nothing"/>
+      <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#D"/>
+      <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#R2"/>
     </ClassSynset>
   </ClassSynsets>
   <ClassSynsets>
@@ -187,6 +212,9 @@
   <SetOfClasses>
     <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#C"/>
     <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#E"/>
+  </SetOfClasses>
+  <SetOfClasses>
+    <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#F"/>
   </SetOfClasses>
   <SetOfClasses>
     <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#N"/>

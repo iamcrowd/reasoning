@@ -35,6 +35,10 @@
 			<owl:Class IRI="http://www.w3.org/2002/07/owl#Thing"/>
 		</owl:SubClassOf>
 		<owl:SubClassOf>
+			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#F"/>
+			<owl:Class IRI="http://www.w3.org/2002/07/owl#Thing"/>
+		</owl:SubClassOf>
+		<owl:SubClassOf>
 			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#N"/>
 			<owl:Class IRI="http://www.w3.org/2002/07/owl#Thing"/>
 		</owl:SubClassOf>
@@ -98,6 +102,10 @@
 		</owl:SubClassOf>
 		<owl:SubClassOf>
 			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#D"/>
+			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#C"/>
+		</owl:SubClassOf>
+		<owl:SubClassOf>
+			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#F"/>
 			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#C"/>
 		</owl:SubClassOf>
 		<owl:SubClassOf>
@@ -370,6 +378,9 @@
 		<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#E"/>
 	</IsClassSatisfiable>
 	<IsClassSatisfiable kb="http://crowd.fi.uncoma.edu.ar/kb1#">
+		<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#F"/>
+	</IsClassSatisfiable>
+	<IsClassSatisfiable kb="http://crowd.fi.uncoma.edu.ar/kb1#">
 		<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#N"/>
 	</IsClassSatisfiable>
 	<IsClassSatisfiable kb="http://crowd.fi.uncoma.edu.ar/kb1#">
@@ -405,7 +416,7 @@
 	</IsDataPropertySatisfiable>
 
 	<GetSubClassHierarchy kb="http://crowd.fi.uncoma.edu.ar/kb1#"/>
-	
+
 	<GetDisjointClasses kb="http://crowd.fi.uncoma.edu.ar/kb1#">
 		<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#A"/>
 	</GetDisjointClasses>
@@ -420,6 +431,9 @@
 	</GetDisjointClasses>
 	<GetDisjointClasses kb="http://crowd.fi.uncoma.edu.ar/kb1#">
 		<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#E"/>
+	</GetDisjointClasses>
+	<GetDisjointClasses kb="http://crowd.fi.uncoma.edu.ar/kb1#">
+		<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#F"/>
 	</GetDisjointClasses>
 	<GetDisjointClasses kb="http://crowd.fi.uncoma.edu.ar/kb1#">
 		<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#N"/>
@@ -448,6 +462,9 @@
 	</GetEquivalentClasses>
 	<GetEquivalentClasses kb="http://crowd.fi.uncoma.edu.ar/kb1#">
 		<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#E"/>
+	</GetEquivalentClasses>
+	<GetEquivalentClasses kb="http://crowd.fi.uncoma.edu.ar/kb1#">
+		<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#F"/>
 	</GetEquivalentClasses>
 	<GetEquivalentClasses kb="http://crowd.fi.uncoma.edu.ar/kb1#">
 		<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#N"/>

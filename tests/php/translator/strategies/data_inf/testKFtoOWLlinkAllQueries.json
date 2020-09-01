@@ -13,7 +13,8 @@
             "http://crowd.fi.uncoma.edu.ar/kb1#C",
             "http://crowd.fi.uncoma.edu.ar/kb1#B",
             "http://crowd.fi.uncoma.edu.ar/kb1#D",
-            "http://crowd.fi.uncoma.edu.ar/kb1#E"
+            "http://crowd.fi.uncoma.edu.ar/kb1#E",
+            "http://crowd.fi.uncoma.edu.ar/kb1#F"
         ]
     },
     "Role": [
@@ -156,6 +157,11 @@
                 "disjointness constraints": "dc7",
                 "completeness constraints": "cc8",
                 "name": "http://crowd.fi.uncoma.edu.ar/kb1#S1_pgt7",
+                "entity parent": "http://crowd.fi.uncoma.edu.ar/kb1#C"
+            },
+            {
+                "entity child": "http://crowd.fi.uncoma.edu.ar/kb1#F",
+                "name": "http://crowd.fi.uncoma.edu.ar/kb1#S1_UbDF",
                 "entity parent": "http://crowd.fi.uncoma.edu.ar/kb1#C"
             },
             {
