@@ -80,7 +80,7 @@ abstract class AnsAnalizer{    //AggregateIterator
        @param answer The output given by the reasoner.
        @param $owl2 The input OWL 2 ontology
     */
-    function generate_answer($query, $owl_answer, $owl2=""){
+    function generate_answer($query, $owl_answer, $owl2 = ""){
         $this->answer = new Answer(new OWLBuilder());  // creating summary of reasoning
         $this->owllink_responses = new SimpleXMLIterator($owl_answer);   // iterating on owlllink responses
         $this->owllink_queries = new SimpleXMLIterator($query);  // iterating on input ontology and queries
@@ -122,5 +122,5 @@ abstract class AnsAnalizer{    //AggregateIterator
     abstract function analize();
 
 
-    abstract function get_responses();
+    abstract function get_beatified_responses();
 }

@@ -74,8 +74,10 @@ class BerardiAnalizer extends AnsAnalizer{
     */
 
     function get_responses(){
-      
+
     }
+
+    function get_beatified_responses(){}
 
     /**
        Remove comments and other tags, and create an array with

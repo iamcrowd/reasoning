@@ -64,7 +64,7 @@ abstract class QAPack{
        @param $reasoner_answer A String with the reasoner output (answer).
        @param $owl2 A String with the original OWL 2 ontology (owl2)
     */
-    function analize_answer($reasoner_query, $reasoner_answer, $owl2){
+    function analize_answer($reasoner_query, $reasoner_answer, $owl2 = ""){
         $this->ans_analizer->generate_answer($reasoner_query, $reasoner_answer, $owl2);
         $this->ans_analizer->analize();
     }
@@ -119,7 +119,8 @@ abstract class QAPack{
        @return Wicom\Translator\Strategies\QAPackages\AnswerAnalizers\Answer An answer object.
      */
     function get_answer(){
-        return $this->ans_analizer->get_answer();
+        //return $this->ans_analizer->get_answer();
+        return $this->ans_analizer->get_beatified_responses();
     }
 
 }

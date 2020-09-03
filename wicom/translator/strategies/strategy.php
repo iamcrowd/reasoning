@@ -98,7 +98,7 @@ abstract class Strategy{
         $this->qapack->generate_queries($strategy, $builder);
     }
 
-    function analize_answer($reasoner_query, $reasoner_answer, $owl2){
+    function analize_answer($reasoner_query, $reasoner_answer, $owl2 = ""){
         $this->qapack->analize_answer($reasoner_query, $reasoner_answer, $owl2);
         return $this->qapack->get_answer();
     }
