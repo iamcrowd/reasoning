@@ -87,15 +87,23 @@ class DLCheckMeta extends Strategy{
     ]
   ]
 }
+      @// NOTE: Notice that Subsumptions and Object type cardinalities are given in terms of KF definitions. However,
+      Equivalent and Disjoint axioms could be defined as KF primitives (only Disjointness defined in the context of subsumptions) so that
+      they are given as OWL primitives (ex. Equivalent Class Axioms, etc)
     */
     function built_output(){
       $this->out_reasoning = [
         "KF" => $this->metabuilder->get_product(),
-        "Subsumptions" => json_encode($this->inferred_subclasses()),
-        "Equivalent Axioms" => $this->inferred_all_equivalent_classes(),
-        "Disjoint Axioms" => $this->inferred_all_disjoint_classes()
+        "Subsumptions" => $this->inferred_subclasses(),
+        "Equivalent Class Axioms" => $this->inferred_all_equivalent_classes(),
+        "Equivalent ObjectProperty Axioms" => [],
+        "Equivalent DataProperty Axioms" => [],
+        "Disjoint Class Axioms" => $this->inferred_all_disjoint_classes(),
+        "Disjoint ObjectProperty Axioms" => [],
+        "Disjoint DataProperty Axioms" => [],
+        "Object types cardinalities" => []
       ];
-      return json_encode($this->out_reasoning,true);
+      return json_encode($this->out_reasoning, true);
     }
 
     function translate($json, $build){

@@ -267,10 +267,6 @@ class Answer{
 	     return $this->disjunctions;
     }
 
-    function get_unsatClasses(){
-	     return $this->unsatis_classes;
-    }
-
     // $answer->incorporate_inferredSubs();
     function incorporate_inferredSubs($infSubs){
 	     $this->inferredSubs = $infSubs;
@@ -388,6 +384,18 @@ class Answer{
       This functions return specific axioms from the beauty responses
     */
 
+    function get_unsatClasses(){
+       return $this->unsatis_classes;
+    }
+
+    function get_satClasses(){
+       return $this->satis_classes;
+    }
+
+    function get_all_classes(){
+      return $all = \array_merge_recursive($this->satis_classes, $this->unsatis_classes);
+    }
+
     /**
       Get a subclass given a class as father
     */
@@ -432,23 +440,30 @@ class Answer{
     /**
       Get all disjoint class axioms
 
-      @// TODO: remove duplicated axioms
+      @// NOTE: this function do not remove axioms so that both disjoint(A,B) and disjoint(B,A) are kept.
     */
     function get_all_disjoint_class(){
       $all_disj = [];
+      $classes = $this->get_all_classes();
 
-      foreach ($this->beauty_responses as $el) {
-        if (array_key_exists('disjointclasses', $el)){
-          $d = [];
-          $d = [$el["disjointclasses"][0]["class"],$el["disjointclasses"][1]["class"]];
-          \array_push($all_disj, $d);
+      foreach ($classes as $sc_el) {
+        $disj_of_sc = [];
+        $disj_of_sc = $this->get_disjoint_class($sc_el);
+
+        if (\count($disj_of_sc) !== 0){
+          $aux = [];
+          foreach ($disj_of_sc as $d) {
+              \array_push($all_disj, [$sc_el, $d]);
+          }
         }
       }
       return $all_disj;
     }
 
     /**
-      Get the respective equivalent for the class given as parameter
+      Get the respective equivalent for the class given as parameter.
+
+      @// NOTE: this function does not consider axioms as equivalent(D, D)
     */
     function get_equivalent_class($class){
       $all_equiv = [];
@@ -456,16 +471,19 @@ class Answer{
         if (array_key_exists('equivalentclasses', $el)){
           $aux = "";
 
-          if (\strcmp($el["equivalentclasses"][0]["class"],$class) == 0){
-            $aux = $el["equivalentclasses"][1]["class"];
+          if (\strcmp($el["equivalentclasses"][0]["class"],$el["equivalentclasses"][1]["class"]) !== 0){
 
-          } elseif (\strcmp($el["equivalentclasses"][1]["class"],$class) == 0) {
-              $aux = $el["equivalentclasses"][0]["class"];
-          }
+            if (\strcmp($el["equivalentclasses"][0]["class"],$class) == 0){
+              $aux = $el["equivalentclasses"][1]["class"];
 
-          if (\strcmp($aux,"") !== 0){
-            if (!\in_array($aux, $all_equiv)){
-              array_push($all_equiv, $aux);
+            } elseif (\strcmp($el["equivalentclasses"][1]["class"],$class) == 0) {
+                $aux = $el["equivalentclasses"][0]["class"];
+            }
+
+            if (\strcmp($aux,"") !== 0){
+              if (!\in_array($aux, $all_equiv)){
+                array_push($all_equiv, $aux);
+              }
             }
           }
         }
@@ -476,16 +494,24 @@ class Answer{
     /**
       Get all equivalent class axioms
 
-      @// TODO: remove duplicated axioms
+      @// NOTE: axioms like equivalent(D,C) and equivalent(C,D)  represents the very same axioms in DL so that one of them is removed
     */
     function get_all_equiv_class(){
       $all_equiv = [];
+      $classes = $this->get_all_classes();
 
-      foreach ($this->beauty_responses as $el) {
-        if (array_key_exists('equivalentclasses', $el)){
-          $d = [];
-          $d = [$el["equivalentclasses"][0]["class"],$el["equivalentclasses"][1]["class"]];
-          \array_push($all_equiv, $d);
+      foreach ($classes as $sc_el) {
+        $equiv_of_sc = [];
+        $equiv_of_sc = $this->get_equivalent_class($sc_el);
+
+        if (\count($equiv_of_sc) !== 0){
+          $aux = [];
+          foreach ($equiv_of_sc as $e) {
+
+            if ((!\in_array([$sc_el, $e], $all_equiv)) && (!\in_array([$e, $sc_el], $all_equiv))){
+              \array_push($all_equiv, [$sc_el, $e]);
+            }
+          }
         }
       }
       return $all_equiv;
