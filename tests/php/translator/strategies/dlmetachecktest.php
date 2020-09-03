@@ -69,14 +69,14 @@ class DLMetaCheckTest extends PHPUnit\Framework\TestCase{
 
 
     /**
-       @testdox test for beauty_responses
+       @testdox test for beauty_responses with disjoint and equivalence axioms inferred
        @See http://crowd.fi.uncoma.edu.ar/KFDoc/
      */
     public function testKFtoOWLlinkAllQueries(){
         $json = file_get_contents("translator/strategies/data_inf/testKFtoOWLlinkAllQueries.json");
         $input = file_get_contents("translator/strategies/data_inf/testKFtoOWLlinkAllQueries.owllink");
         $output = file_get_contents("translator/strategies/data_inf/testKFtoOWLlinkAllQueriesOut.owllink");
-//        $responses = file_get_contents("translator/strategies/data_inf/testKFtoOWLlinkAllQueriesOut.json");
+        $inferred_expected = file_get_contents("translator/strategies/data_inf/testKFtoOWLlinkAllQueriesBeautyOutInferred.json");
         $beauty_out = file_get_contents("translator/strategies/data_inf/testKFtoOWLlinkAllQueriesBeautyOut.json");
 
         if ($this->validate_against_scheme($json)){
@@ -93,7 +93,6 @@ class DLMetaCheckTest extends PHPUnit\Framework\TestCase{
 
           $this->assertXmlStringEqualsXmlString($input, $actual, true);
 
-          //$oa = new CrowdMetaAnalizer();
           $oa = $strategy->get_qa_pack()->get_ans_analizer();
           $oa->generate_answer($actual, $output);
           $oa->analize();
@@ -104,27 +103,32 @@ class DLMetaCheckTest extends PHPUnit\Framework\TestCase{
           $actual_o = $answer->to_json();
 
           $beauty_out_json = $oa->get_beatified_responses();
-          //var_dump($beauty_out_json);
+
           $this->assertJsonStringEqualsJsonString($beauty_out, $beauty_out_json, true);
 
-          var_dump($oa->get_subclass("http://www.w3.org/2002/07/owl#Thing"));
-          var_dump($oa->get_disjoint_class("http://www.w3.org/2002/07/owl#Nothing"));
-          var_dump($oa->get_disjoint_class("http://www.w3.org/2002/07/owl#Thing"));
-          var_dump($oa->get_disjoint_class("http://crowd.fi.uncoma.edu.ar/kb1#D"));
-          var_dump($oa->get_equivalent_class("http://crowd.fi.uncoma.edu.ar/kb1#D"));
-
-          $metabuilder = new MetaJSONBuilder($json);
-          $metabuilder->insert_subsumption("http://crowd.fi.uncoma.edu.ar/kb1#F", "http://crowd.fi.uncoma.edu.ar/kb1#E");
-          var_dump($metabuilder->get_product()->to_json());
-
-//          $inferred = new DLCheckMeta($strategy, $answer, $builder);
-//          $inferred->inferred_equivalent_classes($json);
-//          $inferred->inferred_disjoint_classes($json);
+          $inferred = new DLCheckMeta($json, $strategy, $answer);
+          $this->assertJsonStringEqualsJsonString($inferred_expected, $inferred->built_output(), true);
 
         }
         else {
           $this->assertTrue(false, "JSON KF does not match against KF Scheme");
         }
     }
+
+    //var_dump($oa->get_subclass("http://www.w3.org/2002/07/owl#Thing"));
+    /*var_dump($oa->get_disjoint_class("http://www.w3.org/2002/07/owl#Nothing"));
+    var_dump($oa->get_disjoint_class("http://www.w3.org/2002/07/owl#Thing"));
+    var_dump($oa->get_disjoint_class("http://crowd.fi.uncoma.edu.ar/kb1#D"));
+    var_dump($oa->get_equivalent_class("http://crowd.fi.uncoma.edu.ar/kb1#D"));*/
+
+    //$metabuilder = new MetaJSONBuilder($json);
+    //$name = $metabuilder->insert_subsumption("http://crowd.fi.uncoma.edu.ar/kb1#F", "http://crowd.fi.uncoma.edu.ar/kb1#E");
+
+    //if($metabuilder->subsumption_in_instance("http://crowd.fi.uncoma.edu.ar/kb1#F", "http://crowd.fi.uncoma.edu.ar/kb1#E")){
+    //  echo("existing");
+    //} else {
+    //  echo("unexisting");
+    //}
+    //var_dump($metabuilder->get_product()->to_json());
 
 }
