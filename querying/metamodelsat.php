@@ -22,89 +22,46 @@
  */
 
 /**
-   Return if the given diagram is satisfiable.
+
  */
 
 require_once("../common/import_functions.php");
 
-load("v2tov1.php", "../json2json/");
-load("uml.php", "../common/");
-
-use Json2Json\V2toV1;
+load("kf.php", "../common/");
 
 // --------------------
 // Check GET and POST parameters
 
-if (!array_key_exists('json', $_POST)){
-    echo "{\"error\": \"json parameter not founded.\"}";
-    exit();
-}
+  if (!array_key_exists('json', $_POST)){
+      echo "{\"error\": \"json parameter not founded.\"}";
+      exit();
+  }
 
-/**
- */
-function convert_v2tov1($json){
-    $conv = new V2toV1($json);
-    return $conv->convert_str();
-} // convert_v2tov1
-
-
-$json = $_POST['json'];
-$json_version = 1;
-if (array_key_exists('json_version', $_GET)){
-    switch ($_GET['json_version']){
-        case "1":
-            $json = $_POST['json'];
-            break;
-        case "2":
-            $json_version = 2;
-            $json = convert_v2tov1($_POST['json']);
-            break;
-
-    }
-}
-
-$reasoner = 'Konclude';
-if (array_key_exists('reasoner', $_POST)){
+  $reasoner = 'Racer';
+  if (array_key_exists('reasoner', $_POST)){
     $reasoner = $_POST['reasoner'];
-}
-
-$encoding = 'berardi';
-if (array_key_exists('encoding', $_POST)){
-    $encoding = $_POST['encoding'];
-}
-
+  }
 
 // --------------------
 // Execute the service
 
-$wicom = new Wicom\UML_Wicom();
+  $kf = new Wicom\KF_Wicom();
 
-try{
-    $answer = $wicom->full_reasoning($json, $encoding, $reasoner);
+  try{
+    $answer = $wicom->full_reasoning($json, "metamodel", $reasoner);
     if ($answer != null){
-        echo json_encode(
-            ["answer" => json_decode($answer->to_json())]
-        );
+        echo $answer;
     }else{
-        echo json_encode(
-            ["error" => "no answer from the reasoner",
-             "input" => [
-                 "json" => $json,
-                 "encoding" => $encoding,
-                 "reasoner" => $reasoner,
-                 "json_version" => $json_version,
-             ],
-            ]);
+        echo "answer is null";
     }
-}catch(\Exception $e){
+
+  }catch(\Exception $e){
     http_response_code(500);
     echo json_encode(
         ["error" => $e->getMessage(),
          "input" => [
              "json" => $json,
-             "encoding" => $encoding,
              "reasoner" => $reasoner,
-             "json_version" => $json_version,
          ],
         ]);
 }
