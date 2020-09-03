@@ -85,12 +85,22 @@ abstract class QAPack{
       $this->ans_analizer->incorporate_inferredCards($inferredCards);
     }
 
+
+    // Next function works on beauty responses TODO: document them!
     public function get_equiv($primitive){
       return $this->ans_analizer->get_equiv($primitive);
     }
 
-    public function get_disjoint_classes(){
-      return $this->ans_analizer->get_disjoint_classes();
+    public function get_all_equiv_class(){
+      return $this->ans_analizer->get_all_equiv_class();
+    }
+
+    public function get_disjoint_class($class){
+      return $this->ans_analizer->get_disjoint_class();
+    }
+
+    public function get_all_disjoint_class(){
+      return $this->ans_analizer->get_all_disjoint_class();
     }
 
     public function get_subclass($parent){
@@ -100,6 +110,7 @@ abstract class QAPack{
     public function get_unsatClasses(){
       return $this->ans_analizer->get_unsatClasses();
     }
+
     /**
        Retrieve the answer.
 

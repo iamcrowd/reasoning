@@ -430,6 +430,24 @@ class Answer{
     }
 
     /**
+      Get all disjoint class axioms
+
+      @// TODO: remove duplicated axioms
+    */
+    function get_all_disjoint_class(){
+      $all_disj = [];
+
+      foreach ($this->beauty_responses as $el) {
+        if (array_key_exists('disjointclasses', $el)){
+          $d = [];
+          $d = [$el["disjointclasses"][0]["class"],$el["disjointclasses"][1]["class"]];
+          \array_push($all_disj, $d);
+        }
+      }
+      return $all_disj;
+    }
+
+    /**
       Get the respective equivalent for the class given as parameter
     */
     function get_equivalent_class($class){
@@ -455,7 +473,27 @@ class Answer{
       return $all_equiv;
     }
 
+    /**
+      Get all equivalent class axioms
+
+      @// TODO: remove duplicated axioms
+    */
+    function get_all_equiv_class(){
+      $all_equiv = [];
+
+      foreach ($this->beauty_responses as $el) {
+        if (array_key_exists('equivalentclasses', $el)){
+          $d = [];
+          $d = [$el["equivalentclasses"][0]["class"],$el["equivalentclasses"][1]["class"]];
+          \array_push($all_equiv, $d);
+        }
+      }
+      return $all_equiv;
+    }
+
+
     public function responses_to_json($dl_responses){
       return json_encode($dl_responses);
     }
+
 }

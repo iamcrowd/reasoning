@@ -43,7 +43,7 @@ class MetaJSONBuilder extends Documents{
 		}
 
 		public function get_product(){
-			return $this->product;
+			return $this->product->get_product();
 		}
 
 

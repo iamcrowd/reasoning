@@ -57,11 +57,14 @@ class MetaJSONDocument extends JSONDocument{
     */
     function __construct($json){
 	     $this->content = json_decode($json, true);
-       //var_dump($this->content);
     }
 
     function to_json(){
 	     return json_encode($this->content);
+    }
+
+    function get_product(){
+      return $this->content;
     }
 
 

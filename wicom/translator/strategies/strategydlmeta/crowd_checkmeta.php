@@ -43,12 +43,59 @@ class DLCheckMeta extends Strategy{
     protected $metabuilder = null;
     protected $responses = null;
     protected $json_input = null;
+    protected $out_reasoning = null;
 
     function __construct($json, $strategy, $responses){
       $this->json_input = $json;
       $this->strategy = $strategy;
       $this->responses = $responses;
-      $this->metabuilder = new MetaJSONBuilder($this->json_input);;
+      $this->metabuilder = new MetaJSONBuilder($this->json_input);
+      $this->out_reasoning = [];
+    }
+
+    /**
+      This function returns the final reasoning output to be visualised
+
+      @// NOTE:
+      {
+  "KF": {
+    "Entity type": {
+      "Value property": {
+        "Value type": [
+          "http://crowd.fi.uncoma.edu.ar/kb1#N"
+        ]
+      },
+      "Data type": [
+        "string"
+      ],
+      "Object type": [
+        "http://crowd.fi.uncoma.edu.ar/kb1#A",
+      ]
+    },
+  },
+  "Subsumptions": [],
+  "Equivalent Axioms": [
+    [
+      "http://crowd.fi.uncoma.edu.ar/kb1#A",
+      "http://crowd.fi.uncoma.edu.ar/kb1#A"
+    ]
+  ],
+  "Disjoint Axioms": [
+    [
+      "http://crowd.fi.uncoma.edu.ar/kb1#A",
+      "http://www.w3.org/2002/07/owl#Nothing"
+    ]
+  ]
+}
+    */
+    function built_output(){
+      $this->out_reasoning = [
+        "KF" => $this->metabuilder->get_product(),
+        "Subsumptions" => json_encode($this->inferred_subclasses()),
+        "Equivalent Axioms" => $this->inferred_all_equivalent_classes(),
+        "Disjoint Axioms" => $this->inferred_all_disjoint_classes()
+      ];
+      return json_encode($this->out_reasoning,true);
     }
 
     function translate($json, $build){
@@ -97,28 +144,24 @@ class DLCheckMeta extends Strategy{
 
        @see
     */
-    public function inferred_equivalent_classes($json_input){
-      $this->strategy->get_qa_pack()->get_unsatClasses();
-      $classes = $this->strategy->get_classes();
-
-      foreach ($classes as $jelem) {
-        $eq_arr = $this->strategy->get_qa_pack()->get_equiv($jelem);
-      }
+    public function inferred_all_equivalent_classes(){
+      return $this->strategy->get_qa_pack()->get_all_equiv_class();
     }
 
     /**
        Looking for inferred disjoint classes.
+
+       @// TODO:  Here we should remove disjointness involved into subsumptions
+       @// TODO: we also should remove classes which are disjoint with nothing!
+       @// TODO: we also should remove classes which are disjoint with itself!
 
        @param
        @param
 
        @see
     */
-    public function inferred_disjoint_classes($json_input){
-      $this->strategy->get_qa_pack()->get_unsatClasses();
-      $classes = $this->strategy->get_classes();
-      $disj_arr = $this->strategy->get_qa_pack()->get_disjoint_classes();
-      //var_dump($disj_arr);
+    public function inferred_all_disjoint_classes(){
+      return $this->strategy->get_qa_pack()->get_all_disjoint_class();
     }
 }
 ?>

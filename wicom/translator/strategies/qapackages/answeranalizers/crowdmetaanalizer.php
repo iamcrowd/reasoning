@@ -705,30 +705,35 @@ class CrowdMetaAnalizer extends AnsAnalizer{
         $this->answer->incorporate_inferredCards($iCards);
     }
 
+
+// Beauty Responses!
+
+    public function get_beatified_responses(){
+      return $this->answer->to_beatified_json();
+    }
+
     function get_equiv($primitive){
       return $this->answer->get_equiv($primitive);
     }
 
-
-    public function get_beatified_responses(){
-      return $this->answer->to_beatified_json();
+    function get_all_equiv_class(){
+      return $this->answer->get_all_equiv_class();
     }
 
     function get_unsatClasses(){
       return $this->answer->get_unsatClasses();
     }
 
-
     function get_subclass($class){
-        return $this->answer->get_subclass($class);
+      return $this->answer->get_subclass($class);
     }
 
     function get_disjoint_class($class){
       return $this->answer->get_disjoint_class($class);
     }
 
-    function get_equivalent_class($class){
-      return $this->answer->get_equivalent_class($class);
+    function get_all_disjoint_class(){
+      return $this->answer->get_all_disjoint_class();
     }
 
 }
