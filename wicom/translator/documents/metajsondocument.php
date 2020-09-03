@@ -56,16 +56,31 @@ class MetaJSONDocument extends JSONDocument{
        Constructor. It defines the base template for the JSON document.
     */
     function __construct($json){
-	     $this->content = json_decode($json);
-       var_dump($this->content);
+	     $this->content = json_decode($json, true);
+       //var_dump($this->content);
     }
 
     function to_json(){
 	     return json_encode($this->content);
     }
 
+
     /**
-       Insert a subsumption
+       Check if a subsumtion between both parent and child given as parameters exists in the current KF instance
+
+       @// NOTE: see kfmetaScheme.json
+     **/
+    function subsumption_in_instance($child, $parent){
+      foreach ($this->content["Relationship"]["Subsumption"] as $sub) {
+        if ((\strcmp($sub["entity child"], $child) == 0 ) && (\strcmp($sub["entity parent"],$parent) == 0 )){
+          return true;
+        }
+      }
+      return false;
+    }
+
+    /**
+       Insert a subsumption and update the current KF instance. Return id for the new subsumption.
 
        This method will not add the classes. It just add the generalization.
 
@@ -73,13 +88,15 @@ class MetaJSONDocument extends JSONDocument{
      **/
     function insert_subsumption($child, $parent, $constraints = []){
 	     $this->subsumption_number += 1;
+       $name = "http://crowd.fi.uncoma.edu.ar/inferredSubsumption#" . "s" . $this->subsumption_number;
 	     $array_sub = [];
 	     $array_sub = [
          "entity child" => $child,
-         "name" => "http://crowd.uncoma.edu.ar/inferred#" . "s" . $this->subsumption_number,
+         "name" => $name,
          "entity parent" => $parent
        ];
-	     array_push($this->content->Relationship->Subsumption, $array_sub);
+	     array_push($this->content["Relationship"]["Subsumption"], $array_sub);
+       return $name;
     }
 
     /**

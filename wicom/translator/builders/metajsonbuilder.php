@@ -46,9 +46,22 @@ class MetaJSONBuilder extends Documents{
 			return $this->product;
 		}
 
+
+		/**
+			Insert a subsumtion into the KF instance
+		*/
 		public function insert_subsumption($child, $parent, $constraints = []){
-			$this->product->insert_subsumption($child, $parent, $constraints = []);
+			return $this->product->insert_subsumption($child, $parent, $constraints = []);
 		}
+
+		/**
+			Check if a subsumption between both parent and child given as parameters exists in the current KF product
+		*/
+		public function subsumption_in_instance($child, $parent){
+			return $this->product->subsumption_in_instance($child, $parent);
+		}
+
+
 
 }
 ?>

@@ -30,20 +30,25 @@ namespace Wicom\Translator\Strategies\Strategydlmeta;
 use function \load;
 load('crowdmetapack.php', '../qapackages/');
 load('strategy.php', '../');
+load("metajsonbuilder.php", "../../builders/");
 
 use Wicom\Translator\Strategies\QAPackages\CrowdMetaPack;
 use Wicom\Translator\Strategies\Strategy;
+use Wicom\Translator\Builders\MetaJSONBuilder;
+
 
 class DLCheckMeta extends Strategy{
 
     protected $strategy = null;
-    protected $builder = null;
+    protected $metabuilder = null;
     protected $responses = null;
+    protected $json_input = null;
 
-    function __construct($strategy, $responses, $builder){
+    function __construct($json, $strategy, $responses){
+      $this->json_input = $json;
       $this->strategy = $strategy;
       $this->responses = $responses;
-      $this->builder = $builder;
+      $this->metabuilder = new MetaJSONBuilder($this->json_input);;
     }
 
     function translate($json, $build){
@@ -52,6 +57,34 @@ class DLCheckMeta extends Strategy{
 
     function decode($owl, $jsonbuild){
 
+    }
+
+    /**
+       Looking for inferred subclasses (or KF subsumptions).
+
+       @param
+       @param
+
+       @see
+    */
+    public function inferred_subclasses(){
+      $this->strategy->get_qa_pack()->get_unsatClasses();
+      $classes = $this->strategy->get_classes();
+
+      $inferred_subs = [];
+
+      foreach ($classes as $jelem) {
+        $subclasses = $this->strategy->get_qa_pack()->get_subclass($jelem);
+
+        foreach ($subclasses as $sub) {
+
+          if (!$this->metabuilder->subsumption_in_instance($sub, $jelem)){
+            $name = $this->metabuilder->insert_subsumption($sub, $jelem);
+            \array_push($inferred_subs, $name);
+          }
+        }
+      }
+      return $inferred_subs;
     }
 
     /**
@@ -69,9 +102,7 @@ class DLCheckMeta extends Strategy{
       $classes = $this->strategy->get_classes();
 
       foreach ($classes as $jelem) {
-        //var_dump($jelem);
         $eq_arr = $this->strategy->get_qa_pack()->get_equiv($jelem);
-        //var_dump($eq_arr);
       }
     }
 

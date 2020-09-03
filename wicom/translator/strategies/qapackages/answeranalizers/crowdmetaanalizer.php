@@ -718,6 +718,7 @@ class CrowdMetaAnalizer extends AnsAnalizer{
       return $this->answer->get_unsatClasses();
     }
 
+
     function get_subclass($class){
         return $this->answer->get_subclass($class);
     }
