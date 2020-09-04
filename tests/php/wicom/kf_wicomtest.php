@@ -1,11 +1,11 @@
 <?php
 /*
 
-   Copyright 2016 Giménez, Christian. Germán Braun.
+   Copyright 2020
 
-   Author: Giménez, Christian
+   Author: GILIA
 
-   wicomtest.php
+   kf_wicomtest.php
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
