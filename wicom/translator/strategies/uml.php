@@ -124,9 +124,7 @@ abstract class UML extends Strategy{
 
        @todo Here coding a XML parser for ontologies and UML.
     */
-    function decode($owllink_str, $jsonbuilder){
-
-    }
+    function decode($owllink_str, $jsonbuilder){}
 
     function merge_answer($json_o, $json_new){
       parent::merge_answer($json_o, $json_new);

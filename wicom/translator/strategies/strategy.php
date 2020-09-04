@@ -64,7 +64,7 @@ abstract class Strategy{
      */
     abstract function translate($json, $build);
 
-    abstract function decode($owl, $jsonbuild);
+//    abstract function decode($owl, $jsonbuild);
 
     /**
       This function returns classes asserted during the formal encoding.

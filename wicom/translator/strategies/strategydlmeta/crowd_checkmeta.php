@@ -30,14 +30,16 @@ namespace Wicom\Translator\Strategies\Strategydlmeta;
 use function \load;
 load('crowdmetapack.php', '../qapackages/');
 load('strategy.php', '../');
+load('metamodel.php', '../');
 load("metajsonbuilder.php", "../../builders/");
 
 use Wicom\Translator\Strategies\QAPackages\CrowdMetaPack;
 use Wicom\Translator\Strategies\Strategy;
+use Wicom\Translator\Strategies\Metamodel;
 use Wicom\Translator\Builders\MetaJSONBuilder;
 
 
-class DLCheckMeta extends Strategy{
+class DLCheckMeta {
 
     protected $strategy = null;
     protected $metabuilder = null;
@@ -106,14 +108,6 @@ class DLCheckMeta extends Strategy{
       return json_encode($this->out_reasoning, true);
     }
 
-    function translate($json, $build){
-
-    }
-
-    function decode($owl, $jsonbuild){
-
-    }
-
     /**
        Looking for inferred subclasses (or KF subsumptions).
 
@@ -122,7 +116,7 @@ class DLCheckMeta extends Strategy{
 
        @see
     */
-    public function inferred_subclasses(){
+    protected function inferred_subclasses(){
       $this->strategy->get_qa_pack()->get_unsatClasses();
       $classes = $this->strategy->get_classes();
 
@@ -152,7 +146,7 @@ class DLCheckMeta extends Strategy{
 
        @see
     */
-    public function inferred_all_equivalent_classes(){
+    protected function inferred_all_equivalent_classes(){
       return $this->strategy->get_qa_pack()->get_all_equiv_class();
     }
 
@@ -161,14 +155,13 @@ class DLCheckMeta extends Strategy{
 
        @// TODO:  Here we should remove disjointness involved into subsumptions
        @// TODO: we also should remove classes which are disjoint with nothing!
-       @// TODO: we also should remove classes which are disjoint with itself!
 
        @param
        @param
 
        @see
     */
-    public function inferred_all_disjoint_classes(){
+    protected function inferred_all_disjoint_classes(){
       return $this->strategy->get_qa_pack()->get_all_disjoint_class();
     }
 }

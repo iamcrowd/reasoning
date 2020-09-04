@@ -30,17 +30,26 @@ namespace Wicom\Translator\Strategies\Strategydlmeta;
 use function \load;
 load('crowdmetapack.php', '../qapackages/');
 load('strategy.php', '../');
+load('metamodel.php', '../');
+load("crowd_checkmeta.php", "./");
 
 use Wicom\Translator\Strategies\QAPackages\CrowdMetaPack;
 use Wicom\Translator\Strategies\Strategy;
+use Wicom\Translator\Strategies\Metamodel;
+use Wicom\Translator\Strategies\Strategydlmeta\DLCheckMeta;
 
-class DLMeta extends Strategy{
+class DLMeta extends Metamodel{
+
+    protected $output = null;
 
     function __construct(){
       parent::__construct();
-
       $this->qapack = new CrowdMetaPack();
+    }
 
+    function get_output($json, $strategy, $responses){
+      $this->output = new DLCheckMeta($json, $strategy, $responses);
+      return $this->output->built_output();
     }
 
     /**
@@ -527,9 +536,6 @@ class DLMeta extends Strategy{
         $this->translate_attributiveProperty($json, $builder);
         $this->translate_attributeMappedTo($json, $builder);
       }
-
-
-      function decode($owl, $jsonbuild){}
 
 }
 ?>
