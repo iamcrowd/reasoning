@@ -107,6 +107,10 @@ abstract class QAPack{
       return $this->ans_analizer->get_subclass($parent);
     }
 
+    public function get_kb_status(){
+      return $this->ans_analizer->get_kb_status();
+    }
+
     public function get_unsatClasses(){
       return $this->ans_analizer->get_unsatClasses();
     }

@@ -384,6 +384,10 @@ class Answer{
       This functions return specific axioms from the beauty responses
     */
 
+    function get_kb_status(){
+      return $this->kb_satis;
+    }
+    
     function get_unsatClasses(){
        return $this->unsatis_classes;
     }

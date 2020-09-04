@@ -102,6 +102,7 @@ class DLCheckMeta {
       $this->out_reasoning = [
         "KF" => $this->metabuilder->get_product(),
         "KF output" => [
+          "KB Status" => $this->strategy->get_qa_pack()->get_kb_status(),
           "SATisfiable Entity types" => $this->strategy->get_qa_pack()->get_satClasses(),
           "UNSATisfiable Entity types" => $this->strategy->get_qa_pack()->get_unsatClasses(),
           "SATisfiable Roles" => $this->strategy->get_qa_pack()->get_satObjectProperties(),
@@ -138,7 +139,6 @@ class DLCheckMeta {
         $subclasses = $this->strategy->get_qa_pack()->get_subclass($jelem);
 
         foreach ($subclasses as $sub) {
-
           if (!$this->metabuilder->subsumption_in_instance($sub, $jelem)){
             $name = $this->metabuilder->insert_subsumption($sub, $jelem);
             \array_push($inferred_subs, $name);

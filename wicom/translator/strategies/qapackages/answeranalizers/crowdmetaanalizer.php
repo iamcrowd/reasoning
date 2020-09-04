@@ -712,6 +712,10 @@ class CrowdMetaAnalizer extends AnsAnalizer{
       return $this->answer->to_beatified_json();
     }
 
+    function get_kb_status(){
+      return $this->answer->get_kb_status();
+    }
+
     function get_unsatClasses(){
       return $this->answer->get_unsatClasses();
     }
