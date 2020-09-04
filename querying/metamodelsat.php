@@ -48,7 +48,7 @@ load("kf.php", "../common/");
   $kf = new Wicom\KF_Wicom();
 
   try{
-    $answer = $wicom->full_reasoning($json, "metamodel", $reasoner);
+    $answer = $kf->full_reasoning($_POST['json'], "metamodel", $reasoner);
     if ($answer != null){
         echo $answer;
     }else{
@@ -57,13 +57,13 @@ load("kf.php", "../common/");
 
   }catch(\Exception $e){
     http_response_code(500);
-    echo json_encode(
+/*    echo json_encode(
         ["error" => $e->getMessage(),
          "input" => [
              "json" => $json,
              "reasoner" => $reasoner,
          ],
-        ]);
+        ]);*/
 }
 
 ?>
