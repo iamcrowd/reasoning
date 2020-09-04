@@ -43,14 +43,12 @@ class DLCheckMeta {
 
     protected $strategy = null;
     protected $metabuilder = null;
-    protected $responses = null;
     protected $json_input = null;
     protected $out_reasoning = null;
 
-    function __construct($json, $strategy, $responses){
+    function __construct($json, $strategy){
       $this->json_input = $json;
       $this->strategy = $strategy;
-      $this->responses = $responses;
       $this->metabuilder = new MetaJSONBuilder($this->json_input);
       $this->out_reasoning = [];
     }
@@ -96,14 +94,22 @@ class DLCheckMeta {
     function built_output(){
       $this->out_reasoning = [
         "KF" => $this->metabuilder->get_product(),
-        "Subsumptions" => $this->inferred_subclasses(),
-        "Equivalent Class Axioms" => $this->inferred_all_equivalent_classes(),
-        "Equivalent ObjectProperty Axioms" => [],
-        "Equivalent DataProperty Axioms" => [],
-        "Disjoint Class Axioms" => $this->inferred_all_disjoint_classes(),
-        "Disjoint ObjectProperty Axioms" => [],
-        "Disjoint DataProperty Axioms" => [],
-        "Object types cardinalities" => []
+        "KF output" => [
+          "SATisfiable Entity types" => $this->strategy->get_qa_pack()->get_satClasses(),
+          "UNSATisfiable Entity types" => $this->strategy->get_qa_pack()->get_unsatClasses(),
+          "SATisfiable Roles" => $this->strategy->get_qa_pack()->get_satObjectProperties(),
+          "UNSATisfiable Roles" => $this->strategy->get_qa_pack()->get_unsatObjectProperties(),
+          "Subsumptions" => $this->inferred_subclasses(),
+          "Object types cardinalities" => []
+        ],
+        "OWL Axioms" => [
+          "Equivalent Class Axioms" => $this->inferred_all_equivalent_classes(),
+          "Equivalent ObjectProperty Axioms" => [],
+          "Equivalent DataProperty Axioms" => [],
+          "Disjoint Class Axioms" => $this->inferred_all_disjoint_classes(),
+          "Disjoint ObjectProperty Axioms" => [],
+          "Disjoint DataProperty Axioms" => []
+        ]
       ];
       return json_encode($this->out_reasoning, true);
     }

@@ -47,8 +47,8 @@ class DLMeta extends Metamodel{
       $this->qapack = new CrowdMetaPack();
     }
 
-    function get_output($json, $strategy, $responses){
-      $this->output = new DLCheckMeta($json, $strategy, $responses);
+    function get_output($json, $strategy){
+      $this->output = new DLCheckMeta($json, $strategy);
       return $this->output->built_output();
     }
 

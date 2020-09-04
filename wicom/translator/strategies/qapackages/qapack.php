@@ -111,6 +111,18 @@ abstract class QAPack{
       return $this->ans_analizer->get_unsatClasses();
     }
 
+    public function get_satClasses(){
+      return $this->ans_analizer->get_satClasses();
+    }
+
+    public function get_unsatObjectProperties(){
+      return $this->ans_analizer->get_unsatObjectProperties();
+    }
+
+    public function get_satObjectProperties(){
+      return $this->ans_analizer->get_satObjectProperties();
+    }
+
     /**
        Retrieve the answer.
 

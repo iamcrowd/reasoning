@@ -712,16 +712,28 @@ class CrowdMetaAnalizer extends AnsAnalizer{
       return $this->answer->to_beatified_json();
     }
 
+    function get_unsatClasses(){
+      return $this->answer->get_unsatClasses();
+    }
+
+    function get_satClasses(){
+      return $this->answer->get_satClasses();
+    }
+
+    function get_unsatObjectProperties(){
+      return $this->answer->get_unsatObjectProperties();
+    }
+
+    function get_satObjectProperties(){
+      return $this->answer->get_satObjectProperties();
+    }
+
     function get_equiv($primitive){
       return $this->answer->get_equiv($primitive);
     }
 
     function get_all_equiv_class(){
       return $this->answer->get_all_equiv_class();
-    }
-
-    function get_unsatClasses(){
-      return $this->answer->get_unsatClasses();
     }
 
     function get_subclass($class){

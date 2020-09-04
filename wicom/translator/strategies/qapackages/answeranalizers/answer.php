@@ -392,6 +392,14 @@ class Answer{
        return $this->satis_classes;
     }
 
+    function get_unsatObjectProperties(){
+       return $this->unsatis_op;
+    }
+
+    function get_satObjectProperties(){
+       return $this->satis_op;
+    }
+
     function get_all_classes(){
       return $all = \array_merge_recursive($this->satis_classes, $this->unsatis_classes);
     }
