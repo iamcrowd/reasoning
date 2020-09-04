@@ -40,8 +40,8 @@ class KFWicomTest extends PHPUnit\Framework\TestCase
         $wicom = new KF_Wicom();
         $answer = $wicom->full_reasoning($input);
 
-        var_dump($answer);
-        
+        //var_dump($answer);
+
         $this->assertJsonStringEqualsJsonString($expected, $answer, true);
     }
 
