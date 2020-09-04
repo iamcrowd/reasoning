@@ -120,9 +120,7 @@ class KF_Wicom extends Wicom{
         $encoding->analize_answer($owllink_str, $reasoner_answer);
         $answer = $encoding->get_answer();
 
-        $answer_inferred = new DLCheckMeta($json_str, $encoding, $answer);
-
-	      return $answer_inferred->built_output();
+        return $encoding->get_output($json_str, $encoding, $answer);
 
     }
 }
