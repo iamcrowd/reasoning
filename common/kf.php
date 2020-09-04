@@ -71,9 +71,7 @@ class KF_Wicom extends Wicom{
 	     parent::__construct();
     }
 
-    function is_satisfiable($json_str, $strategy = 'berardi', $reasoner = 'Racer'){
-        return $this->full_reasoning($json_str, $strategy, $reasoner);
-    }
+    function is_satisfiable($json_str, $strategy = "metamodel", $reasoner = 'Racer'){}
 
 
     /**
@@ -118,9 +116,8 @@ class KF_Wicom extends Wicom{
         $reasoner_answer = $runner->get_last_answer();
 
         $encoding->analize_answer($owllink_str, $reasoner_answer);
-        $answer = $encoding->get_answer();
 
-        return $encoding->get_output($json_str, $encoding, $answer);
+        return $encoding->get_output($json_str, $encoding);
 
     }
 }
