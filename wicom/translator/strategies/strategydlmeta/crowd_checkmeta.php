@@ -41,6 +41,13 @@ use Wicom\Translator\Builders\MetaJSONBuilder;
 
 class DLCheckMeta {
 
+    /**
+      This class implements all the functions to build the reasoning output.
+
+      @param $json {json} is the original KF instance given as a JSON object
+      @param $strategy {object} is the strategy used to encode the JSON KF instance
+    */
+
     protected $strategy = null;
     protected $metabuilder = null;
     protected $json_input = null;
@@ -115,12 +122,11 @@ class DLCheckMeta {
     }
 
     /**
-       Looking for inferred subclasses (or KF subsumptions).
+       Looking for inferred subclasses (or KF subsumptions). This function inserts new subsumptions in the original KF instance
+       and returns an array of ids of such subsumptions to indicate that were implicit in the instance.
 
-       @param
-       @param
-
-       @see
+       @// TODO: here we should filter unsat classes because unsat classes are subclass of nothing
+       @// TODO: consider other special cases
     */
     protected function inferred_subclasses(){
       $this->strategy->get_qa_pack()->get_unsatClasses();
@@ -146,11 +152,6 @@ class DLCheckMeta {
        Looking for inferred equivalent classes. At the beginning we will consider each "new" equivalence as inferred one because
        we do not have primitives for such axiom in KF. So that we will not compare them against the input model.
        Every class is self-equivalent so that we will not consider them as an inference.
-
-       @param
-       @param
-
-       @see
     */
     protected function inferred_all_equivalent_classes(){
       return $this->strategy->get_qa_pack()->get_all_equiv_class();
@@ -159,16 +160,17 @@ class DLCheckMeta {
     /**
        Looking for inferred disjoint classes.
 
-       @// TODO:  Here we should remove disjointness involved into subsumptions
-       @// TODO: we also should remove classes which are disjoint with nothing!
-
-       @param
-       @param
-
-       @see
+       @// TODO: Here we should remove disjointness involved into subsumptions
+       @// TODO: should we also remove classes which are disjoint with nothing? each sat class is disjoint with nothing by definition
     */
     protected function inferred_all_disjoint_classes(){
       return $this->strategy->get_qa_pack()->get_all_disjoint_class();
     }
+
+    /**
+      @// TODO: implement here a function to look for stricter cardinalities
+    */
+    protected function stricter_cardinalities(){}
+
 }
 ?>
