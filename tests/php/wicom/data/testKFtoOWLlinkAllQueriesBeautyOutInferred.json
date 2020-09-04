@@ -202,6 +202,7 @@
     }
   },
   "KF output": {
+    "KB Status": true,
     "SATisfiable Entity types": [
       "http://crowd.fi.uncoma.edu.ar/kb1#A",
       "http://crowd.fi.uncoma.edu.ar/kb1#C",

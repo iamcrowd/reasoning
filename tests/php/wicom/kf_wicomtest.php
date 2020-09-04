@@ -40,7 +40,35 @@ class KFWicomTest extends PHPUnit\Framework\TestCase
         $wicom = new KF_Wicom();
         $answer = $wicom->full_reasoning($input);
 
-        //var_dump($answer);
+        $this->assertJsonStringEqualsJsonString($expected, $answer, true);
+    }
+
+    public function test_full_reasoning_KF_subsumptions(){
+        $input = file_get_contents('wicom/data/testKFReasoningSubsumptions.json');
+        $expected = file_get_contents('wicom/data/testKFReasoningSubsumptionsExpected.json');
+
+        $wicom = new KF_Wicom();
+        $answer = $wicom->full_reasoning($input);
+
+        $this->assertJsonStringEqualsJsonString($expected, $answer, true);
+    }
+
+    public function test_full_reasoning_KF_Unsat_Class_Roles(){
+        $input = file_get_contents('wicom/data/testKFReasoningUnsatClassesAndRoles.json');
+        $expected = file_get_contents('wicom/data/testKFReasoningUnsatClassesAndRolesExpected.json');
+
+        $wicom = new KF_Wicom();
+        $answer = $wicom->full_reasoning($input);
+
+        $this->assertJsonStringEqualsJsonString($expected, $answer, true);
+    }
+
+    public function test_full_reasoning_KF_Unsat_KB(){
+        $input = file_get_contents('wicom/data/testKFReasoningUNSATKB.json');
+        $expected = file_get_contents('wicom/data/testKFReasoningUNSATKBExpected.json');
+
+        $wicom = new KF_Wicom();
+        $answer = $wicom->full_reasoning($input);
 
         $this->assertJsonStringEqualsJsonString($expected, $answer, true);
     }

@@ -1,0 +1,81 @@
+{
+    "Entity type": {
+        "Value property": {
+            "Value type": []
+        },
+        "Data type": [],
+        "Object type": [
+            "http://crowd.fi.uncoma.edu.ar#Class1",
+            "http://crowd.fi.uncoma.edu.ar#Class2",
+            "http://crowd.fi.uncoma.edu.ar#Class3",
+            "http://crowd.fi.uncoma.edu.ar#Class4"
+        ]
+    },
+    "Role": [],
+    "Constraints": {
+        "Cardinality constraints": {
+            "Attibutive property cardinality": [],
+            "Object type cardinality": []
+        },
+        "Disjointness constraints": {
+            "Disjoint object type": [
+                {
+                    "entities": [
+                        "http://crowd.fi.uncoma.edu.ar#Class2",
+                        "http://crowd.fi.uncoma.edu.ar#Class3"
+                    ],
+                    "name": "dc1"
+                }
+            ],
+            "Disjoint role": []
+        },
+        "Completeness constraints": [
+            {
+                "entities": [
+                    "http://crowd.fi.uncoma.edu.ar#Class2",
+                    "http://crowd.fi.uncoma.edu.ar#Class3"
+                ],
+                "name": "cc2"
+            }
+        ],
+        "Mandatory constraints": {
+            "Mandatory": []
+        }
+    },
+    "Relationship": {
+        "Attributive property": {
+            "Attributive property": [],
+            "Attribute": {
+                "Attribute": [],
+                "Mapped to": []
+            }
+        },
+        "Subsumption": [
+            {
+                "entity child": "http://crowd.fi.uncoma.edu.ar#Class1",
+                "name": "http://crowd.fi.uncoma.edu.ar#s1_QGEy",
+                "entity parent": "http://crowd.fi.uncoma.edu.ar#Class4"
+            },
+            {
+                "entity child": "http://crowd.fi.uncoma.edu.ar#Class2",
+                "disjointness constraints": "dc1",
+                "completeness constraints": "cc2",
+                "name": "http://crowd.fi.uncoma.edu.ar#s2_wzrk",
+                "entity parent": "http://crowd.fi.uncoma.edu.ar#Class1"
+            },
+            {
+                "entity child": "http://crowd.fi.uncoma.edu.ar#Class3",
+                "disjointness constraints": "dc1",
+                "completeness constraints": "cc2",
+                "name": "http://crowd.fi.uncoma.edu.ar#s2_OuHY",
+                "entity parent": "http://crowd.fi.uncoma.edu.ar#Class1"
+            },
+            {
+                "entity child": "http://crowd.fi.uncoma.edu.ar#Class2",
+                "name": "http://crowd.fi.uncoma.edu.ar#s4_2LH2",
+                "entity parent": "http://crowd.fi.uncoma.edu.ar#Class3"
+            }
+        ],
+        "Relationship": []
+    }
+}
