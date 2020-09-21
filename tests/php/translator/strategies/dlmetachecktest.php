@@ -107,6 +107,53 @@ class DLMetaCheckTest extends PHPUnit\Framework\TestCase{
           $this->assertJsonStringEqualsJsonString($beauty_out, $beauty_out_json, true);
 
           $inferred = new DLCheckMeta($json, $strategy, $answer);
+        //  $this->assertJsonStringEqualsJsonString($inferred_expected, $inferred->built_output(), true);
+
+        }
+        else {
+          $this->assertTrue(false, "JSON KF does not match against KF Scheme");
+        }
+    }
+
+    /**
+       @testdox test for beauty_responses with subsumption inferred
+       @See http://crowd.fi.uncoma.edu.ar/KFDoc/
+     */
+    public function testKFtoOWLlinkSubsumptionInferred(){
+        $json = file_get_contents("translator/strategies/data_inf/testKFtoOWLlinkSubsumptionInferred.json");
+        $input = file_get_contents("translator/strategies/data_inf/testKFtoOWLlinkSubsumptionInferred.owllink");
+        $output = file_get_contents("translator/strategies/data_inf/testKFtoOWLlinkSubsumptionInferredOut.owllink");
+        $inferred_expected = file_get_contents("translator/strategies/data_inf/testKFtoOWLlinkSubsumptionInferredBeautyOutExpected.json");
+        $beauty_out = file_get_contents("translator/strategies/data_inf/testKFtoOWLlinkSubsumptionInferredBeautyOut.json");
+
+        if ($this->validate_against_scheme($json)){
+          $strategy = new DLMeta();
+          $builder = new OWLlinkBuilder();
+
+          $builder->insert_header();
+          $strategy->translate($json, $builder);
+          $strategy->translate_queries($strategy, $builder);
+          $builder->insert_footer();
+
+          $actual = $builder->get_product();
+          $actual = $actual->to_string();
+
+          $this->assertXmlStringEqualsXmlString($input, $actual, true);
+
+          $oa = $strategy->get_qa_pack()->get_ans_analizer();
+          $oa->generate_answer($actual, $output);
+          $oa->analize();
+          $answer = $oa->get_answer();
+
+          $answer->set_reasoner_input("");
+          $answer->set_reasoner_output("");
+          $actual_o = $answer->to_json();
+
+          $beauty_out_json = $oa->get_beatified_responses();
+
+          $this->assertJsonStringEqualsJsonString($beauty_out, $beauty_out_json, true);
+
+          $inferred = new DLCheckMeta($json, $strategy, $answer);
           $this->assertJsonStringEqualsJsonString($inferred_expected, $inferred->built_output(), true);
 
         }

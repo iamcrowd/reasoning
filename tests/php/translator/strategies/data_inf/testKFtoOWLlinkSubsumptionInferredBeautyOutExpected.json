@@ -1,0 +1,165 @@
+{
+  "KF": {
+    "Entity type": {
+      "Value property": {
+        "Value type": []
+      },
+      "Data type": [],
+      "Object type": [
+        "http://crowd.fi.uncoma.edu.ar#Cell",
+        "http://crowd.fi.uncoma.edu.ar#Home",
+        "http://crowd.fi.uncoma.edu.ar#O",
+        "http://crowd.fi.uncoma.edu.ar#LandLine",
+        "http://crowd.fi.uncoma.edu.ar#Phone"
+      ]
+    },
+    "Role": [],
+    "Constraints": {
+      "Cardinality constraints": {
+        "Attibutive property cardinality": [],
+        "Object type cardinality": []
+      },
+      "Disjointness constraints": {
+        "Disjoint object type": [
+          {
+            "entities": [
+              "http://crowd.fi.uncoma.edu.ar#Cell",
+              "http://crowd.fi.uncoma.edu.ar#LandLine"
+            ],
+            "name": "dc1"
+          },
+          {
+            "entities": [
+              "http://crowd.fi.uncoma.edu.ar#Home",
+              "http://crowd.fi.uncoma.edu.ar#Cell"
+            ],
+            "name": "dc3"
+          }
+        ],
+        "Disjoint role": []
+      },
+      "Completeness constraints": [
+        {
+          "entities": [
+            "http://crowd.fi.uncoma.edu.ar#Cell",
+            "http://crowd.fi.uncoma.edu.ar#LandLine"
+          ],
+          "name": "cc2"
+        }
+      ],
+      "Mandatory constraints": {
+        "Mandatory": []
+      }
+    },
+    "Relationship": {
+      "Attributive property": {
+        "Attributive property": [],
+        "Attribute": {
+          "Attribute": [],
+          "Mapped to": []
+        }
+      },
+      "Subsumption": [
+        {
+          "entity child": "http://crowd.fi.uncoma.edu.ar#Cell",
+          "disjointness constraints": "dc1",
+          "completeness constraints": "cc2",
+          "name": "http://crowd.fi.uncoma.edu.ar#s1_mAYx",
+          "entity parent": "http://crowd.fi.uncoma.edu.ar#Phone"
+        },
+        {
+          "entity child": "http://crowd.fi.uncoma.edu.ar#LandLine",
+          "disjointness constraints": "dc1",
+          "completeness constraints": "cc2",
+          "name": "http://crowd.fi.uncoma.edu.ar#s1_dBk5",
+          "entity parent": "http://crowd.fi.uncoma.edu.ar#Phone"
+        },
+        {
+          "entity child": "http://crowd.fi.uncoma.edu.ar#Home",
+          "name": "http://crowd.fi.uncoma.edu.ar#s2_HBKb",
+          "entity parent": "http://crowd.fi.uncoma.edu.ar#Phone"
+        },
+        {
+          "entity child": "http://crowd.fi.uncoma.edu.ar#Home",
+          "disjointness constraints": "dc3",
+          "name": "http://crowd.fi.uncoma.edu.ar#s3_wWb6",
+          "entity parent": "http://crowd.fi.uncoma.edu.ar#O"
+        },
+        {
+          "entity child": "http://crowd.fi.uncoma.edu.ar#Cell",
+          "disjointness constraints": "dc3",
+          "name": "http://crowd.fi.uncoma.edu.ar#s3_4RoS",
+          "entity parent": "http://crowd.fi.uncoma.edu.ar#O"
+        },
+        {
+        "entity child": "http://crowd.fi.uncoma.edu.ar#Home",
+        "name": "http://crowd.fi.uncoma.edu.ar/inferredSubsumption#s1",
+        "entity parent": "http://crowd.fi.uncoma.edu.ar#LandLine"
+        }
+      ],
+      "Relationship": []
+    }
+  },
+  "KF output": {
+    "KB Status": true,
+    "SATisfiable Entity types": [
+      "http://crowd.fi.uncoma.edu.ar#Cell",
+      "http://crowd.fi.uncoma.edu.ar#Home",
+      "http://crowd.fi.uncoma.edu.ar#O",
+      "http://crowd.fi.uncoma.edu.ar#LandLine",
+      "http://crowd.fi.uncoma.edu.ar#Phone"
+    ],
+    "UNSATisfiable Entity types": [],
+    "SATisfiable Roles": [],
+    "UNSATisfiable Roles": [],
+    "Subsumptions": [
+      "http://crowd.fi.uncoma.edu.ar/inferredSubsumption#s1"
+    ],
+    "Object types cardinalities": []
+  },
+  "OWL Axioms": {
+    "Equivalent Class Axioms": [],
+    "Equivalent ObjectProperty Axioms": [],
+    "Equivalent DataProperty Axioms": [],
+    "Disjoint Class Axioms": [
+      [
+        "http://crowd.fi.uncoma.edu.ar#Cell",
+        "http://www.w3.org/2002/07/owl#Nothing"
+      ],
+      [
+        "http://crowd.fi.uncoma.edu.ar#Cell",
+        "http://crowd.fi.uncoma.edu.ar#Home"
+      ],
+      [
+        "http://crowd.fi.uncoma.edu.ar#Cell",
+        "http://crowd.fi.uncoma.edu.ar#LandLine"
+      ],
+      [
+        "http://crowd.fi.uncoma.edu.ar#Home",
+        "http://crowd.fi.uncoma.edu.ar#Cell"
+      ],
+      [
+        "http://crowd.fi.uncoma.edu.ar#Home",
+        "http://www.w3.org/2002/07/owl#Nothing"
+      ],
+      [
+        "http://crowd.fi.uncoma.edu.ar#O",
+        "http://www.w3.org/2002/07/owl#Nothing"
+      ],
+      [
+        "http://crowd.fi.uncoma.edu.ar#LandLine",
+        "http://crowd.fi.uncoma.edu.ar#Cell"
+      ],
+      [
+        "http://crowd.fi.uncoma.edu.ar#LandLine",
+        "http://www.w3.org/2002/07/owl#Nothing"
+      ],
+      [
+        "http://crowd.fi.uncoma.edu.ar#Phone",
+        "http://www.w3.org/2002/07/owl#Nothing"
+      ]
+    ],
+    "Disjoint ObjectProperty Axioms": [],
+    "Disjoint DataProperty Axioms": []
+  }
+}
