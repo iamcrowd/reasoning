@@ -39,7 +39,7 @@ class MetaJSONDocument extends JSONDocument{
 
        This will be translated directly into JSON.
     */
-    protected $content = NULL;
+    protected $content = [];
     /**
        Number used to count the amount of subsumptions.
 
@@ -55,12 +55,14 @@ class MetaJSONDocument extends JSONDocument{
     /**
        Constructor. It defines the base template for the JSON document.
     */
-    function __construct($json){
-	     $this->content = json_decode($json, true);
+    function __construct(){}
+
+    function instantiate_MM($json){
+      $this->content = json_decode($json, true);
     }
 
     function to_json(){
-	     return json_encode($this->content);
+	    return json_encode($this->content);
     }
 
     function get_product(){

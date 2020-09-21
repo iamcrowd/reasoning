@@ -56,7 +56,8 @@ class DLCheckMeta {
     function __construct($json, $strategy){
       $this->json_input = $json;
       $this->strategy = $strategy;
-      $this->metabuilder = new MetaJSONBuilder($this->json_input);
+      $this->metabuilder = new MetaJSONBuilder();
+      $this->metabuilder->instantiate_MM($this->json_input);
       $this->out_reasoning = [];
     }
 
@@ -99,9 +100,7 @@ class DLCheckMeta {
       they are given as OWL primitives (ex. Equivalent Class Axioms, etc)
     */
     function built_output(){
-      $this->out_reasoning = [
-        "KF" => $this->metabuilder->get_product(),
-        "KF output" => [
+      $kf_out = [
           "KB Status" => $this->strategy->get_qa_pack()->get_kb_status(),
           "SATisfiable Entity types" => $this->strategy->get_qa_pack()->get_satClasses(),
           "UNSATisfiable Entity types" => $this->strategy->get_qa_pack()->get_unsatClasses(),
@@ -109,16 +108,24 @@ class DLCheckMeta {
           "UNSATisfiable Roles" => $this->strategy->get_qa_pack()->get_unsatObjectProperties(),
           "Subsumptions" => $this->inferred_subclasses(),
           "Object types cardinalities" => []
-        ],
-        "OWL Axioms" => [
+        ];
+      $owl_ax = [
           "Equivalent Class Axioms" => $this->inferred_all_equivalent_classes(),
           "Equivalent ObjectProperty Axioms" => [],
           "Equivalent DataProperty Axioms" => [],
           "Disjoint Class Axioms" => $this->inferred_all_disjoint_classes(),
           "Disjoint ObjectProperty Axioms" => [],
           "Disjoint DataProperty Axioms" => []
-        ]
+        ];
+
+      $kf = $this->metabuilder->get_product();
+
+      $this->out_reasoning = [
+        "KF" => $kf,
+        "KF output" => $kf_out,
+        "OWL Axioms" => $owl_ax,
       ];
+
       return json_encode($this->out_reasoning, true);
     }
 

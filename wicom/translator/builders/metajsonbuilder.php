@@ -38,14 +38,17 @@ use Wicom\Translator\Documents\MetaJSONDocument;
 
 class MetaJSONBuilder extends Documents{
 
-		public function __construct($json){
-			$this->product = new MetaJSONDocument($json);
+		public function __construct(){
+			$this->product = new MetaJSONDocument;
 		}
 
 		public function get_product(){
 			return $this->product->get_product();
 		}
 
+		public function instantiate_MM($json){
+			$this->product->instantiate_MM($json);
+		}
 
 		/**
 			Insert a subsumtion into the KF instance
