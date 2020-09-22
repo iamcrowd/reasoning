@@ -113,8 +113,8 @@ class KoncludeConnector extends Connector{
 
         fclose($owllink_out_file);
 
-        //unlink($file_path);
-        //unlink($out_file_path);
+        unlink($file_path);
+        unlink($out_file_path);
 
         array_push($this->col_answers, join($k_answer_el));
     }

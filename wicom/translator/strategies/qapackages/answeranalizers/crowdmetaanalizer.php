@@ -809,4 +809,8 @@ class CrowdMetaAnalizer extends AnsAnalizer{
       return $this->answer->get_all_disjoint_class();
     }
 
+    function get_reasoning_warning(){
+      return $this->get_responses()["OWLlink error"];
+    }
+
 }

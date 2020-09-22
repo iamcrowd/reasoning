@@ -124,6 +124,7 @@ class DLCheckMeta {
         "KF" => $kf,
         "KF output" => $kf_out,
         "OWL Axioms" => $owl_ax,
+        "Reasoner warning" => $this->strategy->get_qa_pack()->get_reasoning_warning()
       ];
 
       return json_encode($this->out_reasoning, true);
