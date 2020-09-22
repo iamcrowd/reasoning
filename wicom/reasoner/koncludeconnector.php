@@ -127,37 +127,37 @@ class KoncludeConnector extends Connector{
        @exception Exception with proper message if any problem is founded.
      */
     function check_files($temporal_path, $konclude_path, $file_path){
-	if (! is_dir($temporal_path)){
-	    throw new \Exception("Temporal path desn't exists!
-Are you sure about this path?
-temporal_path = \"$temporal_path\"");
-	}
+      	if (! is_dir($temporal_path)){
+      	    throw new \Exception("Temporal path desn't exists!
+      Are you sure about this path?
+      temporal_path = \"$temporal_path\"");
+      	}
 
-	if (!file_exists($file_path)){
-	    throw new \Exception("Temporal file doesn't exists, please create one at '$file_path'.");
-	}
+      	if (!file_exists($file_path)){
+      	    throw new \Exception("Temporal file doesn't exists, please create one at '$file_path'.");
+      	}
 
-	if (!is_readable($file_path)){
-	    throw new \Exception("Temporal file cannot be readed.
-Please set the write and read permissions for '$file_path'");
-	}
+      	if (!is_readable($file_path)){
+      	    throw new \Exception("Temporal file cannot be readed.
+      Please set the write and read permissions for '$file_path'");
+      	}
 
-	if (file_exists($file_path) and !is_writable($file_path)){
-	    throw new \Exception("Temporal file is not writable, please change the permissions.
-Check the permissions on '${file_path}'.");
-	}
+      	if (file_exists($file_path) and !is_writable($file_path)){
+      	    throw new \Exception("Temporal file is not writable, please change the permissions.
+      Check the permissions on '${file_path}'.");
+      	}
 
-	if (!file_exists($konclude_path)){
-	    throw new \Exception("The Konclude program has not been founded...
-You told me that '$konclude_path' is the Konclude program, is this right? check your 'web-src/config/config.php' configuration file.");
-	}
+      	if (!file_exists($konclude_path)){
+      	    throw new \Exception("The Konclude program has not been founded...
+      You told me that '$konclude_path' is the Konclude program, is this right? check your 'web-src/config/config.php' configuration file.");
+      	}
 
-	if (!is_executable($konclude_path)){
-	    throw new \Exception("The Konclude program is not executable...
-Is the path '$konclude_path' right? Is the permissions setted properly?");
-	}
+      	if (!is_executable($konclude_path)){
+      	    throw new \Exception("The Konclude program is not executable...
+      Is the path '$konclude_path' right? Is the permissions setted properly?");
+      	}
 
-	return true;
-    }
+      	return true;
+          }
 }
 ?>
