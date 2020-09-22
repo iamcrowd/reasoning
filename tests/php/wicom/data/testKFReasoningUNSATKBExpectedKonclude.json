@@ -1,0 +1,215 @@
+{
+    "KF": {
+        "Entity type": {
+            "Value property": {
+                "Value type": []
+            },
+            "Data type": [],
+            "Object type": [
+                "http://crowd.fi.uncoma.edu.ar#Class1",
+                "http://crowd.fi.uncoma.edu.ar#Class2",
+                "http://crowd.fi.uncoma.edu.ar#Class3",
+                "http://crowd.fi.uncoma.edu.ar#Class4",
+                "http://crowd.fi.uncoma.edu.ar#Class5",
+                "http://crowd.fi.uncoma.edu.ar#Class6"
+            ]
+        },
+        "Role": [
+            {
+                "object type cardinality": [
+                    "card1"
+                ],
+                "rolename": "http://crowd.fi.uncoma.edu.ar#class5",
+                "entity type": "http://crowd.fi.uncoma.edu.ar#Class5",
+                "relationship": "http://crowd.fi.uncoma.edu.ar#r1",
+                "mandatory": "mandatorypmUa"
+            },
+            {
+                "object type cardinality": [
+                    "card3"
+                ],
+                "rolename": "http://crowd.fi.uncoma.edu.ar#class2",
+                "entity type": "http://crowd.fi.uncoma.edu.ar#Class2",
+                "relationship": "http://crowd.fi.uncoma.edu.ar#r1",
+                "mandatory": "mandatorykgz3"
+            },
+            {
+                "object type cardinality": [
+                    "card5"
+                ],
+                "rolename": "http://crowd.fi.uncoma.edu.ar#class6",
+                "entity type": "http://crowd.fi.uncoma.edu.ar#Class6",
+                "relationship": "http://crowd.fi.uncoma.edu.ar#r3"
+            },
+            {
+                "object type cardinality": [
+                    "card6"
+                ],
+                "rolename": "http://crowd.fi.uncoma.edu.ar#class1",
+                "entity type": "http://crowd.fi.uncoma.edu.ar#Class1",
+                "relationship": "http://crowd.fi.uncoma.edu.ar#r3",
+                "mandatory": "mandatorydsKi"
+            }
+        ],
+        "Constraints": {
+            "Cardinality constraints": {
+                "Attibutive property cardinality": [],
+                "Object type cardinality": [
+                    {
+                        "name": "card1",
+                        "maximum": "1",
+                        "minimum": "1"
+                    },
+                    {
+                        "name": "card3",
+                        "maximum": "1",
+                        "minimum": "1"
+                    },
+                    {
+                        "name": "card5",
+                        "maximum": "*",
+                        "minimum": "0"
+                    },
+                    {
+                        "name": "card6",
+                        "maximum": "1",
+                        "minimum": "1"
+                    }
+                ]
+            },
+            "Disjointness constraints": {
+                "Disjoint object type": [
+                    {
+                        "entities": [
+                            "http://crowd.fi.uncoma.edu.ar#Class2",
+                            "http://crowd.fi.uncoma.edu.ar#Class3"
+                        ],
+                        "name": "dc9"
+                    }
+                ],
+                "Disjoint role": []
+            },
+            "Completeness constraints": [
+                {
+                    "entities": [
+                        "http://crowd.fi.uncoma.edu.ar#Class1"
+                    ],
+                    "name": "cc8"
+                },
+                {
+                    "entities": [
+                        "http://crowd.fi.uncoma.edu.ar#Class2",
+                        "http://crowd.fi.uncoma.edu.ar#Class3"
+                    ],
+                    "name": "cc10"
+                },
+                {
+                    "entities": [
+                        "http://crowd.fi.uncoma.edu.ar#Class5"
+                    ],
+                    "name": "cc11"
+                }
+            ],
+            "Mandatory constraints": {
+                "Mandatory": [
+                    {
+                        "declared on": "http://crowd.fi.uncoma.edu.ar#class5",
+                        "name": "mandatorypmUa"
+                    },
+                    {
+                        "declared on": "http://crowd.fi.uncoma.edu.ar#class2",
+                        "name": "mandatorykgz3"
+                    },
+                    {
+                        "declared on": "http://crowd.fi.uncoma.edu.ar#class1",
+                        "name": "mandatorydsKi"
+                    }
+                ]
+            }
+        },
+        "Relationship": {
+            "Attributive property": {
+                "Attributive property": [],
+                "Attribute": {
+                    "Attribute": [],
+                    "Mapped to": []
+                }
+            },
+            "Subsumption": [
+                {
+                    "entity child": "http://crowd.fi.uncoma.edu.ar#Class1",
+                    "completeness constraints": "cc8",
+                    "name": "http://crowd.fi.uncoma.edu.ar#s1_KA6g",
+                    "entity parent": "http://crowd.fi.uncoma.edu.ar#Class4"
+                },
+                {
+                    "entity child": "http://crowd.fi.uncoma.edu.ar#Class2",
+                    "disjointness constraints": "dc9",
+                    "completeness constraints": "cc10",
+                    "name": "http://crowd.fi.uncoma.edu.ar#s2_XrXJ",
+                    "entity parent": "http://crowd.fi.uncoma.edu.ar#Class1"
+                },
+                {
+                    "entity child": "http://crowd.fi.uncoma.edu.ar#Class3",
+                    "disjointness constraints": "dc9",
+                    "completeness constraints": "cc10",
+                    "name": "http://crowd.fi.uncoma.edu.ar#s2_6zul",
+                    "entity parent": "http://crowd.fi.uncoma.edu.ar#Class1"
+                },
+                {
+                    "entity child": "http://crowd.fi.uncoma.edu.ar#Class5",
+                    "completeness constraints": "cc11",
+                    "name": "http://crowd.fi.uncoma.edu.ar#s6_5H06",
+                    "entity parent": "http://crowd.fi.uncoma.edu.ar#Class6"
+                },
+                {
+                    "entity child": "http://crowd.fi.uncoma.edu.ar#Class2",
+                    "name": "http://crowd.fi.uncoma.edu.ar#s8_t2Lo",
+                    "entity parent": "http://crowd.fi.uncoma.edu.ar#Class3"
+                }
+            ],
+            "Relationship": [
+                {
+                    "entities": [
+                        "http://crowd.fi.uncoma.edu.ar#Class5",
+                        "http://crowd.fi.uncoma.edu.ar#Class2"
+                    ],
+                    "name": "http://crowd.fi.uncoma.edu.ar#r1"
+                },
+                {
+                    "entities": [
+                        "http://crowd.fi.uncoma.edu.ar#Class6",
+                        "http://crowd.fi.uncoma.edu.ar#Class1"
+                    ],
+                    "name": "http://crowd.fi.uncoma.edu.ar#r3"
+                }
+            ]
+        }
+    },
+    "KF output": {
+        "KB Status": true,
+        "SATisfiable Entity types": [],
+        "UNSATisfiable Entity types": [
+            "http://crowd.fi.uncoma.edu.ar#Class1",
+            "http://crowd.fi.uncoma.edu.ar#Class2",
+            "http://crowd.fi.uncoma.edu.ar#Class3",
+            "http://crowd.fi.uncoma.edu.ar#Class4",
+            "http://crowd.fi.uncoma.edu.ar#Class5",
+            "http://crowd.fi.uncoma.edu.ar#Class6",
+            "http://crowd.fi.uncoma.edu.ar#r1",
+            "http://crowd.fi.uncoma.edu.ar#r3"
+        ],
+        "SATisfiable Roles": [],
+        "UNSATisfiable Roles": [],
+        "Subsumptions": [],
+        "Object types cardinalities": []
+    },
+    "OWL Axioms": {
+        "Equivalent Class Axioms": [],
+        "Equivalent ObjectProperty Axioms": [],
+        "Equivalent DataProperty Axioms": [],
+        "Disjoint Class Axioms": [],
+        "Disjoint ObjectProperty Axioms": [],
+        "Disjoint DataProperty Axioms": []
+    }
+}

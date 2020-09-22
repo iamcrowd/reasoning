@@ -128,6 +128,11 @@
                     "entity child": "http://crowd.fi.uncoma.edu.ar#Class2",
                     "name": "http://crowd.fi.uncoma.edu.ar#s7_HFv4",
                     "entity parent": "http://crowd.fi.uncoma.edu.ar#Class3"
+                },
+                {
+                  "entity child": "http://crowd.fi.uncoma.edu.ar#Class3",
+                  "name": "http://crowd.fi.uncoma.edu.ar/inferredSubsumption#s1",
+                  "entity parent": "http://crowd.fi.uncoma.edu.ar#Class4"
                 }
             ],
             "Relationship": [
@@ -159,7 +164,9 @@
             "http://crowd.fi.uncoma.edu.ar#class5",
             "http://crowd.fi.uncoma.edu.ar#class2"
         ],
-        "Subsumptions": [],
+        "Subsumptions": [
+          "http://crowd.fi.uncoma.edu.ar/inferredSubsumption#s1"
+        ],
         "Object types cardinalities": []
     },
     "OWL Axioms": {

@@ -5,10 +5,11 @@
         },
         "Data type": [],
         "Object type": [
-            "http://crowd.fi.uncoma.edu.ar#Class1",
-            "http://crowd.fi.uncoma.edu.ar#Class2",
-            "http://crowd.fi.uncoma.edu.ar#Class3",
-            "http://crowd.fi.uncoma.edu.ar#Class4"
+            "http://crowd.fi.uncoma.edu.ar#Cell",
+            "http://crowd.fi.uncoma.edu.ar#Home",
+            "http://crowd.fi.uncoma.edu.ar#O",
+            "http://crowd.fi.uncoma.edu.ar#LandLine",
+            "http://crowd.fi.uncoma.edu.ar#Phone"
         ]
     },
     "Role": [],
@@ -21,10 +22,17 @@
             "Disjoint object type": [
                 {
                     "entities": [
-                        "http://crowd.fi.uncoma.edu.ar#Class2",
-                        "http://crowd.fi.uncoma.edu.ar#Class3"
+                        "http://crowd.fi.uncoma.edu.ar#Cell",
+                        "http://crowd.fi.uncoma.edu.ar#LandLine"
                     ],
                     "name": "dc1"
+                },
+                {
+                    "entities": [
+                        "http://crowd.fi.uncoma.edu.ar#Home",
+                        "http://crowd.fi.uncoma.edu.ar#Cell"
+                    ],
+                    "name": "dc3"
                 }
             ],
             "Disjoint role": []
@@ -32,8 +40,8 @@
         "Completeness constraints": [
             {
                 "entities": [
-                    "http://crowd.fi.uncoma.edu.ar#Class2",
-                    "http://crowd.fi.uncoma.edu.ar#Class3"
+                    "http://crowd.fi.uncoma.edu.ar#Cell",
+                    "http://crowd.fi.uncoma.edu.ar#LandLine"
                 ],
                 "name": "cc2"
             }
@@ -52,28 +60,35 @@
         },
         "Subsumption": [
             {
-                "entity child": "http://crowd.fi.uncoma.edu.ar#Class1",
-                "name": "http://crowd.fi.uncoma.edu.ar#s1_QGEy",
-                "entity parent": "http://crowd.fi.uncoma.edu.ar#Class4"
-            },
-            {
-                "entity child": "http://crowd.fi.uncoma.edu.ar#Class2",
+                "entity child": "http://crowd.fi.uncoma.edu.ar#Cell",
                 "disjointness constraints": "dc1",
                 "completeness constraints": "cc2",
-                "name": "http://crowd.fi.uncoma.edu.ar#s2_wzrk",
-                "entity parent": "http://crowd.fi.uncoma.edu.ar#Class1"
+                "name": "http://crowd.fi.uncoma.edu.ar#s1_mAYx",
+                "entity parent": "http://crowd.fi.uncoma.edu.ar#Phone"
             },
             {
-                "entity child": "http://crowd.fi.uncoma.edu.ar#Class3",
+                "entity child": "http://crowd.fi.uncoma.edu.ar#LandLine",
                 "disjointness constraints": "dc1",
                 "completeness constraints": "cc2",
-                "name": "http://crowd.fi.uncoma.edu.ar#s2_OuHY",
-                "entity parent": "http://crowd.fi.uncoma.edu.ar#Class1"
+                "name": "http://crowd.fi.uncoma.edu.ar#s1_dBk5",
+                "entity parent": "http://crowd.fi.uncoma.edu.ar#Phone"
             },
             {
-                "entity child": "http://crowd.fi.uncoma.edu.ar#Class2",
-                "name": "http://crowd.fi.uncoma.edu.ar#s4_2LH2",
-                "entity parent": "http://crowd.fi.uncoma.edu.ar#Class3"
+                "entity child": "http://crowd.fi.uncoma.edu.ar#Home",
+                "name": "http://crowd.fi.uncoma.edu.ar#s2_HBKb",
+                "entity parent": "http://crowd.fi.uncoma.edu.ar#Phone"
+            },
+            {
+                "entity child": "http://crowd.fi.uncoma.edu.ar#Home",
+                "disjointness constraints": "dc3",
+                "name": "http://crowd.fi.uncoma.edu.ar#s3_wWb6",
+                "entity parent": "http://crowd.fi.uncoma.edu.ar#O"
+            },
+            {
+                "entity child": "http://crowd.fi.uncoma.edu.ar#Cell",
+                "disjointness constraints": "dc3",
+                "name": "http://crowd.fi.uncoma.edu.ar#s3_4RoS",
+                "entity parent": "http://crowd.fi.uncoma.edu.ar#O"
             }
         ],
         "Relationship": []

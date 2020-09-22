@@ -31,8 +31,11 @@ load("config.php", "config/");
 use Wicom\Wicom;
 use Wicom\KF_Wicom;
 
-class KFWicomTest extends PHPUnit\Framework\TestCase
+class KFWicomRacerTest extends PHPUnit\Framework\TestCase
 {
+    /**
+    @testdox tests for Racer reasoner
+    */
     public function test_full_reasoning_KF(){
         $input = file_get_contents('wicom/data/testKFtoOWLlinkAllQueries.json');
         $expected = file_get_contents('wicom/data/testKFtoOWLlinkAllQueriesBeautyOutInferred.json');
@@ -72,5 +75,4 @@ class KFWicomTest extends PHPUnit\Framework\TestCase
 
         $this->assertJsonStringEqualsJsonString($expected, $answer, true);
     }
-
 }

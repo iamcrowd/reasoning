@@ -195,8 +195,6 @@ class CrowdMetaAnalizerTest extends PHPUnit\Framework\TestCase{
     $answer->set_reasoner_output("");
     $actual = $answer->to_json();
 
-    //var_dump($actual);
-
     $this->assertJsonStringEqualsJsonString($expected, $actual, true);
   }
 }
