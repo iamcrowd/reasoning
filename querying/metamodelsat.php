@@ -38,6 +38,7 @@ load("kf.php", "../common/");
   }
 
   $reasoner = 'Racer';
+  //also works for  'Konclude'
   if (array_key_exists('reasoner', $_POST)){
     $reasoner = $_POST['reasoner'];
   }
