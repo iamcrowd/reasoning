@@ -211,5 +211,28 @@
         "Disjoint Class Axioms": [],
         "Disjoint ObjectProperty Axioms": [],
         "Disjoint DataProperty Axioms": []
-    }
+    },
+    "Reasoner warning" : [
+      "Instruction 'IsObjectPropertySatisfiable' is currently not supported.",
+      "Instruction 'IsObjectPropertySatisfiable' is currently not supported.",
+      "Instruction 'IsObjectPropertySatisfiable' is currently not supported.",
+      "Instruction 'IsObjectPropertySatisfiable' is currently not supported.",
+      "Instruction 'GetDisjointClasses' is currently not supported.",
+      "Instruction 'GetDisjointClasses' is currently not supported.",
+      "Instruction 'GetDisjointClasses' is currently not supported.",
+      "Instruction 'GetDisjointClasses' is currently not supported.",
+      "Instruction 'GetDisjointClasses' is currently not supported.",
+      "Instruction 'GetDisjointClasses' is currently not supported.",
+      "Instruction 'GetDisjointClasses' is currently not supported.",
+      "Instruction 'GetDisjointClasses' is currently not supported.",
+      "Instruction 'GetDisjointObjectProperties' is currently not supported.",
+      "Instruction 'GetDisjointObjectProperties' is currently not supported.",
+      "Instruction 'GetDisjointObjectProperties' is currently not supported.",
+      "Instruction 'GetDisjointObjectProperties' is currently not supported.",
+      "Instruction 'GetEquivalentObjectProperties' is currently not supported.",
+      "Instruction 'GetEquivalentObjectProperties' is currently not supported.",
+      "Instruction 'GetEquivalentObjectProperties' is currently not supported.",
+      "Instruction 'GetEquivalentObjectProperties' is currently not supported.",
+      "Instruction 'GetPrefixes' is currently not supported."
+    ]
 }

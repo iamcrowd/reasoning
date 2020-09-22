@@ -422,5 +422,6 @@
     ],
     "Disjoint ObjectProperty Axioms": [],
     "Disjoint DataProperty Axioms": []
-  }
+  },
+  "Reasoner warning" : []
 }

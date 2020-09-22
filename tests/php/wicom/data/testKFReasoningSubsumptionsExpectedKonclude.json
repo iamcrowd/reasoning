@@ -124,5 +124,13 @@
     "Disjoint Class Axioms": [],
     "Disjoint ObjectProperty Axioms": [],
     "Disjoint DataProperty Axioms": []
-  }
+  },
+  "Reasoner warning" : [
+    "Instruction 'GetDisjointClasses' is currently not supported.",
+    "Instruction 'GetDisjointClasses' is currently not supported.",
+    "Instruction 'GetDisjointClasses' is currently not supported.",
+    "Instruction 'GetDisjointClasses' is currently not supported.",
+    "Instruction 'GetDisjointClasses' is currently not supported.",
+    "Instruction 'GetPrefixes' is currently not supported."
+  ]
 }

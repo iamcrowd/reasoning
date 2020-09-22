@@ -41,31 +41,26 @@ class KFWicomKoncludeTest extends PHPUnit\Framework\TestCase
     public function test_full_reasoning_KF_konclude(){
         $input = file_get_contents('wicom/data/testKFtoOWLlinkAllQueries.json');
         $expected = file_get_contents('wicom/data/testKFtoOWLlinkAllQueriesBeautyOutInferredKonclude.json');
-
         $wicom = new KF_Wicom();
         $answer = $wicom->full_reasoning($input, 'metamodel', 'Konclude');
-
+        //var_dump($answer);
         $this->assertJsonStringEqualsJsonString($expected, $answer, true);
     }
-
 
     public function test_full_reasoning_KF_subsumptions_konclude(){
         $input = file_get_contents('wicom/data/testKFReasoningSubsumptions.json');
         $expected = file_get_contents('wicom/data/testKFReasoningSubsumptionsExpectedKonclude.json');
-
         $wicom = new KF_Wicom();
         $answer = $wicom->full_reasoning($input, 'metamodel', 'Konclude');
-
+        //var_dump($answer);
         $this->assertJsonStringEqualsJsonString($expected, $answer, true);
     }
 
     public function test_full_reasoning_KF_Unsat_Class_Roles_konclude(){
         $input = file_get_contents('wicom/data/testKFReasoningUnsatClassesAndRoles.json');
         $expected = file_get_contents('wicom/data/testKFReasoningUnsatClassesAndRolesExpectedKonclude.json');
-
         $wicom = new KF_Wicom();
         $answer = $wicom->full_reasoning($input, 'metamodel', 'Konclude');
-
         //var_dump($answer);
         $this->assertJsonStringEqualsJsonString($expected, $answer, true);
     }
@@ -73,10 +68,9 @@ class KFWicomKoncludeTest extends PHPUnit\Framework\TestCase
     public function test_full_reasoning_KF_Unsat_KB_konclude(){
         $input = file_get_contents('wicom/data/testKFReasoningUNSATKB.json');
         $expected = file_get_contents('wicom/data/testKFReasoningUNSATKBExpectedKonclude.json');
-
         $wicom = new KF_Wicom();
         $answer = $wicom->full_reasoning($input, 'metamodel', 'Konclude');
-
+        //var_dump($answer);
         $this->assertJsonStringEqualsJsonString($expected, $answer, true);
     }
 }
