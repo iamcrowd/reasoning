@@ -54,67 +54,69 @@ class KoncludeConnector extends Connector{
         $temporal_path = $GLOBALS['config']['temporal_path'];
         $konclude_path = $GLOBALS['config']['konclude_path'];
 
-        /*
-           print("\n\nWriting on $temporal_path/input-file.owllink\n");
-           print("Directory Realpath: \"" . realpath($temporal_path) . "\" ");
-           print("if blank, then path doesn't exists!\n\n");
-         */
+        $uuid = uniqid();
 
         $tmp_realpath = realpath($temporal_path);
 
-	if (($tmp_realpath == FALSE) or (!is_writable($tmp_realpath)) ){
-	    throw new \Exception(
-		"Temporal path does not exists or is not  writeable. ".
-		"Check if this path exists and is writeable: '$temporal_path'."
-	    );    
-	}
-	
-	$tmp_realpath .= '/';
+        if (($tmp_realpath == FALSE) or (!is_writable($tmp_realpath)) ){
+            throw new \Exception(
+        	"Temporal path does not exists or is not  writeable. ".
+        	"Check if this path exists and is writeable: '$temporal_path'."
+            );
+        }
 
-	$file_path = $tmp_realpath . "input-file.owllink";
-	$out_file_path = $tmp_realpath . "konclude-out-file.owllink";
-	$konclude_path .= '/' . KoncludeConnector::PROGRAM_CMD;
+        $tmp_realpath .= '/';
 
-	if (!is_executable($konclude_path)){
-	    throw new \Exception(
-		"The program '$konclude_path' is not executable. " .
-		"Please, use chmod +x to make it executable.");
-	}
-	
-	$commandline = $konclude_path . " " .
-		       KoncludeConnector::PROGRAM_PARAMS_IN . $file_path .
-		       KoncludeConnector::PROGRAM_PARAMS_OUT . $out_file_path;
+        $file_name = $uuid . "input-file-konclude.owllink";
+        $file_path = $tmp_realpath . $file_name;
 
-	$owllink_file = fopen($file_path, "w");
+        $file_out_name = $uuid . "konclude-out-file.owllink";
+        $out_file_path = $tmp_realpath . $file_out_name;
+        $konclude_path .= '/' . KoncludeConnector::PROGRAM_CMD;
 
-	if (! $owllink_file) {
-	    throw new \Exception(
-		"Temporal file couldn't be opened for " .
-		"writing...\n Does there exist '$file_path' file?");
-	}
+        if (!is_executable($konclude_path)){
+            throw new \Exception(
+        	"The program '$konclude_path' is not executable. " .
+        	"Please, use chmod +x to make it executable.");
+        }
 
-	fwrite($owllink_file, $input_string);
-	fclose($owllink_file);
+        $commandline = $konclude_path . " " .
+        	       KoncludeConnector::PROGRAM_PARAMS_IN . $file_path .
+        	       KoncludeConnector::PROGRAM_PARAMS_OUT . $out_file_path;
 
-	exec($commandline,$answer);
+        $owllink_file = fopen($file_path, "w");
 
-	$owllink_out_file = fopen($out_file_path, "r");
+        if (! $owllink_file) {
+            throw new \Exception(
+        	"Temporal file couldn't be opened for " .
+        	"writing...\n Does there exist '$file_path' file?");
+        }
 
-	if (! $owllink_out_file) {
-	    throw new \Exception(
-		"Temporal file couldn't be opened for " .
-		" writing... Does there exist '$out_file_path' file?");
-	}
+        fwrite($owllink_file, $input_string);
+        fclose($owllink_file);
 
-	$k_answer = fread($owllink_out_file, filesize($out_file_path));
-	$k_answer = explode("\n", $k_answer);
-	// konclude returns a DOMDocumentType
-	$k_answer = array_filter($k_answer, function($k) {return $k != '1';}, ARRAY_FILTER_USE_KEY);
-	$k_answer_el = array_slice($k_answer, 0);
+        exec($commandline,$answer);
 
-	fclose($owllink_out_file);
+        $owllink_out_file = fopen($out_file_path, "r");
 
-	array_push($this->col_answers, join($k_answer_el));
+        if (! $owllink_out_file) {
+            throw new \Exception(
+        	"Temporal file couldn't be opened for " .
+        	" writing... Does there exist '$out_file_path' file?");
+        }
+
+        $k_answer = fread($owllink_out_file, filesize($out_file_path));
+        $k_answer = explode("\n", $k_answer);
+        // konclude returns a DOMDocumentType
+        $k_answer = array_filter($k_answer, function($k) {return $k != '1';}, ARRAY_FILTER_USE_KEY);
+        $k_answer_el = array_slice($k_answer, 0);
+
+        fclose($owllink_out_file);
+
+        //unlink($file_path);
+        //unlink($out_file_path);
+
+        array_push($this->col_answers, join($k_answer_el));
     }
 
 

@@ -175,7 +175,6 @@ class CrowdMetaAnalizer extends AnsAnalizer{
       foreach ($this->owllink_responses->current()->children() as $first_children) {
         //<ClassSynset><owl:Class abbreviatedIRI="owl:Nothing"/></ClassSynset>
         $tag_first_child = $first_children->getName();
-
         if (($tag_first_child != "ClassSynset") and ($tag_first_child = "ClassSubClassesPair")){
           $hierarchy = [];
 //          ;
@@ -188,37 +187,54 @@ class CrowdMetaAnalizer extends AnsAnalizer{
                   <owl:Class IRI="A"/>
                 </ClassSynset>
               </SubClassSynsets>
-            </ClassSubClassesPair> */
+            </ClassSubClassesPair>
+
+            <ClassSubClassesPair>
+              <ClassSynset>
+                <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#C"/>
+                <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#E"/>
+              </ClassSynset>
+              <SubClassSynsets>
+                <ClassSynset>
+                  <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#F"/>
+                </ClassSynset>
+              </SubClassSynsets>
+            </ClassSubClassesPair>
+            */
           foreach ($first_children->children() as $second_children){ //<ClassSynset>
             $tag_second_child = $second_children->getName();
 
             switch ($tag_second_child){
 
-              case "ClassSynset":
+              case "ClassSynset":  //parent/s
                 $class_parent = $second_children->children("owl",TRUE);
+                $class_parent_name = [];
 
-                if ($class_parent->count() > 0){
-                  $class_parent_name = $class_parent[0]->attributes()[0];
+                for ($i=0; $i < $class_parent->count(); $i++) {
+                  array_push($class_parent_name, $class_parent[$i]->attributes()[0]);
                 }
-                array_push($hierarchy,$class_parent_name->__toString());  // insert parent
                 break;
 
-              case "SubClassSynsets" :
+              case "SubClassSynsets" : //child/s
                 foreach ($second_children->children() as $third_children){
                   $tag_third_child = $third_children->getName();
 
                   if ($tag_third_child = "ClassSynset"){
                     $class_child = $third_children->children("owl",TRUE);
+                    $class_child_name = [];
 
-                    if ($class_child->count() > 0){
-                      $class_child_name = $class_child[0]->attributes()[0];
+                    for ($i=0; $i < $class_child->count(); $i++){
+                      array_push($class_child_name, $class_child[$i]->attributes()[0]);
                     }
                   }
-                  array_push($hierarchy,$class_child_name->__toString()); // insert child
                 }
               }
           }
-          array_push($hierarchies,$hierarchy);
+          foreach ($class_parent_name as $parent_e) {
+            foreach ($class_child_name as $child_e) {
+              array_push($hierarchies, [$parent_e->__toString(),$child_e->__toString()]);
+            }
+          }
         }
       }
       return $hierarchies;
@@ -248,7 +264,7 @@ class CrowdMetaAnalizer extends AnsAnalizer{
             if ($class->count() > 0){
               $class_name = $class[0]->attributes()[0];
             }
-            array_push($disjoint,$class_name->__toString());
+            array_push($disjoint, $class_name->__toString());
         }
       }
       return $disjoint;
@@ -416,7 +432,8 @@ class CrowdMetaAnalizer extends AnsAnalizer{
           "GetEquivalentDataProperties" => [],
           "GetPrefixes" => [],
           "GetOntologyIRI" => [],
-          "DL" => []
+          "DL" => [],
+          "OWLlink error" => []
       ];
 
       $this->goto_first_query();
@@ -458,7 +475,12 @@ class CrowdMetaAnalizer extends AnsAnalizer{
 
               case "IsObjectPropertySatisfiable":
                 $name_response = $this->owllink_responses->current()->getName();
-                if ($name_response = "BooleanResponse"){
+
+                if (strcmp($name_response, "Error") == 0){
+                  $error_response = $this->owllink_responses->current()->attributes()["error"];
+                  array_push($bool_responses["OWLlink error"], $error_response->__toString());
+                }
+                elseif ($name_response = "BooleanResponse"){
                   $attr_response = $this->owllink_responses->current()->attributes()["result"];
 
                   $op_query = $this->get_current_owlclass();
@@ -473,22 +495,27 @@ class CrowdMetaAnalizer extends AnsAnalizer{
                 }
                 break;
 
-                case "IsDataPropertySatisfiable":
-                  $name_response = $this->owllink_responses->current()->getName();
-                  if ($name_response = "BooleanResponse"){
-                    $attr_response = $this->owllink_responses->current()->attributes()["result"];
+              case "IsDataPropertySatisfiable":
+                $name_response = $this->owllink_responses->current()->getName();
 
-                    $dp_query = $this->get_current_owlclass();
-                    if ($dp_query->count() > 0){
-                      $dp_name = $dp_query[0]->attributes()["IRI"];
+                if (strcmp($name_response, "Error") == 0){
+                  $error_response = $this->owllink_responses->current()->attributes()["error"];
+                  array_push($bool_responses["OWLlink error"], $error_response->__toString());
+                }
+                elseif ($name_response = "BooleanResponse"){
+                  $attr_response = $this->owllink_responses->current()->attributes()["result"];
 
-                      if (!isset($dp_name)){
-                        $dp_name = $class_query[0]->attributes()["abbreviatedIRI"];
-                      }
-                      array_push($bool_responses[$name_query], [$attr_response->__toString(),$dp_name->__toString()]);
+                  $dp_query = $this->get_current_owlclass();
+                  if ($dp_query->count() > 0){
+                    $dp_name = $dp_query[0]->attributes()["IRI"];
+
+                    if (!isset($dp_name)){
+                      $dp_name = $class_query[0]->attributes()["abbreviatedIRI"];
                     }
+                    array_push($bool_responses[$name_query], [$attr_response->__toString(),$dp_name->__toString()]);
                   }
-                  break;
+                }
+                break;
 
               case "GetSubClassHierarchy":   // {father,[childs]}
                 $name_response = $this->owllink_responses->current()->getName();
@@ -511,55 +538,71 @@ class CrowdMetaAnalizer extends AnsAnalizer{
 
               case "GetDisjointClasses":   // {class,[disjointclasses]}
                 $name_response = $this->owllink_responses->current()->getName();
-                if ($name_response = "ClassSynsets"){
-                  $class_query = $this->get_current_owlclass();
-                  if ($class_query->count() > 0){
-                    $class_name = $class_query[0]->attributes()["IRI"];
-                    $disjoint = $this->parse_owllinkdisjoint();
-                    $class_d = $class_name->__toString();
-                    array_push($bool_responses[$name_query], $disjoint);
-                  }
-                }
-                foreach ($disjoint as $disjoint_class) {
-                  array_push($bool_responses["DL"],["disjointclasses" => [
+
+                if (strcmp($name_response, "Error") == 0){
+                  $error_response = $this->owllink_responses->current()->attributes()["error"];
+                  array_push($bool_responses["OWLlink error"], $error_response->__toString());
+
+                } elseif ($name_response = "ClassSynsets"){
+                    $class_query = $this->get_current_owlclass();
+                    if ($class_query->count() > 0){
+                      $class_name = $class_query[0]->attributes()["IRI"];
+                      $disjoint = $this->parse_owllinkdisjoint();
+                      $class_d = $class_name->__toString();
+                      array_push($bool_responses[$name_query], $disjoint);
+                    }
+
+                    foreach ($disjoint as $disjoint_class) {
+                      array_push($bool_responses["DL"],["disjointclasses" => [
                                                       ["class" => $class_d],
                                                       ["class" => $disjoint_class]]]);
+                    }
                 }
                 break;
 
               case "GetDisjointObjectProperties":   // {op,[disjointop]}
                 $name_response = $this->owllink_responses->current()->getName();
-                if ($name_response = "SetOfObjectPropertySynsets"){
-                  $op_query = $this->get_current_owlclass();
-                  if ($op_query->count() > 0){
-                    $op_name = $op_query[0]->attributes()["IRI"];
-                    $op_disjoint = $this->parse_owllinkOPdisjoint();
-                    $op_d = $op_name->__toString();
-                    array_push($bool_responses[$name_query], $op_disjoint);
-                  }
-                }
-                foreach ($op_disjoint as $disjoint_op_el) {
-                  array_push($bool_responses["DL"],["disjointobjectproperty" => [
+
+                if (strcmp($name_response, "Error") == 0){
+                  $error_response = $this->owllink_responses->current()->attributes()["error"];
+                  array_push($bool_responses["OWLlink error"], $error_response->__toString());
+
+                } elseif ($name_response = "SetOfObjectPropertySynsets"){
+                    $op_query = $this->get_current_owlclass();
+                    if ($op_query->count() > 0){
+                      $op_name = $op_query[0]->attributes()["IRI"];
+                      $op_disjoint = $this->parse_owllinkOPdisjoint();
+                      $op_d = $op_name->__toString();
+                      array_push($bool_responses[$name_query], $op_disjoint);
+                    }
+
+                    foreach ($op_disjoint as $disjoint_op_el) {
+                      array_push($bool_responses["DL"],["disjointobjectproperty" => [
                                                       ["objectproperty" => $op_d],
                                                       ["objectproperty" => $disjoint_op_el]]]);
+                    }
                 }
                 break;
 
               case "GetDisjointDataProperties":   // {dp,[disjointdp]}
                 $name_response = $this->owllink_responses->current()->getName();
-                if ($name_response = "DataPropertySynsets"){
-                  $dp_query = $this->get_current_owlclass();
-                  if ($dp_query->count() > 0){
-                    $dp_name = $dp_query[0]->attributes()["IRI"];
-                    $dp_disjoint = $this->parse_owllinkDPdisjoint();
-                    $dp_d = $dp_name->__toString();
-                    array_push($bool_responses[$name_query], $dp_disjoint);
-                  }
-                }
-                foreach ($dp_disjoint as $disjoint_dp_el) {
-                  array_push($bool_responses["DL"],["disjointdataproperty" => [
+                if (strcmp($name_response, "Error") == 0){
+                  $error_response = $this->owllink_responses->current()->attributes()["error"];
+                  array_push($bool_responses["OWLlink error"], $error_response->__toString());
+
+                } elseif ($name_response = "DataPropertySynsets"){
+                    $dp_query = $this->get_current_owlclass();
+                    if ($dp_query->count() > 0){
+                      $dp_name = $dp_query[0]->attributes()["IRI"];
+                      $dp_disjoint = $this->parse_owllinkDPdisjoint();
+                      $dp_d = $dp_name->__toString();
+                      array_push($bool_responses[$name_query], $dp_disjoint);
+                    }
+                    foreach ($dp_disjoint as $disjoint_dp_el) {
+                      array_push($bool_responses["DL"],["disjointdataproperty" => [
                                                       ["dataproperty" => $dp_d],
                                                       ["dataproperty" => $disjoint_dp_el]]]);
+                    }
                 }
                 break;
 
@@ -584,26 +627,36 @@ class CrowdMetaAnalizer extends AnsAnalizer{
 
               case "GetEquivalentObjectProperties":
                 $name_response = $this->owllink_responses->current()->getName();
-                if ($name_response = "SetOfObjectProperties"){
-                  $op_query = $this->get_current_owlclass();
-                  if ($op_query->count() > 0){
-                    $op_name = $op_query[0]->attributes()["IRI"];
-                    $op_equivalent = $this->parse_owllinkOPequivalent();
-                    $op_e = $op_name->__toString();
-                    // [[op1, op2], [op3, op4, op5]]
-                    array_push($bool_responses[$name_query], $op_equivalent);
-                  }
-                }
-                foreach ($op_equivalent as $equiv_op_el) {
-                  array_push($bool_responses["DL"],["equivalentobjectproperty" => [
+                if (strcmp($name_response, "Error") == 0){
+                  $error_response = $this->owllink_responses->current()->attributes()["error"];
+                  array_push($bool_responses["OWLlink error"], $error_response->__toString());
+
+                } elseif ($name_response = "SetOfObjectProperties"){
+                    $op_query = $this->get_current_owlclass();
+                    if ($op_query->count() > 0){
+                      $op_name = $op_query[0]->attributes()["IRI"];
+                      $op_equivalent = $this->parse_owllinkOPequivalent();
+                      $op_e = $op_name->__toString();
+                      // [[op1, op2], [op3, op4, op5]]
+                      array_push($bool_responses[$name_query], $op_equivalent);
+                    }
+
+                    foreach ($op_equivalent as $equiv_op_el) {
+                      array_push($bool_responses["DL"],["equivalentobjectproperty" => [
                                                       ["objectproperty" => $op_e],
                                                       ["objectproperty" => $equiv_op_el]]]);
+                    }
                 }
                 break;
 
               case "GetEquivalentDataProperties":
                 $name_response = $this->owllink_responses->current()->getName();
-                if ($name_response = "DataPropertySynonyms"){
+
+                if (strcmp($name_response, "Error") == 0){
+                  $error_response = $this->owllink_responses->current()->attributes()["error"];
+                  array_push($bool_responses["OWLlink error"], $error_response->__toString());
+                }
+                elseif ($name_response = "DataPropertySynonyms"){
                   $dp_query = $this->get_current_owlclass();
                   if ($dp_query->count() > 0){
                     $dp_name = $dp_query[0]->attributes()["IRI"];
@@ -612,22 +665,26 @@ class CrowdMetaAnalizer extends AnsAnalizer{
                     // [[op1, op2], [op3, op4, op5]]
                     array_push($bool_responses[$name_query], $dp_equivalent);
                   }
-                }
-                foreach ($dp_equivalent as $equiv_dp_el) {
-                  array_push($bool_responses["DL"],["equivalentdataproperty" => [
+                  foreach ($dp_equivalent as $equiv_dp_el) {
+                    array_push($bool_responses["DL"],["equivalentdataproperty" => [
                                                       ["dataproperty" => $dp_e],
                                                       ["dataproperty" => $equiv_dp_el]]]);
+                  }
                 }
                 break;
 
               case "GetPrefixes":
                 $name_response = $this->owllink_responses->current()->getName();
-                if ($name_response = "Prefixes"){
-                  $prefixes = $this->parse_prefixes();
+                if (strcmp($name_response, "Error") == 0){
+                  $error_response = $this->owllink_responses->current()->attributes()["error"];
+                  array_push($bool_responses["OWLlink error"], $error_response->__toString());
 
-                  foreach ($prefixes as $prefix){
-                    array_push($bool_responses[$name_query],["prefix" => $prefix[0],"iri" => $prefix[1]]);
-                  }
+                } elseif ($name_response = "Prefixes"){
+                    $prefixes = $this->parse_prefixes();
+
+                    foreach ($prefixes as $prefix){
+                      array_push($bool_responses[$name_query],["prefix" => $prefix[0],"iri" => $prefix[1]]);
+                    }
                 }
                 break;
             }

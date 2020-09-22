@@ -50,44 +50,44 @@ class RacerConnector extends Connector{
 
         $tmp_realpath = realpath($temporal_path);
 
-	if (($tmp_realpath == FALSE) or (!is_writable($tmp_realpath)) ) {
-	    throw new \Exception(
-		"Temporal path does not exists or is not  writeable. ".
-		"Check if this path exists and is writeable: '$temporal_path'."
-	    );
-	}
-	$tmp_realpath .= '/';
-	
-	$file_name = $uuid . "input-file.owllink";
-        $file_path = $tmp_realpath . $file_name;
-        $racer_path .= RacerConnector::PROGRAM_CMD;
+      	if (($tmp_realpath == FALSE) or (!is_writable($tmp_realpath)) ) {
+      	    throw new \Exception(
+      		"Temporal path does not exists or is not  writeable. ".
+      		"Check if this path exists and is writeable: '$temporal_path'."
+      	    );
+      	}
+      	$tmp_realpath .= '/';
 
-	if (!is_executable($racer_path)){
-	    throw new \Exception(
-		"The program is not executable. " .
-		"Please, use chmod +x to make it executable.");
-	}
-	
-        $commandline = $racer_path . " " . RacerConnector::PROGRAM_PARAMS .
-		       $file_path;
+      	$file_name = $uuid . "input-file-racer.owllink";
+              $file_path = $tmp_realpath . $file_name;
+              $racer_path .= RacerConnector::PROGRAM_CMD;
 
-	
-        $owllink_file = fopen($file_path, "w");
+      	if (!is_executable($racer_path)){
+      	    throw new \Exception(
+      		"The program is not executable. " .
+      		"Please, use chmod +x to make it executable.");
+      	}
 
-        if (! $owllink_file){
-            throw new \Exception(
-		"Temporal file couldn't be opened for " .
-		"writing... \n Is the path '$file_path' correct?");
-        }
+              $commandline = $racer_path . " " . RacerConnector::PROGRAM_PARAMS .
+      		       $file_path;
 
-        fwrite($owllink_file, $input_string);
-        fclose($owllink_file);
 
-        exec($commandline, $answer);
+              $owllink_file = fopen($file_path, "w");
 
-        unlink($file_path);
+              if (! $owllink_file){
+                  throw new \Exception(
+      		"Temporal file couldn't be opened for " .
+      		"writing... \n Is the path '$file_path' correct?");
+              }
 
-        array_push($this->col_answers, join($answer));
+              fwrite($owllink_file, $input_string);
+              fclose($owllink_file);
+
+              exec($commandline, $answer);
+
+              unlink($file_path);
+
+              array_push($this->col_answers, join($answer));
     }
 
     /**
