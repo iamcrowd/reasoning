@@ -39,5 +39,9 @@ abstract class Metamodel extends Strategy{
 
     abstract function translate($json, $builder);
 
+    abstract function set_check_cardinalities($bool);
+
+    abstract function get_check_cardinalities();
+
 }
 ?>

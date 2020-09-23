@@ -197,6 +197,10 @@ class OWLlinkBuilder extends DocumentBuilder{
         $this->product->insert_isEntailed_query($array);
     }
 
+    public function insert_isEntailedMaxCardinality_query($class, $op, $cardinality){
+        $this->ensure_end_tell();
+        $this->product->insert_isEntailedMaxCardinality_query($class, $op, $cardinality);
+    }
 
     /**
        Insert an entail OWLlink query for checking entailedDirect subclasses.

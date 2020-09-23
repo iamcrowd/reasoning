@@ -959,18 +959,42 @@ class OWLlinkDocument extends Document{
        @param $array An array of Strings with classnames.
      */
     public function insert_isEntailedDirectDisjointClasses_query($array){
-	$this->content->startElement("IsEntailedDirect");
-	$this->content->writeAttribute("kb", $this->actual_kb);
+    	$this->content->startElement("IsEntailedDirect");
+    	$this->content->writeAttribute("kb", $this->actual_kb);
 
-	$this->content->startelement("owl:DisjointClasses");
-	foreach ($array as $classname){
-	    $this->content->startElement("owl:Class");
-	    $this->content->writeAttribute("IRI", $classname);
-	    $this->content->endElement();
-	}
-	$this->content->endElement();
+    	$this->content->startelement("owl:DisjointClasses");
+    	foreach ($array as $classname){
+    	    $this->content->startElement("owl:Class");
+    	    $this->content->writeAttribute("IRI", $classname);
+    	    $this->content->endElement();
+    	}
+    	$this->content->endElement();
 
-	$this->content->endElement();
+    	$this->content->endElement();
+    }
+
+    /**
+      Insert an isEntailed query to check cardinalities
+    */
+    public function insert_isEntailedMaxCardinality_query($class, $op, $cardinality){
+      $this->content->startElement("IsEntailed");
+      $this->content->writeAttribute("kb", $this->actual_kb);
+
+      $this->content->startelement("owl:SubClassOf");
+        $this->content->startElement("owl:Class");
+          $this->content->writeAttribute("IRI", $class);
+        $this->content->endElement();
+
+        $this->content->startElement("owl:ObjectMaxCardinality");
+          $this->content->writeAttribute("cardinality", $cardinality);
+            $this->content->startElement("owl:ObjectInverseOf");
+              $this->content->startElement("owl:ObjectProperty");
+                $this->content->writeAttribute("IRI", $op);
+              $this->content->endElement();
+            $this->content->endElement(); //inverse
+        $this->content->endElement(); //max
+      $this->content->endElement(); //subclass
+      $this->content->endElement(); //isEntaileds
     }
 
 

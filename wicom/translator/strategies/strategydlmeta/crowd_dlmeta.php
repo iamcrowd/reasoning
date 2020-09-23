@@ -41,15 +41,43 @@ use Wicom\Translator\Strategies\Strategydlmeta\DLCheckMeta;
 class DLMeta extends Metamodel{
 
     protected $output = null;
+    protected $global_maxcard = null;
+    protected $global_mincard = null;
+    protected $maxcardinalities = null;
+    protected $check_card = null;
 
     function __construct(){
       parent::__construct();
       $this->qapack = new CrowdMetaPack();
+      $this->check_card = false;
+      $this->global_maxcard = 0;
+      $this->global_mincard = 0;
+      $this->maxcardinalities = [];
     }
 
     function get_output($json, $strategy){
       $this->output = new DLCheckMeta($json, $strategy);
       return $this->output->built_output();
+    }
+
+    function get_global_maxcardinality(){
+      return $this->global_maxcard;
+    }
+
+    function get_maxcardinalities(){
+      return $this->maxcardinalities;
+    }
+
+    /**
+      true if you want to check cardinalities
+      false otherwise
+    */
+    function set_check_cardinalities($bool){
+      $this->check_card = $bool;
+    }
+
+    function get_check_cardinalities(){
+      return $this->check_card;
     }
 
     /**
@@ -203,7 +231,6 @@ class DLMeta extends Metamodel{
                     }
                   }
                 }
-
             } elseif ($this->is_relationship($json,$parent) && $this->is_relationship($json,$child)) {
                 $lst = [
                   ["subclass" => [
@@ -374,12 +401,25 @@ class DLMeta extends Metamodel{
                                       ]
                                     ];
                         $builder->translate_DL($card_max_ax);
+
+                        if ($this->check_card){
+                          if ($max > $this->global_maxcard){ $this->global_maxcard = $max; }
+                          \array_push($this->maxcardinalities, ["class" => $role["entity type"],
+                                                                "op" => $role["rolename"],
+                                                                "maxcard" => $max]);
+                        }
+                        } else {
+                          if ($this->check_card){
+                            \array_push($this->maxcardinalities, ["class" => $role["entity type"],
+                                                                  "op" => $role["rolename"],
+                                                                  "maxcard" => "*"]);
+                          }
+                        }
                       }
                     }
                   }
                 }
               }
-            }
 
             // Relationships after encoding each role in the instance
             $conjunction = [];

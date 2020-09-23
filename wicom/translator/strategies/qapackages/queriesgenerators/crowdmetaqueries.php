@@ -48,16 +48,10 @@ class CrowdMetaQueries extends QueriesGenerator {
 
      */
     function generate_all_queries($el_toQuery, $builder){
-/*        $this->gen_satisfiable($builder);
-        $this->gen_class_satisfiable($json_str, $builder);
-        $this->gen_entailed_classes($json_str, $builder);
-        $this->gen_all_classes($builder);
-        $this->gen_sub_classes($json_str, $builder);
-        $this->gen_super_classes($json_str, $builder);
-        $this->gen_equivalent_classes($json_str, $builder);
-        $this->gen_sub_classes_hierarchy($builder);*/
-
-        parent::generate_all_queries($el_toQuery, $builder);
+      parent::generate_all_queries($el_toQuery, $builder);
+      if ($el_toQuery->get_check_cardinalities()){
+        $this->generate_maxcardinality_queries($el_toQuery, $builder);
+      }
     }
 
 
@@ -249,6 +243,22 @@ class CrowdMetaQueries extends QueriesGenerator {
     @see gen_class_satisfiable() for parameters.
      */
     function gen_entailedDirect_SubObjPropertyOf($json_diagram, $builder){
+    }
+
+
+    /**
+    Generate questios isEntailed for check max Cardinalities
+    Function takes the global max cardinality and each role encoded to generate one isEntailed query for each possible cardinality
+    */
+    function generate_maxcardinality_queries($c_strategy, $builder){
+      $mxCard_g = $c_strategy->get_global_maxcardinality();
+      $array_card = $c_strategy->get_maxcardinalities();
+
+      foreach ($array_card as $card_el) {
+        for ($i = 1; $i <= $mxCard_g ; $i++) {
+          $builder->insert_isEntailedMaxCardinality_query($card_el["class"], $card_el["op"], $i);
+        }
+      }
     }
 
 }
