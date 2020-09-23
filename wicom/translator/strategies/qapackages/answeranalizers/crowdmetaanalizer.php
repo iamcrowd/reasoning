@@ -83,6 +83,8 @@ class CrowdMetaAnalizer extends AnsAnalizer{
      */
     protected $answer_reader = null;
 
+    protected $c_strategy = null;
+
     /**
        Map between Queries and propper correct answers
        This method also generates the new ontology owllink after reasoning.
@@ -103,12 +105,16 @@ class CrowdMetaAnalizer extends AnsAnalizer{
         "GetDisjointDataProperties" => "DataPropertySynsets",
         "GetEquivalentDataProperties" => "DataPropertySynonyms",
         "GetPrefixes" => "Prefixes",
+        "IsEntailed" => "BooleanResponse",
     ];
 
     function generate_answer($query, $answer, $owl2 = ''){
         parent::generate_answer($query, $answer, $owl2);
     }
 
+    function set_c_strategy($strategy){
+      $this->c_strategy = $strategy;
+    }
     /**
     This function is for going until the first OWLlink query.
     */
@@ -433,7 +439,8 @@ class CrowdMetaAnalizer extends AnsAnalizer{
           "GetPrefixes" => [],
           "GetOntologyIRI" => [],
           "DL" => [],
-          "OWLlink error" => []
+          "OWLlink error" => [],
+          "isEntailedMaxCard" => []
       ];
 
       $this->goto_first_query();
@@ -687,6 +694,35 @@ class CrowdMetaAnalizer extends AnsAnalizer{
                     }
                 }
                 break;
+
+              case "IsEntailed": // what if we are checking cardinalities
+                if ($this->c_strategy->get_check_cardinalities()){
+                  $c_max = $this->c_strategy->get_global_maxcardinality();
+                  $c_maxcard_encoded = $this->c_strategy->get_maxcardinalities();
+                  $result = [];
+
+                  foreach ($c_maxcard_encoded as $c_maxcard_encoded_el) {
+                    $responses_array = [];
+
+                    for ($i = 1; $i <= $c_max; $i++) {
+                      $name_response = $this->owllink_responses->current()->getName();
+                      if ($name_response = "BooleanResponse"){
+                        $attr_response = $this->owllink_responses->current()->attributes()["result"];
+
+                        $class_query = $this->get_current_owlclass();
+                        $query_card = $class_query->SubClassOf->ObjectMaxCardinality->attributes()["cardinality"]->__toString();
+                        $response = $attr_response->__toString();
+                        array_push($responses_array, ["query card" => $query_card, "bool" => $response]);
+                      }
+                      $this->owllink_responses->next();
+                      $this->owllink_queries->next();
+                    }
+                    array_push($c_maxcard_encoded_el, $responses_array);
+                    array_push($result, $c_maxcard_encoded_el);
+                  }
+                  array_push($bool_responses["isEntailedMaxCard"], $result);
+                }
+              break;
             }
             $this->owllink_responses->next();
             $this->owllink_queries->next();
@@ -742,8 +778,8 @@ class CrowdMetaAnalizer extends AnsAnalizer{
         $ontologyIRI = $responses["GetOntologyIRI"][0];
         $prefixes = $responses["GetPrefixes"];
 
-        //var_dump($responses["DL"]);
-        // $this->answer->start_owl2_answer($ontologyIRI, [], $prefixes);
+        $this->answer->add_stricter_cardinalities($responses["isEntailedMaxCard"]);
+
         $this->answer->translate_responses($responses["DL"]);
         //$this->answer->copyowl2_to_response();
         $this->answer->end_owl2_answer();

@@ -75,6 +75,7 @@ class Answer{
     protected $inferredDisj = [];
     protected $inferredEquivs = [];
     protected $beauty_responses = null;
+    protected $s_cardinalities = [];
 
     function __construct($builder){
         $this->new_owl2 = $builder;
@@ -387,7 +388,7 @@ class Answer{
     function get_kb_status(){
       return $this->kb_satis;
     }
-    
+
     function get_unsatClasses(){
        return $this->unsatis_classes;
     }

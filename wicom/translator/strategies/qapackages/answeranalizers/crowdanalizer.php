@@ -101,6 +101,7 @@ class CrowdAnalizer extends AnsAnalizer{
         "GetDisjointObjectProperties" => "ObjectPropertySynsets",
         "GetEquivalentObjectProperties" => "SetOfObjectProperties",
         "GetPrefixes" => "Prefixes",
+        "IsEntailed" => "BooleanResponse"
     ];
 
     function generate_answer($query, $answer, $owl2 = ''){

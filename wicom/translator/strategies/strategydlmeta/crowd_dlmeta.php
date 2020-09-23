@@ -406,12 +406,14 @@ class DLMeta extends Metamodel{
                           if ($max > $this->global_maxcard){ $this->global_maxcard = $max; }
                           \array_push($this->maxcardinalities, ["class" => $role["entity type"],
                                                                 "op" => $role["rolename"],
+                                                                "rel" => $relname,
                                                                 "maxcard" => $max]);
                         }
                         } else {
                           if ($this->check_card){
                             \array_push($this->maxcardinalities, ["class" => $role["entity type"],
                                                                   "op" => $role["rolename"],
+                                                                  "rel" => $relname,
                                                                   "maxcard" => "*"]);
                           }
                         }
