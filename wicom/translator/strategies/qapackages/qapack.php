@@ -127,6 +127,10 @@ abstract class QAPack{
       return $this->ans_analizer->get_satObjectProperties();
     }
 
+    public function get_stricter_cardinalities(){
+      return $this->ans_analizer->get_stricter_cardinalities();
+    }
+
     public function get_reasoning_warning(){
       return $this->ans_analizer->get_reasoning_warning();
     }

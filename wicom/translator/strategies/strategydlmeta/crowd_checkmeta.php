@@ -107,7 +107,7 @@ class DLCheckMeta {
           "SATisfiable Roles" => $this->strategy->get_qa_pack()->get_satObjectProperties(),
           "UNSATisfiable Roles" => $this->strategy->get_qa_pack()->get_unsatObjectProperties(),
           "Subsumptions" => $this->inferred_subclasses(),
-          "Object types cardinalities" => []
+          "Object types cardinalities" => $this->stricter_cardinalities(),
         ];
       $owl_ax = [
           "Equivalent Class Axioms" => $this->inferred_all_equivalent_classes(),
@@ -178,7 +178,9 @@ class DLCheckMeta {
     /**
       @// TODO: implement here a function to look for stricter cardinalities
     */
-    protected function stricter_cardinalities(){}
+    protected function stricter_cardinalities(){
+      return $this->strategy->get_qa_pack()->get_stricter_cardinalities();
+    }
 
 }
 ?>

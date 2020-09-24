@@ -75,7 +75,7 @@ class Answer{
     protected $inferredDisj = [];
     protected $inferredEquivs = [];
     protected $beauty_responses = null;
-    protected $s_cardinalities = [];
+    protected $stricter_cardinalities = [];
 
     function __construct($builder){
         $this->new_owl2 = $builder;
@@ -189,6 +189,12 @@ class Answer{
        foreach($equivalences_n as $e){
             array_push($this->equivalences_dp, $e);
        }
+    }
+
+    function add_stricter_cardinalities($stricter_cardinalities){
+      foreach($stricter_cardinalities as $e){
+           array_push($this->stricter_cardinalities, $e);
+      }
     }
 
     function add_cardinality_link_sugges($linkname, $col_classnames, $multiplicity,$roles){
@@ -334,6 +340,7 @@ class Answer{
              "equivalences" => $this->equivalences,
              "equivalences_op" => $this->equivalences_op,
              "equivalences_dp" => $this->equivalences_dp,
+             "stricter_cardinalities" => $this->stricter_cardinalities,
              "reasoner" => [
                  "input" => $this->reasoner_input,
                  "output" => $this->reasoner_output,
@@ -528,6 +535,10 @@ class Answer{
         }
       }
       return $all_equiv;
+    }
+
+    function get_stricter_cardinalities(){
+      return $this->stricter_cardinalities;
     }
 
 

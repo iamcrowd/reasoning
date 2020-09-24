@@ -700,9 +700,11 @@ class CrowdMetaAnalizer extends AnsAnalizer{
                   $c_max = $this->c_strategy->get_global_maxcardinality();
                   $c_maxcard_encoded = $this->c_strategy->get_maxcardinalities();
                   $result = [];
+                  $maxcardresponses = [];
 
                   foreach ($c_maxcard_encoded as $c_maxcard_encoded_el) {
                     $responses_array = [];
+                    $c_maxcard_encoded_el["query responses"] = [];
 
                     for ($i = 1; $i <= $c_max; $i++) {
                       $name_response = $this->owllink_responses->current()->getName();
@@ -717,10 +719,13 @@ class CrowdMetaAnalizer extends AnsAnalizer{
                       $this->owllink_responses->next();
                       $this->owllink_queries->next();
                     }
-                    array_push($c_maxcard_encoded_el, $responses_array);
+                    $c_maxcard_encoded_el["query responses"] = array_merge($c_maxcard_encoded_el["query responses"], $responses_array);
                     array_push($result, $c_maxcard_encoded_el);
                   }
-                  array_push($bool_responses["isEntailedMaxCard"], $result);
+                  $withInferences = [];
+                  $withInferences = $this->filter_stricter_MaxCard($result);
+                  $bool_responses["DL"] = array_merge($bool_responses["DL"], $withInferences);
+                  $bool_responses["isEntailedMaxCard"] = array_merge($bool_responses["isEntailedMaxCard"], $withInferences);
                 }
               break;
             }
@@ -730,6 +735,71 @@ class CrowdMetaAnalizer extends AnsAnalizer{
 
 
       return $bool_responses;
+    }
+
+    /**
+    Filter stricter max cardinalities for the role given as "op". Elements "class", "op", "rel" and "maxcard" represent
+    the original role defined in the MM given as input. The last element "query results" includes the responses for each
+    query on the cardinality of the current role.
+
+    array(1) {
+      [0]=>
+      array(2) {
+        [0]=>
+        array(5) {
+          ["class"]=>
+          string(40) "http://crowd.fi.uncoma.edu.ar/kb1#Person"
+          ["op"]=>
+          string(40) "http://crowd.fi.uncoma.edu.ar/kb1#person"
+          ["rel"]=>
+          string(42) "http://crowd.fi.uncoma.edu.ar/kb1#enrolled"
+          ["maxcard"]=>
+          string(1) "2"
+          [0]=>
+          array(9) {
+            [0]=>
+            array(2) {
+              ["query card"]=>
+              string(1) "1"
+              ["bool"]=>
+              string(5) "false"
+            }
+            [1]=>
+            array(2) {
+              ["query card"]=>
+              string(1) "2"
+              ["bool"]=>
+              string(5) "false"
+            }
+          }
+        }
+    */
+    function filter_stricter_MaxCard($anArrayOfMaxCard){
+      $card_max_ax = [];
+
+      foreach ($anArrayOfMaxCard as $role) {
+        $a_responses = $role["query responses"];
+        $i = 0;
+        while ($i < count($a_responses) && !(filter_var($a_responses[$i]["bool"], FILTER_VALIDATE_BOOLEAN))) {
+          $i++;
+        }
+        if (filter_var($a_responses[$i]["bool"], FILTER_VALIDATE_BOOLEAN)){
+          $el = [
+                          ["subclass" => [
+                            ["class" => $role["class"]],
+                            ["maxcard" => [
+                                          $a_responses[$i]["query card"],
+                                          ["inverse" => ["role" => $role["op"]]],
+                                          ["filler" => $role["rel"]]
+                                          ]
+                            ]
+                          ]
+                        ]
+                      ];
+          $card_max_ax = array_merge($card_max_ax, $el);
+        }
+      }
+      return $card_max_ax;
     }
 
 
@@ -843,6 +913,10 @@ class CrowdMetaAnalizer extends AnsAnalizer{
 
     function get_all_disjoint_class(){
       return $this->answer->get_all_disjoint_class();
+    }
+
+    function get_stricter_cardinalities(){
+      return $this->answer->get_stricter_cardinalities();
     }
 
     function get_reasoning_warning(){
