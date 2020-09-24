@@ -1,0 +1,118 @@
+{
+  "satisfiable": {
+    "kb": true,
+    "classes": [
+      "http://crowd.fi.uncoma.edu.ar/kb1#Institution",
+      "http://crowd.fi.uncoma.edu.ar/kb1#Person",
+      "http://crowd.fi.uncoma.edu.ar/kb1#enrolled"
+    ],
+    "objectproperties": [
+      "http://crowd.fi.uncoma.edu.ar/kb1#person",
+      "http://crowd.fi.uncoma.edu.ar/kb1#institution"
+    ],
+    "dataproperties": []
+  },
+  "unsatisfiable": {
+    "classes": [],
+    "objectproperties": [],
+    "dataproperties": []
+  },
+  "subsumptions": [
+    [
+      [
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://crowd.fi.uncoma.edu.ar/kb1#Institution"
+      ]
+    ]
+  ],
+  "disjunctions": [
+    [
+      "http://www.w3.org/2002/07/owl#Nothing"
+    ],
+    [
+      "http://www.w3.org/2002/07/owl#Nothing"
+    ],
+    [
+      "http://www.w3.org/2002/07/owl#Nothing"
+    ]
+  ],
+  "disjunctions_op": [
+    [
+      "http://www.w3.org/2002/07/owl#bottomObjectProperty"
+    ],
+    [
+      "http://www.w3.org/2002/07/owl#bottomObjectProperty"
+    ]
+  ],
+  "disjunctions_dp": [],
+  "equivalences": [
+    [
+      "http://crowd.fi.uncoma.edu.ar/kb1#Institution"
+    ],
+    [
+      "http://crowd.fi.uncoma.edu.ar/kb1#Person"
+    ],
+    [
+      "http://crowd.fi.uncoma.edu.ar/kb1#enrolled"
+    ]
+  ],
+  "equivalences_op": [
+    [
+      "http://crowd.fi.uncoma.edu.ar/kb1#person"
+    ],
+    [
+      "http://crowd.fi.uncoma.edu.ar/kb1#institution"
+    ]
+  ],
+  "equivalences_dp": [],
+  "stricter_cardinalities": [
+    {
+      "subclass": [
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#Person"
+        },
+        {
+          "maxcard": [
+            "9",
+            {
+              "inverse": {
+                "role": "http://crowd.fi.uncoma.edu.ar/kb1#person"
+              }
+            },
+            {
+              "filler": "http://crowd.fi.uncoma.edu.ar/kb1#enrolled"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "subclass": [
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#Institution"
+        },
+        {
+          "maxcard": [
+            "1",
+            {
+              "inverse": {
+                "role": "http://crowd.fi.uncoma.edu.ar/kb1#institution"
+              }
+            },
+            {
+              "filler": "http://crowd.fi.uncoma.edu.ar/kb1#enrolled"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "reasoner": {
+    "input": "",
+    "output": ""
+  },
+  "inferredSubs": [],
+  "inferredCards": [],
+  "inferredDisj": [],
+  "inferredEquiv": []
+}

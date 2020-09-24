@@ -32,7 +32,7 @@ use Wicom\Translator\Strategies\QAPackages\AnswerAnalizers\CrowdMetaAnalizer;
 use Wicom\Translator\Strategies\Strategydlmeta\DLMeta;
 use Wicom\Translator\Builders\OWLlinkBuilder;
 
-class CrowdMetaAnalizerTest extends PHPUnit\Framework\TestCase{
+class CrowdMetaWithCardAnalizerTest extends PHPUnit\Framework\TestCase{
 
   /**
      @testdox Parse owllink answers for KF Binary Relationship 0..N Cardinalities
@@ -56,14 +56,14 @@ class CrowdMetaAnalizerTest extends PHPUnit\Framework\TestCase{
   }*/
 
   /**
-     @testdox Parse owllink answers for KF Binary Relationship with Cardinalities. This test should out the very same JSON than 0..N
+     @testdox Parse owllink answers for KF Binary Relationship with Cardinalities. No class is inferred, just the current cardinalities are returned.
    */
   public function testAnswerOWLlinkOutputKFBinaryRelationshipCardinalities(){
 
     $json = file_get_contents("answers/data/testRelNoExtendedCardIntoOWLlink.json");
     $input_owl = file_get_contents("answers/data/testRelExtendedCardIntoOWLlink.owllink");
     $output = file_get_contents("answers/data/testRelExtendedCardIntoOWLlinkOut.owllink");
-//    $expected = file_get_contents("answers/data/testRelExtendedCardIntoOWLlinkOut.json");
+    $expected = file_get_contents("answers/data/testRelExtendedInferredCardIntoOWLlinkOut.json");
 
     $strategy = new DLMeta();
     $strategy->set_check_cardinalities(true);
@@ -85,9 +85,13 @@ class CrowdMetaAnalizerTest extends PHPUnit\Framework\TestCase{
     $oa->analize();
     $answer = $oa->get_answer();
 
-    $actual = $answer->to_json();
+    $answer->set_reasoner_input("");
+    $answer->set_reasoner_output("");
 
-  //  $this->assertJsonStringEqualsJsonString($expected, $actual, true);
+    $actual = $answer->to_json();
+    //var_dump($actual);
+
+    $this->assertJsonStringEqualsJsonString($expected, $actual, true);
   }
 
 }
