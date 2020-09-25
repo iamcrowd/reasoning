@@ -72,7 +72,7 @@ class DLMetaCheckTest extends PHPUnit\Framework\TestCase{
        @testdox test for beauty_responses with disjoint and equivalence axioms inferred
        @See http://crowd.fi.uncoma.edu.ar/KFDoc/
      */
-    public function testKFtoOWLlinkAllQueries(){
+/*    public function testKFtoOWLlinkAllQueries(){
         $json = file_get_contents("translator/strategies/data_inf/testKFtoOWLlinkAllQueries.json");
         $input = file_get_contents("translator/strategies/data_inf/testKFtoOWLlinkAllQueries.owllink");
         $output = file_get_contents("translator/strategies/data_inf/testKFtoOWLlinkAllQueriesOut.owllink");
@@ -113,7 +113,7 @@ class DLMetaCheckTest extends PHPUnit\Framework\TestCase{
         else {
           $this->assertTrue(false, "JSON KF does not match against KF Scheme");
         }
-    }
+    } */
 
     /**
        @testdox test for beauty_responses with subsumption inferred
@@ -151,9 +151,12 @@ class DLMetaCheckTest extends PHPUnit\Framework\TestCase{
 
           $beauty_out_json = $oa->get_beatified_responses();
 
+          //var_dump($beauty_out_json);
+
           $this->assertJsonStringEqualsJsonString($beauty_out, $beauty_out_json, true);
 
           $inferred = new DLCheckMeta($json, $strategy, $answer);
+          //var_dump($inferred->built_output());
           $this->assertJsonStringEqualsJsonString($inferred_expected, $inferred->built_output(), true);
 
         }
