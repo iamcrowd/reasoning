@@ -72,7 +72,7 @@ class DLMetaCheckTest extends PHPUnit\Framework\TestCase{
        @testdox test for beauty_responses with disjoint and equivalence axioms inferred
        @See http://crowd.fi.uncoma.edu.ar/KFDoc/
      */
-    public function testKFtoOWLlinkAllQueries(){
+/*    public function testKFtoOWLlinkAllQueries(){
         $json = file_get_contents("translator/strategies/data_inf/testKFtoOWLlinkAllQueries.json");
         $input = file_get_contents("translator/strategies/data_inf/testKFtoOWLlinkAllQueries.owllink");
         $output = file_get_contents("translator/strategies/data_inf/testKFtoOWLlinkAllQueriesOut.owllink");
@@ -107,13 +107,13 @@ class DLMetaCheckTest extends PHPUnit\Framework\TestCase{
           $this->assertJsonStringEqualsJsonString($beauty_out, $beauty_out_json, true);
 
           $inferred = new DLCheckMeta($json, $strategy, $answer);
-        //  $this->assertJsonStringEqualsJsonString($inferred_expected, $inferred->built_output(), true);
+          $this->assertJsonStringEqualsJsonString($inferred_expected, $inferred->built_output(), true);
 
         }
         else {
           $this->assertTrue(false, "JSON KF does not match against KF Scheme");
         }
-    }
+    } */
 
     /**
        @testdox test for beauty_responses with subsumption inferred
@@ -150,6 +150,7 @@ class DLMetaCheckTest extends PHPUnit\Framework\TestCase{
           $actual_o = $answer->to_json();
 
           $beauty_out_json = $oa->get_beatified_responses();
+          var_dump($beauty_out_json);
 
           $this->assertJsonStringEqualsJsonString($beauty_out, $beauty_out_json, true);
 
@@ -161,6 +162,59 @@ class DLMetaCheckTest extends PHPUnit\Framework\TestCase{
           $this->assertTrue(false, "JSON KF does not match against KF Scheme");
         }
     }
+
+    /**
+       @testdox test for beauty_responses with stricter cardinalities. No new cardinality is added but original one are kept and not reported as new ones.
+       @See http://crowd.fi.uncoma.edu.ar/KFDoc/
+     */
+/*    public function testKFtoOWLlinkWithStricterCardinalities(){
+        $json = file_get_contents("translator/strategies/data_inf/testRelExtendedCardIntoOWLlinkMM.json");
+        $input = file_get_contents("translator/strategies/data_inf/testRelExtendedCardIntoOWLlink.owllink");
+        $output = file_get_contents("translator/strategies/data_inf/testRelExtendedCardIntoOWLlinkOut.owllink");
+//        $inferred_expected = file_get_contents("translator/strategies/data_inf/testRelExtendedCardIntoOWLlinkOut.json");
+//        $beauty_out = file_get_contents("translator/strategies/data_inf/testRelExtendedInferredCardIntoOWLlinkOut.json");
+
+        if ($this->validate_against_scheme($json)){
+          $strategy = new DLMeta();
+          $strategy->set_check_cardinalities(true);
+          $builder = new OWLlinkBuilder();
+
+          $builder->insert_header();
+          $strategy->translate($json, $builder);
+          $strategy->translate_queries($strategy, $builder);
+          $builder->insert_footer();
+
+          $actual = $builder->get_product();
+          $actual = $actual->to_string();
+
+          $this->assertXmlStringEqualsXmlString($input, $actual, true);
+
+          $oa = $strategy->get_qa_pack()->get_ans_analizer();
+          $oa->generate_answer($actual, $output);
+          $oa->set_c_strategy($strategy);
+          $oa->analize();
+          $answer = $oa->get_answer();
+
+          $answer->set_reasoner_input("");
+          $answer->set_reasoner_output("");
+          $actual_o = $answer->to_json();
+          var_dump($actual_o);
+
+          $beauty_out_json = $oa->get_beatified_responses();
+          //var_dump($beauty_out_json);
+
+          //$this->assertJsonStringEqualsJsonString($beauty_out, $beauty_out_json, true);
+
+          $inferred = new DLCheckMeta($json, $strategy, $answer);
+
+          //var_dump($inferred->built_output());
+        //  $this->assertJsonStringEqualsJsonString($inferred_expected, $inferred->built_output(), true);
+
+        }
+        else {
+          $this->assertTrue(false, "JSON KF does not match against KF Scheme");
+        }
+    }*/
 
     //var_dump($oa->get_subclass("http://www.w3.org/2002/07/owl#Thing"));
     /*var_dump($oa->get_disjoint_class("http://www.w3.org/2002/07/owl#Nothing"));

@@ -919,6 +919,22 @@ class CrowdMetaAnalizer extends AnsAnalizer{
       return $this->answer->get_stricter_cardinalities();
     }
 
+    function get_classOfStricter($stricter_el){
+      return $this->answer->get_classOfStricter($stricter_el);
+    }
+
+    function get_opOfStricter($stricter_el){
+      return $this->answer->get_classOfStricter($stricter_el);
+    }
+
+    function get_roleOfStricter($stricter_el){
+      return $this->answer->get_roleOfStricter($stricter_el);
+    }
+
+    function get_maxOfStricter($stricter_el){
+      return $this->answer->get_maxOfStricter($stricter_el);
+    }
+
     function get_reasoning_warning(){
       return $this->get_responses()["OWLlink error"];
     }

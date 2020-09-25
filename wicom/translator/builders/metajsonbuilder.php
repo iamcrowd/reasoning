@@ -64,7 +64,24 @@ class MetaJSONBuilder extends Documents{
 			return $this->product->subsumption_in_instance($child, $parent);
 		}
 
+		/**
+			Check if a role relating a class with a relationship and the respective cardinalities given as parameters exists in the current KF product.
+		*/
+		public function role_in_instance($role, $objecttype, $rel){
+			return $this->product->role_in_instance($role, $objecttype, $rel);
+		}
 
+		function mincard_role_in_instance($otc, $min){
+			return $this->product->mincard_role_in_instance($otc, $min);
+		}
+
+		function maxcard_role_in_instance($otc, $max){
+			return $this->product->maxcard_role_in_instance($otc, $max);
+		}
+
+		function add_newMaxcardinality($otc, $maxcard){
+			return $this->product->add_newMaxcardinality($otc, $maxcard);
+		}
 
 }
 ?>

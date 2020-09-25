@@ -1,0 +1,132 @@
+{
+  "satisfiable": {
+    "kb": true,
+    "classes": [
+      "http://crowd.fi.uncoma.edu.ar/kb1#Institution",
+      "http://crowd.fi.uncoma.edu.ar/kb1#Person",
+      "http://crowd.fi.uncoma.edu.ar/kb1#enrolled"
+    ],
+    "objectproperties": [
+      "http://crowd.fi.uncoma.edu.ar/kb1#person",
+      "http://crowd.fi.uncoma.edu.ar/kb1#institution"
+    ],
+    "dataproperties": []
+  },
+  "unsatisfiable": {
+    "classes": [],
+    "objectproperties": [],
+    "dataproperties": []
+  },
+  "beauty_responses": [
+    {
+      "subclass": [
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#Institution"
+        },
+        {
+          "class": "http://www.w3.org/2002/07/owl#Thing"
+        }
+      ]
+    },
+    {
+      "disjointclasses": [
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#Institution"
+        },
+        {
+          "class": "http://www.w3.org/2002/07/owl#Nothing"
+        }
+      ]
+    },
+    {
+      "disjointclasses": [
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#Person"
+        },
+        {
+          "class": "http://www.w3.org/2002/07/owl#Nothing"
+        }
+      ]
+    },
+    {
+      "disjointclasses": [
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#enrolled"
+        },
+        {
+          "class": "http://www.w3.org/2002/07/owl#Nothing"
+        }
+      ]
+    },
+    {
+      "equivalentclasses": [
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#Institution"
+        },
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#Institution"
+        }
+      ]
+    },
+    {
+      "equivalentclasses": [
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#Person"
+        },
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#Person"
+        }
+      ]
+    },
+    {
+      "equivalentclasses": [
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#enrolled"
+        },
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#enrolled"
+        }
+      ]
+    },
+    {
+      "disjointobjectproperty": [
+        {
+          "objectproperty": "http://crowd.fi.uncoma.edu.ar/kb1#person"
+        },
+        {
+          "objectproperty": "http://www.w3.org/2002/07/owl#bottomObjectProperty"
+        }
+      ]
+    },
+    {
+      "disjointobjectproperty": [
+        {
+          "objectproperty": "http://crowd.fi.uncoma.edu.ar/kb1#institution"
+        },
+        {
+          "objectproperty": "http://www.w3.org/2002/07/owl#bottomObjectProperty"
+        }
+      ]
+    },
+    {
+      "equivalentobjectproperty": [
+        {
+          "objectproperty": "http://crowd.fi.uncoma.edu.ar/kb1#person"
+        },
+        {
+          "objectproperty": "http://crowd.fi.uncoma.edu.ar/kb1#person"
+        }
+      ]
+    },
+    {
+      "equivalentobjectproperty": [
+        {
+          "objectproperty": "http://crowd.fi.uncoma.edu.ar/kb1#institution"
+        },
+        {
+          "objectproperty": "http://crowd.fi.uncoma.edu.ar/kb1#institution"
+        }
+      ]
+    }
+  ]
+}

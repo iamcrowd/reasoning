@@ -131,6 +131,25 @@ abstract class QAPack{
       return $this->ans_analizer->get_stricter_cardinalities();
     }
 
+    public function get_classOfStricter($stricter_el){
+      return $this->ans_analizer->get_classOfStricter($stricter_el);
+    }
+
+    public function get_opOfStricter($stricter_el){
+      return $this->ans_analizer->get_opOfStricter($stricter_el);
+    }
+
+    public function get_roleOfStricter($stricter_el){
+      return $this->ans_analizer->get_roleOfStricter($stricter_el);
+    }
+
+    public function get_maxOfStricter($stricter_el){
+      return $this->ans_analizer->get_maxOfStricter($stricter_el);
+    }
+
+    /**
+     Returns possible warnings from off-the-shelf reasoners
+    */
     public function get_reasoning_warning(){
       return $this->ans_analizer->get_reasoning_warning();
     }

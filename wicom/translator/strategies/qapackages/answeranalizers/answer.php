@@ -541,6 +541,37 @@ class Answer{
       return $this->stricter_cardinalities;
     }
 
+    /**
+    $el = [
+                    ["subclass" => [
+                      ["class" => $role["class"]],
+                      ["maxcard" => [
+                                    $a_responses[$i]["query card"],
+                                    ["inverse" => ["role" => $role["op"]]],
+                                    ["filler" => $role["rel"]]
+                                    ]
+                      ]
+                    ]
+                  ]
+                ];
+    */
+    function get_classOfStricter($stricter_el){
+      return $stricter_el["subclass"]["class"];
+    }
+
+    function get_opOfStricter($stricter_el){
+      return $stricter_el["subclass"]["maxcard"]["filler"];
+    }
+
+    function get_roleOfStricter($stricter_el){
+      return $stricter_el["subclass"]["maxcard"]["inverse"]["role"];
+    }
+
+    function get_maxOfStricter($stricter_el){
+      return $stricter_el["subclass"]["maxcard"][0];
+    }
+
+
 
     public function responses_to_json($dl_responses){
       return json_encode($dl_responses);

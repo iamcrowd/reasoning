@@ -179,7 +179,31 @@ class DLCheckMeta {
       @// TODO: implement here a function to look for stricter cardinalities
     */
     protected function stricter_cardinalities(){
-      return $this->strategy->get_qa_pack()->get_stricter_cardinalities();
+      $this->strategy->get_qa_pack()->get_unsatClasses();
+      $stricter_arr = $this->strategy->get_qa_pack()->get_stricter_cardinalities();
+
+      $inferred_card = [];
+
+      foreach ($stricter_arr as $stricter_el) {
+        $subclass = $this->strategy->get_qa_pack()->get_classOfStricter($stricter_el);
+        $rel = $this->strategy->get_qa_pack()->get_opOfStricter($stricter_el);
+        $role = $this->strategy->get_qa_pack()->get_roleOfStricter($stricter_el);
+        $posInfMaxcard = $this->strategy->get_qa_pack()->get_maxOfStricter($stricter_el);
+
+        $otc_role = $this->metabuilder->role_in_instance($role, $subclass, $rel);
+
+        if ($otc_role != null){
+          $c_maxcard = $this->metabuilder->maxcard_role_in_instance($otc_role, $posInfMaxcard);
+
+          if ($c_maxcard != null){
+            if ($c_maxcard != $posInfMaxcard){
+              $this->metabuilder->add_newMaxcardinality($role, $subclass, $rel, $posInfMaxcard);
+              \array_push($inferred_card, $otc_role);
+            }
+          }
+        }
+      }
+      return $inferred_card;
     }
 
 }

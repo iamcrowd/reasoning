@@ -84,6 +84,78 @@ class MetaJSONDocument extends JSONDocument{
       return false;
     }
 
+    function mincard_role_in_instance($otc, $min){
+      $c_min = null;
+      foreach ($this->content["Constraints"]["Cardinality constraints"]["Object type cardinality"] as $otc_e) {
+        if (
+            (\strcmp($otc_e["name"], $otc) == 0)
+           ){
+              $c_min = $otc_e["minimum"];
+              return $c_min;
+        }
+      }
+      return $c_min;
+    }
+
+    function maxcard_role_in_instance($otc, $max){
+      $c_max = null;
+      foreach ($this->content["Constraints"]["Cardinality constraints"]["Object type cardinality"] as $otc_e) {
+        if (
+            (\strcmp($otc_e["name"], $otc) == 0)
+           ){
+              $c_max = $otc_e["maximum"];
+              return $c_max;
+        }
+      }
+      return $c_max;
+    }
+
+    /**
+      Modify the current max cardinality of a role
+    */
+    function add_newMaxcardinality($otc, $maxcard){
+      for ($i = 0; $i < count($this->content["Constraints"]["Cardinality constraints"]["Object type cardinality"]); $i++) {
+        if (
+            (\strcmp($this->content["Constraints"]["Cardinality constraints"]["Object type cardinality"][$i]["name"], $otc) == 0)
+           ){
+              $this->content["Constraints"]["Cardinality constraints"]["Object type cardinality"][$i]["maximum"] = $maxcard;
+        }
+      }
+    }
+
+    /**
+       Check if a role relating a class with a relationship and the respective cardinalities given as parameters exists in the current KF product.
+
+       "Role": [
+           {
+               "object type cardinality": [
+                   "card1"
+               ],
+               "rolename": "http://crowd.fi.uncoma.edu.ar/kb1#person",
+               "entity type": "http://crowd.fi.uncoma.edu.ar/kb1#Person",
+               "relationship": "http://crowd.fi.uncoma.edu.ar/kb1#enrolled"
+           }
+        ]
+
+       @return an object type cardinality id if $role exists. Otherwise, null.
+
+       @// NOTE: see kfmetaScheme.json
+     **/
+    function role_in_instance($role, $class, $rel){
+      $an_otc = null;
+      foreach ($this->content["Role"] as $role_e) {
+        if (
+            (\strcmp($role["rolename"], $role) == 0) &&
+            (\strcmp($role["entity type"], $class) == 0) &&
+            (\strcmp($role["relationship"], $rel) == 0)
+           ){
+             $an_otc = $role["object type cardinality"][0];
+             return $an_otc;
+        }
+      }
+      return null;
+    }
+
     /**
        Insert a subsumption and update the current KF instance. Return id for the new subsumption.
 
