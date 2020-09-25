@@ -423,8 +423,13 @@ class Answer{
       $all_sub = [];
       foreach ($this->beauty_responses as $el) {
         if (array_key_exists('subclass', $el)){
-          if (\strcmp($el["subclass"][1]["class"],$class) == 0){
-            array_push($all_sub, $el["subclass"][0]["class"]);
+          if (
+              (array_key_exists('class', $el["subclass"][0])) &&
+              (array_key_exists('class', $el["subclass"][1]))
+             ){
+               if (\strcmp($el["subclass"][1]["class"],$class) == 0){
+                 array_push($all_sub, $el["subclass"][0]["class"]);
+              }
           }
         }
       }
@@ -556,19 +561,19 @@ class Answer{
                 ];
     */
     function get_classOfStricter($stricter_el){
-      return $stricter_el["subclass"]["class"];
+      return $stricter_el["subclass"][0]["class"];
     }
 
     function get_opOfStricter($stricter_el){
-      return $stricter_el["subclass"]["maxcard"]["filler"];
+      return $stricter_el["subclass"][1]["maxcard"]["filler"];
     }
 
     function get_roleOfStricter($stricter_el){
-      return $stricter_el["subclass"]["maxcard"]["inverse"]["role"];
+      return $stricter_el["subclass"][1]["maxcard"][1]["inverse"]["role"];
     }
 
     function get_maxOfStricter($stricter_el){
-      return $stricter_el["subclass"]["maxcard"][0];
+      return $stricter_el["subclass"][1]["maxcard"][0];
     }
 
 

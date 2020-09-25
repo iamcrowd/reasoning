@@ -145,11 +145,11 @@ class MetaJSONDocument extends JSONDocument{
       $an_otc = null;
       foreach ($this->content["Role"] as $role_e) {
         if (
-            (\strcmp($role["rolename"], $role) == 0) &&
-            (\strcmp($role["entity type"], $class) == 0) &&
-            (\strcmp($role["relationship"], $rel) == 0)
+            (\strcmp($role_e["rolename"], $role) == 0) &&
+            (\strcmp($role_e["entity type"], $class) == 0) &&
+            (\strcmp($role_e["relationship"], $rel) == 0)
            ){
-             $an_otc = $role["object type cardinality"][0];
+             $an_otc = $role_e["object type cardinality"][0];
              return $an_otc;
         }
       }
