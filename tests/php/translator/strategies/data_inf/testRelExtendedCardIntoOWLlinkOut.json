@@ -21,6 +21,26 @@
     {
       "subclass": [
         {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#Person"
+        },
+        {
+          "class": "http://www.w3.org/2002/07/owl#Thing"
+        }
+      ]
+    },
+    {
+      "subclass": [
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#enrolled"
+        },
+        {
+          "class": "http://www.w3.org/2002/07/owl#Thing"
+        }
+      ]
+    },
+    {
+      "subclass": [
+        {
           "class": "http://crowd.fi.uncoma.edu.ar/kb1#Institution"
         },
         {
@@ -125,6 +145,46 @@
         },
         {
           "objectproperty": "http://crowd.fi.uncoma.edu.ar/kb1#institution"
+        }
+      ]
+    },
+    {
+      "subclass": [
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#Person"
+        },
+        {
+          "maxcard": [
+            "9",
+            {
+              "inverse": {
+                "role": "http://crowd.fi.uncoma.edu.ar/kb1#person"
+              }
+            },
+            {
+              "filler": "http://crowd.fi.uncoma.edu.ar/kb1#enrolled"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "subclass": [
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#Institution"
+        },
+        {
+          "maxcard": [
+            "1",
+            {
+              "inverse": {
+                "role": "http://crowd.fi.uncoma.edu.ar/kb1#institution"
+              }
+            },
+            {
+              "filler": "http://crowd.fi.uncoma.edu.ar/kb1#enrolled"
+            }
+          ]
         }
       ]
     }
