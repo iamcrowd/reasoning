@@ -167,6 +167,45 @@ class CrowdMetaAnalizer extends AnsAnalizer{
                     </ClassSynset>
                   </SubClassSynsets>
                 </ClassSubClassesPair>
+
+                //          ;
+                /*          <ClassSubClassesPair>
+                              <ClassSynset>
+                                <owl:Class abbreviatedIRI="owl:Thing"/>
+                              </ClassSynset>
+                              <SubClassSynsets>
+                                <ClassSynset>
+                                  <owl:Class IRI="A"/>
+                                </ClassSynset>
+                              </SubClassSynsets>
+                            </ClassSubClassesPair>
+
+                            <ClassSubClassesPair>
+                              <ClassSynset>
+                                <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#C"/>
+                                <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#E"/>
+                              </ClassSynset>
+                              <SubClassSynsets>
+                                <ClassSynset>
+                                  <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#F"/>
+                                </ClassSynset>
+                              </SubClassSynsets>
+                            </ClassSubClassesPair>
+
+                            <ClassSubClassesPair>
+                              <ClassSynset>
+                                <owl:Class IRI="http://crowd.fi.uncoma.edu.ar#Phone"/>
+                              </ClassSynset>
+                              <SubClassSynsets>
+                                <ClassSynset>
+                                  <owl:Class IRI="http://crowd.fi.uncoma.edu.ar#LandLine"/>
+                                </ClassSynset>
+                                <ClassSynset>
+                                  <owl:Class IRI="http://crowd.fi.uncoma.edu.ar#Cell"/>
+                                </ClassSynset>
+                              </SubClassSynsets>
+                            </ClassSubClassesPair>
+
     */
 
     function parse_owllinkhierarchy(){
@@ -177,30 +216,7 @@ class CrowdMetaAnalizer extends AnsAnalizer{
         $tag_first_child = $first_children->getName();
         if (($tag_first_child != "ClassSynset") and ($tag_first_child = "ClassSubClassesPair")){
           $hierarchy = [];
-//          ;
-/*          <ClassSubClassesPair>
-              <ClassSynset>
-                <owl:Class abbreviatedIRI="owl:Thing"/>
-              </ClassSynset>
-              <SubClassSynsets>
-                <ClassSynset>
-                  <owl:Class IRI="A"/>
-                </ClassSynset>
-              </SubClassSynsets>
-            </ClassSubClassesPair>
 
-            <ClassSubClassesPair>
-              <ClassSynset>
-                <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#C"/>
-                <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#E"/>
-              </ClassSynset>
-              <SubClassSynsets>
-                <ClassSynset>
-                  <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#F"/>
-                </ClassSynset>
-              </SubClassSynsets>
-            </ClassSubClassesPair>
-            */
           foreach ($first_children->children() as $second_children){ //<ClassSynset>
             $tag_second_child = $second_children->getName();
 
@@ -209,7 +225,7 @@ class CrowdMetaAnalizer extends AnsAnalizer{
               case "ClassSynset":  //parent/s
                 $class_parent = $second_children->children("owl",TRUE);
                 $class_parent_name = [];
-
+                $class_child_name = [];
                 for ($i=0; $i < $class_parent->count(); $i++) {
                   array_push($class_parent_name, $class_parent[$i]->attributes()[0]);
                 }
@@ -221,20 +237,22 @@ class CrowdMetaAnalizer extends AnsAnalizer{
 
                   if ($tag_third_child = "ClassSynset"){
                     $class_child = $third_children->children("owl",TRUE);
-                    $class_child_name = [];
 
                     for ($i=0; $i < $class_child->count(); $i++){
                       array_push($class_child_name, $class_child[$i]->attributes()[0]);
                     }
                   }
                 }
+                break;
               }
-          }
-          foreach ($class_parent_name as $parent_e) {
-            foreach ($class_child_name as $child_e) {
-              array_push($hierarchies, [$parent_e->__toString(),$child_e->__toString()]);
-            }
-          }
+              if (count($class_parent_name) != 0 && count($class_child_name) != 0){
+                foreach ($class_parent_name as $parent_e) {
+                  foreach ($class_child_name as $child_e) {
+                    array_push($hierarchies, [$parent_e->__toString(),$child_e->__toString()]);
+                  }
+                }
+              }
+          } //foreach
         }
       }
       return $hierarchies;
