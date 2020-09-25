@@ -92,9 +92,9 @@
           "entity parent": "http://crowd.fi.uncoma.edu.ar#O"
         },
         {
-        "entity child": "http://crowd.fi.uncoma.edu.ar#Home",
-        "name": "http://crowd.fi.uncoma.edu.ar/inferredSubsumption#s1",
-        "entity parent": "http://crowd.fi.uncoma.edu.ar#LandLine"
+          "entity child": "http://crowd.fi.uncoma.edu.ar#Home",
+          "name": "http://crowd.fi.uncoma.edu.ar/inferredSubsumption#s1",
+          "entity parent": "http://crowd.fi.uncoma.edu.ar#LandLine"
         }
       ],
       "Relationship": []
@@ -161,5 +161,6 @@
     ],
     "Disjoint ObjectProperty Axioms": [],
     "Disjoint DataProperty Axioms": []
-  }
+  },
+  "Reasoner warning": []
 }

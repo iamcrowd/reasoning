@@ -152,9 +152,12 @@ class DLMetaCheckTest extends PHPUnit\Framework\TestCase{
           $beauty_out_json = $oa->get_beatified_responses();
           var_dump($beauty_out_json);
 
+          //var_dump($beauty_out_json);
+
           $this->assertJsonStringEqualsJsonString($beauty_out, $beauty_out_json, true);
 
           $inferred = new DLCheckMeta($json, $strategy, $answer);
+          //var_dump($inferred->built_output());
           $this->assertJsonStringEqualsJsonString($inferred_expected, $inferred->built_output(), true);
 
         }
