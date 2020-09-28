@@ -65,12 +65,22 @@ class KFWicomKoncludeTest extends PHPUnit\Framework\TestCase
         $this->assertJsonStringEqualsJsonString($expected, $answer, true);
     }
 
+    public function test_full_reasoning_KF_With_Cardinalities(){
+        $input = file_get_contents('wicom/data/testKFwithCardinalitiesTrue.json');
+        $expected = file_get_contents('wicom/data/testKFwithCardinalitiesTrueKoncludeOut.json');
+
+        $wicom = new KF_Wicom();
+        $answer = $wicom->full_reasoning($input, 'metamodel', 'Konclude', true);
+
+        $this->assertJsonStringEqualsJsonString($expected, $answer, true);
+    }
+
     public function test_full_reasoning_KF_Unsat_KB_konclude(){
         $input = file_get_contents('wicom/data/testKFReasoningUNSATKB.json');
         $expected = file_get_contents('wicom/data/testKFReasoningUNSATKBExpectedKonclude.json');
         $wicom = new KF_Wicom();
         $answer = $wicom->full_reasoning($input, 'metamodel', 'Konclude');
-        //var_dump($answer);
+
         $this->assertJsonStringEqualsJsonString($expected, $answer, true);
     }
 }

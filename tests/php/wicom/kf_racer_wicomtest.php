@@ -66,6 +66,16 @@ class KFWicomRacerTest extends PHPUnit\Framework\TestCase
         $this->assertJsonStringEqualsJsonString($expected, $answer, true);
     }
 
+    public function test_full_reasoning_KF_With_Cardinalities(){
+        $input = file_get_contents('wicom/data/testKFwithCardinalitiesTrue.json');
+        $expected = file_get_contents('wicom/data/testKFwithCardinalitiesTrueRacerOut.json');
+
+        $wicom = new KF_Wicom();
+        $answer = $wicom->full_reasoning($input, 'metamodel', 'Racer', true);
+
+        $this->assertJsonStringEqualsJsonString($expected, $answer, true);
+    }
+
     public function test_full_reasoning_KF_Unsat_KB(){
         $input = file_get_contents('wicom/data/testKFReasoningUNSATKB.json');
         $expected = file_get_contents('wicom/data/testKFReasoningUNSATKBExpected.json');
