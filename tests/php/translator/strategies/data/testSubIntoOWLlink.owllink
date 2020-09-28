@@ -53,6 +53,8 @@
 		<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Cat"/>
 	</IsClassSatisfiable>
 
+	<GetSubClassHierarchy kb="http://crowd.fi.uncoma.edu.ar/kb1#"/>
+
 	<GetDisjointClasses kb="http://crowd.fi.uncoma.edu.ar/kb1#">
 		<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Dog"/>
 	</GetDisjointClasses>
@@ -72,6 +74,6 @@
 	<GetEquivalentClasses kb="http://crowd.fi.uncoma.edu.ar/kb1#">
 		<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Cat"/>
 	</GetEquivalentClasses>
-	
+
   <GetPrefixes kb="http://crowd.fi.uncoma.edu.ar/kb1#"/>
 </RequestMessage>

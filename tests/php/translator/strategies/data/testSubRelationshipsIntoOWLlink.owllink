@@ -218,5 +218,6 @@
 	<IsObjectPropertySatisfiable kb="http://crowd.fi.uncoma.edu.ar/kb1#">
 		<owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#faculty"/>
 	</IsObjectPropertySatisfiable>
+	<GetSubClassHierarchy kb="http://crowd.fi.uncoma.edu.ar/kb1#"/>
   <GetPrefixes kb="http://crowd.fi.uncoma.edu.ar/kb1#"/>
 </RequestMessage>

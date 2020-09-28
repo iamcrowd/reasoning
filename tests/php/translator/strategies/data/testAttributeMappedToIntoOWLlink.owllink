@@ -165,6 +165,8 @@
 		<owl:DataProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#Name_mappedTo"/>
 	</IsDataPropertySatisfiable>
 
+	<GetSubClassHierarchy kb="http://crowd.fi.uncoma.edu.ar/kb1#"/>
+
 	<GetDisjointClasses kb="http://crowd.fi.uncoma.edu.ar/kb1#">
 		<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Person"/>
 	</GetDisjointClasses>
