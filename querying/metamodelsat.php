@@ -43,13 +43,19 @@ load("kf.php", "../common/");
     $reasoner = $_POST['reasoner'];
   }
 
+  // cards is set to false
+  $cards = false;
+  if (array_key_exists('cards', $_POST)){
+    $cards = $_POST['cards'];
+  }
+
 // --------------------
 // Execute the service
 
   $kf = new Wicom\KF_Wicom();
 
   try{
-    $answer = $kf->full_reasoning($_POST['json'], "metamodel", $reasoner);
+    $answer = $kf->full_reasoning($_POST['json'], "metamodel", $reasoner, $cards);
     if ($answer != null){
         echo $answer;
     }else{
@@ -63,6 +69,7 @@ load("kf.php", "../common/");
          "input" => [
              "json" => $json,
              "reasoner" => $reasoner,
+             "cards" => $cards,
          ],
        ]);
 }
