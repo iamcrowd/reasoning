@@ -75,15 +75,17 @@ class KF_Wicom extends Wicom{
 
 
     /**
-       Check the diagram represented in JSON format for full reasoning.
+       Check the diagram represented as an KF instance in JSON format for full reasoning.
 
        @param $json_str A String with the diagram in JSON format.
        @param $strategy A String representing an specific Description Logic encoding
        @param $reasoner A String with the reasoner name. We support two: Konclude and Racer.
+       @param $check_cards {bool} true if cardinalities should be checked. Otherwise, false. Default is set to false.
 
        @return Wicom\Translator\Strategies\QAPackages\AnswerAnalizers\Answer an answer object.
+       @see KF
      */
-    function full_reasoning($json_str, $strategy = "metamodel", $reasoner = 'Racer'){
+    function full_reasoning($json_str, $strategy = "metamodel", $reasoner = 'Racer', $check_cards = false){
         $encoding = null;
         switch($strategy){
             case "berardi" :
@@ -94,6 +96,10 @@ class KF_Wicom extends Wicom{
             break;
             default: throw new \Exception(
                 "Invalid encoding selected: $strategy");
+        }
+
+        if ($check_cards){
+          $encoding->set_check_cardinalities($check_cards);
         }
 
         $trans = new MetamodelTranslator($encoding, new OWLlinkBuilder());
@@ -114,6 +120,10 @@ class KF_Wicom extends Wicom{
         $runner = new Runner($reasonerconn);
         $runner->run($owllink_str);
         $reasoner_answer = $runner->get_last_answer();
+
+        if ($check_cards){
+          $encoding->get_qa_pack()->get_ans_analizer()->set_c_strategy($encoding);
+        }
 
         $encoding->analize_answer($owllink_str, $reasoner_answer);
 
