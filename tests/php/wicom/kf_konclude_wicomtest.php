@@ -35,9 +35,8 @@ class KFWicomKoncludeTest extends PHPUnit\Framework\TestCase
 {
 
     /**
-    @testdox tests for konclude reasoner
+    @testdox tests reasoning services using konclude reasoner with all possible queries
     */
-
     public function test_full_reasoning_KF_konclude(){
         $input = file_get_contents('wicom/data/testKFtoOWLlinkAllQueries.json');
         $expected = file_get_contents('wicom/data/testKFtoOWLlinkAllQueriesBeautyOutInferredKonclude.json');
@@ -47,6 +46,9 @@ class KFWicomKoncludeTest extends PHPUnit\Framework\TestCase
         $this->assertJsonStringEqualsJsonString($expected, $answer, true);
     }
 
+    /**
+    @testdox tests reasoning services using konclude reasoner for looking possible inferred subs
+    */
     public function test_full_reasoning_KF_subsumptions_konclude(){
         $input = file_get_contents('wicom/data/testKFReasoningSubsumptions.json');
         $expected = file_get_contents('wicom/data/testKFReasoningSubsumptionsExpectedKonclude.json');
@@ -56,6 +58,9 @@ class KFWicomKoncludeTest extends PHPUnit\Framework\TestCase
         $this->assertJsonStringEqualsJsonString($expected, $answer, true);
     }
 
+    /**
+    @testdox tests reasoning services using konclude reasoner with some unsat classes and roles
+    */
     public function test_full_reasoning_KF_Unsat_Class_Roles_konclude(){
         $input = file_get_contents('wicom/data/testKFReasoningUnsatClassesAndRoles.json');
         $expected = file_get_contents('wicom/data/testKFReasoningUnsatClassesAndRolesExpectedKonclude.json');
@@ -65,6 +70,9 @@ class KFWicomKoncludeTest extends PHPUnit\Framework\TestCase
         $this->assertJsonStringEqualsJsonString($expected, $answer, true);
     }
 
+    /**
+    @testdox tests reasoning services using konclude reasoner looking for stricter cardinalities
+    */
     public function test_full_reasoning_KF_With_Cardinalities(){
         $input = file_get_contents('wicom/data/testKFwithCardinalitiesTrue.json');
         $expected = file_get_contents('wicom/data/testKFwithCardinalitiesTrueKoncludeOut.json');
@@ -74,7 +82,9 @@ class KFWicomKoncludeTest extends PHPUnit\Framework\TestCase
 
         $this->assertJsonStringEqualsJsonString($expected, $answer, true);
     }
-
+    /**
+    @testdox tests reasoning services using konclude reasoner with all unsat classes and roles
+    */
     public function test_full_reasoning_KF_Unsat_KB_konclude(){
         $input = file_get_contents('wicom/data/testKFReasoningUNSATKB.json');
         $expected = file_get_contents('wicom/data/testKFReasoningUNSATKBExpectedKonclude.json');

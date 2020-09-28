@@ -34,7 +34,7 @@ use Wicom\KF_Wicom;
 class KFWicomRacerTest extends PHPUnit\Framework\TestCase
 {
     /**
-    @testdox tests for Racer reasoner
+    @testdox tests reasoning services using racer reasoner with all possible queries
     */
     public function test_full_reasoning_KF(){
         $input = file_get_contents('wicom/data/testKFtoOWLlinkAllQueries.json');
@@ -46,6 +46,9 @@ class KFWicomRacerTest extends PHPUnit\Framework\TestCase
         $this->assertJsonStringEqualsJsonString($expected, $answer, true);
     }
 
+    /**
+    @testdox tests reasoning services using racer reasoner for looking possible inferred subs
+    */
     public function test_full_reasoning_KF_subsumptions(){
         $input = file_get_contents('wicom/data/testKFReasoningSubsumptions.json');
         $expected = file_get_contents('wicom/data/testKFReasoningSubsumptionsExpected.json');
@@ -56,6 +59,9 @@ class KFWicomRacerTest extends PHPUnit\Framework\TestCase
         $this->assertJsonStringEqualsJsonString($expected, $answer, true);
     }
 
+    /**
+    @testdox tests reasoning services using racer reasoner with some unsat classes and roles
+    */
     public function test_full_reasoning_KF_Unsat_Class_Roles(){
         $input = file_get_contents('wicom/data/testKFReasoningUnsatClassesAndRoles.json');
         $expected = file_get_contents('wicom/data/testKFReasoningUnsatClassesAndRolesExpected.json');
@@ -66,6 +72,9 @@ class KFWicomRacerTest extends PHPUnit\Framework\TestCase
         $this->assertJsonStringEqualsJsonString($expected, $answer, true);
     }
 
+    /**
+    @testdox tests reasoning services using racer reasoner looking for stricter cardinalities
+    */
     public function test_full_reasoning_KF_With_Cardinalities(){
         $input = file_get_contents('wicom/data/testKFwithCardinalitiesTrue.json');
         $expected = file_get_contents('wicom/data/testKFwithCardinalitiesTrueRacerOut.json');
@@ -76,6 +85,9 @@ class KFWicomRacerTest extends PHPUnit\Framework\TestCase
         $this->assertJsonStringEqualsJsonString($expected, $answer, true);
     }
 
+    /**
+    @testdox tests reasoning services using racer reasoner with all unsat classes and roles
+    */
     public function test_full_reasoning_KF_Unsat_KB(){
         $input = file_get_contents('wicom/data/testKFReasoningUNSATKB.json');
         $expected = file_get_contents('wicom/data/testKFReasoningUNSATKBExpected.json');
