@@ -1,0 +1,215 @@
+{
+  "satisfiable": {
+    "kb": true,
+    "classes": [
+      "http://crowd.fi.uncoma.edu.ar#class-1",
+      "http://crowd.fi.uncoma.edu.ar#class-2",
+      "http://crowd.fi.uncoma.edu.ar#class-3",
+      "http://crowd.fi.uncoma.edu.ar#class-4",
+      "http://crowd.fi.uncoma.edu.ar#association-1",
+      "http://crowd.fi.uncoma.edu.ar#association-2"
+    ],
+    "objectproperties": [
+      "http://crowd.fi.uncoma.edu.ar#role-a",
+      "http://crowd.fi.uncoma.edu.ar#role-b",
+      "http://crowd.fi.uncoma.edu.ar#role-a",
+      "http://crowd.fi.uncoma.edu.ar#role-b"
+    ],
+    "dataproperties": []
+  },
+  "unsatisfiable": {
+    "classes": [],
+    "objectproperties": [],
+    "dataproperties": []
+  },
+  "subsumptions": [
+    [
+      [
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://crowd.fi.uncoma.edu.ar#association-2"
+      ],
+      [
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://crowd.fi.uncoma.edu.ar#association-1"
+      ],
+      [
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://crowd.fi.uncoma.edu.ar#class-1"
+      ],
+      [
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://crowd.fi.uncoma.edu.ar#class-2"
+      ],
+      [
+        "http://crowd.fi.uncoma.edu.ar#class-1",
+        "http://crowd.fi.uncoma.edu.ar#class-3"
+      ],
+      [
+        "http://crowd.fi.uncoma.edu.ar#class-2",
+        "http://crowd.fi.uncoma.edu.ar#class-4"
+      ]
+    ]
+  ],
+  "disjunctions": [
+    [
+      "http://www.w3.org/2002/07/owl#Nothing"
+    ],
+    [
+      "http://www.w3.org/2002/07/owl#Nothing"
+    ],
+    [
+      "http://www.w3.org/2002/07/owl#Nothing"
+    ],
+    [
+      "http://www.w3.org/2002/07/owl#Nothing"
+    ],
+    [
+      "http://www.w3.org/2002/07/owl#Nothing"
+    ],
+    [
+      "http://www.w3.org/2002/07/owl#Nothing"
+    ]
+  ],
+  "disjunctions_op": [
+    [
+      "http://www.w3.org/2002/07/owl#bottomObjectProperty"
+    ],
+    [
+      "http://www.w3.org/2002/07/owl#bottomObjectProperty"
+    ],
+    [
+      "http://www.w3.org/2002/07/owl#bottomObjectProperty"
+    ],
+    [
+      "http://www.w3.org/2002/07/owl#bottomObjectProperty"
+    ]
+  ],
+  "disjunctions_dp": [],
+  "equivalences": [
+    [
+      "http://crowd.fi.uncoma.edu.ar#class-1"
+    ],
+    [
+      "http://crowd.fi.uncoma.edu.ar#class-2"
+    ],
+    [
+      "http://crowd.fi.uncoma.edu.ar#class-3"
+    ],
+    [
+      "http://crowd.fi.uncoma.edu.ar#class-4"
+    ],
+    [
+      "http://crowd.fi.uncoma.edu.ar#association-2",
+      "http://crowd.fi.uncoma.edu.ar#association-1"
+    ],
+    [
+      "http://crowd.fi.uncoma.edu.ar#association-2",
+      "http://crowd.fi.uncoma.edu.ar#association-1"
+    ]
+  ],
+  "equivalences_op": [
+    [
+      "http://crowd.fi.uncoma.edu.ar#role-a"
+    ],
+    [
+      "http://crowd.fi.uncoma.edu.ar#role-b"
+    ],
+    [
+      "http://crowd.fi.uncoma.edu.ar#role-a"
+    ],
+    [
+      "http://crowd.fi.uncoma.edu.ar#role-b"
+    ]
+  ],
+  "equivalences_dp": [],
+  "stricter_cardinalities": [
+    {
+      "subclass": [
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar#class-1"
+        },
+        {
+          "maxcard": [
+            "5",
+            {
+              "inverse": {
+                "role": "http://crowd.fi.uncoma.edu.ar#role-a"
+              }
+            },
+            {
+              "filler": "http://crowd.fi.uncoma.edu.ar#association-1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "subclass": [
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar#class-2"
+        },
+        {
+          "maxcard": [
+            "1",
+            {
+              "inverse": {
+                "role": "http://crowd.fi.uncoma.edu.ar#role-b"
+              }
+            },
+            {
+              "filler": "http://crowd.fi.uncoma.edu.ar#association-1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "subclass": [
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar#class-3"
+        },
+        {
+          "maxcard": [
+            "5",
+            {
+              "inverse": {
+                "role": "http://crowd.fi.uncoma.edu.ar#role-a"
+              }
+            },
+            {
+              "filler": "http://crowd.fi.uncoma.edu.ar#association-2"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "subclass": [
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar#class-4"
+        },
+        {
+          "maxcard": [
+            "1",
+            {
+              "inverse": {
+                "role": "http://crowd.fi.uncoma.edu.ar#role-b"
+              }
+            },
+            {
+              "filler": "http://crowd.fi.uncoma.edu.ar#association-2"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "reasoner": {
+    "input": "",
+    "output": ""
+  },
+  "inferredSubs": [],
+  "inferredCards": [],
+  "inferredDisj": [],
+  "inferredEquiv": []
+}

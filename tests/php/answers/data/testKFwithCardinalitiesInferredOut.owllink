@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ResponseMessage xmlns="http://www.owllink.org/owllink#"
+                 xmlns:owl="http://www.w3.org/2002/07/owl#">
+  <KB kb="http://crowd.fi.uncoma.edu.ar/kb1#"/>
+  <OK/>
+  <OK/>
+  <BooleanResponse result="true"/>
+  <BooleanResponse result="true"/>
+  <BooleanResponse result="true"/>
+  <BooleanResponse result="true"/>
+  <BooleanResponse result="true"/>
+  <BooleanResponse result="true"/>
+  <BooleanResponse result="true"/>
+  <BooleanResponse result="true"/>
+  <BooleanResponse result="true"/>
+  <BooleanResponse result="true"/>
+  <BooleanResponse result="true"/>
+  <ClassHierarchy>
+    <ClassSynset>
+      <owl:Class IRI="http://www.w3.org/2002/07/owl#Nothing"/>
+    </ClassSynset>
+    <ClassSubClassesPair>
+      <ClassSynset>
+        <owl:Class IRI="http://www.w3.org/2002/07/owl#Thing"/>
+      </ClassSynset>
+      <SubClassSynsets>
+        <ClassSynset>
+          <owl:Class IRI="http://crowd.fi.uncoma.edu.ar#association-2"/>
+          <owl:Class IRI="http://crowd.fi.uncoma.edu.ar#association-1"/>
+        </ClassSynset>
+        <ClassSynset>
+          <owl:Class IRI="http://crowd.fi.uncoma.edu.ar#class-1"/>
+        </ClassSynset>
+        <ClassSynset>
+          <owl:Class IRI="http://crowd.fi.uncoma.edu.ar#class-2"/>
+        </ClassSynset>
+      </SubClassSynsets>
+    </ClassSubClassesPair>
+    <ClassSubClassesPair>
+      <ClassSynset>
+        <owl:Class IRI="http://crowd.fi.uncoma.edu.ar#class-1"/>
+      </ClassSynset>
+      <SubClassSynsets>
+        <ClassSynset>
+          <owl:Class IRI="http://crowd.fi.uncoma.edu.ar#class-3"/>
+        </ClassSynset>
+      </SubClassSynsets>
+    </ClassSubClassesPair>
+    <ClassSubClassesPair>
+      <ClassSynset>
+        <owl:Class IRI="http://crowd.fi.uncoma.edu.ar#class-2"/>
+      </ClassSynset>
+      <SubClassSynsets>
+        <ClassSynset>
+          <owl:Class IRI="http://crowd.fi.uncoma.edu.ar#class-4"/>
+        </ClassSynset>
+      </SubClassSynsets>
+    </ClassSubClassesPair>
+  </ClassHierarchy>
+  <ClassSynsets>
+    <ClassSynset>
+      <owl:Class IRI="http://www.w3.org/2002/07/owl#Nothing"/>
+    </ClassSynset>
+  </ClassSynsets>
+  <ClassSynsets>
+    <ClassSynset>
+      <owl:Class IRI="http://www.w3.org/2002/07/owl#Nothing"/>
+    </ClassSynset>
+  </ClassSynsets>
+  <ClassSynsets>
+    <ClassSynset>
+      <owl:Class IRI="http://www.w3.org/2002/07/owl#Nothing"/>
+    </ClassSynset>
+  </ClassSynsets>
+  <ClassSynsets>
+    <ClassSynset>
+      <owl:Class IRI="http://www.w3.org/2002/07/owl#Nothing"/>
+    </ClassSynset>
+  </ClassSynsets>
+  <ClassSynsets>
+    <ClassSynset>
+      <owl:Class IRI="http://www.w3.org/2002/07/owl#Nothing"/>
+    </ClassSynset>
+  </ClassSynsets>
+  <ClassSynsets>
+    <ClassSynset>
+      <owl:Class IRI="http://www.w3.org/2002/07/owl#Nothing"/>
+    </ClassSynset>
+  </ClassSynsets>
+  <SetOfClasses>
+    <owl:Class IRI="http://crowd.fi.uncoma.edu.ar#class-1"/>
+  </SetOfClasses>
+  <SetOfClasses>
+    <owl:Class IRI="http://crowd.fi.uncoma.edu.ar#class-2"/>
+  </SetOfClasses>
+  <SetOfClasses>
+    <owl:Class IRI="http://crowd.fi.uncoma.edu.ar#class-3"/>
+  </SetOfClasses>
+  <SetOfClasses>
+    <owl:Class IRI="http://crowd.fi.uncoma.edu.ar#class-4"/>
+  </SetOfClasses>
+  <SetOfClasses>
+    <owl:Class IRI="http://crowd.fi.uncoma.edu.ar#association-2"/>
+    <owl:Class IRI="http://crowd.fi.uncoma.edu.ar#association-1"/>
+  </SetOfClasses>
+  <SetOfClasses>
+    <owl:Class IRI="http://crowd.fi.uncoma.edu.ar#association-2"/>
+    <owl:Class IRI="http://crowd.fi.uncoma.edu.ar#association-1"/>
+  </SetOfClasses>
+  <SetOfObjectPropertySynsets>
+    <ObjectPropertySynset>
+      <owl:ObjectProperty IRI="http://www.w3.org/2002/07/owl#bottomObjectProperty"/>
+    </ObjectPropertySynset>
+  </SetOfObjectPropertySynsets>
+  <SetOfObjectPropertySynsets>
+    <ObjectPropertySynset>
+      <owl:ObjectProperty IRI="http://www.w3.org/2002/07/owl#bottomObjectProperty"/>
+    </ObjectPropertySynset>
+  </SetOfObjectPropertySynsets>
+  <SetOfObjectPropertySynsets>
+    <ObjectPropertySynset>
+      <owl:ObjectProperty IRI="http://www.w3.org/2002/07/owl#bottomObjectProperty"/>
+    </ObjectPropertySynset>
+  </SetOfObjectPropertySynsets>
+  <SetOfObjectPropertySynsets>
+    <ObjectPropertySynset>
+      <owl:ObjectProperty IRI="http://www.w3.org/2002/07/owl#bottomObjectProperty"/>
+    </ObjectPropertySynset>
+  </SetOfObjectPropertySynsets>
+  <SetOfObjectProperties>
+    <owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar#role-a"/>
+  </SetOfObjectProperties>
+  <SetOfObjectProperties>
+    <owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar#role-b"/>
+  </SetOfObjectProperties>
+  <SetOfObjectProperties>
+    <owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar#role-a"/>
+  </SetOfObjectProperties>
+  <SetOfObjectProperties>
+    <owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar#role-b"/>
+  </SetOfObjectProperties>
+  <Prefixes>
+    <Prefix name=""
+            fullIRI="http://crowd.fi.uncoma.edu.ar/kb1#"/>
+    <Prefix name="rdf"
+            fullIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="rdfs"
+            fullIRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Prefix name="xsd"
+            fullIRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="owl"
+            fullIRI="http://www.w3.org/2002/07/owl#"/>
+  </Prefixes>
+  <BooleanResponse result="false"/>
+  <BooleanResponse result="false"/>
+  <BooleanResponse result="false"/>
+  <BooleanResponse result="false"/>
+  <BooleanResponse result="true"/>
+  <BooleanResponse result="true"/>
+  <BooleanResponse result="true"/>
+  <BooleanResponse result="true"/>
+  <BooleanResponse result="true"/>
+  <BooleanResponse result="true"/>
+  <BooleanResponse result="false"/>
+  <BooleanResponse result="false"/>
+  <BooleanResponse result="false"/>
+  <BooleanResponse result="false"/>
+  <BooleanResponse result="true"/>
+  <BooleanResponse result="true"/>
+  <BooleanResponse result="true"/>
+  <BooleanResponse result="true"/>
+  <BooleanResponse result="true"/>
+  <BooleanResponse result="true"/>
+</ResponseMessage>

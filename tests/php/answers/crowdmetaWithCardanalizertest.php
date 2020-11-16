@@ -35,27 +35,6 @@ use Wicom\Translator\Builders\OWLlinkBuilder;
 class CrowdMetaWithCardAnalizerTest extends PHPUnit\Framework\TestCase{
 
   /**
-     @testdox Parse owllink answers for KF Binary Relationship 0..N Cardinalities
-   */
-/*  public function testAnswerOWLlinkOutputKFBinaryRelationship0NCardinalities(){
-
-    $input = file_get_contents("answers/data/testRelNoCardIntoOWLlink.owllink");
-    $output = file_get_contents("answers/data/testRelNoCardIntoOWLlinkOut.owllink");
-    $expected = file_get_contents("answers/data/testRelNoCardIntoOWLlinkOut.json");
-
-    $oa = new CrowdMetaAnalizer();
-    $oa->generate_answer($input, $output);
-    $oa->analize();
-    $answer = $oa->get_answer();
-
-    $answer->set_reasoner_input("");
-    $answer->set_reasoner_output("");
-    $actual = $answer->to_json();
-
-    $this->assertJsonStringEqualsJsonString($expected, $actual, true);
-  }*/
-
-  /**
      @testdox Parse owllink answers for KF Binary Relationship with Cardinalities. No class is inferred, just the current cardinalities are returned.
    */
   public function testAnswerOWLlinkOutputKFBinaryRelationshipCardinalities(){
@@ -91,6 +70,44 @@ class CrowdMetaWithCardAnalizerTest extends PHPUnit\Framework\TestCase{
     $actual = $answer->to_json();
     //var_dump($actual);
 
+    $this->assertJsonStringEqualsJsonString($expected, $actual, true);
+  }
+
+  /**
+     @testdox Parse owllink answers for KF Binary Relationship with Cardinalities. New cardinalities are returned.
+   */
+  public function testAnswerOWLlinkOutputKFBinaryRelationshipCardinalitiesInferred(){
+
+    $json = file_get_contents("answers/data/testKFwithCardinalitiesInferred.json");
+    $input_owl = file_get_contents("answers/data/testKFwithCardinalitiesInferred.owllink");
+    $output = file_get_contents("answers/data/testKFwithCardinalitiesInferredOut.owllink");
+    $expected = file_get_contents("answers/data/testKFwithCardinalitiesInferredOut.json");
+
+    $strategy = new DLMeta();
+    $strategy->set_check_cardinalities(true);
+    $builder = new OWLlinkBuilder();
+
+    $builder->insert_header();
+    $strategy->translate($json, $builder);
+    $strategy->translate_queries($strategy, $builder);
+    $builder->insert_footer();
+
+    $actual_owl = $builder->get_product();
+    $actual_owl = $actual_owl->to_string();
+
+    $this->assertXmlStringEqualsXmlString($input_owl, $actual_owl, true);
+
+    $oa = new CrowdMetaAnalizer();
+    $oa->generate_answer($input_owl, $output);
+    $oa->set_c_strategy($strategy);
+    $oa->analize();
+    $answer = $oa->get_answer();
+
+    $answer->set_reasoner_input("");
+    $answer->set_reasoner_output("");
+
+    $actual = $answer->to_json();
+    // var_dump($actual);
     $this->assertJsonStringEqualsJsonString($expected, $actual, true);
   }
 
