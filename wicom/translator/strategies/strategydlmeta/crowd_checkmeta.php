@@ -184,6 +184,8 @@ class DLCheckMeta {
 
       $inferred_card = [];
 
+      var_dump($stricter_arr);
+
       foreach ($stricter_arr as $stricter_el) {
         $subclass = $this->strategy->get_qa_pack()->get_classOfStricter($stricter_el);
         $rel = $this->strategy->get_qa_pack()->get_opOfStricter($stricter_el);
