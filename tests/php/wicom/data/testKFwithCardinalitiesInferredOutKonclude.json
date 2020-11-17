@@ -1,0 +1,179 @@
+{
+  "KF": {
+    "Entity type": {
+      "Value property": {
+        "Value type": []
+      },
+      "Data type": [],
+      "Object type": [
+        "http://crowd.fi.uncoma.edu.ar#class-1",
+        "http://crowd.fi.uncoma.edu.ar#class-2",
+        "http://crowd.fi.uncoma.edu.ar#class-3",
+        "http://crowd.fi.uncoma.edu.ar#class-4"
+      ]
+    },
+    "Role": [
+      {
+        "object type cardinality": [
+          "card1"
+        ],
+        "rolename": "http://crowd.fi.uncoma.edu.ar#role-a",
+        "entity type": "http://crowd.fi.uncoma.edu.ar#class-1",
+        "relationship": "http://crowd.fi.uncoma.edu.ar#association-1"
+      },
+      {
+        "object type cardinality": [
+          "card2"
+        ],
+        "rolename": "http://crowd.fi.uncoma.edu.ar#role-b",
+        "entity type": "http://crowd.fi.uncoma.edu.ar#class-2",
+        "relationship": "http://crowd.fi.uncoma.edu.ar#association-1"
+      },
+      {
+        "object type cardinality": [
+          "card3"
+        ],
+        "rolename": "http://crowd.fi.uncoma.edu.ar#role-a",
+        "entity type": "http://crowd.fi.uncoma.edu.ar#class-3",
+        "relationship": "http://crowd.fi.uncoma.edu.ar#association-2"
+      },
+      {
+        "object type cardinality": [
+          "card4"
+        ],
+        "rolename": "http://crowd.fi.uncoma.edu.ar#role-b",
+        "entity type": "http://crowd.fi.uncoma.edu.ar#class-4",
+        "relationship": "http://crowd.fi.uncoma.edu.ar#association-2"
+      }
+    ],
+    "Constraints": {
+      "Cardinality constraints": {
+        "Attibutive property cardinality": [],
+        "Object type cardinality": [
+          {
+            "name": "card1",
+            "maximum": "5",
+            "minimum": "0"
+          },
+          {
+            "name": "card2",
+            "maximum": "1",
+            "minimum": "0"
+          },
+          {
+            "name": "card3",
+            "maximum": "5",
+            "minimum": "0"
+          },
+          {
+            "name": "card4",
+            "maximum": "1",
+            "minimum": "0"
+          }
+        ]
+      },
+      "Disjointness constraints": {
+        "Disjoint object type": [],
+        "Disjoint role": []
+      },
+      "Completeness constraints": [],
+      "Mandatory constraints": {
+        "Mandatory": []
+      }
+    },
+    "Relationship": {
+      "Attributive property": {
+        "Attributive property": [],
+        "Attribute": {
+          "Attribute": [],
+          "Mapped to": []
+        }
+      },
+      "Subsumption": [
+        {
+          "entity child": "http://crowd.fi.uncoma.edu.ar#class-3",
+          "name": "http://crowd.fi.uncoma.edu.ar#generalization-2_cpcb",
+          "entity parent": "http://crowd.fi.uncoma.edu.ar#class-1"
+        },
+        {
+          "entity child": "http://crowd.fi.uncoma.edu.ar#class-4",
+          "name": "http://crowd.fi.uncoma.edu.ar#generalization-3_dPWP",
+          "entity parent": "http://crowd.fi.uncoma.edu.ar#class-2"
+        },
+        {
+          "entity child": "http://crowd.fi.uncoma.edu.ar#association-2",
+          "name": "http://crowd.fi.uncoma.edu.ar#generalization-1_QlNB",
+          "entity parent": "http://crowd.fi.uncoma.edu.ar#association-1"
+        }
+      ],
+      "Relationship": [
+        {
+          "entities": [
+            "http://crowd.fi.uncoma.edu.ar#class-1",
+            "http://crowd.fi.uncoma.edu.ar#class-2"
+          ],
+          "name": "http://crowd.fi.uncoma.edu.ar#association-1"
+        },
+        {
+          "entities": [
+            "http://crowd.fi.uncoma.edu.ar#class-3",
+            "http://crowd.fi.uncoma.edu.ar#class-4"
+          ],
+          "name": "http://crowd.fi.uncoma.edu.ar#association-2"
+        }
+      ]
+    }
+  },
+  "KF output": {
+    "KB Status": true,
+    "SATisfiable Entity types": [
+      "http://crowd.fi.uncoma.edu.ar#class-1",
+      "http://crowd.fi.uncoma.edu.ar#class-2",
+      "http://crowd.fi.uncoma.edu.ar#class-3",
+      "http://crowd.fi.uncoma.edu.ar#class-4",
+      "http://crowd.fi.uncoma.edu.ar#association-1",
+      "http://crowd.fi.uncoma.edu.ar#association-2"
+    ],
+    "UNSATisfiable Entity types": [],
+    "SATisfiable Roles": [],
+    "UNSATisfiable Roles": [],
+    "Subsumptions": [],
+    "Object types cardinalities": [
+      "card3"
+    ]
+  },
+  "OWL Axioms": {
+    "Equivalent Class Axioms": [
+      [
+        "http://crowd.fi.uncoma.edu.ar#association-1",
+        "http://crowd.fi.uncoma.edu.ar#association-2"
+      ]
+    ],
+    "Equivalent ObjectProperty Axioms": [],
+    "Equivalent DataProperty Axioms": [],
+    "Disjoint Class Axioms": [],
+    "Disjoint ObjectProperty Axioms": [],
+    "Disjoint DataProperty Axioms": []
+  },
+  "Reasoner warning": [
+    "Instruction 'IsObjectPropertySatisfiable' is currently not supported.",
+    "Instruction 'IsObjectPropertySatisfiable' is currently not supported.",
+    "Instruction 'IsObjectPropertySatisfiable' is currently not supported.",
+    "Instruction 'IsObjectPropertySatisfiable' is currently not supported.",
+    "Instruction 'GetDisjointClasses' is currently not supported.",
+    "Instruction 'GetDisjointClasses' is currently not supported.",
+    "Instruction 'GetDisjointClasses' is currently not supported.",
+    "Instruction 'GetDisjointClasses' is currently not supported.",
+    "Instruction 'GetDisjointClasses' is currently not supported.",
+    "Instruction 'GetDisjointClasses' is currently not supported.",
+    "Instruction 'GetDisjointObjectProperties' is currently not supported.",
+    "Instruction 'GetDisjointObjectProperties' is currently not supported.",
+    "Instruction 'GetDisjointObjectProperties' is currently not supported.",
+    "Instruction 'GetDisjointObjectProperties' is currently not supported.",
+    "Instruction 'GetEquivalentObjectProperties' is currently not supported.",
+    "Instruction 'GetEquivalentObjectProperties' is currently not supported.",
+    "Instruction 'GetEquivalentObjectProperties' is currently not supported.",
+    "Instruction 'GetEquivalentObjectProperties' is currently not supported.",
+    "Instruction 'GetPrefixes' is currently not supported."
+  ]
+}

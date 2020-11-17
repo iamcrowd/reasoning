@@ -36,16 +36,27 @@ class KFWicomCardinalitiesTest extends PHPUnit\Framework\TestCase
     /**
     @testdox tests reasoning services using racer reasoner looking for stricter cardinalities. Now N cardinality must become stricter.
     */
-    public function test_full_reasoning_KF_With_Cardinalities_Inferred(){
+    public function test_full_reasoning_KF_With_Cardinalities_Inferred_Racer(){
         $input = file_get_contents('wicom/data/testKFwithCardinalitiesInferred.json');
-///        $expected = file_get_contents('wicom/data/testKFwithCardinalitiesTrueRacerOut.json');
+        $expected = file_get_contents('wicom/data/testKFwithCardinalitiesInferredOut.json');
 
         $wicom = new KF_Wicom();
         $answer = $wicom->full_reasoning($input, 'metamodel', 'Racer', true);
 
-        var_dump($answer);
+        $this->assertJsonStringEqualsJsonString($expected, $answer, true);
+    }
 
-//        $this->assertJsonStringEqualsJsonString($expected, $answer, true);
+    /**
+    @testdox tests reasoning services using konclude reasoner looking for stricter cardinalities. Now N cardinality must become stricter.
+    */
+    public function test_full_reasoning_KF_With_Cardinalities_Inferred_Konclude(){
+        $input = file_get_contents('wicom/data/testKFwithCardinalitiesInferred.json');
+        $expected = file_get_contents('wicom/data/testKFwithCardinalitiesInferredOutKonclude.json');
+
+        $wicom = new KF_Wicom();
+        $answer = $wicom->full_reasoning($input, 'metamodel', 'Konclude', true);
+
+        $this->assertJsonStringEqualsJsonString($expected, $answer, true);
     }
 
 }
