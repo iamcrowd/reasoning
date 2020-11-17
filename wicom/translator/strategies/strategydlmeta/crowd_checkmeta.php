@@ -184,8 +184,6 @@ class DLCheckMeta {
 
       $inferred_card = [];
 
-      var_dump($stricter_arr);
-
       foreach ($stricter_arr as $stricter_el) {
         $subclass = $this->strategy->get_qa_pack()->get_classOfStricter($stricter_el);
         $rel = $this->strategy->get_qa_pack()->get_opOfStricter($stricter_el);
@@ -199,7 +197,7 @@ class DLCheckMeta {
 
           if ($c_maxcard != null){
             if ($c_maxcard != $posInfMaxcard){
-              $this->metabuilder->add_newMaxcardinality($role, $subclass, $rel, $posInfMaxcard);
+              $this->metabuilder->add_newMaxcardinality($otc_role, $posInfMaxcard);
               \array_push($inferred_card, $otc_role);
             }
           }

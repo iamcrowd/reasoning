@@ -565,7 +565,7 @@ class Answer{
     }
 
     function get_opOfStricter($stricter_el){
-      return $stricter_el["subclass"][1]["maxcard"]["filler"];
+      return $stricter_el["subclass"][1]["maxcard"][2]["filler"];
     }
 
     function get_roleOfStricter($stricter_el){

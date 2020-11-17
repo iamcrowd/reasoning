@@ -942,7 +942,7 @@ class CrowdMetaAnalizer extends AnsAnalizer{
     }
 
     function get_opOfStricter($stricter_el){
-      return $this->answer->get_classOfStricter($stricter_el);
+      return $this->answer->get_opOfStricter($stricter_el);
     }
 
     function get_roleOfStricter($stricter_el){
