@@ -97,4 +97,18 @@ class KFWicomRacerTest extends PHPUnit\Framework\TestCase
 
         $this->assertJsonStringEqualsJsonString($expected, $answer, true);
     }
+
+    /**
+    @testdox tests reasoning services using racer reasoner. Looking for role subsets
+    */
+    public function test_full_reasoning_KF_Roles(){
+        $input = file_get_contents('wicom/data/testKFRolesInferred.json');
+        $expected = file_get_contents('wicom/data/testKFRolesInferredOut.json');
+
+        $wicom = new KF_Wicom();
+        $answer = $wicom->full_reasoning($input, 'metamodel', 'Racer', true);
+
+        //var_dump($answer);
+        $this->assertJsonStringEqualsJsonString($expected, $answer, true);
+    }
 }
