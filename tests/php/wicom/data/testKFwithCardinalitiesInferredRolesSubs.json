@@ -1,0 +1,130 @@
+{
+    "Entity type": {
+        "Value property": {
+            "Value type": []
+        },
+        "Data type": [],
+        "Object type": [
+            "http://crowd.fi.uncoma.edu.ar#class-1",
+            "http://crowd.fi.uncoma.edu.ar#class-2",
+            "http://crowd.fi.uncoma.edu.ar#class-3",
+            "http://crowd.fi.uncoma.edu.ar#class-4"
+        ]
+    },
+    "Role": [
+        {
+            "object type cardinality": [
+                "card1"
+            ],
+            "rolename": "http://crowd.fi.uncoma.edu.ar#role-a",
+            "entity type": "http://crowd.fi.uncoma.edu.ar#class-1",
+            "relationship": "http://crowd.fi.uncoma.edu.ar#association-1"
+        },
+        {
+            "object type cardinality": [
+                "card2"
+            ],
+            "rolename": "http://crowd.fi.uncoma.edu.ar#role-b",
+            "entity type": "http://crowd.fi.uncoma.edu.ar#class-2",
+            "relationship": "http://crowd.fi.uncoma.edu.ar#association-1"
+        },
+        {
+            "object type cardinality": [
+                "card3"
+            ],
+            "rolename": "http://crowd.fi.uncoma.edu.ar#role-c",
+            "entity type": "http://crowd.fi.uncoma.edu.ar#class-3",
+            "relationship": "http://crowd.fi.uncoma.edu.ar#association-2"
+        },
+        {
+            "object type cardinality": [
+                "card4"
+            ],
+            "rolename": "http://crowd.fi.uncoma.edu.ar#role-d",
+            "entity type": "http://crowd.fi.uncoma.edu.ar#class-4",
+            "relationship": "http://crowd.fi.uncoma.edu.ar#association-2"
+        }
+    ],
+    "Constraints": {
+        "Cardinality constraints": {
+            "Attibutive property cardinality": [],
+            "Object type cardinality": [
+                {
+                    "name": "card1",
+                    "maximum": "5",
+                    "minimum": "0"
+                },
+                {
+                    "name": "card2",
+                    "maximum": "1",
+                    "minimum": "0"
+                },
+                {
+                    "name": "card3",
+                    "maximum": "*",
+                    "minimum": "0"
+                },
+                {
+                    "name": "card4",
+                    "maximum": "1",
+                    "minimum": "0"
+                }
+            ]
+        },
+        "Disjointness constraints": {
+            "Disjoint object type": [],
+            "Disjoint role": []
+        },
+        "Completeness constraints": [],
+        "Mandatory constraints": {
+            "Mandatory": []
+        }
+    },
+    "Relationship": {
+        "Attributive property": {
+            "Attributive property": [],
+            "Attribute": {
+                "Attribute": [],
+                "Mapped to": []
+            }
+        },
+        "Subsumption": [
+            {
+                "entity child": "http://crowd.fi.uncoma.edu.ar#class-3",
+                "name": "http://crowd.fi.uncoma.edu.ar#generalization-2_cpcb_h1j6",
+                "entity parent": "http://crowd.fi.uncoma.edu.ar#class-1"
+            },
+            {
+                "entity child": "http://crowd.fi.uncoma.edu.ar#class-4",
+                "name": "http://crowd.fi.uncoma.edu.ar#generalization-3_dPWP_dh3y",
+                "entity parent": "http://crowd.fi.uncoma.edu.ar#class-2"
+            },
+            {
+                "entity child": "http://crowd.fi.uncoma.edu.ar#role-c",
+                "name": "http://crowd.fi.uncoma.edu.ar#generalization-4_hRso",
+                "entity parent": "http://crowd.fi.uncoma.edu.ar#role-a"
+            },
+            {
+                "entity child": "http://crowd.fi.uncoma.edu.ar#role-d",
+                "name": "http://crowd.fi.uncoma.edu.ar#generalization-5_Z0yD",
+                "entity parent": "http://crowd.fi.uncoma.edu.ar#role-b"
+            }
+        ],
+        "Relationship": [
+            {
+                "entities": [
+                    "http://crowd.fi.uncoma.edu.ar#class-1",
+                    "http://crowd.fi.uncoma.edu.ar#class-2"
+                ],
+                "name": "http://crowd.fi.uncoma.edu.ar#association-1"
+            },
+            {
+                "entities": [
+                    "http://crowd.fi.uncoma.edu.ar#class-3",
+                    "http://crowd.fi.uncoma.edu.ar#class-4"
+                ],
+                "name": "http://crowd.fi.uncoma.edu.ar#association-2"
+            }
+        ]
+    }
+}
