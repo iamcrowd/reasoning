@@ -1098,10 +1098,10 @@ class OWLlinkDocument extends Document{
 
      */
     public function insert_getSubClassHierarchy_query(){
-	$this->content->startElement("GetSubClassHierarchy");
-	$this->content->writeAttribute("kb", $this->actual_kb);
+	     $this->content->startElement("GetSubClassHierarchy");
+	     $this->content->writeAttribute("kb", $this->actual_kb);
 
-	$this->content->endElement();
+	     $this->content->endElement();
     }
 
     /**
@@ -1111,10 +1111,10 @@ class OWLlinkDocument extends Document{
 
      */
     public function insert_getSubObjectPropertyHierarchy_query(){
-	$this->content->startElement("GetSubObjectPropertyHierarchy");
-	$this->content->writeAttribute("kb", $this->actual_kb);
+	     $this->content->startElement("GetSubObjectPropertyHierarchy");
+	     $this->content->writeAttribute("kb", $this->actual_kb);
 
-	$this->content->endElement();
+	     $this->content->endElement();
     }
 
 

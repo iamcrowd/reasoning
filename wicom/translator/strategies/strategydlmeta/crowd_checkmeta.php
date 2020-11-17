@@ -106,7 +106,7 @@ class DLCheckMeta {
           "UNSATisfiable Entity types" => $this->strategy->get_qa_pack()->get_unsatClasses(),
           "SATisfiable Roles" => $this->strategy->get_qa_pack()->get_satObjectProperties(),
           "UNSATisfiable Roles" => $this->strategy->get_qa_pack()->get_unsatObjectProperties(),
-          "Subsumptions" => $this->inferred_subclasses(),
+          "Subsumptions" => $this->inferred_subclasses() + $this->inferred_subobjectproperties(),
           "Object types cardinalities" => $this->stricter_cardinalities(),
         ];
       $owl_ax = [
@@ -154,6 +154,31 @@ class DLCheckMeta {
         }
       }
       return $inferred_subs;
+    }
+
+    /**
+       Looking for inferred subobjectproperties (or KF subsumptions). This function inserts new subsumptions in the original KF instance
+       and returns an array of ids of such subsumptions to indicate that were implicit in the instance.
+
+       @// TODO: here we should filter unsat op because unsat op are op of nothing
+       @// TODO: consider other special cases
+    */
+    protected function inferred_subobjectproperties(){
+      $this->strategy->get_qa_pack()->get_unsatClasses();
+      $op = $this->strategy->get_objectProperties();
+      $inferred_subs_op = [];
+
+      foreach ($op as $jelem) {
+        $subop = $this->strategy->get_qa_pack()->get_subobjectproperty($jelem);
+
+        foreach ($subop as $sub_op) {
+          if (!$this->metabuilder->subsumption_in_instance($sub_op, $jelem)){
+            $name = $this->metabuilder->insert_subsumption($sub_op, $jelem);
+            \array_push($inferred_subs_op, $name);
+          }
+        }
+      }
+      return $inferred_subs_op;
     }
 
     /**

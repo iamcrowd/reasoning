@@ -203,7 +203,7 @@ class CrowdMetaQueries extends QueriesGenerator {
        @see gen_class_satisfiable() for parameters.
      */
     function gen_subObjectPropertyHierarchy($builder){
-
+        parent::gen_subObjectPropertyHierarchy($builder);
     }
 
 

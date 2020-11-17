@@ -70,6 +70,7 @@ abstract class DocumentBuilder extends Documents{
        abstract public function insert_satisfiable_class($classname); */
 
     public function insert_getSubClassHierarchy_query(){}
+    public function insert_getSubObjectPropertyHierarchy_query(){}
     public function insert_get_disjointClasses_query($classname){}
     public function insert_get_equivalentClasses_query($classname){}
     public function insert_getPrefixes(){}
@@ -77,7 +78,6 @@ abstract class DocumentBuilder extends Documents{
     public function insert_isEntailedDirectDisjointClasses_query($lst_classnames){}
     public function insert_isEntailedDirectSubClasses_query($lst_classanames){}
     public function insert_isEntailed_query($lst_classnames){}
-    public function insert_getSubObjectPropertyHierarchy_query(){}
     public function insert_satisfiable_objectProperty($objprop_name){}
     public function insert_satisfiable_dataProperty($dataprop_name){}
     public function insert_satisfiable_class($classname){}

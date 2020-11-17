@@ -107,6 +107,10 @@ abstract class QAPack{
       return $this->ans_analizer->get_subclass($parent);
     }
 
+    public function get_subobjectproperty($parent){
+      return $this->ans_analizer->get_subobjectproperty($parent);
+    }
+
     public function get_kb_status(){
       return $this->ans_analizer->get_kb_status();
     }

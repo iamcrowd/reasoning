@@ -60,6 +60,7 @@ class Answer{
     protected $satis_dp = [];
     protected $unsatis_dp = [];
     protected $subsumptions = [];
+    protected $subsumptions_op = [];
     protected $equivalences = [];
     protected $equivalences_op = [];
     protected $equivalences_dp = [];
@@ -136,8 +137,14 @@ class Answer{
 
     function add_subsumptions($subsumptions_n){
 	     foreach($subsumptions_n as $s){
-            array_push($this->subsumptions, $s);
-	         }
+         array_push($this->subsumptions, $s);
+       }
+    }
+
+    function add_subsumptions_op($subsumptions_op_n){
+       foreach($subsumptions_op_n as $s){
+          array_push($this->subsumptions_op, $s);
+        }
     }
 
     /**
@@ -334,6 +341,7 @@ class Answer{
                  "objectproperties" => $this->unsatis_op,
                  "dataproperties" => $this->unsatis_dp],
              "subsumptions" => $this->subsumptions,
+             "subsumptions_op" => $this->subsumptions_op,
              "disjunctions" => $this->disjunctions,
              "disjunctions_op" => $this->disjunctions_op,
              "disjunctions_dp" => $this->disjunctions_dp,
@@ -345,7 +353,7 @@ class Answer{
                  "input" => $this->reasoner_input,
                  "output" => $this->reasoner_output,
                  // "owl2" => $this->get_new_owl2()->to_string()
-	     ],
+	            ],
              "inferredSubs" => $this->inferredSubs,
              "inferredCards" => $this->inferredCards,
              "inferredDisj" => $this->inferredDisj,
@@ -429,6 +437,26 @@ class Answer{
              ){
                if (\strcmp($el["subclass"][1]["class"],$class) == 0){
                  array_push($all_sub, $el["subclass"][0]["class"]);
+              }
+          }
+        }
+      }
+      return $all_sub;
+    }
+
+    /**
+      Get a subclass given a class as father
+    */
+    function get_subobjectproperty($op){
+      $all_sub = [];
+      foreach ($this->beauty_responses as $el) {
+        if (array_key_exists('subrole', $el)){
+          if (
+              (array_key_exists('role', $el["subrole"][0])) &&
+              (array_key_exists('role', $el["subrole"][1]))
+             ){
+               if (\strcmp($el["subrole"][1]["role"], $op) == 0){
+                 array_push($all_sub, $el["subrole"][0]["role"]);
               }
           }
         }

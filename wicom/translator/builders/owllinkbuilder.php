@@ -339,7 +339,6 @@ class OWLlinkBuilder extends DocumentBuilder{
       $this->product->insert_getSubObjectPropertyHierarchy_query();
     }
 
-
     ///@}
     // Queries
 

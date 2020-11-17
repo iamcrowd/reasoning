@@ -265,6 +265,87 @@ class CrowdMetaAnalizer extends AnsAnalizer{
     }
 
     /**
+      Parses ObjectProperty hierarchy.
+      @return an array with each sub and sub object property
+
+      @// NOTE:
+      <ObjectPropertyHierarchy>
+        <ObjectPropertySynset>
+          <owl:ObjectProperty IRI="http://www.w3.org/2002/07/owl#bottomObjectProperty"/>
+        </ObjectPropertySynset>
+        <ObjectPropertySubObjectPropertiesPair>
+          <ObjectPropertySynset>
+            <owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar#role-b"/>
+          </ObjectPropertySynset>
+          <SubObjectPropertySynsets>
+            <ObjectPropertySynset>
+              <owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar#role-d"/>
+            </ObjectPropertySynset>
+          </SubObjectPropertySynsets>
+        </ObjectPropertySubObjectPropertiesPair>
+        <ObjectPropertySubObjectPropertiesPair>
+          <ObjectPropertySynset>
+            <owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar#role-a"/>
+          </ObjectPropertySynset>
+          <SubObjectPropertySynsets>
+            <ObjectPropertySynset>
+              <owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar#role-c"/>
+            </ObjectPropertySynset>
+          </SubObjectPropertySynsets>
+        </ObjectPropertySubObjectPropertiesPair>
+      </ObjectPropertyHierarchy>
+
+    */
+    function parse_owllinkOPhierarchy(){
+      $hierarchies = [];
+
+      foreach ($this->owllink_responses->current()->children() as $first_children) {
+        $tag_first_child = $first_children->getName();
+        if (($tag_first_child != "ObjectPropertySynset") and ($tag_first_child = "ObjectPropertySubObjectPropertiesPair")){
+          $hierarchy = [];
+
+          foreach ($first_children->children() as $second_children){ //<ClassSynset>
+            $tag_second_child = $second_children->getName();
+
+            switch ($tag_second_child){
+
+              case "ObjectPropertySynset":  //parent/s
+                $op_parent = $second_children->children("owl",TRUE);
+                $op_parent_name = [];
+                $op_child_name = [];
+                for ($i=0; $i < $op_parent->count(); $i++) {
+                  array_push($op_parent_name, $op_parent[$i]->attributes()[0]);
+                }
+                break;
+
+              case "SubObjectPropertySynsets" : //child/s
+                foreach ($second_children->children() as $third_children){
+                  $tag_third_child = $third_children->getName();
+
+                  if ($tag_third_child = "ObjectPropertySynset"){
+                    $op_child = $third_children->children("owl",TRUE);
+
+                    for ($i=0; $i < $op_child->count(); $i++){
+                      array_push($op_child_name, $op_child[$i]->attributes()[0]);
+                    }
+                  }
+                }
+                break;
+              }
+              if (count($op_parent_name) != 0 && count($op_child_name) != 0){
+                foreach ($op_parent_name as $parent_e) {
+                  foreach ($op_child_name as $child_e) {
+                    array_push($hierarchies, [$parent_e->__toString(),$child_e->__toString()]);
+                  }
+                }
+              }
+          } //foreach
+        }
+      }
+      return $hierarchies;
+    }
+
+    /**
     Parsing OWLlink <ClassSynsets> tag. This function returns an array of disjoint classes.
     <ClassSynsets>
       <ClassSynset>
@@ -448,6 +529,7 @@ class CrowdMetaAnalizer extends AnsAnalizer{
           "IsObjectPropertySatisfiable" => [],
           "IsDataPropertySatisfiable" => [],
           "GetSubClassHierarchy" => [],
+          "GetSubObjectPropertyHierarchy" => [],
           "GetDisjointClasses" => [],
           "GetEquivalentClasses" => [],
           "GetDisjointObjectProperties" => [],
@@ -556,6 +638,25 @@ class CrowdMetaAnalizer extends AnsAnalizer{
                     array_push($bool_responses["DL"],["subclass" => [
                                                       ["class" => $subhier[$counter]],
                                                       ["class" => $parent]]]);
+                    $counter = $counter + 1;
+                  }
+                }
+                break;
+
+              case "GetSubObjectPropertyHierarchy":   // {father,[childs]}
+                $name_response = $this->owllink_responses->current()->getName();
+                if ($name_response = "ObjectPropertyHierarchy"){
+                  $hierarchy = $this->parse_owllinkOPhierarchy();
+                  array_push($bool_responses[$name_query],$hierarchy);
+                }
+                foreach ($hierarchy as $subhier) {
+                  $parent = $subhier[0];
+                  $counter = 1;
+                  while ($counter < count($subhier)){
+                    // translate response to DL
+                    array_push($bool_responses["DL"],["subrole" => [
+                                                      ["role" => $subhier[$counter]],
+                                                      ["role" => $parent]]]);
                     $counter = $counter + 1;
                   }
                 }
@@ -856,6 +957,7 @@ class CrowdMetaAnalizer extends AnsAnalizer{
         }
 
         $this->answer->add_subsumptions($responses["GetSubClassHierarchy"]);
+        $this->answer->add_subsumptions_op($responses["GetSubObjectPropertyHierarchy"]);
         $this->answer->add_disjunctions($responses["GetDisjointClasses"]);
         $this->answer->add_disjunctions_op($responses["GetDisjointObjectProperties"]);
         $this->answer->add_disjunctions_dp($responses["GetDisjointDataProperties"]);
@@ -923,6 +1025,10 @@ class CrowdMetaAnalizer extends AnsAnalizer{
 
     function get_subclass($class){
       return $this->answer->get_subclass($class);
+    }
+
+    function get_subobjectproperty($op){
+      return $this->answer->get_subobjectproperty($op);
     }
 
     function get_disjoint_class($class){
