@@ -197,9 +197,6 @@ class DLMetaTest extends PHPUnit\Framework\TestCase{
        into OWLlink with SAT queries.
      */
     public function testSubRolesIntoOWLlinkWithSat(){
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
 
         $json = file_get_contents("translator/strategies/data/testSubRoleIntoOWLlink.json");
         $expected = file_get_contents("translator/strategies/data/testSubRoleIntoOWLlink.owllink");
@@ -228,9 +225,7 @@ class DLMetaTest extends PHPUnit\Framework\TestCase{
        into OWLlink with SAT queries.
      */
     public function testSubRelationshipsIntoOWLlinkWithSat(){
-      $this->markTestIncomplete(
-          'This test has not been implemented yet.'
-      );
+
       $json = file_get_contents("translator/strategies/data/testSubRelationshipsIntoOWLlink.json");
       $expected = file_get_contents("translator/strategies/data/testSubRelationshipsIntoOWLlink.owllink");
 
