@@ -221,6 +221,34 @@ class DLMetaTest extends PHPUnit\Framework\TestCase{
     }
 
     /**
+       @testdox Translate a simple model with some KF All ROLE SUBSUMPTIONS involved in relationship into OWLlink with SAT queries.
+     */
+    public function testSubRolesInEachOneFromRelIntoOWLlinkWithSat(){
+
+        $json = file_get_contents("translator/strategies/data/testSubRoleInEachOnefromRelIntoOWLlink.json");
+        $expected = file_get_contents("translator/strategies/data/testSubRoleInEachOnefromRelIntoOWLlink.owllink");
+
+        if ($this->validate_against_scheme($json)){
+          $strategy = new DLMeta();
+          $builder = new OWLlinkBuilder();
+
+          $builder->insert_header();
+          $strategy->translate($json, $builder);
+          $strategy->translate_queries($strategy, $builder);
+          $builder->insert_footer();
+
+          $actual = $builder->get_product();
+          $actual = $actual->to_string();
+          //var_dump($actual);
+
+          $this->assertXmlStringEqualsXmlString($expected, $actual, true);
+        }
+        else {
+          $this->assertTrue(false, "JSON KF does not match against KF Scheme");
+        }
+    }
+
+    /**
        @testdox Translate a simple model with some KF RELATIONSHIP SUBSUMPTIONS
        into OWLlink with SAT queries.
      */
