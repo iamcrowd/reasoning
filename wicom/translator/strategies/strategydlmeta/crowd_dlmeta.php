@@ -176,6 +176,26 @@ class DLMeta extends Metamodel{
       return null;
     }
 
+    /**
+      Return a complete role given an role id.
+      @param a role id
+      @return an array of both class and relationship associated to role id [class, rel]. Otherwise, []
+    */
+    protected function get_w_role($json, $roleid){
+      $js_role = $json["Role"];
+
+      foreach ($js_role as $ro) {
+        if ((strcmp($ro["rolename"], $roleid) == 0)){
+          return [
+              "role" => $ro["rolename"],
+              "entity" => $ro["entity type"],
+              "relationship" => $ro["relationship"]
+            ];
+        }
+      }
+      return [];
+    }
+
     protected function is_relationship($json, $rel){
       $js_rel = $json["Relationship"]["Relationship"];
 
@@ -283,33 +303,58 @@ class DLMeta extends Metamodel{
                       $role_parent = $this->get_role($json, $parent, $end_ot_parent[$i]);
 
                       if (($role_child != null) && ($role_parent != null)){
-                        if (!in_array([$role_child, $role_parent], $already_constrencoded)){
-                          $lst_r = [
-                            ["subrole" => [
-                              ["role" => $role_child],
-                              ["role" => $role_parent]
-                            ]
-                            ]];
+                        $role_elem_p = $this->get_w_role($json, $role_parent);
+                        $role_elem_c = $this->get_w_role($json, $role_child);
+
+                        if ((\count($role_elem_p) != 0) && (\count($role_elem_c) != 0)){
+                          if (!in_array([$role_elem_c, $role_elem_p], $already_constrencoded)){
+
+                            $lst_r = [
+                              ["subclass" => [
+                                ["exists" => [
+                                  ["inverse" => ["role" => $role_elem_c["role"]]],
+                                  ["class" => $role_elem_c["relationship"]]]
+                                ],
+                                ["exists" => [
+                                  ["inverse" => ["role" => $role_elem_p["role"]]],
+                                  ["class" => $role_elem_p["relationship"]]]
+                                ]
+                              ]
+                              ]
+                            ];
                           $builder->translate_DL($lst_r);
-                          array_push($already_constrencoded, [$role_child, $role_parent]);
+                          array_push($already_constrencoded, [$role_elem_c, $role_elem_p]);
                         }
                       }
                     }
                   }
+                }
 
-            } elseif ($this->is_role($json,$parent) && $this->is_role($json,$child)) {
-                if (!in_array([$child, $parent], $already_constrencoded)){
-                  $lst = [
-                    ["subrole" => [
-                      ["role" => $child],
-                      ["role" => $parent]
-                    ]
-                    ]];
-                  $builder->translate_DL($lst);
-                  array_push($already_constrencoded, [$child, $parent]);
+            } elseif ($this->is_role($json, $parent) && $this->is_role($json, $child)) {
+                  $role_elem_p = $this->get_w_role($json, $parent);
+                  $role_elem_c = $this->get_w_role($json, $child);
+
+                  if ((\count($role_elem_p) != 0) && (\count($role_elem_c) != 0)){
+                    if (!in_array([$role_elem_c, $role_elem_p], $already_constrencoded)){
+                      $lst = [
+                        ["subclass" => [
+                          ["exists" => [
+                            ["inverse" => ["role" => $role_elem_c["role"]]],
+                            ["class" => $role_elem_c["relationship"]]]
+                          ],
+                          ["exists" => [
+                            ["inverse" => ["role" => $role_elem_p["role"]]],
+                            ["class" => $role_elem_p["relationship"]]]
+                          ]
+                        ]
+                        ]
+                      ];
+                      $builder->translate_DL($lst);
+                      array_push($already_constrencoded, [$role_elem_c, $role_elem_p]);
+                  }
                 }
             }
-      }
+        }
     }
 
     /**
