@@ -105,6 +105,9 @@ class KF_Wicom extends Wicom{
         $trans = new MetamodelTranslator($encoding, new OWLlinkBuilder());
         $owllink_str = $trans->to_owllink($json_str);
 
+
+        var_dump($owllink_str);
+
         $reasonerconn = null;
         switch($reasoner){
             case "Konclude" :

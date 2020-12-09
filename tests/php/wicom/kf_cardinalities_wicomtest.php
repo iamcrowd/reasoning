@@ -72,4 +72,17 @@ class KFWicomCardinalitiesTest extends PHPUnit\Framework\TestCase
         $this->assertJsonStringEqualsJsonString($expected, $answer, true);
     }
 
+    /**
+    @testdox tests reasoning services using racer reasoner looking for stricter cardinalities. Now N cardinality must become stricter. Only for SubRelationships. Role names are different.
+    */
+    public function test_full_reasoning_KF_With_Cardinalities_Inferred_SubRelationship_Racer(){
+        $input = file_get_contents('wicom/data/testKFwithCardinalitiesInferredWithDifferentRoles.json');
+        $expected = file_get_contents('wicom/data/testKFwithCardinalitiesInferredWithDifferentRolesOut.json');
+
+        $wicom = new KF_Wicom();
+        $answer = $wicom->full_reasoning($input, 'metamodel', 'Racer', true);
+
+        $this->assertJsonStringEqualsJsonString($expected, $answer, true);
+    }
+
 }

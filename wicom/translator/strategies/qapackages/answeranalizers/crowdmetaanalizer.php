@@ -899,10 +899,11 @@ class CrowdMetaAnalizer extends AnsAnalizer{
       foreach ($anArrayOfMaxCard as $role) {
         $a_responses = $role["query responses"];
         $i = 0;
-        while ($i < count($a_responses) && !(filter_var($a_responses[$i]["bool"], FILTER_VALIDATE_BOOLEAN))) {
+        var_dump($a_responses);
+        while ($i <= (count($a_responses) - 1) && !(filter_var($a_responses[$i]["bool"], FILTER_VALIDATE_BOOLEAN))) {
           $i++;
         }
-        if (filter_var($a_responses[$i]["bool"], FILTER_VALIDATE_BOOLEAN)){
+        if ($i <= (count($a_responses) - 1) && (filter_var($a_responses[$i]["bool"], FILTER_VALIDATE_BOOLEAN))){
           $el = [
                           ["subclass" => [
                             ["class" => $role["class"]],
