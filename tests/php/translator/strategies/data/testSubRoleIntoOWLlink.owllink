@@ -215,6 +215,6 @@
 	</IsObjectPropertySatisfiable>
 
 	<GetSubClassHierarchy kb="http://crowd.fi.uncoma.edu.ar/kb1#"/>
-	
+	<GetSubObjectPropertyHierarchy kb="http://crowd.fi.uncoma.edu.ar/kb1#"/>
   <GetPrefixes kb="http://crowd.fi.uncoma.edu.ar/kb1#"/>
 </RequestMessage>

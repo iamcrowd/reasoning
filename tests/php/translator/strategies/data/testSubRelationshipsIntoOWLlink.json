@@ -1,110 +1,125 @@
 {
-  "Entity type":
-    {
-      "Object type": [
-        "http://crowd.fi.uncoma.edu.ar/kb1#Institution",
-        "http://crowd.fi.uncoma.edu.ar/kb1#Person",
-        "http://crowd.fi.uncoma.edu.ar/kb1#Employee",
-        "http://crowd.fi.uncoma.edu.ar/kb1#Faculty"
-      ],
-      "Data type" : [],
-			"Value property": []
-		},
- "Role": [{
-     "rolename": "http://crowd.fi.uncoma.edu.ar/kb1#person",
-     "relationship": "http://crowd.fi.uncoma.edu.ar/kb1#enrolled",
-     "entity type": "http://crowd.fi.uncoma.edu.ar/kb1#Person",
-     "object type cardinality": ["http://crowd.fi.uncoma.edu.ar/kb1#card1"]
-   },
-   {
-     "rolename": "http://crowd.fi.uncoma.edu.ar/kb1#institution",
-     "relationship": "http://crowd.fi.uncoma.edu.ar/kb1#enrolled",
-     "entity type": "http://crowd.fi.uncoma.edu.ar/kb1#Institution",
-     "object type cardinality": ["http://crowd.fi.uncoma.edu.ar/kb1#card2"]
-   },
-   {
-       "rolename": "http://crowd.fi.uncoma.edu.ar/kb1#employee",
-       "relationship": "http://crowd.fi.uncoma.edu.ar/kb1#works",
-       "entity type": "http://crowd.fi.uncoma.edu.ar/kb1#Employee",
-       "object type cardinality": ["http://crowd.fi.uncoma.edu.ar/kb1#card3"]
-     },
-     {
-       "rolename": "http://crowd.fi.uncoma.edu.ar/kb1#faculty",
-       "relationship": "http://crowd.fi.uncoma.edu.ar/kb1#works",
-       "entity type": "http://crowd.fi.uncoma.edu.ar/kb1#Faculty",
-       "object type cardinality": ["http://crowd.fi.uncoma.edu.ar/kb1#card4"]
-     }],
- "Relationship":
-   {
-     "Subsumption": [
-       {
-         "name": "http://crowd.fi.uncoma.edu.ar/kb1#r1",
-         "entity parent": "http://crowd.fi.uncoma.edu.ar/kb1#institution",
-         "entity child": "http://crowd.fi.uncoma.edu.ar/kb1#faculty",
-         "disjointness constraints": "",
-         "completeness constraints": ""
-       },
-       {
-         "name": "http://crowd.fi.uncoma.edu.ar/kb1#r2",
-         "entity parent": "http://crowd.fi.uncoma.edu.ar/kb1#person",
-         "entity child": "http://crowd.fi.uncoma.edu.ar/kb1#employee",
-         "disjointness constraints": "",
-         "completeness constraints": ""
-       },
-       {
-         "name": "http://crowd.fi.uncoma.edu.ar/kb1#r3",
-         "entity parent": "http://crowd.fi.uncoma.edu.ar/kb1#enrolled",
-         "entity child": "http://crowd.fi.uncoma.edu.ar/kb1#works",
-         "disjointness constraints": "",
-         "completeness constraints": ""
-       }
-     ],
-     "Relationship" : [{
-       "name": "http://crowd.fi.uncoma.edu.ar/kb1#enrolled",
-       "entities": [
-         "http://crowd.fi.uncoma.edu.ar/kb1#Person",
-         "http://crowd.fi.uncoma.edu.ar/kb1#Institution"
-       ]
-     },
-     {
-       "name": "http://crowd.fi.uncoma.edu.ar/kb1#works",
-       "entities": [
-         "http://crowd.fi.uncoma.edu.ar/kb1#Employee",
-         "http://crowd.fi.uncoma.edu.ar/kb1#Faculty"
-       ]
-     }],
-     "Attributive Property": []
-   },
- "Constraints" : {
-   "Disjointness constraints" :
-    {
-     "Disjoint object type": [],
-     "Disjoint role": []
+    "Entity type": {
+        "Value property": {
+            "Value type": []
+        },
+        "Data type": [],
+        "Object type": [
+            "http://crowd.fi.uncoma.edu.ar/kb1#Person",
+            "http://crowd.fi.uncoma.edu.ar/kb1#Institution",
+            "http://crowd.fi.uncoma.edu.ar/kb1#Employee",
+            "http://crowd.fi.uncoma.edu.ar/kb1#Faculty"
+        ]
     },
-    "Completeness constraints" : [],
-    "Cardinality constraints":
-    {
-     "Object type cardinality": [{
-       "name": "http://crowd.fi.uncoma.edu.ar/kb1#card1",
-       "minimum": "0",
-       "maximum": "N"
-     },
-     {
-       "name": "http://crowd.fi.uncoma.edu.ar/kb1#card2",
-       "minimum": "0",
-       "maximum": "N"
-     },
-     {
-       "name": "http://crowd.fi.uncoma.edu.ar/kb1#card3",
-       "minimum": "0",
-       "maximum": "N"
-     },
-     {
-       "name": "http://crowd.fi.uncoma.edu.ar/kb1#card4",
-       "minimum": "0",
-       "maximum": "N"
-     }],
-     "Attibutive property cardinality": []
-   }
- }
+    "Role": [
+        {
+            "object type cardinality": [
+                "card1"
+            ],
+            "rolename": "http://crowd.fi.uncoma.edu.ar/kb1#person",
+            "entity type": "http://crowd.fi.uncoma.edu.ar/kb1#Person",
+            "relationship": "http://crowd.fi.uncoma.edu.ar/kb1#enrolled"
+        },
+        {
+            "object type cardinality": [
+                "card2"
+            ],
+            "rolename": "http://crowd.fi.uncoma.edu.ar/kb1#institution",
+            "entity type": "http://crowd.fi.uncoma.edu.ar/kb1#Institution",
+            "relationship": "http://crowd.fi.uncoma.edu.ar/kb1#enrolled"
+        },
+        {
+            "object type cardinality": [
+                "card3"
+            ],
+            "rolename": "http://crowd.fi.uncoma.edu.ar/kb1#employee",
+            "entity type": "http://crowd.fi.uncoma.edu.ar/kb1#Employee",
+            "relationship": "http://crowd.fi.uncoma.edu.ar/kb1#works"
+        },
+        {
+            "object type cardinality": [
+                "card4"
+            ],
+            "rolename": "http://crowd.fi.uncoma.edu.ar/kb1#faculty",
+            "entity type": "http://crowd.fi.uncoma.edu.ar/kb1#Faculty",
+            "relationship": "http://crowd.fi.uncoma.edu.ar/kb1#works"
+        }
+    ],
+    "Constraints": {
+        "Cardinality constraints": {
+            "Attibutive property cardinality": [],
+            "Object type cardinality": [
+                {
+                    "name": "card1",
+                    "maximum": "*",
+                    "minimum": "0"
+                },
+                {
+                    "name": "card2",
+                    "maximum": "*",
+                    "minimum": "0"
+                },
+                {
+                    "name": "card3",
+                    "maximum": "*",
+                    "minimum": "0"
+                },
+                {
+                    "name": "card4",
+                    "maximum": "*",
+                    "minimum": "0"
+                }
+            ]
+        },
+        "Disjointness constraints": {
+            "Disjoint object type": [],
+            "Disjoint role": []
+        },
+        "Completeness constraints": [],
+        "Mandatory constraints": {
+            "Mandatory": []
+        }
+    },
+    "Relationship": {
+        "Attributive property": {
+            "Attributive property": [],
+            "Attribute": {
+                "Attribute": [],
+                "Mapped to": []
+            }
+        },
+        "Subsumption": [
+            {
+                "entity child": "http://crowd.fi.uncoma.edu.ar/kb1#Employee",
+                "name": "http://crowd.fi.uncoma.edu.ar/kb1#generalization-2_8rdf",
+                "entity parent": "http://crowd.fi.uncoma.edu.ar/kb1#Person"
+            },
+            {
+                "entity child": "http://crowd.fi.uncoma.edu.ar/kb1#Faculty",
+                "name": "http://crowd.fi.uncoma.edu.ar/kb1#generalization-3_ouDB",
+                "entity parent": "http://crowd.fi.uncoma.edu.ar/kb1#Institution"
+            },
+            {
+                "entity child": "http://crowd.fi.uncoma.edu.ar/kb1#works",
+                "name": "http://crowd.fi.uncoma.edu.ar/kb1#generalization-1_d25N",
+                "entity parent": "http://crowd.fi.uncoma.edu.ar/kb1#enrolled"
+            }
+        ],
+        "Relationship": [
+            {
+                "entities": [
+                    "http://crowd.fi.uncoma.edu.ar/kb1#Person",
+                    "http://crowd.fi.uncoma.edu.ar/kb1#Institution"
+                ],
+                "name": "http://crowd.fi.uncoma.edu.ar/kb1#enrolled"
+            },
+            {
+                "entities": [
+                    "http://crowd.fi.uncoma.edu.ar/kb1#Employee",
+                    "http://crowd.fi.uncoma.edu.ar/kb1#Faculty"
+                ],
+                "name": "http://crowd.fi.uncoma.edu.ar/kb1#works"
+            }
+        ]
+    }
 }
