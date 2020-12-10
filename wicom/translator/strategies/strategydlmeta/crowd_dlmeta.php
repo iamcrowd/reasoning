@@ -269,34 +269,6 @@ class DLMeta extends Metamodel{
                   ]];
                   $builder->translate_DL($lst);
 
-                  $end_ot_child = [];
-                  $end_ot_parent = [];
-                  $end_ot_child = $this->get_relationship_objecttypes($json,$child);
-                  $end_ot_parent = $this->get_relationship_objecttypes($json,$parent);
-
-                  if ((\count($end_ot_child) != 0) && (\count($end_ot_parent) != 0)){
-
-                    for ($i = 0; $i < \count($end_ot_child); $i++) {
-                      $role_child = null;
-                      $role_parent = null;
-                      $role_child = $this->get_role($json, $child, $end_ot_child[$i]);
-                      $role_parent = $this->get_role($json, $parent, $end_ot_parent[$i]);
-
-                      if (($role_child != null) && ($role_parent != null)){
-                        if (!in_array([$role_child, $role_parent], $already_constrencoded)){
-                          $lst_r = [
-                            ["subrole" => [
-                              ["role" => $role_child],
-                              ["role" => $role_parent]
-                            ]
-                            ]];
-                          $builder->translate_DL($lst_r);
-                          array_push($already_constrencoded, [$role_child, $role_parent]);
-                        }
-                      }
-                    }
-                  }
-
             } elseif ($this->is_role($json,$parent) && $this->is_role($json,$child)) {
                 if (!in_array([$child, $parent], $already_constrencoded)){
                   $lst = [
@@ -571,6 +543,34 @@ class DLMeta extends Metamodel{
           }
         }
     }
+
+
+    /**
+      Relationships with different signature must be disjoint. This function generates such a disjointness.
+    */
+/*    function translate_general_axioms($json, $builder){
+        $js_objtype = $json["Entity type"]["Object type"];
+
+        foreach ($js_objtype as $ot) {
+          if (is_relationship($json, $ot)){
+            $ot_rel = $this->get_relationship_objecttypes($json, $ot);
+
+            if (count($ot_rel) != 0){
+              $rel_sig = [];
+              foreach ($ot_rel as $an_ot_rel) {
+                $role = $this->get_role($json, $ot, $an_ot_rel);
+
+                if ($role != null){
+                  array_push($rel_sig, $role);
+                }
+              }
+              $a = ["name_rel" => $ot,
+                    "roles" => $rel_sig];
+              array_push($bin, $a);
+            }
+          }
+        }
+    }*/
 
     /**
        Translate a JSON KF Metamodel String into another format depending on
