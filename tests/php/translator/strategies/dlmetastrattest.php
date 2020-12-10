@@ -251,6 +251,32 @@ class DLMetaTest extends PHPUnit\Framework\TestCase{
     }
 
     /**
+       @testdox Translate a simple model without KF RELATIONSHIP SUBSUMPTIONS where they should be disjoint each other.
+     */
+    public function testGeneralAxiomsSignaturesRel(){
+      $json = file_get_contents("translator/strategies/data/testGeneralAxioms.json");
+      $expected = file_get_contents("translator/strategies/data/testGeneralAxioms.owllink");
+
+      if ($this->validate_against_scheme($json)){
+        $strategy = new DLMeta();
+        $builder = new OWLlinkBuilder();
+
+        $builder->insert_header();
+        $strategy->translate($json, $builder);
+        $strategy->translate_queries($strategy, $builder);
+        $builder->insert_footer();
+
+        $actual = $builder->get_product();
+        $actual = $actual->to_string();
+
+        $this->assertXmlStringEqualsXmlString($expected, $actual, true);
+      }
+      else {
+        $this->assertTrue(false, "JSON KF does not match against KF Scheme");
+      }
+    }
+
+    /**
        @testdox Translate a simple model with some KF Attribute Property
        into OWLlink
        @See http://crowd.fi.uncoma.edu.ar/KFDoc/
