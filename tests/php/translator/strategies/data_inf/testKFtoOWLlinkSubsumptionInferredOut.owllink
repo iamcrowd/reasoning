@@ -64,6 +64,11 @@
       </SubClassSynsets>
     </ClassSubClassesPair>
   </ClassHierarchy>
+  <ObjectPropertyHierarchy>
+    <ObjectPropertySynset>
+      <owl:ObjectProperty IRI="http://www.w3.org/2002/07/owl#bottomObjectProperty"/>
+    </ObjectPropertySynset>
+  </ObjectPropertyHierarchy>
   <ClassSynsets>
     <ClassSynset>
       <owl:Class IRI="http://www.w3.org/2002/07/owl#Nothing"/>
