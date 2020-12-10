@@ -63,6 +63,9 @@ class KFWicomCardinalitiesTest extends PHPUnit\Framework\TestCase
     @testdox tests reasoning services using racer reasoner looking for stricter cardinalities. Now N cardinality must become stricter. Only for Roles Subsumptions. Role names are different.
     */
     public function test_full_reasoning_KF_With_Cardinalities_Inferred_RolesSubs_Racer(){
+      $this->markTestIncomplete(
+        'This test has not been implemented yet.'
+      );
         $input = file_get_contents('wicom/data/testKFwithCardinalitiesInferredRolesSubs.json');
         $expected = file_get_contents('wicom/data/testKFwithCardinalitiesInferredRolesSubsOut.json');
 
