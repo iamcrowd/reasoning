@@ -694,7 +694,7 @@ class DLMeta extends Metamodel{
 
         // encoding general axioms because of reification. Only will be generated if there exists at least relationships
         // with different signatures nor they are subsumed.
-        $this->translate_general_axioms($json, $builder);
+        //$this->translate_general_axioms($json, $builder);
 
         if (!empty($js_objtype)){
             foreach ($js_objtype as $objtype){
