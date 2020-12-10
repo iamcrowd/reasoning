@@ -176,11 +176,39 @@ class DLMeta extends Metamodel{
       return null;
     }
 
+    /**
+      Return a role given a relationship
+    */
+    protected function get_rel_signature($json, $rel){
+      $js_role = $json["Role"];
+      $sig = [];
+
+      foreach ($js_role as $ro) {
+        if (strcmp($ro["relationship"], $rel) == 0){
+          array_push($sig, $ro["rolename"]);
+        }
+      }
+      return $sig;
+    }
+
+
     protected function is_relationship($json, $rel){
       $js_rel = $json["Relationship"]["Relationship"];
 
       foreach ($js_rel as $r) {
         if (strcmp($r["name"], $rel) == 0){
+          return true;
+        }
+      }
+      return false;
+    }
+
+    protected function subsumes_rel($json, $child, $parent){
+      $js_rel = $json["Relationship"]["Subsumption"];
+
+      foreach ($js_rel as $r) {
+        if ((strcmp($r["entity child"], $child) == 0) &&
+           (strcmp($r["entity parent"], $parent) == 0)){
           return true;
         }
       }
@@ -546,31 +574,100 @@ class DLMeta extends Metamodel{
 
 
     /**
-      Relationships with different signature must be disjoint. This function generates such a disjointness.
+      Return true if two relationships have the same signature.
+      It means that they have different roles. Ri(ri1,ri2) and Rj(rj1,rj2) and Ri <> Rj, i <> j for all i,j.
+      Up to now, binary relationships
+
+      @note rel structure:
+      ["name_rel" => $ot,
+      "roles" => $roles];
     */
-/*    function translate_general_axioms($json, $builder){
-        $js_objtype = $json["Entity type"]["Object type"];
+    protected function same_signature($rel1, $rel2){
+      if ($rel1["name_rel"] == $rel2["name_rel"]){
+        if (in_array($rel1["roles"][0], $rel2["roles"]) &&
+           (in_array($rel1["roles"][1], $rel2["roles"]))){
 
-        foreach ($js_objtype as $ot) {
-          if (is_relationship($json, $ot)){
-            $ot_rel = $this->get_relationship_objecttypes($json, $ot);
+             return true;
+        }
+        else return false;
+      }
+      else return false;
+    }
 
-            if (count($ot_rel) != 0){
-              $rel_sig = [];
-              foreach ($ot_rel as $an_ot_rel) {
-                $role = $this->get_role($json, $ot, $an_ot_rel);
+    /**
+      Relationships with different signature must be disjoint. This function generates such a disjointness.
+      Moreover, relationship could not be disjoint if they participate into a subsumption of rels.
+      Up to now, relationships are only binary ones.
+    */
+    function translate_general_axioms($json, $builder){
+        $js_obj = $json["Relationship"]["Relationship"];
+        $all = [];
+        $diff_sig_only = [];
 
-                if ($role != null){
-                  array_push($rel_sig, $role);
-                }
+        foreach ($js_obj as $r) {
+            $role = [];
+            $role = $this->get_rel_signature($json, $r["name"]);
+
+            if (count($role) > 0){
+              $a = ["name_rel" => $r["name"],
+                    "roles" => $role];
+              array_push($all, $a);
+            }
+        }
+
+        //only different signatures
+        $diff_sig_only = array_unique($all, SORT_REGULAR);
+
+        $disj_rel = [];
+        for ($i = 0; $i < count($diff_sig_only); $i++) {
+          $j = $i + 1;
+          $not_subsum = true;
+
+          while (($not_subsum) && ($j < count($diff_sig_only))){
+
+            if ($this->subsumes_rel($json, $diff_sig_only[$i]["name_rel"], $diff_sig_only[$j]["name_rel"])){
+                $not_subsum = false;
+                $child = $diff_sig_only[$i]["name_rel"];
+
+            } elseif ($this->subsumes_rel($json, $diff_sig_only[$j]["name_rel"], $diff_sig_only[$i]["name_rel"])) {
+                  $not_subsum = false;
+                  $child = $diff_sig_only[$j]["name_rel"];
+            }
+            $j = $j + 1;
+          }
+
+          if (($not_subsum) && ($j >= count($diff_sig_only))){
+            array_push($disj_rel, ["class" => $diff_sig_only[$i]["name_rel"]]);
+          }
+          else if ((!$not_subsum) && ($j < count($diff_sig_only))){
+            $not_insert = true;
+            $k = 0;
+
+            while (($not_insert) && ($k < count($disj_rel))){
+              if (($this->subsumes_rel($json, $child, $disj_rel[$k])) || ($this->subsumes_rel($json, $disj_rel[$k], $child))){
+                $not_insert = false;
               }
-              $a = ["name_rel" => $ot,
-                    "roles" => $rel_sig];
-              array_push($bin, $a);
+              $k = $k + 1;
+            }
+            if (($not_insert) && ($k >= count($disj_rel))){
+              array_push($disj_rel, ["class" => $child]);
             }
           }
         }
-    }*/
+
+        // armar axioma disj
+        if (count($disj_rel) > 1){
+          $lst = [
+            ["subclass" => [
+                ["intersection" => $disj_rel],
+                ["class" => "owl:Nothing"]
+               ]
+            ]
+          ];
+
+          $builder->translate_DL($lst);
+        }
+    }
 
     /**
        Translate a JSON KF Metamodel String into another format depending on
@@ -594,6 +691,10 @@ class DLMeta extends Metamodel{
         $js_valueType = $json["Entity type"]["Value property"]["Value type"];
         $js_attrProp = $json["Relationship"]["Attributive property"]["Attributive property"];
         $js_attrMappedTo = $json["Relationship"]["Attributive property"]["Attribute"]["Mapped to"];
+
+        // encoding general axioms because of reification. Only will be generated if there exists at least relationships
+        // with different signatures nor they are subsumed.
+        $this->translate_general_axioms($json, $builder);
 
         if (!empty($js_objtype)){
             foreach ($js_objtype as $objtype){
