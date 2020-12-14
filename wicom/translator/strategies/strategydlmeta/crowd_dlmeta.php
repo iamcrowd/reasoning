@@ -575,23 +575,21 @@ class DLMeta extends Metamodel{
 
     /**
       Return true if two relationships have the same signature.
-      It means that they have different roles. Ri(ri1,ri2) and Rj(rj1,rj2) and Ri <> Rj, i <> j for all i,j.
-      Up to now, binary relationships
+      It means that they have different roles. Ri(ri1,ri2) and Rj(rj1,rj2), i <> j for all i,j.
+      Up to now, binary relationships. Because MM assumes posicionalism, no matter the order of roles into
+      the relationshp.
 
       @note rel structure:
       ["name_rel" => $ot,
       "roles" => $roles];
     */
     protected function same_signature($rel1, $rel2){
-      if ($rel1["name_rel"] == $rel2["name_rel"]){
         if (in_array($rel1["roles"][0], $rel2["roles"]) &&
            (in_array($rel1["roles"][1], $rel2["roles"]))){
 
              return true;
         }
         else return false;
-      }
-      else return false;
     }
 
     /**
@@ -603,20 +601,27 @@ class DLMeta extends Metamodel{
         $js_obj = $json["Relationship"]["Relationship"];
         $all = [];
         $diff_sig_only = [];
+        $signatures = [];
 
         foreach ($js_obj as $r) {
             $role = [];
             $role = $this->get_rel_signature($json, $r["name"]);
 
             if (count($role) > 0){
-              $a = ["name_rel" => $r["name"],
-                    "roles" => $role];
-              array_push($all, $a);
+              if (!in_array([$role[0],$role[1]], $signatures) &&
+                 (!in_array([$role[1],$role[0]], $signatures))) {
+
+                   array_push($signatures, $role);
+
+                   $a = ["name_rel" => $r["name"],
+                         "roles" => $role];
+                   array_push($diff_sig_only, $a);
+              }
             }
         }
 
         //only different signatures
-        $diff_sig_only = array_unique($all, SORT_REGULAR);
+        //$diff_sig_only = array_unique($all, SORT_REGULAR);
 
         $disj_rel = [];
         for ($i = 0; $i < count($diff_sig_only); $i++) {
@@ -694,7 +699,8 @@ class DLMeta extends Metamodel{
 
         // encoding general axioms because of reification. Only will be generated if there exists at least relationships
         // with different signatures nor they are subsumed.
-        //$this->translate_general_axioms($json, $builder);
+
+        $this->translate_general_axioms($json, $builder);
 
         if (!empty($js_objtype)){
             foreach ($js_objtype as $objtype){
