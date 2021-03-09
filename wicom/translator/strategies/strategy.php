@@ -23,7 +23,7 @@
 
 namespace Wicom\Translator\Strategies;
 
-load("umljsonbuilder.php", "../../../wicom/translator/builders/");
+require_once __DIR__ . '/../builders/umljsonbuilder.php';
 
 use Wicom\Translator\Builders\UMLJSONBuilder;
 

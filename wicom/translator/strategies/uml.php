@@ -23,10 +23,7 @@
 
 namespace Wicom\Translator\Strategies;
 
-use function \load;
-load('strategy.php');
-
-//require_once('../../web-src/globals.php');
+require_once __DIR__ . '/strategy.php';
 
 //use function \preg_match;
 

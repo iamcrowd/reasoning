@@ -23,10 +23,9 @@
 
 namespace Wicom\Translator\Strategies;
 
-use function \load;
-load('berardipack.php', 'qapackages/');
-load('strategy.php');
-load('uml.php');
+require_once __DIR__ . '/qapackages/berardipack.php';
+require_once __DIR__ . '/strategy.php';
+require_once __DIR__ . '/uml.php';
 
 use Wicom\Translator\Strategies\QAPackages\BerardiPack;
 
