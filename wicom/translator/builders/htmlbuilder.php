@@ -23,9 +23,8 @@
 
 namespace Wicom\Translator\Builders;
 
-use function \load;
-load("documentbuilder.php");
-load("htmldocument.php", "../documents/");
+require_once __DIR__ . '/documentbuilder.php';
+require_once __DIR__ . '/../documents/htmldocument.php';
 
 use Wicom\Translator\Documents\HTMLDocument;
 

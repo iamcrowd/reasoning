@@ -23,9 +23,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 namespace Wicom\Translator\Builders;
 
-use function \load;
-load("documents.php");
-load("jsondocument.php", "../documents/");
+require_once __DIR__ . '/documents.php';
+require_once __DIR__ . '/../documents/jsondocument.php';
 
 /**
  I set the common behaviour for every DocumentBuilder subclass.

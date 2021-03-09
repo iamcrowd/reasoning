@@ -23,9 +23,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 namespace Wicom\Translator\Builders;
 
-use function \load;
-load("jsonbuilder.php");
-load("umljsondocument.php", "../documents/");
+require_once __DIR__ . '/jsonbuilder.php';
+require_once __DIR__ . '/../documents/umljsondocument.php';
 
 use Wicom\Translator\Documents\UMLJSONDocument;
 

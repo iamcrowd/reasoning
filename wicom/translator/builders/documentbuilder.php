@@ -23,8 +23,7 @@
 
 namespace Wicom\Translator\Builders;
 
-use function \load;
-load("documents.php");
+require_once __DIR__ . '/documents.php';
 
 use Wicom\Translator\Documents\Document;
 
