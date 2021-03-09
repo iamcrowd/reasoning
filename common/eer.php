@@ -23,15 +23,12 @@
 
 namespace Wicom;
 
-load("translator.php", "../wicom/translator/");
-load("crowd_uml.php", "../wicom/translator/strategies/");
-load("owllinkbuilder.php", "../wicom/translator/builders/");
-
-load("runner.php", "../wicom/reasoner/");
-load("racerconnector.php", "../wicom/reasoner/");
-load("koncludeconnector.php", "../wicom/reasoner/");
-
-# load("owllinkanalizer.php", "../wicom/answers/");
+require_once __DIR__ . '/../wicom/translator/translator.php';
+require_once __DIR__ . '/../wicom/translator/strategies/crowd_uml.php';
+require_once __DIR__ . '/../wicom/translator/builders/owllinkbuilder.php';
+require_once __DIR__ . '/../wicom/reasoner/runner.php';
+require_once __DIR__ . '/../wicom/reasoner/racerconnector.php';
+require_once __DIR__ . '/../wicom/reasoner/koncludeconnector.php';
 
 use Wicom\Translator\Translator;
 use Wicom\Translator\Strategies\UMLcrowd;
