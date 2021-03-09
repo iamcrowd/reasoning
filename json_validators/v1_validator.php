@@ -23,8 +23,7 @@
 
 namespace JSONValidators;
 
-use function \load;
-load ("json_validator.php");
+require_once __DIR__ . '/json_validator.php';
 
 /**
    Validate a V1 JSON.

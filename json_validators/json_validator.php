@@ -23,9 +23,7 @@
 
 namespace JSONValidators;
 
-use function \load;
-
-load("autoload.php", "../vendor/opis/json-schema/");
+require_once __DIR__ . '/../vendor/opis/json-schema/autoload.php';
 
 use Opis\JsonSchema\{
     Validator, ValidatorResult, ValidationError, Schema

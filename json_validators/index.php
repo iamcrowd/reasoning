@@ -20,10 +20,9 @@
          along with this program.  If not, see <http://www.gnu.org/licenses/>.
        */
 
-require_once("../common/import_functions.php");
-
-load("v1_validator.php");
-load("v2_validator.php");
+require_once __DIR__ . '/../common/import_functions.php';
+require_once __DIR__ . '/v1_validator.php';
+require_once __DIR__ . '/v2_validator.php';
 
 use JSONValidators\V1Validator;
 use JSONValidators\V2Validator;

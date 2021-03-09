@@ -51,7 +51,7 @@ Tests if the API is capable to validate crowd JSON version 2 documents.
 @license  GPLv3 https://www.gnu.org/licenses/gpl-3.0.html
 @link     http://crowd.fi.uncoma.edu.ar
  */
-class V2ValidatorTest extends PHPUnit\Framework\TestCase
+class V2_ValidatorTest extends PHPUnit\Framework\TestCase
 {
 
     /**
@@ -63,7 +63,7 @@ class V2ValidatorTest extends PHPUnit\Framework\TestCase
      */
     public function test_validate()
     {
-        $input = file_get_contents('json_validators/data/simple_v2.json');
+        $input = file_get_contents(__DIR__ . '/data/simple_v2.json');
         
         $validator = new V2Validator($input);
         $actual = $validator->validate();
