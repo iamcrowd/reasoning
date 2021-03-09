@@ -23,8 +23,7 @@
 
 namespace Wicom\Translator\Strategies\QAPackages\QueriesGenerators;
 
-use function \load;
-load('queriesgenerator.php');
+require_once __DIR__ . '/queriesgenerator.php';
 
 /**
    Queries only for the Crowd strategy.

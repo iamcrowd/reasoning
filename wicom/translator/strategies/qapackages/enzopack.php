@@ -23,10 +23,9 @@
 
 namespace Wicom\Translator\Strategies\QAPackages;
 
-use function \load;
-load("qapack.php");
-load("enzoqueries.php", "queriesgenerators/");
-load("enzoormanalizer.php", "answeranalizers/");
+require_once __DIR__ . '/qapack.php';
+require_once __DIR__ . '/queriesgenerators/enzoqueries.php';
+require_once __DIR__ . '/answeranalizers/enzoormanalizer.php';
 
 use Wicom\Translator\Strategies\QAPackages\QueriesGenerators\EnzoQueries;
 use Wicom\Translator\Strategies\QAPackages\AnswerAnalizers\EnzoOrmAnalizer;

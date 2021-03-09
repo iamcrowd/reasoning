@@ -24,9 +24,9 @@
 namespace Wicom\Translator\Strategies\QAPackages\AnswerAnalizers;
 
 
-load("owllinkbuilder.php", "../../../builders/");
-load("documentbuilder.php", "../../../builders/");
-load("owlbuilder.php", "../../../builders/");
+require_once __DIR__ . '/../../../builders/owllinkbuilder.php';
+require_once __DIR__ . '/../../../builders/documentbuilder.php';
+require_once __DIR__ . '/../../../builders/owlbuilder.php';
 
 use Wicom\Translator\Builders\OWLlinkBuilder;
 use Wicom\Translator\Builders\OWLBuilder;

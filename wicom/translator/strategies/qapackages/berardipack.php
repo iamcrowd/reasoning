@@ -23,10 +23,9 @@
 
 namespace Wicom\Translator\Strategies\QAPackages;
 
-use function \load;
-load("qapack.php");
-load("berardiqueries.php", "queriesgenerators/");
-load("berardianalizer.php", "answeranalizers/");
+require_once __DIR__ . '/qapack.php';
+require_once __DIR__ . '/queriesgenerators/berardiqueries.php';
+require_once __DIR__ . '/answeranalizers/berardianalizer.php';
 
 use Wicom\Translator\Strategies\QAPackages\QueriesGenerators\BerardiQueries;
 use Wicom\Translator\Strategies\QAPackages\AnswerAnalizers\BerardiAnalizer;

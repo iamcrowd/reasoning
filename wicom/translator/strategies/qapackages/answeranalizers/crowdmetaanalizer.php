@@ -23,11 +23,11 @@
 
 namespace Wicom\Translator\Strategies\QAPackages\AnswerAnalizers;
 
-load("owllinkbuilder.php", "../../../builders/");
-load("documentbuilder.php", "../../../builders/");
-load("owlbuilder.php", "../../../builders/");
-load("answer.php");
-load("ansanalizer.php");
+require_once __DIR__ . '/../../../builders/owllinkbuilder.php';
+require_once __DIR__ . '/../../../builders/documentbuilder.php';
+require_once __DIR__ . '/../../../builders/owlbuilder.php';
+require_once __DIR__ . '/answer.php';
+require_once __DIR__ . '/ansanalizer.php';
 
 //use Wicom\Translator\Documents\OWLlinkDocument;
 use Wicom\Translator\Builders\OWLlinkBuilder;

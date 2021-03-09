@@ -23,8 +23,8 @@
 
 namespace Wicom\Translator\Strategies\QAPackages\AnswerAnalizers;
 
-load("answer.php");
-load("ansanalizer.php");
+require_once __DIR__ . '/answer.php';
+require_once __DIR__ . '/ansanalizer.php';
 
 use Wicom\Translator\Strategies\QAPackages\AnswerAnalizers\Answer;
 use Wicom\Translator\Strategies\QAPackages\AnswerAnalizers\AnsAnalizer;

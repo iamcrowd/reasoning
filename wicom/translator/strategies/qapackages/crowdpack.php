@@ -23,10 +23,9 @@
 
 namespace Wicom\Translator\Strategies\QAPackages;
 
-use function \load;
-load("qapack.php");
-load("crowdqueries.php", "queriesgenerators/");
-load("crowdanalizer.php", "answeranalizers/");
+require_once __DIR__ . '/qapack.php';
+require_once __DIR__ . '/queriesgenerators/crowdqueries.php';
+require_once __DIR__ . '/answeranalizers/crowdanalizer.php';
 
 use Wicom\Translator\Strategies\QAPackages\QueriesGenerators\CrowdQueries;
 use Wicom\Translator\Strategies\QAPackages\AnswerAnalizers\CrowdAnalizer;

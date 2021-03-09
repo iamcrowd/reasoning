@@ -30,10 +30,9 @@
  */
 namespace Wicom\Translator\Strategies\QAPackages\AnswerAnalizers;
 
-use function \load;
-load("answer.php");
-load("owllinkbuilder.php", "../../../../../wicom/translator/builders/");
-load("owlbuilder.php", "../../../../../wicom/translator/builders/");
+require_once __DIR__ . '/answer.php';
+require_once __DIR__ . '/../../../builders/owllinkbuilder.php';
+require_once __DIR__ . '/../../../builders/owlbuilder.php';
 
 use Wicom\Translator\Builders\OWLlinkBuilder;
 use Wicom\Translator\Builders\OWLBuilder;
