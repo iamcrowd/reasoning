@@ -23,10 +23,7 @@
 
 namespace Json2Json;
 
-# require_once '../common/import_functions.php';
-use function \load;
-
-load('uml_converter.php');
+require_once __DIR__ . '/uml_converter.php';
 
 use function \json_decode;
 

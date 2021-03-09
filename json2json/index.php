@@ -22,10 +22,9 @@
  */
 
 
-require_once("../common/import_functions.php");
-
-load("v1tov2.php");
-load("v2tov1.php");
+require_once __DIR__ . '/../common/import_functions.php';
+require_once __DIR__ . '/v1tov2.php';
+require_once __DIR__ . '/v2tov1.php';
 
 use Json2Json\v1tov2;
 use Json2Json\v2tov1;
