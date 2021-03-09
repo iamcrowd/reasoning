@@ -38,19 +38,16 @@
    @return An XML web page.
  */
 
-require_once '../common/import_functions.php';
-
-load('translator.php', '../wicom/translator/');
-load('metamodeltranslator.php', '../wicom/translator/');
-
-load('owllinkdocument.php', '../wicom/translator/documents/');
-load('owldocument.php', '../wicom/translator/documents/');
-
-load('crowd_dlmeta.php','../wicom/translator/strategies/strategydlmeta/');
-
-load('owllinkbuilder.php', '../wicom/translator/builders/');
-load('owlbuilder.php', '../wicom/translator/builders/');
-load('htmlbuilder.php', '../wicom/translator/builders/');
+require_once __DIR__ . '/../common/import_functions.php';
+require_once __DIR__ . '/../wicom/translator/translator.php';
+require_once __DIR__ . '/../wicom/translator/metamodeltranslator.php';
+require_once __DIR__ . '/../wicom/translator/documents/owllinkdocument.php';
+require_once __DIR__ . '/../wicom/translator/documents/owldocument.php';
+require_once __DIR__ .
+    '/../wicom/translator/strategies/strategydlmeta/crowd_dlmeta.php';
+require_once __DIR__ . '/../wicom/translator/builders/owllinkbuilder.php';
+require_once __DIR__ . '/../wicom/translator/builders/owlbuilder.php';
+require_once __DIR__ . '/../wicom/translator/builders/htmlbuilder.php';
 
 use Wicom\Translator\Translator;
 use Wicom\Translator\MetamodelTranslator;

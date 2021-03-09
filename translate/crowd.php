@@ -36,14 +36,13 @@
    @return An XML web page.
  */
 
-require_once '../../common/import_functions.php';
-
-load('translator.php', '../../wicom/translator/');
-load('owllinkdocument.php', '../../wicom/translator/documents/');
-load('crowd_uml.php','../../wicom/translator/strategies/');
-load('owllinkbuilder.php', '../../wicom/translator/builders/');
-load('htmlbuilder.php', '../../wicom/translator/builders/');
-load('berardistrat.php','../../wicom/translator/strategies/');
+require_once __DIR__ . '/../common/import_functions.php';
+require_once __DIR__ . '/../wicom/translator/translator.php';
+require_once __DIR__ . '/../wicom/translator/documents/owllinkdocument.php';
+require_once __DIR__ . '/../wicom/translator/strategies/crowd_uml.php';
+require_once __DIR__ . '/../wicom/translator/builders/owllinkbuilder.php';
+require_once __DIR__ . '/../wicom/translator/builders/htmlbuilder.php';
+require_once __DIR__ . '/../wicom/translator/strategies/berardistrat.php';
 
 
 use Wicom\Translator\Translator;
