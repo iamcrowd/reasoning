@@ -23,8 +23,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 namespace Wicom\Translator\Documents;
 
-use function \load;
-load('jsondocument.php');
+require_once __DIR__ . '/jsondocument.php';
 
 class ORMJSONDocument extends JSONDocument{
 

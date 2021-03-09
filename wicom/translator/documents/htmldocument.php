@@ -23,8 +23,7 @@
 
 namespace Wicom\Translator\Documents;
 
-use function \load;
-load('document.php');
+require_once __DIR__ . '/document.php';
 
 class HTMLDocument extends Document{
     protected $content = null;
