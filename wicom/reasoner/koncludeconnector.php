@@ -23,8 +23,8 @@
 
 namespace Wicom\Reasoner;
 
-load("connector.php");
-load("config.php", "../../config/");
+require_once __DIR__ . '/connector.php';
+require_once __DIR__ . '/../../config/config.php';
 
 use Wicom\Reasoner\Connector;
 use DOMDocument;
