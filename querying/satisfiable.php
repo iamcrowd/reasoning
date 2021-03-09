@@ -25,10 +25,9 @@
    Return if the given diagram is satisfiable.
  */
 
-require_once("../common/import_functions.php");
-
-load("v2tov1.php", "../json2json/");
-load("uml.php", "../common/");
+require_once __DIR__ . '/../common/import_functions.php';
+require_once __DIR__ . '/../json2json/v2tov1.php';
+require_once __DIR__ . '/../common/uml.php';
 
 use Json2Json\V2toV1;
 

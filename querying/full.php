@@ -25,10 +25,10 @@
    Return reasoner responses.
  */
 
-require_once("../../common/import_functions.php");
+require_once __DIR__ . '/../../common/import_functions.php';
 
-load("wicom.php", "../../common/");
-load("uml.php", "../../common/");
+require_once __DIR__ . '/../../common/wicom.php';
+require_once __DIR__ . '/../../common/uml.php';
 
 $wicom = new Wicom\UML_Wicom();
 
