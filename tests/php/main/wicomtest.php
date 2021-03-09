@@ -19,9 +19,19 @@
 
    You should have received a copy of the GNU General Public License
    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+PHP version >= 7.2
+
+@category Tests
+@package  Crowd
+@author   Gimenez Christian <christian.gimenez@fi.uncoma.edu.ar>
+@author   Germán Braun <german.braun@fi.uncoma.edu.ar>
+@author   GILIA <nomail@fi.uncoma.edu.ar>
+@license  GPLv3 https://www.gnu.org/licenses/gpl-3.0.html
+@link     http://crowd.fi.uncoma.edu.ar
  */
 
-require_once("common.php");
+require_once __DIR__ . '/../common.php';
 
 // use function \load;
 load("wicom.php", "common/");
