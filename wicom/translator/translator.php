@@ -23,8 +23,6 @@
 
 namespace Wicom\Translator;
 
-use function \load;
-
 use function \json_decode;
 
 /**
