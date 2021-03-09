@@ -1,35 +1,58 @@
 <?php
-/*
+/**
+OWL 2 Document tests.
 
-   Copyright 2018
+Copyright 2018
 
-   Author: Giménez, Christian. Braun, Germán
+Author: Giménez, Christian. Braun, Germán
 
-   owllinkdocumenttest.php
+owllinkdocumenttest.php
 
-   This program is free software: you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation, either version 3 of the License, or
-   (at your option) any later version.
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
 
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY; without even the implied warranty of
-   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-   GNU General Public License for more details.
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
 
-   You should have received a copy of the GNU General Public License
-   along with this program.  If not, see <http://www.gnu.org/licenses/>.
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+PHP version >= 7.2
+
+@category Tests
+@package  Crowd
+@author   Gimenez Christian <christian.gimenez@fi.uncoma.edu.ar>
+@author   Germán Braun <german.braun@fi.uncoma.edu.ar>
+@author   GILIA <nomail@fi.uncoma.edu.ar>
+@license  GPLv3 https://www.gnu.org/licenses/gpl-3.0.html
+@link     http://crowd.fi.uncoma.edu.ar
  */
 
-require_once("common.php");
+require_once __DIR__ . '/../common.php';
 
 //use function \load;
-load("owldocument.php","wicom/translator/documents/");
+require_once __DIR__ . '/../../../icom/translator/documents/owldocument.php';
 
 
 use Wicom\Translator\Documents\OWLDocument;
 
-class OWL2DocumentTest extends PHPUnit\Framework\TestCase{
+/**
+Test the OWL 2 Document interface.
+
+@category Tests
+@package  Crowd
+@author   Gimenez Christian <christian.gimenez@fi.uncoma.edu.ar>
+@author   Germán Braun <german.braun@fi.uncoma.edu.ar>
+@author   GILIA <nomail@fi.uncoma.edu.ar>
+@license  GPLv3 https://www.gnu.org/licenses/gpl-3.0.html
+@link     http://crowd.fi.uncoma.edu.ar
+ */
+class OWL2DocumentTest extends PHPUnit\Framework\TestCase
+{
 
     /*    public function testConstructor(){
        $expected = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>
@@ -69,7 +92,8 @@ class OWL2DocumentTest extends PHPUnit\Framework\TestCase{
        </Ontology>";
 
        $d = new OWLDocument();
-       $d->start_document(["prefix" => "", "iri" => "http://crowd.fi.uncoma.edu.ar/kb1/"], []);
+       $d->start_document(["prefix" => "", 
+       "iri" => "http://crowd.fi.uncoma.edu.ar/kb1/"], []);
        $d->insert_class_declaration("Class1");
        $d->end_document();
        $actual = $d->to_string();
@@ -95,7 +119,8 @@ class OWL2DocumentTest extends PHPUnit\Framework\TestCase{
        </Ontology>";
 
        $d = new OWLDocument();
-       $d->start_document(["prefix" => "", "iri" => "http://crowd.fi.uncoma.edu.ar/kb1/"], []);
+       $d->start_document(["prefix" => "", 
+       "iri" => "http://crowd.fi.uncoma.edu.ar/kb1/"], []);
        $d->insert_objectProperty_declaration("R1");
        $d->end_document();
        $actual = $d->to_string();
@@ -108,10 +133,15 @@ class OWL2DocumentTest extends PHPUnit\Framework\TestCase{
      */
 
     /**
-       @testdox Generate an OWL2 Subclass
+    Generate an OWL2 Subclass
+
+    @testdox Generate an OWL2 Subclass
+    
+    @return Nothing.
      */
-    public function testOWL2Subclass(){
-	$expected = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>
+    public function testOWL2Subclass()
+    {
+        $expected = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>
         <Ontology
           xmlns=\"http://www.w3.org/2002/07/owl#\"
           xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"
@@ -134,51 +164,55 @@ class OWL2DocumentTest extends PHPUnit\Framework\TestCase{
           </SubClassOf>
         </Ontology>";
 
-	$d = new OWLDocument();
-	$d->start_document([
-            ['prefix' => 'crowd',
-             'value' => "http://crowd.fi.uncoma.edu.ar/kb1/"]]);
-	$d->set_ontology_prefixes([
-	    ["prefix" => "",
-	     "value" => "http://crowd.fi.uncoma.edu.ar/kb1/"]
-	]);
+        $d = new OWLDocument();
+        $d->start_document(
+            [
+                ['prefix' => 'crowd',
+                 'value' => "http://crowd.fi.uncoma.edu.ar/kb1/"]]
+        );
+        $d->set_ontology_prefixes(
+            [
+                ["prefix" => "",
+                 "value" => "http://crowd.fi.uncoma.edu.ar/kb1/"]
+            ]
+        );
 
-	$d->insert_class_declaration("Class1");
-	//      $d->insert_class_declaration("Class2");
-	$d->insert_subclassof("Class2", "Class1");
+        $d->insert_class_declaration("Class1");
+        //      $d->insert_class_declaration("Class2");
+        $d->insert_subclassof("Class2", "Class1");
 
-	$d->end_document();
-	$actual = $d->to_string();
+        $d->end_document();
+        $actual = $d->to_string();
 
-	$expected = process_xmlspaces($expected);
-	$actual = process_xmlspaces($actual);
-	$this->assertEqualXMLStructure($expected, $actual, true);
+        $expected = process_xmlspaces($expected);
+        $actual = process_xmlspaces($actual);
+        $this->assertEqualXMLStructure($expected, $actual, true);
     }
     /*
-       public function testOWL2DisjointClasses(){
-       $expected = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>
-       <Ontology
-       xmlns=\"http://www.w3.org/2002/07/owl#\"
-       xml:base=\"http://crowd.fi.uncoma.edu.ar/kb1/\"
-       xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"
-       xmlns:xml=\"http://www.w3.org/XML/1998/namespace\"
-       xmlns:xsd=\"http://www.w3.org/2001/XMLSchema#\"
-       xmlns:rdfs=\"http://www.w3.org/2000/01/rdf-schema#\"
-       ontologyIRI=\"http://crowd.fi.uncoma.edu.ar/kb1/\">
-       <Declaration>
-       <Class IRI=\"Class1\"/>
-       </Declaration>
-       <Declaration>
-       <Class IRI=\"Class2\"/>
-       </Declaration>
-       <DisjointClasses>
-       <Class IRI=\"Class2\"/>
-       <Class IRI=\"Class1\"/>
-       </DisjointClasses>
-       </Ontology>";
-
-       $d = new OWLDocument();
-       $d->start_document(["prefix" => "", "iri" => "http://crowd.fi.uncoma.edu.ar/kb1/"], []);
+     public function testOWL2DisjointClasses(){
+     $expected = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>
+     <Ontology
+     xmlns=\"http://www.w3.org/2002/07/owl#\"
+     xml:base=\"http://crowd.fi.uncoma.edu.ar/kb1/\"
+     xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"
+     xmlns:xml=\"http://www.w3.org/XML/1998/namespace\"
+     xmlns:xsd=\"http://www.w3.org/2001/XMLSchema#\"
+     xmlns:rdfs=\"http://www.w3.org/2000/01/rdf-schema#\"
+     ontologyIRI=\"http://crowd.fi.uncoma.edu.ar/kb1/\">
+     <Declaration>
+     <Class IRI=\"Class1\"/>
+     </Declaration>
+     <Declaration>
+     <Class IRI=\"Class2\"/>
+     </Declaration>
+     <DisjointClasses>
+     <Class IRI=\"Class2\"/>
+     <Class IRI=\"Class1\"/>
+     </DisjointClasses>
+     </Ontology>";
+     requrie_once __DIR__ . '/../../../w OWLDocument(;
+     $d->start_document(["prefix" => "", 
+       "iri" => "http://crowd.fi.uncoma.edu.ar/kb1/"], []);
        $d->insert_class_declaration("Class1");
        $d->insert_class_declaration("Class2");
        $d->begin_disjointclasses();
@@ -216,7 +250,8 @@ class OWL2DocumentTest extends PHPUnit\Framework\TestCase{
        </Ontology>";
 
        $d = new OWLDocument();
-       $d->start_document(["prefix" => "", "iri" => "http://crowd.fi.uncoma.edu.ar/kb1/"], []);
+       $d->start_document(["prefix" => "", 
+         "iri" => "http://crowd.fi.uncoma.edu.ar/kb1/"], []);
        $d->insert_objectProperty_declaration("R1");
        $d->insert_objectProperty_declaration("R2");
        $d->insert_subobjectpropertyof("R2", "R1");
@@ -262,13 +297,16 @@ class OWL2DocumentTest extends PHPUnit\Framework\TestCase{
 
        $reqiris = [
        ["prefix" => "xmlns", "iri" => "http://www.w3.org/2002/07/owl#"],
-       ["prefix" => "xml:base", "iri" => "http://www.cenpat-conicet.gob.ar/bioOnto/"],
-       ["prefix" => "xmlns:rdf", "iri" => "http://www.w3.org/1999/02/22-rdf-syntax-ns#"],
+       ["prefix" => "xml:base", 
+         "iri" => "http://www.cenpat-conicet.gob.ar/bioOnto/"],
+       ["prefix" => "xmlns:rdf", 
+         "iri" => "http://www.w3.org/1999/02/22-rdf-syntax-ns#"],
        ["prefix" => "xmlns:xml", "iri" => "http://www.w3.org/XML/1998/namespace"],
        ["prefix" => "xmlns:xsd", "iri" => "http://www.w3.org/2001/XMLSchema#"],
        ["prefix" => "xmlns:rdfs", "iri" => "http://www.w3.org/2000/01/rdf-schema#"],
        ];
-       $ontoIRI = ["prefix" => "", "iri" => "http://www.cenpat-conicet.gob.ar/bioOnto/"];
+       $ontoIRI = ["prefix" => "", 
+         "iri" => "http://www.cenpat-conicet.gob.ar/bioOnto/"];
        $prefixes = [
        ["prefix" => "", "iri" => "http://www.cenpat-conicet.gob.ar/bioOnto/"],
        ["prefix" => "wd", "iri" => "http://www.wikidata.org/entity/"],
@@ -287,7 +325,8 @@ class OWL2DocumentTest extends PHPUnit\Framework\TestCase{
        ["prefix" => "dcterms", "iri" => "http://purl.org/dc/terms/"],
        ["prefix" => "geo-ont", "iri" => "http://www.geonames.org/ontology#"],
        ["prefix" => "geo-pos", "iri" => "http://www.w3.org/2003/01/geo/wgs84_pos#"],
-       ["prefix" => "bio-onto", "iri" => "http://www.cenpat-conicet.gob.ar/ontology/"],
+       ["prefix" => "bio-onto", 
+         "iri" => "http://www.cenpat-conicet.gob.ar/ontology/"],
        ];
 
        $d->start_document($ontoIRI, $reqiris);
@@ -301,9 +340,7 @@ class OWL2DocumentTest extends PHPUnit\Framework\TestCase{
 
        $this->assertEqualXMLStructure($expected, $actual, true);
        }
-
      */
-
 }
 
 ?>
