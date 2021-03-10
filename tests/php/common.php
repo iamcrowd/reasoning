@@ -34,6 +34,7 @@ PHP version >= 7.2
 
 require_once __DIR__ . "/../../common/import_functions.php";
 
+
 /**
    Remove multiple spaces and newlines replacing it with only one space.
 
@@ -46,12 +47,17 @@ require_once __DIR__ . "/../../common/import_functions.php";
 function multiplespaces_to_one($str)
 {
     return preg_replace('/[[:blank:][:space:]]+/im', " ", $str);
-}
+
+}//end multiplespaces_to_one()
+
 
 /**
    Process XML for testing with PHPUnit.
 
    @param $xmlstr XML String of a DOMDocument.
+
+   @deprecated assertEqualXMLStructure() is now deprecated in favor of
+     assertXMLStringEqualsXMLString()
 
    @return A DOMElement for using with assertEqualXMLStructure()
  */
@@ -60,12 +66,17 @@ function process_xmlspaces($xmlstr)
     $out = new \DOMDocument;
     $out->loadXML($xmlstr);
     return $out->firstChild;
-}
+
+}//end process_xmlspaces()
+
 
 /**
    Process XML for testing with PHPUnit.
 
    @param $xmlstr XML String of a DOMDocumentType.
+
+   @deprecated assertEqualXMLStructure() is now deprecated in favor of
+     assertXMLStringEqualsXMLString()
 
    @return A DOMElement for using with assertEqualXMLStructure()
  */
@@ -74,6 +85,5 @@ function process_xmlspaces_DOMDocType($xmlstr)
     $out = new \DOMDocument;
     $out->loadXML($xmlstr);
     return $out->firstChild->nextSibling;
-}
 
-?>
+}//end process_xmlspaces_DOMDocType()

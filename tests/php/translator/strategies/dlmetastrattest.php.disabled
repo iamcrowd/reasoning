@@ -38,6 +38,7 @@ use Opis\JsonSchema\Schema;
 /**
    # Warning!
    Don't use assertEqualXMLStructure()! It won't check for attributes values!
+   And its deprecated!
 
    It will only check for the amount of attributes.
  */

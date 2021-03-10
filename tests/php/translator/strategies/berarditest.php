@@ -42,6 +42,7 @@ use Wicom\Translator\Builders\OWLlinkBuilder;
 /**
 # Warning!
 Don't use assertEqualXMLStructure()! It won't check for attributes values!
+And its deprecated!
 
 It will only check for the amount of attributes.
 
@@ -66,11 +67,11 @@ class BerardiTest extends PHPUnit\Framework\TestCase
      */
     public function testTranslate()
     {
-        //TODO: Complete JSON!
+        // TODO: Complete JSON!
         $json = file_get_contents(
             __DIR__ . '/data/berarditest/translate.json'
         );
-        //TODO: Complete XML!
+        // TODO: Complete XML!
         $expected = file_get_contents(
             __DIR__ . '/data/berarditest/translate.xml'
         );
@@ -78,18 +79,19 @@ class BerardiTest extends PHPUnit\Framework\TestCase
         $builder = new OWLlinkBuilder();
 
         $builder->insert_header(); // Without this, loading the DOMDocument
-        // will throw error for the owl namespace
+        // will throw error for the owl namespace.
         $strategy->translate($json, $builder);
         $builder->insert_footer();
 
         $actual = $builder->get_product();
         $actual = $actual->to_string();
 
-        //$expected = process_xmlspaces($expected);
-        //$actual = process_xmlspaces($actual);
+        // $expected = process_xmlspaces($expected);
+        // $actual = process_xmlspaces($actual);
         // Don't use assertEqualXMLStructure()! It won't check for attributes values!
         $this->assertXmlStringEqualsXmlString($expected, $actual, true);
-    }
+
+    }//end testTranslate()
 
 
     /**
@@ -101,11 +103,11 @@ class BerardiTest extends PHPUnit\Framework\TestCase
      */
     public function testTranslateBinaryRoles()
     {
-        //TODO: Complete JSON!
+        // TODO: Complete JSON!
         $json = file_get_contents(
             __DIR__ . '/data/berarditest/translate_binary_roles.json'
         );
-        //TODO: Complete XML!
+        // TODO: Complete XML!
         $expected = file_get_contents(
             __DIR__ . '/data/berarditest/translate_binary_roles.xml'
         );
@@ -114,17 +116,22 @@ class BerardiTest extends PHPUnit\Framework\TestCase
         $builder = new OWLlinkBuilder();
 
         $builder->insert_header(); // Without this, loading the DOMDocument
-        // will throw error for the owl namespace
+        // will throw error for the owl namespace.
         $strategy->translate($json, $builder);
         $builder->insert_footer();
 
         $actual = $builder->get_product();
         $actual = $actual->to_string();
 
-        /*$expected = process_xmlspaces($expected);
-           $actual = process_xmlspaces($actual);*/
+        /*
+            $expected = process_xmlspaces($expected);
+            $actual = process_xmlspaces($actual);
+        */
+
         $this->assertXmlStringEqualsXmlString($expected, $actual);
-    }
+
+    }//end testTranslateBinaryRoles()
+
 
     /**
        Test if 0..* to 0..* associations is translated properly.
@@ -135,11 +142,11 @@ class BerardiTest extends PHPUnit\Framework\TestCase
      */
     public function testTranslateRolesManyToMany()
     {
-        //TODO: Complete JSON!
+        // TODO: Complete JSON!
         $json = file_get_contents(
             __DIR__ . '/data/berarditest/translate_roles_many_to_many.json'
         );
-        //TODO: Complete XML!
+        // TODO: Complete XML!
         $expected = file_get_contents(
             __DIR__ . '/data/berarditest/translate_roles_many_to_many.xml'
         );
@@ -148,30 +155,33 @@ class BerardiTest extends PHPUnit\Framework\TestCase
         $builder = new OWLlinkBuilder();
 
         $builder->insert_header(); // Without this, loading the DOMDocument
-        // will throw error for the owl namespace
+        // will throw error for the owl namespace.
         $strategy->translate($json, $builder);
         $builder->insert_footer();
 
         $actual = $builder->get_product();
         $actual = $actual->to_string();
 
+        /*
+            $expected = process_xmlspaces($expected);
+            $actual = process_xmlspaces($actual);
+        */
 
-        /*$expected = process_xmlspaces($expected);
-           $actual = process_xmlspaces($actual);*/
         $this->assertXmlStringEqualsXmlString($expected, $actual, true);
-    }
+
+    }//end testTranslateRolesManyToMany()
 
 
     /**
        Test generalization is translated properly.
-       
+
        @testdox Translate a generalization into OWL 2
 
        @return Nothing.
      */
     public function testTranslateGeneralization()
     {
-        //TODO: Complete JSON!
+        // TODO: Complete JSON!
         $json = file_get_contents(
             __DIR__ . '/data/berarditest/translate_generalization.json'
         );
@@ -182,18 +192,22 @@ class BerardiTest extends PHPUnit\Framework\TestCase
         $builder = new OWLlinkBuilder();
 
         $builder->insert_header(); // Without this, loading the DOMDocument
-        // will throw error for the owl namespace
+        // will throw error for the owl namespace.
         $strategy->translate($json, $builder);
         $builder->insert_footer();
 
         $actual = $builder->get_product();
         $actual = $actual->to_string();
 
+        /*
+            $expected = process_xmlspaces($expected);
+            $actual = process_xmlspaces($actual);
+        */
 
-        /*$expected = process_xmlspaces($expected);
-           $actual = process_xmlspaces($actual);*/
         $this->assertXmlStringEqualsXmlString($expected, $actual, true);
-    }
+
+    }//end testTranslateGeneralization()
+
 
     /**
        Test generalization with disjoint constraint is translated properly.
@@ -204,7 +218,7 @@ class BerardiTest extends PHPUnit\Framework\TestCase
      */
     public function testTranslateGenDisjoint()
     {
-        //TODO: Complete JSON!
+        // TODO: Complete JSON!
         $json = file_get_contents(
             __DIR__ . '/data/berarditest/translate_gen_disjoint.json'
         );
@@ -215,17 +229,22 @@ class BerardiTest extends PHPUnit\Framework\TestCase
         $builder = new OWLlinkBuilder();
 
         $builder->insert_header(); // Without this, loading the DOMDocument
-        // will throw error for the owl namespace
+        // will throw error for the owl namespace.
         $strategy->translate($json, $builder);
         $builder->insert_footer();
 
         $actual = $builder->get_product();
         $actual = $actual->to_string();
 
-        /*$expected = process_xmlspaces($expected);
-           $actual = process_xmlspaces($actual);*/
+        /*
+            $expected = process_xmlspaces($expected);
+            $actual = process_xmlspaces($actual);
+        */
+
         $this->assertXmlStringEqualsXmlString($expected, $actual, true);
-    }
+
+    }//end testTranslateGenDisjoint()
+
 
     /**
        Test generalization with covering constraint is translated properly.
@@ -236,7 +255,7 @@ class BerardiTest extends PHPUnit\Framework\TestCase
      */
     public function testTranslateGenCovering()
     {
-        //TODO: Complete JSON!
+        // TODO: Complete JSON!
         $json = file_get_contents(
             __DIR__ . '/data/berarditest/translate_gen_covering.json'
         );
@@ -248,29 +267,34 @@ class BerardiTest extends PHPUnit\Framework\TestCase
         $builder = new OWLlinkBuilder();
 
         $builder->insert_header(); // Without this, loading the DOMDocument
-        // will throw error for the owl namespace
+        // will throw error for the owl namespace.
         $strategy->translate($json, $builder);
         $builder->insert_footer();
 
         $actual = $builder->get_product();
         $actual = $actual->to_string();
 
-        /*$expected = process_xmlspaces($expected);
-           $actual = process_xmlspaces($actual);*/
+        /*
+            $expected = process_xmlspaces($expected);
+            $actual = process_xmlspaces($actual);
+        */
+
         $this->assertXmlStringEqualsXmlString($expected, $actual, true);
-    }
+
+    }//end testTranslateGenCovering()
+
 
     /**
        Test for checking Strategy::translate_queries method only for class.
 
        @testdox Generate standard queries in OWL 2
-       
+
        @return Nothing.
      */
     public function test_translate_queries()
     {
-        //TODO: Complete JSON!
-        $json =file_get_contents(
+        // TODO: Complete JSON!
+        $json = file_get_contents(
             __DIR__ . '/data/berarditest/translate_queries.json'
         );
         $expected = file_get_contents(
@@ -280,7 +304,7 @@ class BerardiTest extends PHPUnit\Framework\TestCase
         $builder = new OWLlinkBuilder();
 
         $builder->insert_header(); // Without this, loading the DOMDocument
-        // will throw error for the owl namespace
+        // will throw error for the owl namespace.
         $strategy->translate_queries($json, $builder);
         $builder->insert_footer();
 
@@ -288,19 +312,21 @@ class BerardiTest extends PHPUnit\Framework\TestCase
         $actual = $actual->to_string();
 
         $this->assertXmlStringEqualsXmlString($expected, $actual, true);
-    }
 
-    /**      
+    }//end test_translate_queries()
+
+
+    /**
     Insert OWNlink from JSON into XML.
-    
+
     @testdox Insert OWNlink from JSON into XML.
-    
+
     @return Nothing.
      */
     public function test_translate_owllink()
     {
-        //TODO: Complete JSON!
-        $json =file_get_contents(
+        // TODO: Complete JSON!
+        $json = file_get_contents(
             __DIR__ . '/data/berarditest/translate_owllink.json'
         );
         $expected = file_get_contents(
@@ -310,7 +336,7 @@ class BerardiTest extends PHPUnit\Framework\TestCase
         $builder = new OWLlinkBuilder();
 
         $builder->insert_header(); // Without this, loading the DOMDocument
-        // will throw error for the owl namespace
+        // will throw error for the owl namespace.
         $strategy->translate_queries($json, $builder);
         $builder->insert_footer();
 
@@ -318,5 +344,8 @@ class BerardiTest extends PHPUnit\Framework\TestCase
         $actual = $actual->to_string();
 
         $this->assertXmlStringEqualsXmlString($expected, $actual, true);
-    }
-}
+
+    }//end test_translate_owllink()
+
+
+}//end class

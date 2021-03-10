@@ -46,6 +46,7 @@ use Wicom\Translator\Translator;
 /**
 # Warning!
 Don't use assertEqualXMLStructure()! It won't check for attributes values!
+And it's deprecated!
 
 It will only check for the amount of attributes.
 
@@ -59,6 +60,7 @@ It will only check for the amount of attributes.
  */
 class OWL_BerardiTest extends PHPUnit\Framework\TestCase
 {
+
 
     /**
     Translate a simple class diagram in JSON to OWL/XML
@@ -77,5 +79,8 @@ class OWL_BerardiTest extends PHPUnit\Framework\TestCase
         $actual = $trans->to_owl2($json);
 
         $this->assertXMLStringEqualsXMLString($expected, $actual, true);
-    }
-}
+
+    }//end testOwlTranslation()
+
+
+}//end class

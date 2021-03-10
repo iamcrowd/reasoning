@@ -76,9 +76,7 @@ class OWLlinkDocumentTest extends PHPUnit\Framework\TestCase
 
         $actual = $d->to_string();
 
-        $expected = process_xmlspaces($expected);
-        $actual = process_xmlspaces($actual);
-        $this->assertEqualXMLStructure($expected, $actual, true);
+        $this->assertXMLStringEqualsXMLString($expected, $actual, true);
     }
 
     /**
@@ -115,9 +113,7 @@ class OWLlinkDocumentTest extends PHPUnit\Framework\TestCase
 
         $actual = $d->to_string();
 
-        $expected = process_xmlspaces($expected);
-        $actual = process_xmlspaces($actual);
-        $this->assertEqualXMLStructure($expected, $actual, true);
+        $this->assertXMLStringEqualsXMLString($expected, $actual, true);
     }
 
     /**
@@ -215,11 +211,7 @@ class OWLlinkDocumentTest extends PHPUnit\Framework\TestCase
 
         $actual = $d->to_string();
 
-        $expected = process_xmlspaces($expected);
-        $actual = process_xmlspaces($actual);
-
-
-        $this->assertEqualXMLStructure($expected, $actual, true);
+        $this->assertXMLStringEqualsXMLString($expected, $actual, true);
     }
 
     /**
@@ -264,9 +256,7 @@ class OWLlinkDocumentTest extends PHPUnit\Framework\TestCase
 
         $actual = $d->to_string();
 
-        $expected = process_xmlspaces($expected);
-        $actual = process_xmlspaces($actual);
-        $this->assertEqualXMLStructure($expected, $actual, true);
+        $this->assertXMLStringEqualsXMLString($expected, $actual, true);
     }
 
     /**
@@ -314,9 +304,7 @@ class OWLlinkDocumentTest extends PHPUnit\Framework\TestCase
 
         $actual = $d->to_string();
 
-        $expected = process_xmlspaces($expected);
-        $actual = process_xmlspaces($actual);
-        $this->assertEqualXMLStructure($expected, $actual, true);
+        $this->assertXMLStringEqualsXMLString($expected, $actual, true);
     }
 }
 

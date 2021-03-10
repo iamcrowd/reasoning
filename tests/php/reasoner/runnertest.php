@@ -102,9 +102,7 @@ EOT;
         $runner->run($input);
         $actual = $runner->get_last_answer();
 
-        $expected = process_xmlspaces($expected);
-        $actual = process_xmlspaces($actual);
-        $this->assertEqualXMLStructure($expected, $actual, true);
+        $this->assertXMLStringEqualsXMLString($expected, $actual, true);
     }
 
     /**
@@ -155,10 +153,7 @@ EOT;
         $runner->run($input);
         $actual = $runner->get_last_answer();
 
-        $expected = process_xmlspaces($expected);
-
-        $actual = process_xmlspaces($actual);
-        $this->assertEqualXMLStructure($expected, $actual, true);
+        $this->assertXMLStringEqualsXMLString($expected, $actual, true);
     }
 
 }

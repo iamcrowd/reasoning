@@ -104,10 +104,6 @@ EOT;
         $konclude->run($input);
         $actual = $konclude->get_col_answers()[0];
 
-        $expected = process_xmlspaces($expected);
-
-        $actual = process_xmlspaces($actual);
-        // Konclude returns a DOMDocument not a DOMElement
-        $this->assertEqualXMLStructure($expected, $actual, true);
+        $this->assertXMLStringEqualsXMLString($expected, $actual, true);
     }
 }

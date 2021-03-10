@@ -69,9 +69,7 @@ class OWL2DocumentTest extends PHPUnit\Framework\TestCase
        $d->end_document();
        $actual = $d->to_string();
 
-       $expected = process_xmlspaces($expected);
-       $actual = process_xmlspaces($actual);
-       $this->assertEqualXMLStructure($expected, $actual, true);
+       $this->assertXMLStringEqualsXMLString($expected, $actual, true);
        }
 
        public function testInsertOWL2ClassDeclaration(){
@@ -96,9 +94,7 @@ class OWL2DocumentTest extends PHPUnit\Framework\TestCase
        $d->end_document();
        $actual = $d->to_string();
 
-       $expected = process_xmlspaces($expected);
-       $actual = process_xmlspaces($actual);
-       $this->assertEqualXMLStructure($expected, $actual, true);
+       $this->assertXMLStringEqualsXMLString($expected, $actual, true);
        }
 
        public function testInsertOWL2ObjectPropertyDeclaration(){
@@ -123,9 +119,7 @@ class OWL2DocumentTest extends PHPUnit\Framework\TestCase
        $d->end_document();
        $actual = $d->to_string();
 
-       $expected = process_xmlspaces($expected);
-       $actual = process_xmlspaces($actual);
-       $this->assertEqualXMLStructure($expected, $actual, true);
+       $this->assertXMLStringEqualsXMLString($expected, $actual, true);
        }
 
      */
@@ -182,9 +176,7 @@ class OWL2DocumentTest extends PHPUnit\Framework\TestCase
         $d->end_document();
         $actual = $d->to_string();
 
-        $expected = process_xmlspaces($expected);
-        $actual = process_xmlspaces($actual);
-        $this->assertEqualXMLStructure($expected, $actual, true);
+        $this->assertXMLStringEqualsXMLString($expected, $actual, true);
     }
     /*
      public function testOWL2DisjointClasses(){
@@ -220,9 +212,7 @@ class OWL2DocumentTest extends PHPUnit\Framework\TestCase
        $d->end_document();
        $actual = $d->to_string();
 
-       $expected = process_xmlspaces($expected);
-       $actual = process_xmlspaces($actual);
-       $this->assertEqualXMLStructure($expected, $actual, true);
+       $this->assertXMLStringEqualsXMLString($expected, $actual, true);
        }
 
        public function testOWL2SubobjProp(){
@@ -256,9 +246,7 @@ class OWL2DocumentTest extends PHPUnit\Framework\TestCase
        $d->end_document();
        $actual = $d->to_string();
 
-       $expected = process_xmlspaces($expected);
-       $actual = process_xmlspaces($actual);
-       $this->assertEqualXMLStructure($expected, $actual, true);
+       $this->assertXMLStringEqualsXMLString($expected, $actual, true);
        }
 
        public function testBioOntoCreateKB(){
@@ -333,10 +321,7 @@ class OWL2DocumentTest extends PHPUnit\Framework\TestCase
 
        $actual = $d->to_string();
 
-       $expected = process_xmlspaces($expected);
-       $actual = process_xmlspaces($actual);
-
-       $this->assertEqualXMLStructure($expected, $actual, true);
+       $this->assertXMLStringEqualsXMLString($expected, $actual, true);
        }
      */
 }
