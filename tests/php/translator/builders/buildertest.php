@@ -32,9 +32,9 @@ PHP version >= 7.2
 @link     http://crowd.fi.uncoma.edu.ar
  */
 
-require_once __DIR__ . '/../common.php';
-require_once __DIR__ . '/../../../wicom/translator/builders/owllinkbuilder.php';
-require_once __DIR__ . '/../../../wicom/translator/builders/owlbuilder.php';
+require_once __DIR__ . '/../../common.php';
+require_once __DIR__ . '/../../../../wicom/translator/builders/owllinkbuilder.php';
+require_once __DIR__ . '/../../../../wicom/translator/builders/owlbuilder.php';
 
 use Wicom\Translator\Builders\OWLlinkBuilder;
 use Wicom\Translator\Builders\OWLBuilder;
@@ -52,6 +52,7 @@ Test the main Builder classes.
  */
 class BuilderTest extends PHPUnit\Framework\TestCase
 {
+
 
     /**
     Test the OWLlink Builder.
@@ -109,36 +110,54 @@ EOT;
 
         $builder->insert_header();
 
+        $attrurl = "http://crowd.fi.uncoma.edu.ar/kb1/attribute";
+        $subclass1 = [
+            "subclass" => [
+                ["class" => "http://crowd.fi.uncoma.edu.ar/kb1/Class2"],
+                ["class" => "http://www.w3.org/2002/07/owl#Thing"],
+            ],
+        ];
+        $datadomain = [
+            "data_domain" => [
+                [
+                    "data_domain_exists" => [
+                        ["data_role" => $attrurl],
+                    ],
+                ],
+                ["class" => "http://crowd.fi.uncoma.edu.ar/kb1/Class2"],
+            ],
+        ];
+        $datarange = [
+            "data_range" => [
+                [
+                    "data_range_exists" => [
+                        [
+                            "data_range_inverse" => ["data_role" => $attrurl],
+                        ],
+                    ],
+                ],
+                ["datatype" => "http://www.w3.org/2001/XMLSchema#integer"],
+            ],
+        ];
+
+        $subclass2 = [
+            "subclass" => [
+                ["class" => "http://crowd.fi.uncoma.edu.ar/kb1/Class2"],
+                [
+                    "data_maxcard" => [
+                        1,
+                        ["data_role" => $attrurl],
+                    ],
+                ],
+            ],
+        ];
+
         $builder->translate_DL(
             [
-                ["subclass" => [
-                    ["class" => "http://crowd.fi.uncoma.edu.ar/kb1/Class2"],
-                    ["class" => "http://www.w3.org/2002/07/owl#Thing"],
-                ]],
-                ["data_domain" => [
-                    ["data_domain_exists" => [
-                        ["data_role" =>
-                         "http://crowd.fi.uncoma.edu.ar/kb1/attribute"],
-                    ]
-                    ],
-                    ["class" => "http://crowd.fi.uncoma.edu.ar/kb1/Class2"]
-                ]],
-                ["data_range" => [
-                    ["data_range_exists" => [
-                        ["data_range_inverse" =>
-                         ["data_role" =>
-                          "http://crowd.fi.uncoma.edu.ar/kb1/attribute"]
-                        ]
-                    ]],
-                    ["datatype" => "http://www.w3.org/2001/XMLSchema#integer"]
-                ]
-                ],
-                ["subclass" => [
-                    ["class" => "http://crowd.fi.uncoma.edu.ar/kb1/Class2"],
-                    ["data_maxcard" =>
-                     [1,
-                      ["data_role" =>
-                       "http://crowd.fi.uncoma.edu.ar/kb1/attribute"]]]]],
+                $subclass1,
+                $datadomain,
+                $datarange,
+                $subclass2,
             ]
         );
 
@@ -146,10 +165,9 @@ EOT;
         $actual = $builder->get_product();
         $actual = $actual->to_string();
 
-        // print_r($actual);
-
         $this->assertXMLStringEqualsXMLString($expected, $actual, true);
-    }
-}
 
-?>
+    }//end testTranslateOWLlinkAttribute()
+
+
+}//end class

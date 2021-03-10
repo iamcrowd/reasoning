@@ -32,8 +32,8 @@ PHP version >= 7.2
 @link     http://crowd.fi.uncoma.edu.ar
  */
 
-require_once __DIR__ . '/../common.php';
-require_once __DIR__ . '/../../../wicom/translator/documents/owllinkdocument.php';
+require_once __DIR__ . '/../../common.php';
+require_once __DIR__ . '/../../../../wicom/translator/documents/owllinkdocument.php';
 
 use Wicom\Translator\Documents\OWLlinkDocument;
 
@@ -52,6 +52,7 @@ Test the OWLlink document generator class.
  */
 class OWLlinkDocumentTest extends PHPUnit\Framework\TestCase
 {
+
 
     /**
     Can create a base OWLlink document.
@@ -77,7 +78,9 @@ class OWLlinkDocumentTest extends PHPUnit\Framework\TestCase
         $actual = $d->to_string();
 
         $this->assertXMLStringEqualsXMLString($expected, $actual, true);
-    }
+
+    }//end testConstructor()
+
 
     /**
     Can insert a CreateKB tag.
@@ -106,15 +109,21 @@ class OWLlinkDocumentTest extends PHPUnit\Framework\TestCase
         $d = new OWLlinkDocument();
         $d->start_document();
         $d->insert_create_kb(
-            [['prefix' => 'crowd',
-                              'value' => "http://crowd.fi.uncoma.edu.ar/kb1/"]]
+            [
+                [
+                    'prefix' => 'crowd',
+                    'value'  => "http://crowd.fi.uncoma.edu.ar/kb1/",
+                ],
+            ]
         );
         $d->end_document();
 
         $actual = $d->to_string();
 
         $this->assertXMLStringEqualsXMLString($expected, $actual, true);
-    }
+
+    }//end testInsertCreateKB()
+
 
     /**
     Can add BioOnto prefixes
@@ -159,51 +168,117 @@ class OWLlinkDocumentTest extends PHPUnit\Framework\TestCase
         $d = new OWLlinkDocument();
 
         $reqiris = [
-            ["prefix" => "xmlns", "value" => "http://www.owllink.org/owllink#"],
-            ["prefix" => "xmlns:owl",
-             "value" => "http://www.w3.org/2002/07/owl#"],
-            ["prefix" => "xmlns:xsi",
-             "value" => "http://www.w3.org/2001/XMLSchema-instance"],
-            ["prefix" => "xmlns:rdf",
-             "value" => "http://www.w3.org/1999/02/22-rdf-syntax-ns#"],
-            ["prefix" => "xmlns:rdfs",
-             "value" => "http://www.w3.org/2000/01/rdf-schema#"],
-            ["prefix" => "xmlns:xml",
-             "value" => "http://www.w3.org/XML/1998/namespace"],
-            ["prefix" => "xsi:schemaLocation",
-             "value" =>
-             "http://www.owllink.org/owllink# http://www.owllink.org/owllink-20091116.xsd"],
-            ["prefix" => "xml:base",
-             "value" => "http://www.cenpat-conicet.gob.ar/bioOnto/"],
+            [
+                "prefix" => "xmlns",
+                "value"  => "http://www.owllink.org/owllink#",
+            ],
+            [
+                "prefix" => "xmlns:owl",
+                "value"  => "http://www.w3.org/2002/07/owl#",
+            ],
+            [
+                "prefix" => "xmlns:xsi",
+                "value"  => "http://www.w3.org/2001/XMLSchema-instance",
+            ],
+            [
+                "prefix" => "xmlns:rdf",
+                "value"  => "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+            ],
+            [
+                "prefix" => "xmlns:rdfs",
+                "value"  => "http://www.w3.org/2000/01/rdf-schema#",
+            ],
+            [
+                "prefix" => "xmlns:xml",
+                "value"  => "http://www.w3.org/XML/1998/namespace",
+            ],
+            [
+                "prefix" => "xsi:schemaLocation",
+                "value"  => "http://www.owllink.org/owllink# http://www.owllink.org/owllink-20091116.xsd",
+            ],
+            [
+                "prefix" => "xml:base",
+                "value"  => "http://www.cenpat-conicet.gob.ar/bioOnto/",
+            ],
         ];
 
         $prefixes = [
-            ["prefix" => "wd", "value" => "http://www.wikidata.org/entity/"],
-            ["prefix" => "dbr", "value" => "http://dbpedia.org/resource/"],
-            ["prefix" => "dwc", "value" => "http://rs.tdwg.org/dwc/terms/"],
-            ["prefix" => "owl", "value" => "http://www.w3.org/2002/07/owl#"],
-            ["prefix" => "rdf",
-             "value" => "http://www.w3.org/1999/02/22-rdf-syntax-ns#"],
-            ["prefix" => "wdt", "value" => "http://wikidata.org/prop/direct/"],
-            ["prefix" => "xml", "value" => "http://www.w3.org/XML/1998/namespace"],
-            ["prefix" => "xsd", "value" => "http://www.w3.org/2001/XMLSchema#"],
-            ["prefix" => "envo", "value" => "http://purl.obolibrary.org/obo/"],
-            ["prefix" => "foaf", "value" => "http://xmlns.com/foaf/0.1/"],
-            ["prefix" => "rdfs",
-             "value" => "http://www.w3.org/2000/01/rdf-schema#"],
-            ["prefix" => "time", "value" => "http://www.w3.org/2006/time#"],
-            ["prefix" => "void", "value" => "http://rdfs.org/ns/void#"],
-            ["prefix" => "dcterms", "value" => "http://purl.org/dc/terms/"],
-            ["prefix" => "geo-ont",
-             "value" => "http://www.geonames.org/ontology#"],
-            ["prefix" => "geo-pos",
-             "value" => "http://www.w3.org/2003/01/geo/wgs84_pos#"],
-            ["prefix" => "bio-onto",
-             "value" => "http://www.cenpat-conicet.gob.ar/ontology/"],
+            [
+                "prefix" => "wd",
+                "value"  => "http://www.wikidata.org/entity/",
+            ],
+            [
+                "prefix" => "dbr",
+                "value"  => "http://dbpedia.org/resource/",
+            ],
+            [
+                "prefix" => "dwc",
+                "value"  => "http://rs.tdwg.org/dwc/terms/",
+            ],
+            [
+                "prefix" => "owl",
+                "value"  => "http://www.w3.org/2002/07/owl#",
+            ],
+            [
+                "prefix" => "rdf",
+                "value"  => "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+            ],
+            [
+                "prefix" => "wdt",
+                "value"  => "http://wikidata.org/prop/direct/",
+            ],
+            [
+                "prefix" => "xml",
+                "value"  => "http://www.w3.org/XML/1998/namespace",
+            ],
+            [
+                "prefix" => "xsd",
+                "value"  => "http://www.w3.org/2001/XMLSchema#",
+            ],
+            [
+                "prefix" => "envo",
+                "value"  => "http://purl.obolibrary.org/obo/",
+            ],
+            [
+                "prefix" => "foaf",
+                "value"  => "http://xmlns.com/foaf/0.1/",
+            ],
+            [
+                "prefix" => "rdfs",
+                "value"  => "http://www.w3.org/2000/01/rdf-schema#",
+            ],
+            [
+                "prefix" => "time",
+                "value"  => "http://www.w3.org/2006/time#",
+            ],
+            [
+                "prefix" => "void",
+                "value"  => "http://rdfs.org/ns/void#",
+            ],
+            [
+                "prefix" => "dcterms",
+                "value"  => "http://purl.org/dc/terms/",
+            ],
+            [
+                "prefix" => "geo-ont",
+                "value"  => "http://www.geonames.org/ontology#",
+            ],
+            [
+                "prefix" => "geo-pos",
+                "value"  => "http://www.w3.org/2003/01/geo/wgs84_pos#",
+            ],
+            [
+                "prefix" => "bio-onto",
+                "value"  => "http://www.cenpat-conicet.gob.ar/ontology/",
+            ],
         ];
 
-        $ontoIRI = [['prefix' => 'bio-onto',
-                     'value' => "http://www.cenpat-conicet.gob.ar/bioOnto/"]];
+        $ontoIRI = [
+            [
+                'prefix' => 'bio-onto',
+                'value'  => "http://www.cenpat-conicet.gob.ar/bioOnto/",
+            ],
+        ];
 
         $d->start_document($ontoIRI, $reqiris);
         $d->insert_create_kb($ontoIRI, $prefixes);
@@ -212,7 +287,9 @@ class OWLlinkDocumentTest extends PHPUnit\Framework\TestCase
         $actual = $d->to_string();
 
         $this->assertXMLStringEqualsXMLString($expected, $actual, true);
-    }
+
+    }//end testBioOntoCreateKB()
+
 
     /**
     Can insert some classes.
@@ -245,8 +322,12 @@ class OWLlinkDocumentTest extends PHPUnit\Framework\TestCase
         $d = new OWLlinkDocument();
         $d->start_document();
         $d->insert_create_kb(
-            [['prefix' => 'crowd',
-              'value' => "http://crowd.fi.uncoma.edu.ar/kb1/"]]
+            [
+                [
+                    'prefix' => 'crowd',
+                    'value'  => "http://crowd.fi.uncoma.edu.ar/kb1/",
+                ],
+            ]
         );
         $d->start_tell();
         $d->insert_class("HiWorld");
@@ -257,7 +338,9 @@ class OWLlinkDocumentTest extends PHPUnit\Framework\TestCase
         $actual = $d->to_string();
 
         $this->assertXMLStringEqualsXMLString($expected, $actual, true);
-    }
+
+    }//end testClasses()
+
 
     /**
     Can insert subclass relationships
@@ -293,8 +376,12 @@ class OWLlinkDocumentTest extends PHPUnit\Framework\TestCase
         $d = new OWLlinkDocument();
         $d->start_document();
         $d->insert_create_kb(
-            [['prefix' => 'crowd',
-              'value' => "http://crowd.fi.uncoma.edu.ar/kb1/"]]
+            [
+                [
+                    'prefix' => 'crowd',
+                    'value'  => "http://crowd.fi.uncoma.edu.ar/kb1/",
+                ],
+            ]
         );
         $d->start_tell();
         $d->insert_subclassof("HiWorld", "owl:Thing");
@@ -305,7 +392,8 @@ class OWLlinkDocumentTest extends PHPUnit\Framework\TestCase
         $actual = $d->to_string();
 
         $this->assertXMLStringEqualsXMLString($expected, $actual, true);
-    }
-}
 
-?>
+    }//end testSubclass()
+
+
+}//end class

@@ -32,9 +32,8 @@ PHP version >= 7.2
 @link     http://crowd.fi.uncoma.edu.ar
  */
 
-require_once __DIR__ . '/../common.php';
-
-require_once __DIR__ . '/../../../wicom/translator/documents/umljsondocument.php';
+require_once __DIR__ . '/../../common.php';
+require_once __DIR__ . '/../../../../wicom/translator/documents/umljsondocument.php';
 
 
 use Wicom\Translator\Documents\UMLJSONDocument;
@@ -42,7 +41,7 @@ use Wicom\Translator\Documents\UMLJSONDocument;
 /**
 Test the UML JSON document generator.
 
-@testdox UMLJSonDocument tests
+@testdox UMLJSonDocument: Create a JSON document from UML represented in PHP.
 
 @category Tests
 @package  Crowd
@@ -54,6 +53,7 @@ Test the UML JSON document generator.
  */
 class UMLJSONDocumentTest extends PHPUnit\Framework\TestCase
 {
+
 
     /**
     Convert an empty UML into JSON.
@@ -81,7 +81,9 @@ EOT;
         $actual = $d->to_json();
 
         $this->assertJsonStringEqualsJsonString($expected, $actual, true);
-    }
+
+    }//end testUMLConstructor()
+
 
     /**
     Convert a UML class without attributes into JSON.
@@ -110,7 +112,9 @@ EOT;
         $actual = $d->to_json();
 
         $this->assertJsonStringEqualsJsonString($expected, $actual, true);
-    }
+
+    }//end testUMLClassWithoutAttrsToJson()
+
 
     /**
     Convert an UML class with attributes into JSON
@@ -145,18 +149,23 @@ EOT;
         $d->insert_class_with_attr(
             "Person",
             [
-                ["name" => "dni",
-                 "datatype" => "String"],
-                ["name" => "firstname",
-                 "datatype" => "String"]
+                [
+                    "name"     => "dni",
+                    "datatype" => "String",
+                ],
+                [
+                    "name"     => "firstname",
+                    "datatype" => "String",
+                ],
             ]
         );
         $actual = $d->to_json();
 
         $this->assertJsonStringEqualsJsonString($expected, $actual, true);
-    }
 
-    
+    }//end testUMLClassWithAttrsToJson()
+
+
     /**
     Convert an UML generalization into JSON.
 
@@ -193,7 +202,8 @@ EOT;
         $actual = $d->to_json();
 
         $this->assertJsonStringEqualsJsonString($expected, $actual, true);
-    }
+
+    }//end testUMLGenToJson()
 
 
     /**
@@ -226,15 +236,26 @@ EOT;
         $d->insert_class_without_attr("Person");
         $d->insert_class_without_attr("Student");
         $d->insert_relationship(
-            ["Person","Student"],
+            [
+                "Person",
+                "Student",
+            ],
             "R1",
-            ["2..4","1..*"],
-            ["e","c"]
+            [
+                "2..4",
+                "1..*",
+            ],
+            [
+                "e",
+                "c",
+            ]
         );
         $actual = $d->to_json();
 
         $this->assertJsonStringEqualsJsonString($expected, $actual, true);
-    }
+
+    }//end testUMLAssocToJson()
+
 
     /**
     Convert UML into a JSON representation.
@@ -281,24 +302,40 @@ EOT;
         $d = new UMLJSONDocument();
         $d->insert_class_with_attr(
             "Person",
-            [["name" => "dni",
-              "datatype" => "String"],
-             ["name" => "firstname",
-              "datatype" => "String"]]
+            [
+                [
+                    "name"     => "dni",
+                    "datatype" => "String",
+                ],
+                [
+                    "name"     => "firstname",
+                    "datatype" => "String",
+                ],
+            ]
         );
         $d->insert_class_without_attr("Student");
         $d->insert_class_without_attr("Class1");
         $d->insert_subsumption(["Student"], "Person");
         $d->insert_relationship(
-            ["Student","Class1"],
+            [
+                "Student",
+                "Class1",
+            ],
             "R1",
-            ["2..4","1..*"],
-            ["e","c"]
+            [
+                "2..4",
+                "1..*",
+            ],
+            [
+                "e",
+                "c",
+            ]
         );
         $actual = $d->to_json();
 
         $this->assertJsonStringEqualsJsonString($expected, $actual, true);
-    }
-}
 
-?>
+    }//end testUMLToJson()
+
+
+}//end class
