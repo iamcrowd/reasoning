@@ -34,7 +34,7 @@ PHP version >= 7.2
 
 require_once __DIR__ . '/../common.php';
 require_once __DIR__ . '/../../../config/config.php';
-require_once __DIR__ . '/../../../wicom/reasoner/config.php';
+require_once __DIR__ . '/../../../wicom/reasoner/racerconnector.php';
 
 use Wicom\Reasoner\RacerConnector;
 

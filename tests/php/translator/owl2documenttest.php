@@ -33,9 +33,7 @@ PHP version >= 7.2
  */
 
 require_once __DIR__ . '/../common.php';
-
-//use function \load;
-require_once __DIR__ . '/../../../icom/translator/documents/owldocument.php';
+require_once __DIR__ . '/../../../wicom/translator/documents/owldocument.php';
 
 
 use Wicom\Translator\Documents\OWLDocument;

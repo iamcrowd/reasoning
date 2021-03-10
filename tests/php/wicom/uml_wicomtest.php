@@ -52,7 +52,7 @@ Test the main WICOM class.
 @license  GPLv3 https://www.gnu.org/licenses/gpl-3.0.html
 @link     http://crowd.fi.uncoma.edu.ar
  */
-class WicomTest extends PHPUnit\Framework\TestCase
+class UML_WicomTest extends PHPUnit\Framework\TestCase
 {
 
     /**

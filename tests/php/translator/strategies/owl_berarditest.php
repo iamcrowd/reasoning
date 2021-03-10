@@ -57,7 +57,7 @@ It will only check for the amount of attributes.
 @license  GPLv3 https://www.gnu.org/licenses/gpl-3.0.html
 @link     http://crowd.fi.uncoma.edu.ar
  */
-class BerardiTest extends PHPUnit\Framework\TestCase
+class OWL_BerardiTest extends PHPUnit\Framework\TestCase
 {
 
     /**
