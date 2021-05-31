@@ -87,7 +87,8 @@ class DLMetaEnricoExists extends DLMetaEnrico{
                     ["class" => $attr_dom_el],
                     ["data_mincard" => [
                           1,
-                          ["data_role" => $attr_el["name"]]
+                          ["data_role" => $attr_el["name"]],
+                          ["datatype" => $attr_el["range"]]
                           ]
                         ]
                     ]
@@ -96,7 +97,8 @@ class DLMetaEnricoExists extends DLMetaEnrico{
                     ["class" => $attr_dom_el],
                     ["data_maxcard" => [
                           1,
-                          ["data_role" => $attr_el["name"]]
+                          ["data_role" => $attr_el["name"]],
+                          ["datatype" => $attr_el["range"]]
                           ]
                         ]
                     ]
@@ -266,7 +268,8 @@ class DLMetaEnricoExists extends DLMetaEnrico{
                       ["class" => $domain_el],
                       ["data_mincard" => [
                             1,
-                            ["data_role" => $attrname]
+                            ["data_role" => $attrname],
+                            ["datatype" => $attrrange]
                             ]
                           ]
                       ]
@@ -275,7 +278,8 @@ class DLMetaEnricoExists extends DLMetaEnrico{
                       ["class" => $domain_el],
                       ["data_maxcard" => [
                             1,
-                            ["data_role" => $attrname]
+                            ["data_role" => $attrname],
+                            ["datatype" => $attrrange]
                             ]
                           ]
                       ]
