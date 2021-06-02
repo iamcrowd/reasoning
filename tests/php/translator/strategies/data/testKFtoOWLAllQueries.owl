@@ -61,13 +61,10 @@
 		<Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#E"/>
 		<Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#C"/>
 	</SubClassOf>
-	<SubClassOf>
-		<ObjectIntersectionOf>
-			<Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#E"/>
-			<Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#D"/>
-		</ObjectIntersectionOf>
-		<Class abbreviatedIRI="owl:Nothing"/>
-	</SubClassOf>
+	<DisjointClasses>
+		<Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#E"/>
+		<Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#D"/>
+	</DisjointClasses>
 	<SubClassOf>
 		<Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#C"/>
 		<ObjectUnionOf>
