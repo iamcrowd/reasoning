@@ -26,12 +26,16 @@ require_once("common.php");
 load("autoload.php", "vendor/");
 
 load("crowd_dlmeta.php", "wicom/translator/strategies/strategydlmeta/");
+load("crowd_dlmeta_enrico_exists.php", "wicom/translator/strategies/strategydlmeta/crowd20/");
+
 load("crowd_checkmeta.php", "wicom/translator/strategies/strategydlmeta/");
 load("owllinkbuilder.php", "wicom/translator/builders/");
 load("metajsonbuilder.php", "wicom/translator/builders/");
 load("crowdmetaanalizer.php", "wicom/translator/strategies/qapackages/answeranalizers/");
 
 use Wicom\Translator\Strategies\Strategydlmeta\DLMeta;
+use Wicom\Translator\Strategies\Strategydlmeta\crowd20\DLMetaEnricoExists;
+
 use Wicom\Translator\Strategies\Strategydlmeta\DLCheckMeta;
 use Wicom\Translator\Builders\OWLlinkBuilder;
 use Wicom\Translator\Builders\MetaJSONBuilder;
@@ -127,7 +131,7 @@ class DLMetaCheckTest extends PHPUnit\Framework\TestCase{
         $beauty_out = file_get_contents("translator/strategies/data_inf/testKFtoOWLlinkSubsumptionInferredBeautyOut.json");
 
         if ($this->validate_against_scheme($json)){
-          $strategy = new DLMeta();
+          $strategy = new DLMetaEnricoExists();
           $builder = new OWLlinkBuilder();
 
           $builder->insert_header();
@@ -176,7 +180,7 @@ class DLMetaCheckTest extends PHPUnit\Framework\TestCase{
         $inferred_expected = file_get_contents("translator/strategies/data_inf/testRelExtendedInferredCardIntoOWLlinkOut.json");
 
         if ($this->validate_against_scheme($json)){
-          $strategy = new DLMeta();
+          $strategy = new DLMetaEnricoExists();
           $strategy->set_check_cardinalities(true);
           $builder = new OWLlinkBuilder();
 
@@ -213,21 +217,5 @@ class DLMetaCheckTest extends PHPUnit\Framework\TestCase{
           $this->assertTrue(false, "JSON KF does not match against KF Scheme");
         }
     }
-
-    //var_dump($oa->get_subclass("http://www.w3.org/2002/07/owl#Thing"));
-    /*var_dump($oa->get_disjoint_class("http://www.w3.org/2002/07/owl#Nothing"));
-    var_dump($oa->get_disjoint_class("http://www.w3.org/2002/07/owl#Thing"));
-    var_dump($oa->get_disjoint_class("http://crowd.fi.uncoma.edu.ar/kb1#D"));
-    var_dump($oa->get_equivalent_class("http://crowd.fi.uncoma.edu.ar/kb1#D"));*/
-
-    //$metabuilder = new MetaJSONBuilder($json);
-    //$name = $metabuilder->insert_subsumption("http://crowd.fi.uncoma.edu.ar/kb1#F", "http://crowd.fi.uncoma.edu.ar/kb1#E");
-
-    //if($metabuilder->subsumption_in_instance("http://crowd.fi.uncoma.edu.ar/kb1#F", "http://crowd.fi.uncoma.edu.ar/kb1#E")){
-    //  echo("existing");
-    //} else {
-    //  echo("unexisting");
-    //}
-    //var_dump($metabuilder->get_product()->to_json());
 
 }

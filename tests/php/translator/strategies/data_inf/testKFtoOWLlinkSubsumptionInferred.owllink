@@ -38,13 +38,10 @@
 			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar#Cell"/>
 			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar#Phone"/>
 		</owl:SubClassOf>
-		<owl:SubClassOf>
-			<owl:ObjectIntersectionOf>
-				<owl:Class IRI="http://crowd.fi.uncoma.edu.ar#Cell"/>
-				<owl:Class IRI="http://crowd.fi.uncoma.edu.ar#LandLine"/>
-			</owl:ObjectIntersectionOf>
-			<owl:Class IRI="http://www.w3.org/2002/07/owl#Nothing"/>
-		</owl:SubClassOf>
+		<owl:DisjointClasses>
+			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar#Cell"/>
+			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar#LandLine"/>
+		</owl:DisjointClasses>
 		<owl:SubClassOf>
 			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar#Phone"/>
 			<owl:ObjectUnionOf>
@@ -64,13 +61,10 @@
 			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar#Home"/>
 			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar#O"/>
 		</owl:SubClassOf>
-		<owl:SubClassOf>
-			<owl:ObjectIntersectionOf>
-				<owl:Class IRI="http://crowd.fi.uncoma.edu.ar#Home"/>
-				<owl:Class IRI="http://crowd.fi.uncoma.edu.ar#Cell"/>
-			</owl:ObjectIntersectionOf>
-			<owl:Class IRI="http://www.w3.org/2002/07/owl#Nothing"/>
-		</owl:SubClassOf>
+		<owl:DisjointClasses>
+			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar#Home"/>
+			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar#Cell"/>
+		</owl:DisjointClasses>
 		<owl:SubClassOf>
 			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar#Cell"/>
 			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar#O"/>
