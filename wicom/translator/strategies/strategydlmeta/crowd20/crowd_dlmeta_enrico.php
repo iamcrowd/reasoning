@@ -99,13 +99,7 @@ class DLMetaEnrico extends Metamodel{
           foreach ($constraint["entities"] as $entitydisj){
               array_push($disjoint, ["class" => $entitydisj]);
           }
-          $lst = [
-              ["subclass" => [
-                  ["intersection" => $disjoint],
-                  ["class" => "owl:Nothing"]
-                 ]
-              ]
-          ];
+          $lst = [["disjointclasses" => $disjoint]];
           $builder->translate_DL($lst);
         }
       }

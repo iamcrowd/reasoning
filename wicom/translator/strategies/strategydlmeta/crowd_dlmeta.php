@@ -99,13 +99,7 @@ class DLMeta extends Metamodel{
           foreach ($constraint["entities"] as $entitydisj){
               array_push($disjoint, ["class" => $entitydisj]);
           }
-          $lst = [
-              ["subclass" => [
-                  ["intersection" => $disjoint],
-                  ["class" => "owl:Nothing"]
-                 ]
-              ]
-          ];
+          $lst = [["disjointclasses" => $disjoint]];
           $builder->translate_DL($lst);
         }
       }
@@ -662,14 +656,8 @@ class DLMeta extends Metamodel{
 
         // armar axioma disj
         if (count($disj_rel) > 1){
-          $lst = [
-            ["subclass" => [
-                ["intersection" => $disj_rel],
-                ["class" => "owl:Nothing"]
-               ]
-            ]
-          ];
-
+          var_dump($disj_rel);
+          $lst = [["disjointclasses" => $disj_rel]];
           $builder->translate_DL($lst);
         }
     }
