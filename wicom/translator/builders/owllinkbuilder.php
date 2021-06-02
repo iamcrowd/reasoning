@@ -197,9 +197,9 @@ class OWLlinkBuilder extends DocumentBuilder{
         $this->product->insert_isEntailed_query($array);
     }
 
-    public function insert_isEntailedMaxCardinality_query($class, $op, $cardinality){
+    public function insert_isEntailedMaxCardinality_query($class, $op, $cardinality, $rel = NULL){
         $this->ensure_end_tell();
-        $this->product->insert_isEntailedMaxCardinality_query($class, $op, $cardinality);
+        $this->product->insert_isEntailedMaxCardinality_query($class, $op, $cardinality, $rel);
     }
 
     /**

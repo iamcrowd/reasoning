@@ -976,7 +976,7 @@ class OWLlinkDocument extends Document{
     /**
       Insert an isEntailed query to check cardinalities
     */
-    public function insert_isEntailedMaxCardinality_query($class, $op, $cardinality){
+    public function insert_isEntailedMaxCardinality_query($class, $op, $cardinality, $rel = NULL){
       $this->content->startElement("IsEntailed");
       $this->content->writeAttribute("kb", $this->actual_kb);
 
@@ -992,6 +992,11 @@ class OWLlinkDocument extends Document{
                 $this->content->writeAttribute("IRI", $op);
               $this->content->endElement();
             $this->content->endElement(); //inverse
+            if ($rel != NULL){ // if ALCQI
+              $this->content->startElement("owl:Class");
+                $this->content->writeAttribute("IRI", $rel);
+              $this->content->endElement();
+            }
         $this->content->endElement(); //max
       $this->content->endElement(); //subclass
       $this->content->endElement(); //isEntaileds

@@ -28,13 +28,15 @@ namespace Wicom\Translator\Strategies\Strategydlmeta\crowd20;
 //load('crowdmetapack.php', '../qapackages/');
 
 use function \load;
-load('crowdmetapack.php', '../../qapackages/');
+//load('crowdmetapack.php', '../../qapackages/');
+load('crowdalcqimetapack.php', '../../qapackages/crowd20/');
 load('strategy.php', '../../');
 load('metamodel.php', '../../');
 load("crowd_checkmeta.php", "../");
 load("crowd_dlmeta_enrico.php", "./");
 
-use Wicom\Translator\Strategies\QAPackages\CrowdMetaPack;
+//use Wicom\Translator\Strategies\QAPackages\CrowdMetaPack;
+use Wicom\Translator\Strategies\QAPackages\crowd20\CrowdALCQIMetaPack;
 use Wicom\Translator\Strategies\Strategy;
 use Wicom\Translator\Strategies\Metamodel;
 use Wicom\Translator\Strategies\Strategydlmeta\DLCheckMeta;
