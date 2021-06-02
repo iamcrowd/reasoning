@@ -43,6 +43,8 @@ use SimpleXMLIterator;
    Read paper "" for more details about formalisation.
 
    @see Translator class for description about the JSON format.
+
+   @deprecated deprecated since version 2.0
  */
 class UMLcrowd extends UML{
 
