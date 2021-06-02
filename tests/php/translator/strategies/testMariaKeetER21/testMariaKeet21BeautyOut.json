@@ -1,0 +1,708 @@
+{
+  "satisfiable": {
+    "kb": true,
+    "classes": [
+      "http://crowd.fi.uncoma.edu.ar/kb1#COVID-19Medicine",
+      "http://crowd.fi.uncoma.edu.ar/kb1#Regulatory-Body",
+      "http://crowd.fi.uncoma.edu.ar/kb1#COVID-19 treatment drug",
+      "http://crowd.fi.uncoma.edu.ar/kb1#COVID-19 vaccine",
+      "http://crowd.fi.uncoma.edu.ar/kb1#Pfizer-Vaccine",
+      "http://crowd.fi.uncoma.edu.ar/kb1#Inoculation",
+      "http://crowd.fi.uncoma.edu.ar/kb1#as1",
+      "http://crowd.fi.uncoma.edu.ar/kb1#As2",
+      "http://crowd.fi.uncoma.edu.ar/kb1#As3"
+    ],
+    "objectproperties": [
+      "http://crowd.fi.uncoma.edu.ar/kb1#of",
+      "http://crowd.fi.uncoma.edu.ar/kb1#approved-by",
+      "http://crowd.fi.uncoma.edu.ar/kb1#with",
+      "http://crowd.fi.uncoma.edu.ar/kb1#role-b-2",
+      "http://crowd.fi.uncoma.edu.ar/kb1#with",
+      "http://crowd.fi.uncoma.edu.ar/kb1#role-b-2"
+    ],
+    "dataproperties": [
+      "http://crowd.fi.uncoma.edu.ar/kb1#name",
+      "http://crowd.fi.uncoma.edu.ar/kb1#country",
+      "http://crowd.fi.uncoma.edu.ar/kb1#Person",
+      "http://crowd.fi.uncoma.edu.ar/kb1#date",
+      "http://crowd.fi.uncoma.edu.ar/kb1#batch"
+    ]
+  },
+  "unsatisfiable": {
+    "classes": [],
+    "objectproperties": [],
+    "dataproperties": []
+  },
+  "beauty_responses": [
+    {
+      "subclass": [
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#Inoculation"
+        },
+        {
+          "class": "http://www.w3.org/2002/07/owl#Thing"
+        }
+      ]
+    },
+    {
+      "subclass": [
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#As2"
+        },
+        {
+          "class": "http://www.w3.org/2002/07/owl#Thing"
+        }
+      ]
+    },
+    {
+      "subclass": [
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#As3"
+        },
+        {
+          "class": "http://www.w3.org/2002/07/owl#Thing"
+        }
+      ]
+    },
+    {
+      "subclass": [
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#as1"
+        },
+        {
+          "class": "http://www.w3.org/2002/07/owl#Thing"
+        }
+      ]
+    },
+    {
+      "subclass": [
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#Regulatory-Body"
+        },
+        {
+          "class": "http://www.w3.org/2002/07/owl#Thing"
+        }
+      ]
+    },
+    {
+      "subclass": [
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#COVID-19Medicine"
+        },
+        {
+          "class": "http://www.w3.org/2002/07/owl#Thing"
+        }
+      ]
+    },
+    {
+      "subclass": [
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#Pfizer-Vaccine"
+        },
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#COVID-19 vaccine"
+        }
+      ]
+    },
+    {
+      "subclass": [
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#COVID-19 vaccine"
+        },
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#Regulatory-Body"
+        }
+      ]
+    },
+    {
+      "subclass": [
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#COVID-19 treatment drug"
+        },
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#Regulatory-Body"
+        }
+      ]
+    },
+    {
+      "subclass": [
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#COVID-19 vaccine"
+        },
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#COVID-19Medicine"
+        }
+      ]
+    },
+    {
+      "subclass": [
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#COVID-19 treatment drug"
+        },
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#COVID-19Medicine"
+        }
+      ]
+    },
+    {
+      "disjointclasses": [
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#COVID-19Medicine"
+        },
+        {
+          "class": "http://www.w3.org/2002/07/owl#Nothing"
+        }
+      ]
+    },
+    {
+      "disjointclasses": [
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#Regulatory-Body"
+        },
+        {
+          "class": "http://www.w3.org/2002/07/owl#Nothing"
+        }
+      ]
+    },
+    {
+      "disjointclasses": [
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#COVID-19 treatment drug"
+        },
+        {
+          "class": "http://www.w3.org/2002/07/owl#Nothing"
+        }
+      ]
+    },
+    {
+      "disjointclasses": [
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#COVID-19 treatment drug"
+        },
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#COVID-19 vaccine"
+        }
+      ]
+    },
+    {
+      "disjointclasses": [
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#COVID-19 treatment drug"
+        },
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#Pfizer-Vaccine"
+        }
+      ]
+    },
+    {
+      "disjointclasses": [
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#COVID-19 vaccine"
+        },
+        {
+          "class": "http://www.w3.org/2002/07/owl#Nothing"
+        }
+      ]
+    },
+    {
+      "disjointclasses": [
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#COVID-19 vaccine"
+        },
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#COVID-19 treatment drug"
+        }
+      ]
+    },
+    {
+      "disjointclasses": [
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#Pfizer-Vaccine"
+        },
+        {
+          "class": "http://www.w3.org/2002/07/owl#Nothing"
+        }
+      ]
+    },
+    {
+      "disjointclasses": [
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#Pfizer-Vaccine"
+        },
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#COVID-19 treatment drug"
+        }
+      ]
+    },
+    {
+      "disjointclasses": [
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#Inoculation"
+        },
+        {
+          "class": "http://www.w3.org/2002/07/owl#Nothing"
+        }
+      ]
+    },
+    {
+      "disjointclasses": [
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#as1"
+        },
+        {
+          "class": "http://www.w3.org/2002/07/owl#Nothing"
+        }
+      ]
+    },
+    {
+      "disjointclasses": [
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#As2"
+        },
+        {
+          "class": "http://www.w3.org/2002/07/owl#Nothing"
+        }
+      ]
+    },
+    {
+      "disjointclasses": [
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#As3"
+        },
+        {
+          "class": "http://www.w3.org/2002/07/owl#Nothing"
+        }
+      ]
+    },
+    {
+      "equivalentclasses": [
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#COVID-19Medicine"
+        },
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#Regulatory-Body"
+        }
+      ]
+    },
+    {
+      "equivalentclasses": [
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#COVID-19Medicine"
+        },
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#COVID-19Medicine"
+        }
+      ]
+    },
+    {
+      "equivalentclasses": [
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#Regulatory-Body"
+        },
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#Regulatory-Body"
+        }
+      ]
+    },
+    {
+      "equivalentclasses": [
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#Regulatory-Body"
+        },
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#COVID-19Medicine"
+        }
+      ]
+    },
+    {
+      "equivalentclasses": [
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#COVID-19 treatment drug"
+        },
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#COVID-19 treatment drug"
+        }
+      ]
+    },
+    {
+      "equivalentclasses": [
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#COVID-19 vaccine"
+        },
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#COVID-19 vaccine"
+        }
+      ]
+    },
+    {
+      "equivalentclasses": [
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#Pfizer-Vaccine"
+        },
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#Pfizer-Vaccine"
+        }
+      ]
+    },
+    {
+      "equivalentclasses": [
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#Inoculation"
+        },
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#Inoculation"
+        }
+      ]
+    },
+    {
+      "equivalentclasses": [
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#as1"
+        },
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#as1"
+        }
+      ]
+    },
+    {
+      "equivalentclasses": [
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#As2"
+        },
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#As2"
+        }
+      ]
+    },
+    {
+      "equivalentclasses": [
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#As2"
+        },
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#As3"
+        }
+      ]
+    },
+    {
+      "equivalentclasses": [
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#As3"
+        },
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#As2"
+        }
+      ]
+    },
+    {
+      "equivalentclasses": [
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#As3"
+        },
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#As3"
+        }
+      ]
+    },
+    {
+      "disjointobjectproperty": [
+        {
+          "objectproperty": "http://crowd.fi.uncoma.edu.ar/kb1#of"
+        },
+        {
+          "objectproperty": "http://www.w3.org/2002/07/owl#bottomObjectProperty"
+        }
+      ]
+    },
+    {
+      "disjointobjectproperty": [
+        {
+          "objectproperty": "http://crowd.fi.uncoma.edu.ar/kb1#approved-by"
+        },
+        {
+          "objectproperty": "http://www.w3.org/2002/07/owl#bottomObjectProperty"
+        }
+      ]
+    },
+    {
+      "disjointobjectproperty": [
+        {
+          "objectproperty": "http://crowd.fi.uncoma.edu.ar/kb1#with"
+        },
+        {
+          "objectproperty": "http://www.w3.org/2002/07/owl#bottomObjectProperty"
+        }
+      ]
+    },
+    {
+      "disjointobjectproperty": [
+        {
+          "objectproperty": "http://crowd.fi.uncoma.edu.ar/kb1#role-b-2"
+        },
+        {
+          "objectproperty": "http://www.w3.org/2002/07/owl#bottomObjectProperty"
+        }
+      ]
+    },
+    {
+      "disjointobjectproperty": [
+        {
+          "objectproperty": "http://crowd.fi.uncoma.edu.ar/kb1#with"
+        },
+        {
+          "objectproperty": "http://www.w3.org/2002/07/owl#bottomObjectProperty"
+        }
+      ]
+    },
+    {
+      "disjointobjectproperty": [
+        {
+          "objectproperty": "http://crowd.fi.uncoma.edu.ar/kb1#role-b-2"
+        },
+        {
+          "objectproperty": "http://www.w3.org/2002/07/owl#bottomObjectProperty"
+        }
+      ]
+    },
+    {
+      "equivalentobjectproperty": [
+        {
+          "objectproperty": "http://crowd.fi.uncoma.edu.ar/kb1#of"
+        },
+        {
+          "objectproperty": "http://crowd.fi.uncoma.edu.ar/kb1#of"
+        }
+      ]
+    },
+    {
+      "equivalentobjectproperty": [
+        {
+          "objectproperty": "http://crowd.fi.uncoma.edu.ar/kb1#approved-by"
+        },
+        {
+          "objectproperty": "http://crowd.fi.uncoma.edu.ar/kb1#approved-by"
+        }
+      ]
+    },
+    {
+      "equivalentobjectproperty": [
+        {
+          "objectproperty": "http://crowd.fi.uncoma.edu.ar/kb1#with"
+        },
+        {
+          "objectproperty": "http://crowd.fi.uncoma.edu.ar/kb1#with"
+        }
+      ]
+    },
+    {
+      "equivalentobjectproperty": [
+        {
+          "objectproperty": "http://crowd.fi.uncoma.edu.ar/kb1#role-b-2"
+        },
+        {
+          "objectproperty": "http://crowd.fi.uncoma.edu.ar/kb1#role-b-2"
+        }
+      ]
+    },
+    {
+      "equivalentobjectproperty": [
+        {
+          "objectproperty": "http://crowd.fi.uncoma.edu.ar/kb1#with"
+        },
+        {
+          "objectproperty": "http://crowd.fi.uncoma.edu.ar/kb1#with"
+        }
+      ]
+    },
+    {
+      "equivalentobjectproperty": [
+        {
+          "objectproperty": "http://crowd.fi.uncoma.edu.ar/kb1#role-b-2"
+        },
+        {
+          "objectproperty": "http://crowd.fi.uncoma.edu.ar/kb1#role-b-2"
+        }
+      ]
+    },
+    {
+      "disjointdataproperty": [
+        {
+          "dataproperty": "http://crowd.fi.uncoma.edu.ar/kb1#name"
+        },
+        {
+          "dataproperty": "http://www.w3.org/2002/07/owl#bottomDataProperty"
+        }
+      ]
+    },
+    {
+      "disjointdataproperty": [
+        {
+          "dataproperty": "http://crowd.fi.uncoma.edu.ar/kb1#name"
+        },
+        {
+          "dataproperty": "http://crowd.fi.uncoma.edu.ar/kb1#date"
+        }
+      ]
+    },
+    {
+      "disjointdataproperty": [
+        {
+          "dataproperty": "http://crowd.fi.uncoma.edu.ar/kb1#country"
+        },
+        {
+          "dataproperty": "http://www.w3.org/2002/07/owl#bottomDataProperty"
+        }
+      ]
+    },
+    {
+      "disjointdataproperty": [
+        {
+          "dataproperty": "http://crowd.fi.uncoma.edu.ar/kb1#country"
+        },
+        {
+          "dataproperty": "http://crowd.fi.uncoma.edu.ar/kb1#date"
+        }
+      ]
+    },
+    {
+      "disjointdataproperty": [
+        {
+          "dataproperty": "http://crowd.fi.uncoma.edu.ar/kb1#Person"
+        },
+        {
+          "dataproperty": "http://www.w3.org/2002/07/owl#bottomDataProperty"
+        }
+      ]
+    },
+    {
+      "disjointdataproperty": [
+        {
+          "dataproperty": "http://crowd.fi.uncoma.edu.ar/kb1#Person"
+        },
+        {
+          "dataproperty": "http://crowd.fi.uncoma.edu.ar/kb1#date"
+        }
+      ]
+    },
+    {
+      "disjointdataproperty": [
+        {
+          "dataproperty": "http://crowd.fi.uncoma.edu.ar/kb1#date"
+        },
+        {
+          "dataproperty": "http://www.w3.org/2002/07/owl#bottomDataProperty"
+        }
+      ]
+    },
+    {
+      "disjointdataproperty": [
+        {
+          "dataproperty": "http://crowd.fi.uncoma.edu.ar/kb1#date"
+        },
+        {
+          "dataproperty": "http://crowd.fi.uncoma.edu.ar/kb1#batch"
+        }
+      ]
+    },
+    {
+      "disjointdataproperty": [
+        {
+          "dataproperty": "http://crowd.fi.uncoma.edu.ar/kb1#date"
+        },
+        {
+          "dataproperty": "http://crowd.fi.uncoma.edu.ar/kb1#Person"
+        }
+      ]
+    },
+    {
+      "disjointdataproperty": [
+        {
+          "dataproperty": "http://crowd.fi.uncoma.edu.ar/kb1#date"
+        },
+        {
+          "dataproperty": "http://crowd.fi.uncoma.edu.ar/kb1#country"
+        }
+      ]
+    },
+    {
+      "disjointdataproperty": [
+        {
+          "dataproperty": "http://crowd.fi.uncoma.edu.ar/kb1#date"
+        },
+        {
+          "dataproperty": "http://crowd.fi.uncoma.edu.ar/kb1#name"
+        }
+      ]
+    },
+    {
+      "disjointdataproperty": [
+        {
+          "dataproperty": "http://crowd.fi.uncoma.edu.ar/kb1#batch"
+        },
+        {
+          "dataproperty": "http://www.w3.org/2002/07/owl#bottomDataProperty"
+        }
+      ]
+    },
+    {
+      "disjointdataproperty": [
+        {
+          "dataproperty": "http://crowd.fi.uncoma.edu.ar/kb1#batch"
+        },
+        {
+          "dataproperty": "http://crowd.fi.uncoma.edu.ar/kb1#date"
+        }
+      ]
+    },
+    {
+      "equivalentdataproperty": [
+        {
+          "dataproperty": "http://crowd.fi.uncoma.edu.ar/kb1#name"
+        },
+        {
+          "dataproperty": "http://crowd.fi.uncoma.edu.ar/kb1#name"
+        }
+      ]
+    },
+    {
+      "equivalentdataproperty": [
+        {
+          "dataproperty": "http://crowd.fi.uncoma.edu.ar/kb1#country"
+        },
+        {
+          "dataproperty": "http://crowd.fi.uncoma.edu.ar/kb1#country"
+        }
+      ]
+    },
+    {
+      "equivalentdataproperty": [
+        {
+          "dataproperty": "http://crowd.fi.uncoma.edu.ar/kb1#Person"
+        },
+        {
+          "dataproperty": "http://crowd.fi.uncoma.edu.ar/kb1#Person"
+        }
+      ]
+    },
+    {
+      "equivalentdataproperty": [
+        {
+          "dataproperty": "http://crowd.fi.uncoma.edu.ar/kb1#date"
+        },
+        {
+          "dataproperty": "http://crowd.fi.uncoma.edu.ar/kb1#date"
+        }
+      ]
+    },
+    {
+      "equivalentdataproperty": [
+        {
+          "dataproperty": "http://crowd.fi.uncoma.edu.ar/kb1#batch"
+        },
+        {
+          "dataproperty": "http://crowd.fi.uncoma.edu.ar/kb1#batch"
+        }
+      ]
+    }
+  ]
+}

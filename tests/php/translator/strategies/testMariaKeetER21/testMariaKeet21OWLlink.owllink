@@ -1,0 +1,748 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RequestMessage
+	xmlns="http://www.owllink.org/owllink#"
+	xmlns:owl="http://www.w3.org/2002/07/owl#"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.owllink.org/owllink# http://www.owllink.org/owllink-20091116.xsd" xml:base="http://crowd.fi.uncoma.edu.ar/kb1#">
+	<CreateKB kb="http://crowd.fi.uncoma.edu.ar/kb1#">
+		<Prefix name="" fullIRI="http://crowd.fi.uncoma.edu.ar/kb1#"/>
+		<Prefix name="rdf" fullIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+		<Prefix name="rdfs" fullIRI="http://www.w3.org/2000/01/rdf-schema#"/>
+		<Prefix name="xsd" fullIRI="http://www.w3.org/2001/XMLSchema#"/>
+		<Prefix name="owl" fullIRI="http://www.w3.org/2002/07/owl#"/>
+	</CreateKB>
+	<Set kb="http://crowd.fi.uncoma.edu.ar/kb1#" key="abbreviatesIRIs">
+		<Literal>false</Literal>
+	</Set>
+	<Tell kb="http://crowd.fi.uncoma.edu.ar/kb1#">
+
+		<owl:SubClassOf>
+			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#COVID-19Medicine"/>
+			<owl:Class IRI="http://www.w3.org/2002/07/owl#Thing"/>
+		</owl:SubClassOf>
+		<owl:SubClassOf>
+			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Regulatory-Body"/>
+			<owl:Class IRI="http://www.w3.org/2002/07/owl#Thing"/>
+		</owl:SubClassOf>
+		<owl:SubClassOf>
+			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#COVID-19 treatment drug"/>
+			<owl:Class IRI="http://www.w3.org/2002/07/owl#Thing"/>
+		</owl:SubClassOf>
+		<owl:SubClassOf>
+			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#COVID-19 vaccine"/>
+			<owl:Class IRI="http://www.w3.org/2002/07/owl#Thing"/>
+		</owl:SubClassOf>
+		<owl:SubClassOf>
+			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Pfizer-Vaccine"/>
+			<owl:Class IRI="http://www.w3.org/2002/07/owl#Thing"/>
+		</owl:SubClassOf>
+		<owl:SubClassOf>
+			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Inoculation"/>
+			<owl:Class IRI="http://www.w3.org/2002/07/owl#Thing"/>
+		</owl:SubClassOf>
+
+		<owl:SubObjectPropertyOf>
+			<owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#of"/>
+			<owl:ObjectProperty IRI="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+		</owl:SubObjectPropertyOf>
+		<owl:SubObjectPropertyOf>
+			<owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#approved-by"/>
+			<owl:ObjectProperty IRI="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+		</owl:SubObjectPropertyOf>
+		<owl:SubObjectPropertyOf>
+			<owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#with"/>
+			<owl:ObjectProperty IRI="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+		</owl:SubObjectPropertyOf>
+		<owl:SubObjectPropertyOf>
+			<owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#role-b-2"/>
+			<owl:ObjectProperty IRI="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+		</owl:SubObjectPropertyOf>
+
+		<owl:SubObjectPropertyOf>
+			<owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#with"/>
+			<owl:ObjectProperty IRI="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+		</owl:SubObjectPropertyOf>
+
+		<owl:SubObjectPropertyOf>
+			<owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#role-b-2"/>
+			<owl:ObjectProperty IRI="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+		</owl:SubObjectPropertyOf>
+
+		<owl:SubClassOf>
+			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#as1"/>
+			<owl:Class IRI="http://www.w3.org/2002/07/owl#Thing"/>
+		</owl:SubClassOf>
+		<owl:SubClassOf>
+			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#As2"/>
+			<owl:Class IRI="http://www.w3.org/2002/07/owl#Thing"/>
+		</owl:SubClassOf>
+		<owl:SubClassOf>
+			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#As3"/>
+			<owl:Class IRI="http://www.w3.org/2002/07/owl#Thing"/>
+		</owl:SubClassOf>
+
+
+		<owl:SubDataPropertyOf>
+			<owl:DataProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#name"/>
+			<owl:DataProperty IRI="http://www.w3.org/2002/07/owl#topDataProperty"/>
+		</owl:SubDataPropertyOf>
+		<owl:SubDataPropertyOf>
+			<owl:DataProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#country"/>
+			<owl:DataProperty IRI="http://www.w3.org/2002/07/owl#topDataProperty"/>
+		</owl:SubDataPropertyOf>
+		<owl:SubDataPropertyOf>
+			<owl:DataProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#Person"/>
+			<owl:DataProperty IRI="http://www.w3.org/2002/07/owl#topDataProperty"/>
+		</owl:SubDataPropertyOf>
+		<owl:SubDataPropertyOf>
+			<owl:DataProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#date"/>
+			<owl:DataProperty IRI="http://www.w3.org/2002/07/owl#topDataProperty"/>
+		</owl:SubDataPropertyOf>
+		<owl:SubDataPropertyOf>
+			<owl:DataProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#batch"/>
+			<owl:DataProperty IRI="http://www.w3.org/2002/07/owl#topDataProperty"/>
+		</owl:SubDataPropertyOf>
+
+		<owl:SubClassOf>
+			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Pfizer-Vaccine"/>
+			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#COVID-19 vaccine"/>
+		</owl:SubClassOf>
+
+		<owl:SubClassOf>
+			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#As3"/>
+			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#As2"/>
+		</owl:SubClassOf>
+
+		<owl:SubClassOf>
+			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#COVID-19 treatment drug"/>
+			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#COVID-19Medicine"/>
+		</owl:SubClassOf>
+
+		<owl:DisjointClasses>
+			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#COVID-19 treatment drug"/>
+			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#COVID-19 vaccine"/>
+		</owl:DisjointClasses>
+		<owl:SubClassOf>
+			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#COVID-19Medicine"/>
+			<owl:ObjectUnionOf>
+				<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#COVID-19 treatment drug"/>
+				<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#COVID-19 vaccine"/>
+			</owl:ObjectUnionOf>
+		</owl:SubClassOf>
+		<owl:SubClassOf>
+			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#COVID-19 vaccine"/>
+			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#COVID-19Medicine"/>
+		</owl:SubClassOf>
+
+
+		<owl:SubClassOf>
+			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#as1"/>
+			<owl:ObjectSomeValuesFrom>
+				<owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#of"/>
+				<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#COVID-19Medicine"/>
+			</owl:ObjectSomeValuesFrom>
+		</owl:SubClassOf>
+		<owl:SubClassOf>
+			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#COVID-19Medicine"/>
+			<owl:ObjectSomeValuesFrom>
+				<owl:ObjectInverseOf>
+					<owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#of"/>
+				</owl:ObjectInverseOf>
+				<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#as1"/>
+			</owl:ObjectSomeValuesFrom>
+		</owl:SubClassOf>
+		<owl:SubClassOf>
+			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#COVID-19Medicine"/>
+			<owl:ObjectMinCardinality cardinality="1">
+				<owl:ObjectInverseOf>
+					<owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#of"/>
+				</owl:ObjectInverseOf>
+				<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#as1"/>
+			</owl:ObjectMinCardinality>
+		</owl:SubClassOf>
+
+		<owl:SubClassOf>
+			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#as1"/>
+			<owl:ObjectSomeValuesFrom>
+				<owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#approved-by"/>
+				<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Regulatory-Body"/>
+			</owl:ObjectSomeValuesFrom>
+		</owl:SubClassOf>
+		<owl:SubClassOf>
+			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Regulatory-Body"/>
+			<owl:ObjectSomeValuesFrom>
+				<owl:ObjectInverseOf>
+					<owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#approved-by"/>
+				</owl:ObjectInverseOf>
+				<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#as1"/>
+			</owl:ObjectSomeValuesFrom>
+		</owl:SubClassOf>
+
+
+		<owl:SubClassOf>
+			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#As2"/>
+			<owl:ObjectSomeValuesFrom>
+				<owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#with"/>
+				<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#COVID-19 vaccine"/>
+			</owl:ObjectSomeValuesFrom>
+		</owl:SubClassOf>
+		<owl:SubClassOf>
+			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#COVID-19 vaccine"/>
+			<owl:ObjectSomeValuesFrom>
+				<owl:ObjectInverseOf>
+					<owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#with"/>
+				</owl:ObjectInverseOf>
+				<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#As2"/>
+			</owl:ObjectSomeValuesFrom>
+		</owl:SubClassOf>
+		<owl:SubClassOf>
+			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#As2"/>
+			<owl:ObjectSomeValuesFrom>
+				<owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#role-b-2"/>
+				<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Inoculation"/>
+			</owl:ObjectSomeValuesFrom>
+		</owl:SubClassOf>
+
+		<owl:SubClassOf>
+			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Inoculation"/>
+			<owl:ObjectSomeValuesFrom>
+				<owl:ObjectInverseOf>
+					<owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#role-b-2"/>
+				</owl:ObjectInverseOf>
+				<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#As2"/>
+			</owl:ObjectSomeValuesFrom>
+		</owl:SubClassOf>
+		<owl:SubClassOf>
+			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Inoculation"/>
+			<owl:ObjectMinCardinality cardinality="1">
+				<owl:ObjectInverseOf>
+					<owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#role-b-2"/>
+				</owl:ObjectInverseOf>
+				<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#As2"/>
+			</owl:ObjectMinCardinality>
+		</owl:SubClassOf>
+		<owl:SubClassOf>
+			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Inoculation"/>
+			<owl:ObjectMaxCardinality cardinality="1">
+				<owl:ObjectInverseOf>
+					<owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#role-b-2"/>
+				</owl:ObjectInverseOf>
+				<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#As2"/>
+			</owl:ObjectMaxCardinality>
+		</owl:SubClassOf>
+
+
+
+
+		<owl:SubClassOf>
+			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#As3"/>
+			<owl:ObjectSomeValuesFrom>
+				<owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#with"/>
+				<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Pfizer-Vaccine"/>
+			</owl:ObjectSomeValuesFrom>
+		</owl:SubClassOf>
+		<owl:SubClassOf>
+			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Pfizer-Vaccine"/>
+			<owl:ObjectSomeValuesFrom>
+				<owl:ObjectInverseOf>
+					<owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#with"/>
+				</owl:ObjectInverseOf>
+				<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#As3"/>
+			</owl:ObjectSomeValuesFrom>
+		</owl:SubClassOf>
+		<owl:SubClassOf>
+			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Pfizer-Vaccine"/>
+			<owl:ObjectMaxCardinality cardinality="2">
+				<owl:ObjectInverseOf>
+					<owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#with"/>
+				</owl:ObjectInverseOf>
+				<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#As3"/>
+			</owl:ObjectMaxCardinality>
+		</owl:SubClassOf>
+
+		<owl:SubClassOf>
+			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#As3"/>
+			<owl:ObjectSomeValuesFrom>
+				<owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#role-b-2"/>
+				<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Inoculation"/>
+			</owl:ObjectSomeValuesFrom>
+		</owl:SubClassOf>
+		<owl:SubClassOf>
+			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Inoculation"/>
+			<owl:ObjectSomeValuesFrom>
+				<owl:ObjectInverseOf>
+					<owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#role-b-2"/>
+				</owl:ObjectInverseOf>
+				<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#As3"/>
+			</owl:ObjectSomeValuesFrom>
+		</owl:SubClassOf>
+		<owl:SubClassOf>
+			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Inoculation"/>
+			<owl:ObjectMaxCardinality cardinality="2">
+				<owl:ObjectInverseOf>
+					<owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#role-b-2"/>
+				</owl:ObjectInverseOf>
+				<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#As3"/>
+			</owl:ObjectMaxCardinality>
+		</owl:SubClassOf>
+
+
+		<owl:DataPropertyDomain>
+			<owl:DataProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#name"/>
+			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#COVID-19Medicine"/>
+		</owl:DataPropertyDomain>
+		<owl:DataPropertyRange>
+			<owl:DataProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#name"/>
+			<owl:Datatype IRI="http://www.w3.org/2001/XMLSchema#string"/>
+		</owl:DataPropertyRange>
+		<owl:SubClassOf>
+			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#COVID-19Medicine"/>
+			<owl:DataMinCardinality cardinality="1">
+				<owl:DataProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#name"/>
+				<owl:Datatype IRI="http://www.w3.org/2001/XMLSchema#string"/>
+			</owl:DataMinCardinality>
+		</owl:SubClassOf>
+		<owl:SubClassOf>
+			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#COVID-19Medicine"/>
+			<owl:DataMaxCardinality cardinality="1">
+				<owl:DataProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#name"/>
+				<owl:Datatype IRI="http://www.w3.org/2001/XMLSchema#string"/>
+			</owl:DataMaxCardinality>
+		</owl:SubClassOf>
+		<owl:DataPropertyDomain>
+			<owl:DataProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#name"/>
+			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Regulatory-Body"/>
+		</owl:DataPropertyDomain>
+		<owl:DataPropertyRange>
+			<owl:DataProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#name"/>
+			<owl:Datatype IRI="http://www.w3.org/2001/XMLSchema#string"/>
+		</owl:DataPropertyRange>
+		<owl:SubClassOf>
+			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Regulatory-Body"/>
+			<owl:DataMinCardinality cardinality="1">
+				<owl:DataProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#name"/>
+				<owl:Datatype IRI="http://www.w3.org/2001/XMLSchema#string"/>
+			</owl:DataMinCardinality>
+		</owl:SubClassOf>
+		<owl:SubClassOf>
+			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Regulatory-Body"/>
+			<owl:DataMaxCardinality cardinality="1">
+				<owl:DataProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#name"/>
+				<owl:Datatype IRI="http://www.w3.org/2001/XMLSchema#string"/>
+			</owl:DataMaxCardinality>
+		</owl:SubClassOf>
+		<owl:DataPropertyDomain>
+			<owl:DataProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#country"/>
+			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Regulatory-Body"/>
+		</owl:DataPropertyDomain>
+		<owl:DataPropertyRange>
+			<owl:DataProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#country"/>
+			<owl:Datatype IRI="http://www.w3.org/2001/XMLSchema#string"/>
+		</owl:DataPropertyRange>
+		<owl:SubClassOf>
+			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Regulatory-Body"/>
+			<owl:DataMinCardinality cardinality="1">
+				<owl:DataProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#country"/>
+				<owl:Datatype IRI="http://www.w3.org/2001/XMLSchema#string"/>
+			</owl:DataMinCardinality>
+		</owl:SubClassOf>
+		<owl:SubClassOf>
+			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Regulatory-Body"/>
+			<owl:DataMaxCardinality cardinality="1">
+				<owl:DataProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#country"/>
+				<owl:Datatype IRI="http://www.w3.org/2001/XMLSchema#string"/>
+			</owl:DataMaxCardinality>
+		</owl:SubClassOf>
+		<owl:DataPropertyDomain>
+			<owl:DataProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#Person"/>
+			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Inoculation"/>
+		</owl:DataPropertyDomain>
+		<owl:DataPropertyRange>
+			<owl:DataProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#Person"/>
+			<owl:Datatype IRI="http://www.w3.org/2001/XMLSchema#string"/>
+		</owl:DataPropertyRange>
+		<owl:SubClassOf>
+			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Inoculation"/>
+			<owl:DataMinCardinality cardinality="1">
+				<owl:DataProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#Person"/>
+				<owl:Datatype IRI="http://www.w3.org/2001/XMLSchema#string"/>
+			</owl:DataMinCardinality>
+		</owl:SubClassOf>
+		<owl:SubClassOf>
+			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Inoculation"/>
+			<owl:DataMaxCardinality cardinality="1">
+				<owl:DataProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#Person"/>
+				<owl:Datatype IRI="http://www.w3.org/2001/XMLSchema#string"/>
+			</owl:DataMaxCardinality>
+		</owl:SubClassOf>
+		<owl:DataPropertyDomain>
+			<owl:DataProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#date"/>
+			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Inoculation"/>
+		</owl:DataPropertyDomain>
+		<owl:DataPropertyRange>
+			<owl:DataProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#date"/>
+			<owl:Datatype IRI="http://www.w3.org/2001/XMLSchema#date"/>
+		</owl:DataPropertyRange>
+		<owl:SubClassOf>
+			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Inoculation"/>
+			<owl:DataMinCardinality cardinality="1">
+				<owl:DataProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#date"/>
+				<owl:Datatype IRI="http://www.w3.org/2001/XMLSchema#date"/>
+			</owl:DataMinCardinality>
+		</owl:SubClassOf>
+		<owl:SubClassOf>
+			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Inoculation"/>
+			<owl:DataMaxCardinality cardinality="1">
+				<owl:DataProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#date"/>
+				<owl:Datatype IRI="http://www.w3.org/2001/XMLSchema#date"/>
+			</owl:DataMaxCardinality>
+		</owl:SubClassOf>
+		<owl:DataPropertyDomain>
+			<owl:DataProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#batch"/>
+			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Inoculation"/>
+		</owl:DataPropertyDomain>
+		<owl:DataPropertyRange>
+			<owl:DataProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#batch"/>
+			<owl:Datatype IRI="http://www.w3.org/2001/XMLSchema#string"/>
+		</owl:DataPropertyRange>
+		<owl:SubClassOf>
+			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Inoculation"/>
+			<owl:DataMinCardinality cardinality="1">
+				<owl:DataProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#batch"/>
+				<owl:Datatype IRI="http://www.w3.org/2001/XMLSchema#string"/>
+			</owl:DataMinCardinality>
+		</owl:SubClassOf>
+		<owl:SubClassOf>
+			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Inoculation"/>
+			<owl:DataMaxCardinality cardinality="1">
+				<owl:DataProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#batch"/>
+				<owl:Datatype IRI="http://www.w3.org/2001/XMLSchema#string"/>
+			</owl:DataMaxCardinality>
+		</owl:SubClassOf>
+	</Tell>
+	<IsKBSatisfiable kb="http://crowd.fi.uncoma.edu.ar/kb1#"/>
+	<IsClassSatisfiable kb="http://crowd.fi.uncoma.edu.ar/kb1#">
+		<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#COVID-19Medicine"/>
+	</IsClassSatisfiable>
+	<IsClassSatisfiable kb="http://crowd.fi.uncoma.edu.ar/kb1#">
+		<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Regulatory-Body"/>
+	</IsClassSatisfiable>
+	<IsClassSatisfiable kb="http://crowd.fi.uncoma.edu.ar/kb1#">
+		<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#COVID-19 treatment drug"/>
+	</IsClassSatisfiable>
+	<IsClassSatisfiable kb="http://crowd.fi.uncoma.edu.ar/kb1#">
+		<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#COVID-19 vaccine"/>
+	</IsClassSatisfiable>
+	<IsClassSatisfiable kb="http://crowd.fi.uncoma.edu.ar/kb1#">
+		<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Pfizer-Vaccine"/>
+	</IsClassSatisfiable>
+	<IsClassSatisfiable kb="http://crowd.fi.uncoma.edu.ar/kb1#">
+		<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Inoculation"/>
+	</IsClassSatisfiable>
+	<IsClassSatisfiable kb="http://crowd.fi.uncoma.edu.ar/kb1#">
+		<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#as1"/>
+	</IsClassSatisfiable>
+	<IsClassSatisfiable kb="http://crowd.fi.uncoma.edu.ar/kb1#">
+		<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#As2"/>
+	</IsClassSatisfiable>
+	<IsClassSatisfiable kb="http://crowd.fi.uncoma.edu.ar/kb1#">
+		<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#As3"/>
+	</IsClassSatisfiable>
+	<IsObjectPropertySatisfiable kb="http://crowd.fi.uncoma.edu.ar/kb1#">
+		<owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#of"/>
+	</IsObjectPropertySatisfiable>
+	<IsObjectPropertySatisfiable kb="http://crowd.fi.uncoma.edu.ar/kb1#">
+		<owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#approved-by"/>
+	</IsObjectPropertySatisfiable>
+	<IsObjectPropertySatisfiable kb="http://crowd.fi.uncoma.edu.ar/kb1#">
+		<owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#with"/>
+	</IsObjectPropertySatisfiable>
+	<IsObjectPropertySatisfiable kb="http://crowd.fi.uncoma.edu.ar/kb1#">
+		<owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#role-b-2"/>
+	</IsObjectPropertySatisfiable>
+	<IsObjectPropertySatisfiable kb="http://crowd.fi.uncoma.edu.ar/kb1#">
+		<owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#with"/>
+	</IsObjectPropertySatisfiable>
+	<IsObjectPropertySatisfiable kb="http://crowd.fi.uncoma.edu.ar/kb1#">
+		<owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#role-b-2"/>
+	</IsObjectPropertySatisfiable>
+	<IsDataPropertySatisfiable kb="http://crowd.fi.uncoma.edu.ar/kb1#">
+		<owl:DataProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#name"/>
+	</IsDataPropertySatisfiable>
+	<IsDataPropertySatisfiable kb="http://crowd.fi.uncoma.edu.ar/kb1#">
+		<owl:DataProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#country"/>
+	</IsDataPropertySatisfiable>
+	<IsDataPropertySatisfiable kb="http://crowd.fi.uncoma.edu.ar/kb1#">
+		<owl:DataProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#Person"/>
+	</IsDataPropertySatisfiable>
+	<IsDataPropertySatisfiable kb="http://crowd.fi.uncoma.edu.ar/kb1#">
+		<owl:DataProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#date"/>
+	</IsDataPropertySatisfiable>
+	<IsDataPropertySatisfiable kb="http://crowd.fi.uncoma.edu.ar/kb1#">
+		<owl:DataProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#batch"/>
+	</IsDataPropertySatisfiable>
+	<GetSubClassHierarchy kb="http://crowd.fi.uncoma.edu.ar/kb1#"/>
+	<GetSubObjectPropertyHierarchy kb="http://crowd.fi.uncoma.edu.ar/kb1#"/>
+	<GetDisjointClasses kb="http://crowd.fi.uncoma.edu.ar/kb1#">
+		<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#COVID-19Medicine"/>
+	</GetDisjointClasses>
+	<GetDisjointClasses kb="http://crowd.fi.uncoma.edu.ar/kb1#">
+		<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Regulatory-Body"/>
+	</GetDisjointClasses>
+	<GetDisjointClasses kb="http://crowd.fi.uncoma.edu.ar/kb1#">
+		<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#COVID-19 treatment drug"/>
+	</GetDisjointClasses>
+	<GetDisjointClasses kb="http://crowd.fi.uncoma.edu.ar/kb1#">
+		<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#COVID-19 vaccine"/>
+	</GetDisjointClasses>
+	<GetDisjointClasses kb="http://crowd.fi.uncoma.edu.ar/kb1#">
+		<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Pfizer-Vaccine"/>
+	</GetDisjointClasses>
+	<GetDisjointClasses kb="http://crowd.fi.uncoma.edu.ar/kb1#">
+		<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Inoculation"/>
+	</GetDisjointClasses>
+	<GetDisjointClasses kb="http://crowd.fi.uncoma.edu.ar/kb1#">
+		<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#as1"/>
+	</GetDisjointClasses>
+	<GetDisjointClasses kb="http://crowd.fi.uncoma.edu.ar/kb1#">
+		<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#As2"/>
+	</GetDisjointClasses>
+	<GetDisjointClasses kb="http://crowd.fi.uncoma.edu.ar/kb1#">
+		<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#As3"/>
+	</GetDisjointClasses>
+	<GetEquivalentClasses kb="http://crowd.fi.uncoma.edu.ar/kb1#">
+		<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#COVID-19Medicine"/>
+	</GetEquivalentClasses>
+	<GetEquivalentClasses kb="http://crowd.fi.uncoma.edu.ar/kb1#">
+		<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Regulatory-Body"/>
+	</GetEquivalentClasses>
+	<GetEquivalentClasses kb="http://crowd.fi.uncoma.edu.ar/kb1#">
+		<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#COVID-19 treatment drug"/>
+	</GetEquivalentClasses>
+	<GetEquivalentClasses kb="http://crowd.fi.uncoma.edu.ar/kb1#">
+		<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#COVID-19 vaccine"/>
+	</GetEquivalentClasses>
+	<GetEquivalentClasses kb="http://crowd.fi.uncoma.edu.ar/kb1#">
+		<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Pfizer-Vaccine"/>
+	</GetEquivalentClasses>
+	<GetEquivalentClasses kb="http://crowd.fi.uncoma.edu.ar/kb1#">
+		<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Inoculation"/>
+	</GetEquivalentClasses>
+	<GetEquivalentClasses kb="http://crowd.fi.uncoma.edu.ar/kb1#">
+		<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#as1"/>
+	</GetEquivalentClasses>
+	<GetEquivalentClasses kb="http://crowd.fi.uncoma.edu.ar/kb1#">
+		<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#As2"/>
+	</GetEquivalentClasses>
+	<GetEquivalentClasses kb="http://crowd.fi.uncoma.edu.ar/kb1#">
+		<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#As3"/>
+	</GetEquivalentClasses>
+	<GetDisjointObjectProperties kb="http://crowd.fi.uncoma.edu.ar/kb1#">
+		<owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#of"/>
+	</GetDisjointObjectProperties>
+	<GetDisjointObjectProperties kb="http://crowd.fi.uncoma.edu.ar/kb1#">
+		<owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#approved-by"/>
+	</GetDisjointObjectProperties>
+	<GetDisjointObjectProperties kb="http://crowd.fi.uncoma.edu.ar/kb1#">
+		<owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#with"/>
+	</GetDisjointObjectProperties>
+	<GetDisjointObjectProperties kb="http://crowd.fi.uncoma.edu.ar/kb1#">
+		<owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#role-b-2"/>
+	</GetDisjointObjectProperties>
+	<GetDisjointObjectProperties kb="http://crowd.fi.uncoma.edu.ar/kb1#">
+		<owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#with"/>
+	</GetDisjointObjectProperties>
+	<GetDisjointObjectProperties kb="http://crowd.fi.uncoma.edu.ar/kb1#">
+		<owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#role-b-2"/>
+	</GetDisjointObjectProperties>
+	<GetEquivalentObjectProperties kb="http://crowd.fi.uncoma.edu.ar/kb1#">
+		<owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#of"/>
+	</GetEquivalentObjectProperties>
+	<GetEquivalentObjectProperties kb="http://crowd.fi.uncoma.edu.ar/kb1#">
+		<owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#approved-by"/>
+	</GetEquivalentObjectProperties>
+	<GetEquivalentObjectProperties kb="http://crowd.fi.uncoma.edu.ar/kb1#">
+		<owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#with"/>
+	</GetEquivalentObjectProperties>
+	<GetEquivalentObjectProperties kb="http://crowd.fi.uncoma.edu.ar/kb1#">
+		<owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#role-b-2"/>
+	</GetEquivalentObjectProperties>
+	<GetEquivalentObjectProperties kb="http://crowd.fi.uncoma.edu.ar/kb1#">
+		<owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#with"/>
+	</GetEquivalentObjectProperties>
+	<GetEquivalentObjectProperties kb="http://crowd.fi.uncoma.edu.ar/kb1#">
+		<owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#role-b-2"/>
+	</GetEquivalentObjectProperties>
+	<GetDisjointDataProperties kb="http://crowd.fi.uncoma.edu.ar/kb1#">
+		<owl:DataProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#name"/>
+	</GetDisjointDataProperties>
+	<GetDisjointDataProperties kb="http://crowd.fi.uncoma.edu.ar/kb1#">
+		<owl:DataProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#country"/>
+	</GetDisjointDataProperties>
+	<GetDisjointDataProperties kb="http://crowd.fi.uncoma.edu.ar/kb1#">
+		<owl:DataProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#Person"/>
+	</GetDisjointDataProperties>
+	<GetDisjointDataProperties kb="http://crowd.fi.uncoma.edu.ar/kb1#">
+		<owl:DataProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#date"/>
+	</GetDisjointDataProperties>
+	<GetDisjointDataProperties kb="http://crowd.fi.uncoma.edu.ar/kb1#">
+		<owl:DataProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#batch"/>
+	</GetDisjointDataProperties>
+	<GetEquivalentDataProperties kb="http://crowd.fi.uncoma.edu.ar/kb1#">
+		<owl:DataProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#name"/>
+	</GetEquivalentDataProperties>
+	<GetEquivalentDataProperties kb="http://crowd.fi.uncoma.edu.ar/kb1#">
+		<owl:DataProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#country"/>
+	</GetEquivalentDataProperties>
+	<GetEquivalentDataProperties kb="http://crowd.fi.uncoma.edu.ar/kb1#">
+		<owl:DataProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#Person"/>
+	</GetEquivalentDataProperties>
+	<GetEquivalentDataProperties kb="http://crowd.fi.uncoma.edu.ar/kb1#">
+		<owl:DataProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#date"/>
+	</GetEquivalentDataProperties>
+	<GetEquivalentDataProperties kb="http://crowd.fi.uncoma.edu.ar/kb1#">
+		<owl:DataProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#batch"/>
+	</GetEquivalentDataProperties>
+	<GetPrefixes kb="http://crowd.fi.uncoma.edu.ar/kb1#"/>
+
+	<IsEntailed kb="http://crowd.fi.uncoma.edu.ar/kb1#">
+		<owl:SubClassOf>
+			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#COVID-19Medicine"/>
+			<owl:ObjectMaxCardinality cardinality="1">
+				<owl:ObjectInverseOf>
+					<owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#of"/>
+				</owl:ObjectInverseOf>
+                <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#as1"/>
+			</owl:ObjectMaxCardinality>
+		</owl:SubClassOf>
+	</IsEntailed>
+	<IsEntailed kb="http://crowd.fi.uncoma.edu.ar/kb1#">
+		<owl:SubClassOf>
+			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#COVID-19Medicine"/>
+			<owl:ObjectMaxCardinality cardinality="2">
+				<owl:ObjectInverseOf>
+					<owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#of"/>
+				</owl:ObjectInverseOf>
+                <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#as1"/>
+			</owl:ObjectMaxCardinality>
+		</owl:SubClassOf>
+	</IsEntailed>
+
+	<IsEntailed kb="http://crowd.fi.uncoma.edu.ar/kb1#">
+		<owl:SubClassOf>
+			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Regulatory-Body"/>
+			<owl:ObjectMaxCardinality cardinality="1">
+				<owl:ObjectInverseOf>
+					<owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#approved-by"/>
+				</owl:ObjectInverseOf>
+                <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#as1"/>
+			</owl:ObjectMaxCardinality>
+		</owl:SubClassOf>
+	</IsEntailed>
+	<IsEntailed kb="http://crowd.fi.uncoma.edu.ar/kb1#">
+		<owl:SubClassOf>
+			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Regulatory-Body"/>
+			<owl:ObjectMaxCardinality cardinality="2">
+				<owl:ObjectInverseOf>
+					<owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#approved-by"/>
+				</owl:ObjectInverseOf>
+                <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#as1"/>
+			</owl:ObjectMaxCardinality>
+		</owl:SubClassOf>
+	</IsEntailed>
+
+	<IsEntailed kb="http://crowd.fi.uncoma.edu.ar/kb1#">
+		<owl:SubClassOf>
+			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#COVID-19 vaccine"/>
+			<owl:ObjectMaxCardinality cardinality="1">
+				<owl:ObjectInverseOf>
+					<owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#with"/>
+				</owl:ObjectInverseOf>
+                <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#As2"/>
+			</owl:ObjectMaxCardinality>
+		</owl:SubClassOf>
+	</IsEntailed>
+	<IsEntailed kb="http://crowd.fi.uncoma.edu.ar/kb1#">
+		<owl:SubClassOf>
+			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#COVID-19 vaccine"/>
+			<owl:ObjectMaxCardinality cardinality="2">
+				<owl:ObjectInverseOf>
+					<owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#with"/>
+				</owl:ObjectInverseOf>
+                <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#As2"/>
+			</owl:ObjectMaxCardinality>
+		</owl:SubClassOf>
+	</IsEntailed>
+
+	<IsEntailed kb="http://crowd.fi.uncoma.edu.ar/kb1#">
+		<owl:SubClassOf>
+			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Inoculation"/>
+			<owl:ObjectMaxCardinality cardinality="1">
+				<owl:ObjectInverseOf>
+					<owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#role-b-2"/>
+				</owl:ObjectInverseOf>
+                <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#As2"/>
+			</owl:ObjectMaxCardinality>
+		</owl:SubClassOf>
+	</IsEntailed>
+
+	<IsEntailed kb="http://crowd.fi.uncoma.edu.ar/kb1#">
+		<owl:SubClassOf>
+			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Inoculation"/>
+			<owl:ObjectMaxCardinality cardinality="2">
+				<owl:ObjectInverseOf>
+					<owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#role-b-2"/>
+				</owl:ObjectInverseOf>
+                <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#As2"/>
+			</owl:ObjectMaxCardinality>
+		</owl:SubClassOf>
+	</IsEntailed>
+
+	<IsEntailed kb="http://crowd.fi.uncoma.edu.ar/kb1#">
+		<owl:SubClassOf>
+			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Pfizer-Vaccine"/>
+			<owl:ObjectMaxCardinality cardinality="1">
+				<owl:ObjectInverseOf>
+					<owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#with"/>
+				</owl:ObjectInverseOf>
+                <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#As3"/>
+			</owl:ObjectMaxCardinality>
+		</owl:SubClassOf>
+	</IsEntailed>
+
+	<IsEntailed kb="http://crowd.fi.uncoma.edu.ar/kb1#">
+		<owl:SubClassOf>
+			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Pfizer-Vaccine"/>
+			<owl:ObjectMaxCardinality cardinality="2">
+				<owl:ObjectInverseOf>
+					<owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#with"/>
+				</owl:ObjectInverseOf>
+                <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#As3"/>
+			</owl:ObjectMaxCardinality>
+		</owl:SubClassOf>
+	</IsEntailed>
+
+	<IsEntailed kb="http://crowd.fi.uncoma.edu.ar/kb1#">
+		<owl:SubClassOf>
+			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Inoculation"/>
+			<owl:ObjectMaxCardinality cardinality="1">
+				<owl:ObjectInverseOf>
+					<owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#role-b-2"/>
+				</owl:ObjectInverseOf>
+                <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#As3"/>
+			</owl:ObjectMaxCardinality>
+		</owl:SubClassOf>
+	</IsEntailed>
+
+	<IsEntailed kb="http://crowd.fi.uncoma.edu.ar/kb1#">
+		<owl:SubClassOf>
+			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Inoculation"/>
+			<owl:ObjectMaxCardinality cardinality="2">
+				<owl:ObjectInverseOf>
+					<owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#role-b-2"/>
+				</owl:ObjectInverseOf>
+                <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#As3"/>
+			</owl:ObjectMaxCardinality>
+		</owl:SubClassOf>
+	</IsEntailed>
+
+</RequestMessage>
