@@ -89,13 +89,16 @@ class KF_Wicom extends Wicom{
        @return Wicom\Translator\Strategies\QAPackages\AnswerAnalizers\Answer an answer object.
        @see KF
      */
-    function full_reasoning($json_str, $strategy = 'metamodel', $reasoner = 'Racer', $check_cards = false){
+    function full_reasoning($json_str, $strategy = 'alcin', $reasoner = 'Racer', $check_cards = false){
         $encoding = null;
         switch($strategy){
             case "berardi" :
 		          $encoding = new Berardi();
 		        break;
-            case "metamodel" :
+            case "alcin" :
+              $encoding = new DLMeta();
+            break;
+            case "alcqi" :
               $encoding = new DLMetaEnricoExists();
             break;
             default: throw new \Exception(

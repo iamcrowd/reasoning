@@ -36,7 +36,7 @@ class Wicom{
 
        @return Wicom\Translator\Strategies\QAPackages\AnswerAnalizers\Answer an answer object.
      */
-    function full_reasoning($json_str, $reasoner = 'Racer', $check_cards = false, $strategy = 'metamodel'){
+    function full_reasoning($json_str, $strategy, $reasoner, $check_cards){
     }
 
 
@@ -49,7 +49,7 @@ class Wicom{
 
        @return Wicom\Translator\Strategies\QAPackages\AnswerAnalizers\Answer an answer object.
      */
-    function is_satisfiable($json_str, $strategy = 'crowd', $reasoner = 'Racer'){
+    function is_satisfiable($json_str, $strategy, $reasoner){
 
     }
 
