@@ -44,9 +44,11 @@ load("kf.php", "../common/");
   }
 
   // cards is set to false
-  $cards = false;
   if (array_key_exists('cards', $_POST)){
-    $cards = $_POST['cards'];
+    $cards = filter_var($_POST['cards'], FILTER_VALIDATE_BOOLEAN);
+  }
+  else{
+        $cards = filter_var('false', FILTER_VALIDATE_BOOLEAN);
   }
 
 // --------------------
@@ -55,7 +57,7 @@ load("kf.php", "../common/");
   $kf = new Wicom\KF_Wicom();
 
   try{
-    $answer = $kf->full_reasoning($_POST['json'], "metamodel", $reasoner, $cards);
+    $answer = $kf->full_reasoning($_POST['json'], $_POST['strategy'], $reasoner, $cards);
     if ($answer != null){
         echo $answer;
     }else{

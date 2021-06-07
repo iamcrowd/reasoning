@@ -85,7 +85,7 @@ class KF_Wicom extends Wicom{
        @return Wicom\Translator\Strategies\QAPackages\AnswerAnalizers\Answer an answer object.
        @see KF
      */
-    function full_reasoning($json_str, $strategy = "metamodel", $reasoner = 'Racer', $check_cards = false){
+    function full_reasoning($json_str, $strategy = "metamodel", $reasoner = 'Racer', $cards = false){
         $encoding = null;
         switch($strategy){
             case "berardi" :
@@ -98,8 +98,8 @@ class KF_Wicom extends Wicom{
                 "Invalid encoding selected: $strategy");
         }
 
-        if ($check_cards){
-          $encoding->set_check_cardinalities($check_cards);
+        if ($cards){
+          $encoding->set_check_cardinalities($cards);
         }
 
         $trans = new MetamodelTranslator($encoding, new OWLlinkBuilder());
@@ -121,7 +121,7 @@ class KF_Wicom extends Wicom{
         $runner->run($owllink_str);
         $reasoner_answer = $runner->get_last_answer();
 
-        if ($check_cards){
+        if ($cards){
           $encoding->get_qa_pack()->get_ans_analizer()->set_c_strategy($encoding);
         }
 
