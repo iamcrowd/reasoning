@@ -31,17 +31,19 @@ load("config.php", "config/");
 use Wicom\Wicom;
 use Wicom\KF_Wicom;
 
-class KFWicomRacerTest extends PHPUnit\Framework\TestCase
+class KFWicomRacerALCINTest extends PHPUnit\Framework\TestCase
 {
     /**
     @testdox tests reasoning services using racer reasoner with all possible queries
     */
-    public function test_full_reasoning_KF(){
+    public function test_full_reasoning_KF_ALCIN(){
         $input = file_get_contents('wicom/data/testKFtoOWLlinkAllQueries.json');
-        $expected = file_get_contents('wicom/data/testKFtoOWLlinkAllQueriesBeautyOutInferred.json');
+        $expected = file_get_contents('wicom/data/testKFtoOWLlinkAllQueriesBeautyOutInferredALCIN.json');
 
         $wicom = new KF_Wicom();
-        $answer = $wicom->full_reasoning($input);
+        $answer = $wicom->full_reasoning($input, 'alcin');
+
+        //var_dump($answer);
 
         $this->assertJsonStringEqualsJsonString($expected, $answer, true);
     }
@@ -54,7 +56,7 @@ class KFWicomRacerTest extends PHPUnit\Framework\TestCase
         $expected = file_get_contents('wicom/data/testKFReasoningSubsumptionsExpected.json');
 
         $wicom = new KF_Wicom();
-        $answer = $wicom->full_reasoning($input);
+        $answer = $wicom->full_reasoning($input, 'alcin');
 
         $this->assertJsonStringEqualsJsonString($expected, $answer, true);
     }
@@ -67,7 +69,7 @@ class KFWicomRacerTest extends PHPUnit\Framework\TestCase
         $expected = file_get_contents('wicom/data/testKFReasoningUnsatClassesAndRolesExpected.json');
 
         $wicom = new KF_Wicom();
-        $answer = $wicom->full_reasoning($input);
+        $answer = $wicom->full_reasoning($input, 'alcin');
 
         $this->assertJsonStringEqualsJsonString($expected, $answer, true);
     }
@@ -80,7 +82,7 @@ class KFWicomRacerTest extends PHPUnit\Framework\TestCase
         $expected = file_get_contents('wicom/data/testKFwithCardinalitiesTrueRacerOut.json');
 
         $wicom = new KF_Wicom();
-        $answer = $wicom->full_reasoning($input, 'metamodel', 'Racer', true);
+        $answer = $wicom->full_reasoning($input, 'alcin', 'Racer', true);
 
         $this->assertJsonStringEqualsJsonString($expected, $answer, true);
     }
@@ -93,7 +95,7 @@ class KFWicomRacerTest extends PHPUnit\Framework\TestCase
         $expected = file_get_contents('wicom/data/testKFReasoningUNSATKBExpected.json');
 
         $wicom = new KF_Wicom();
-        $answer = $wicom->full_reasoning($input);
+        $answer = $wicom->full_reasoning($input, 'alcin');
 
         $this->assertJsonStringEqualsJsonString($expected, $answer, true);
     }
@@ -109,7 +111,7 @@ class KFWicomRacerTest extends PHPUnit\Framework\TestCase
         $expected = file_get_contents('wicom/data/testKFRolesInferredOut.json');
 
         $wicom = new KF_Wicom();
-        $answer = $wicom->full_reasoning($input, 'metamodel', 'Racer', true);
+        $answer = $wicom->full_reasoning($input, 'alcin', 'Racer', true);
 
         //var_dump($answer);
         $this->assertJsonStringEqualsJsonString($expected, $answer, true);

@@ -41,7 +41,7 @@ class KFWicomCardinalitiesTest extends PHPUnit\Framework\TestCase
         $expected = file_get_contents('wicom/data/testKFwithCardinalitiesInferredOut.json');
 
         $wicom = new KF_Wicom();
-        $answer = $wicom->full_reasoning($input, 'metamodel', 'Racer', true);
+        $answer = $wicom->full_reasoning($input, 'Racer', false, 'metamodel');
 
         $this->assertJsonStringEqualsJsonString($expected, $answer, true);
     }
@@ -54,7 +54,7 @@ class KFWicomCardinalitiesTest extends PHPUnit\Framework\TestCase
         $expected = file_get_contents('wicom/data/testKFwithCardinalitiesInferredOutKonclude.json');
 
         $wicom = new KF_Wicom();
-        $answer = $wicom->full_reasoning($input, 'metamodel', 'Konclude', true);
+        $answer = $wicom->full_reasoning($input, 'Konclude', false, 'metamodel');
 
         $this->assertJsonStringEqualsJsonString($expected, $answer, true);
     }
@@ -70,7 +70,7 @@ class KFWicomCardinalitiesTest extends PHPUnit\Framework\TestCase
         $expected = file_get_contents('wicom/data/testKFwithCardinalitiesInferredRolesSubsOut.json');
 
         $wicom = new KF_Wicom();
-        $answer = $wicom->full_reasoning($input, 'metamodel', 'Racer', true);
+        $answer = $wicom->full_reasoning($input, 'Racer', false, 'metamodel');
 
         $this->assertJsonStringEqualsJsonString($expected, $answer, true);
     }
