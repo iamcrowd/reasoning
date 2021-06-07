@@ -38,6 +38,8 @@ load("ansanalizer.php",
      "../wicom/translator/strategies/qapackages/answeranalizers/");
 
 load("crowd_dlmeta.php", "../wicom/translator/strategies/strategydlmeta/");
+load("crowd_dlmeta_enrico_exists.php", "../wicom/translator/strategies/strategydlmeta/crowd20/");
+
 load("crowd_checkmeta.php", "../wicom/translator/strategies/strategydlmeta/");
 load("metajsonbuilder.php", "../wicom/translator/builders/");
 load("crowdmetaanalizer.php", "../wicom/translator/strategies/qapackages/answeranalizers/");
@@ -59,6 +61,8 @@ use Wicom\Translator\Strategies\QAPackages\AnswerAnalizers\AnsAnalizer;
 use Wicom\Translator\Strategies\QAPackages\QueriesGenerators\QueriesGenerator;
 
 use Wicom\Translator\Strategies\Strategydlmeta\DLMeta;
+use Wicom\Translator\Strategies\Strategydlmeta\crowd20\DLMetaEnricoExists;
+
 use Wicom\Translator\Strategies\Strategydlmeta\DLCheckMeta;
 use Wicom\Translator\Builders\MetaJSONBuilder;
 use Wicom\Translator\Strategies\QAPackages\AnswerAnalizers\CrowdMetaAnalizer;
@@ -85,14 +89,14 @@ class KF_Wicom extends Wicom{
        @return Wicom\Translator\Strategies\QAPackages\AnswerAnalizers\Answer an answer object.
        @see KF
      */
-    function full_reasoning($json_str, $strategy = "metamodel", $reasoner = 'Racer', $check_cards = false){
+    function full_reasoning($json_str, $reasoner = 'Racer', $check_cards = false, $strategy = "metamodel"){
         $encoding = null;
         switch($strategy){
             case "berardi" :
 		          $encoding = new Berardi();
 		        break;
             case "metamodel" :
-              $encoding = new DLMeta();
+              $encoding = new DLMetaEnricoExists();
             break;
             default: throw new \Exception(
                 "Invalid encoding selected: $strategy");
