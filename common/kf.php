@@ -75,7 +75,7 @@ class KF_Wicom extends Wicom{
 	     parent::__construct();
     }
 
-    function is_satisfiable($json_str, $strategy = "metamodel", $reasoner = 'Racer'){}
+//    function is_satisfiable($json_str, $strategy = "metamodel", $reasoner = 'Racer'){}
 
 
     /**
@@ -89,7 +89,7 @@ class KF_Wicom extends Wicom{
        @return Wicom\Translator\Strategies\QAPackages\AnswerAnalizers\Answer an answer object.
        @see KF
      */
-    function full_reasoning($json_str, $reasoner = 'Racer', $check_cards = false, $strategy = "metamodel"){
+    function full_reasoning($json_str, $reasoner = 'Racer', $check_cards = false, $strategy = 'metamodel'){
         $encoding = null;
         switch($strategy){
             case "berardi" :
