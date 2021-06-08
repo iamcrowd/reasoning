@@ -36,6 +36,7 @@ load("koncludeconnector.php", "../wicom/reasoner/");
 
 load("ansanalizer.php",
      "../wicom/translator/strategies/qapackages/answeranalizers/");
+
 load("crowd_dlmeta.php", "../wicom/translator/strategies/strategydlmeta/");
 load("crowd_checkmeta.php", "../wicom/translator/strategies/strategydlmeta/");
 load("metajsonbuilder.php", "../wicom/translator/builders/");
@@ -89,13 +90,13 @@ class KF_Wicom extends Wicom{
        @return Wicom\Translator\Strategies\QAPackages\AnswerAnalizers\Answer an answer object.
        @see KF
      */
-    function full_reasoning($json_str, $strategy = 'alcin', $reasoner = 'Racer', $check_cards = false){
+    function full_reasoning($json_str, $strategy = "metamodel", $reasoner = 'Racer', $cards = false){
         $encoding = null;
         switch($strategy){
             case "berardi" :
 		          $encoding = new Berardi();
 		        break;
-            case "alcin" :
+            case "metamodel" :
               $encoding = new DLMeta();
             break;
             case "alcqi" :
@@ -128,7 +129,7 @@ class KF_Wicom extends Wicom{
         $runner->run($owllink_str);
         $reasoner_answer = $runner->get_last_answer();
 
-        if ($check_cards){
+        if ($cards){
           $encoding->get_qa_pack()->get_ans_analizer()->set_c_strategy($encoding);
         }
 
