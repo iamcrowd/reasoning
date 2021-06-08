@@ -157,17 +157,7 @@ class DLMetaEnricoExists extends DLMetaEnrico{
                   ]
                 ];
 
-              $lst_role_inv = [
-                "subclass" => [
-                  ["class" => $role["entity type"]],
-                  ["exists" => [
-                    ["inverse" => ["role" => $role["rolename"]]],
-                    ["class" => $relname]]],
-                  ]
-                ];
-
                 array_push($lst, $lst_role);
-                array_push($lst, $lst_role_inv);
                 $builder->translate_DL($lst);
 
                 foreach ($role_ot_card as $role_card) {
