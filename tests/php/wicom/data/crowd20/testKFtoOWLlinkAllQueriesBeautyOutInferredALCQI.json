@@ -211,6 +211,7 @@
     "SATisfiable Entity types": [
       "http://crowd.fi.uncoma.edu.ar/kb1#A",
       "http://crowd.fi.uncoma.edu.ar/kb1#C",
+      "http://crowd.fi.uncoma.edu.ar/kb1#B",
       "http://crowd.fi.uncoma.edu.ar/kb1#E",
       "http://crowd.fi.uncoma.edu.ar/kb1#F",
       "http://crowd.fi.uncoma.edu.ar/kb1#N",
@@ -218,7 +219,6 @@
       "http://crowd.fi.uncoma.edu.ar/kb1#N_valueTypeRel"
     ],
     "UNSATisfiable Entity types": [
-      "http://crowd.fi.uncoma.edu.ar/kb1#B",
       "http://crowd.fi.uncoma.edu.ar/kb1#D",
       "http://crowd.fi.uncoma.edu.ar/kb1#R2"
     ],
@@ -230,8 +230,7 @@
       "http://crowd.fi.uncoma.edu.ar/kb1#A_role",
       "http://crowd.fi.uncoma.edu.ar/kb1#N_role"
     ],
-    "UNSATisfiable Roles": [
-    ],
+    "UNSATisfiable Roles": [],
     "Subsumptions": [
       "http://crowd.fi.uncoma.edu.ar/inferredSubsumption#s1"
     ],
@@ -242,18 +241,6 @@
       [
         "http://crowd.fi.uncoma.edu.ar/kb1#C",
         "http://crowd.fi.uncoma.edu.ar/kb1#E"
-      ],
-      [
-        "http://crowd.fi.uncoma.edu.ar/kb1#B",
-        "http://www.w3.org/2002/07/owl#Nothing"
-      ],
-      [
-        "http://crowd.fi.uncoma.edu.ar/kb1#B",
-        "http://crowd.fi.uncoma.edu.ar/kb1#D"
-      ],
-      [
-        "http://crowd.fi.uncoma.edu.ar/kb1#B",
-        "http://crowd.fi.uncoma.edu.ar/kb1#R2"
       ],
       [
         "http://crowd.fi.uncoma.edu.ar/kb1#D",
@@ -277,10 +264,6 @@
       ],
       [
         "http://crowd.fi.uncoma.edu.ar/kb1#A",
-        "http://crowd.fi.uncoma.edu.ar/kb1#B"
-      ],
-      [
-        "http://crowd.fi.uncoma.edu.ar/kb1#A",
         "http://crowd.fi.uncoma.edu.ar/kb1#D"
       ],
       [
@@ -293,14 +276,22 @@
       ],
       [
         "http://crowd.fi.uncoma.edu.ar/kb1#C",
-        "http://crowd.fi.uncoma.edu.ar/kb1#B"
-      ],
-      [
-        "http://crowd.fi.uncoma.edu.ar/kb1#C",
         "http://crowd.fi.uncoma.edu.ar/kb1#D"
       ],
       [
         "http://crowd.fi.uncoma.edu.ar/kb1#C",
+        "http://crowd.fi.uncoma.edu.ar/kb1#R2"
+      ],
+      [
+        "http://crowd.fi.uncoma.edu.ar/kb1#B",
+        "http://www.w3.org/2002/07/owl#Nothing"
+      ],
+      [
+        "http://crowd.fi.uncoma.edu.ar/kb1#B",
+        "http://crowd.fi.uncoma.edu.ar/kb1#D"
+      ],
+      [
+        "http://crowd.fi.uncoma.edu.ar/kb1#B",
         "http://crowd.fi.uncoma.edu.ar/kb1#R2"
       ],
       [
@@ -309,10 +300,6 @@
       ],
       [
         "http://crowd.fi.uncoma.edu.ar/kb1#F",
-        "http://crowd.fi.uncoma.edu.ar/kb1#B"
-      ],
-      [
-        "http://crowd.fi.uncoma.edu.ar/kb1#F",
         "http://crowd.fi.uncoma.edu.ar/kb1#D"
       ],
       [
@@ -325,10 +312,6 @@
       ],
       [
         "http://crowd.fi.uncoma.edu.ar/kb1#N",
-        "http://crowd.fi.uncoma.edu.ar/kb1#B"
-      ],
-      [
-        "http://crowd.fi.uncoma.edu.ar/kb1#N",
         "http://crowd.fi.uncoma.edu.ar/kb1#D"
       ],
       [
@@ -338,10 +321,6 @@
       [
         "http://crowd.fi.uncoma.edu.ar/kb1#N",
         "http://crowd.fi.uncoma.edu.ar/kb1#R2"
-      ],
-      [
-        "http://crowd.fi.uncoma.edu.ar/kb1#R1",
-        "http://crowd.fi.uncoma.edu.ar/kb1#B"
       ],
       [
         "http://crowd.fi.uncoma.edu.ar/kb1#R1",
@@ -357,10 +336,6 @@
       ],
       [
         "http://crowd.fi.uncoma.edu.ar/kb1#N_valueTypeRel",
-        "http://crowd.fi.uncoma.edu.ar/kb1#B"
-      ],
-      [
-        "http://crowd.fi.uncoma.edu.ar/kb1#N_valueTypeRel",
         "http://crowd.fi.uncoma.edu.ar/kb1#D"
       ],
       [
@@ -372,48 +347,16 @@
         "http://www.w3.org/2002/07/owl#Nothing"
       ],
       [
-        "http://crowd.fi.uncoma.edu.ar/kb1#B",
-        "http://www.w3.org/2002/07/owl#Thing"
-      ],
-      [
-        "http://crowd.fi.uncoma.edu.ar/kb1#B",
-        "http://crowd.fi.uncoma.edu.ar/kb1#N_valueTypeRel"
-      ],
-      [
-        "http://crowd.fi.uncoma.edu.ar/kb1#B",
-        "http://crowd.fi.uncoma.edu.ar/kb1#R1"
-      ],
-      [
-        "http://crowd.fi.uncoma.edu.ar/kb1#B",
-        "http://crowd.fi.uncoma.edu.ar/kb1#A"
-      ],
-      [
-        "http://crowd.fi.uncoma.edu.ar/kb1#B",
-        "http://crowd.fi.uncoma.edu.ar/kb1#N"
-      ],
-      [
-        "http://crowd.fi.uncoma.edu.ar/kb1#B",
-        "http://crowd.fi.uncoma.edu.ar/kb1#C"
-      ],
-      [
-        "http://crowd.fi.uncoma.edu.ar/kb1#B",
-        "http://crowd.fi.uncoma.edu.ar/kb1#F"
-      ],
-      [
-        "http://crowd.fi.uncoma.edu.ar/kb1#B",
-        "http://www.w3.org/2002/07/owl#Nothing"
-      ],
-      [
         "http://crowd.fi.uncoma.edu.ar/kb1#D",
         "http://www.w3.org/2002/07/owl#Thing"
       ],
       [
         "http://crowd.fi.uncoma.edu.ar/kb1#D",
-        "http://crowd.fi.uncoma.edu.ar/kb1#N_valueTypeRel"
+        "http://crowd.fi.uncoma.edu.ar/kb1#R1"
       ],
       [
         "http://crowd.fi.uncoma.edu.ar/kb1#D",
-        "http://crowd.fi.uncoma.edu.ar/kb1#R1"
+        "http://crowd.fi.uncoma.edu.ar/kb1#N_valueTypeRel"
       ],
       [
         "http://crowd.fi.uncoma.edu.ar/kb1#D",
@@ -425,15 +368,19 @@
       ],
       [
         "http://crowd.fi.uncoma.edu.ar/kb1#D",
+        "http://crowd.fi.uncoma.edu.ar/kb1#B"
+      ],
+      [
+        "http://crowd.fi.uncoma.edu.ar/kb1#D",
         "http://crowd.fi.uncoma.edu.ar/kb1#C"
       ],
       [
         "http://crowd.fi.uncoma.edu.ar/kb1#D",
-        "http://crowd.fi.uncoma.edu.ar/kb1#F"
+        "http://www.w3.org/2002/07/owl#Nothing"
       ],
       [
         "http://crowd.fi.uncoma.edu.ar/kb1#D",
-        "http://www.w3.org/2002/07/owl#Nothing"
+        "http://crowd.fi.uncoma.edu.ar/kb1#F"
       ],
       [
         "http://crowd.fi.uncoma.edu.ar/kb1#R2",
@@ -441,15 +388,7 @@
       ],
       [
         "http://crowd.fi.uncoma.edu.ar/kb1#R2",
-        "http://crowd.fi.uncoma.edu.ar/kb1#A"
-      ],
-      [
-        "http://crowd.fi.uncoma.edu.ar/kb1#R2",
-        "http://crowd.fi.uncoma.edu.ar/kb1#F"
-      ],
-      [
-        "http://crowd.fi.uncoma.edu.ar/kb1#R2",
-        "http://crowd.fi.uncoma.edu.ar/kb1#C"
+        "http://crowd.fi.uncoma.edu.ar/kb1#N_valueTypeRel"
       ],
       [
         "http://crowd.fi.uncoma.edu.ar/kb1#R2",
@@ -457,7 +396,7 @@
       ],
       [
         "http://crowd.fi.uncoma.edu.ar/kb1#R2",
-        "http://crowd.fi.uncoma.edu.ar/kb1#N_valueTypeRel"
+        "http://crowd.fi.uncoma.edu.ar/kb1#A"
       ],
       [
         "http://crowd.fi.uncoma.edu.ar/kb1#R2",
@@ -465,7 +404,19 @@
       ],
       [
         "http://crowd.fi.uncoma.edu.ar/kb1#R2",
+        "http://crowd.fi.uncoma.edu.ar/kb1#B"
+      ],
+      [
+        "http://crowd.fi.uncoma.edu.ar/kb1#R2",
+        "http://crowd.fi.uncoma.edu.ar/kb1#C"
+      ],
+      [
+        "http://crowd.fi.uncoma.edu.ar/kb1#R2",
         "http://www.w3.org/2002/07/owl#Nothing"
+      ],
+      [
+        "http://crowd.fi.uncoma.edu.ar/kb1#R2",
+        "http://crowd.fi.uncoma.edu.ar/kb1#F"
       ]
     ],
     "Disjoint ObjectProperty Axioms": [],

@@ -39,11 +39,10 @@ class KFWicomRacerALCQITest extends PHPUnit\Framework\TestCase
     */
     public function test_full_reasoning_KF_ALCQI(){
         $input = file_get_contents('wicom/data/testKFtoOWLlinkAllQueries.json');
-        $expected = file_get_contents('wicom/data/testKFtoOWLlinkAllQueriesBeautyOutInferredALCQI.json');
+        $expected = file_get_contents('wicom/data/crowd20/testKFtoOWLlinkAllQueriesBeautyOutInferredALCQI.json');
 
         $wicom = new KF_Wicom();
         $answer = $wicom->full_reasoning($input, 'alcqi');
-
         $this->assertJsonStringEqualsJsonString($expected, $answer, true);
     }
 }

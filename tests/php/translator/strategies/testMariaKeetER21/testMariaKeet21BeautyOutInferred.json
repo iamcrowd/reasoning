@@ -279,10 +279,6 @@
       [
         "http://crowd.fi.uncoma.edu.ar/kb1#COVID-19Medicine",
         "http://crowd.fi.uncoma.edu.ar/kb1#Regulatory-Body"
-      ],
-      [
-        "http://crowd.fi.uncoma.edu.ar/kb1#As2",
-        "http://crowd.fi.uncoma.edu.ar/kb1#As3"
       ]
     ],
     "Equivalent ObjectProperty Axioms": [],

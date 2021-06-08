@@ -141,15 +141,7 @@
 				<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#COVID-19Medicine"/>
 			</owl:ObjectSomeValuesFrom>
 		</owl:SubClassOf>
-		<owl:SubClassOf>
-			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#COVID-19Medicine"/>
-			<owl:ObjectSomeValuesFrom>
-				<owl:ObjectInverseOf>
-					<owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#of"/>
-				</owl:ObjectInverseOf>
-				<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#as1"/>
-			</owl:ObjectSomeValuesFrom>
-		</owl:SubClassOf>
+
 		<owl:SubClassOf>
 			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#COVID-19Medicine"/>
 			<owl:ObjectMinCardinality cardinality="1">
@@ -167,15 +159,6 @@
 				<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Regulatory-Body"/>
 			</owl:ObjectSomeValuesFrom>
 		</owl:SubClassOf>
-		<owl:SubClassOf>
-			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Regulatory-Body"/>
-			<owl:ObjectSomeValuesFrom>
-				<owl:ObjectInverseOf>
-					<owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#approved-by"/>
-				</owl:ObjectInverseOf>
-				<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#as1"/>
-			</owl:ObjectSomeValuesFrom>
-		</owl:SubClassOf>
 
 
 		<owl:SubClassOf>
@@ -185,15 +168,7 @@
 				<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#COVID-19 vaccine"/>
 			</owl:ObjectSomeValuesFrom>
 		</owl:SubClassOf>
-		<owl:SubClassOf>
-			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#COVID-19 vaccine"/>
-			<owl:ObjectSomeValuesFrom>
-				<owl:ObjectInverseOf>
-					<owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#with"/>
-				</owl:ObjectInverseOf>
-				<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#As2"/>
-			</owl:ObjectSomeValuesFrom>
-		</owl:SubClassOf>
+
 		<owl:SubClassOf>
 			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#As2"/>
 			<owl:ObjectSomeValuesFrom>
@@ -204,15 +179,6 @@
 
 		<owl:SubClassOf>
 			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Inoculation"/>
-			<owl:ObjectSomeValuesFrom>
-				<owl:ObjectInverseOf>
-					<owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#role-b-2"/>
-				</owl:ObjectInverseOf>
-				<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#As2"/>
-			</owl:ObjectSomeValuesFrom>
-		</owl:SubClassOf>
-		<owl:SubClassOf>
-			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Inoculation"/>
 			<owl:ObjectMinCardinality cardinality="1">
 				<owl:ObjectInverseOf>
 					<owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#role-b-2"/>
@@ -220,6 +186,7 @@
 				<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#As2"/>
 			</owl:ObjectMinCardinality>
 		</owl:SubClassOf>
+
 		<owl:SubClassOf>
 			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Inoculation"/>
 			<owl:ObjectMaxCardinality cardinality="1">
@@ -240,15 +207,7 @@
 				<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Pfizer-Vaccine"/>
 			</owl:ObjectSomeValuesFrom>
 		</owl:SubClassOf>
-		<owl:SubClassOf>
-			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Pfizer-Vaccine"/>
-			<owl:ObjectSomeValuesFrom>
-				<owl:ObjectInverseOf>
-					<owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#with"/>
-				</owl:ObjectInverseOf>
-				<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#As3"/>
-			</owl:ObjectSomeValuesFrom>
-		</owl:SubClassOf>
+
 		<owl:SubClassOf>
 			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Pfizer-Vaccine"/>
 			<owl:ObjectMaxCardinality cardinality="2">
@@ -266,15 +225,7 @@
 				<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Inoculation"/>
 			</owl:ObjectSomeValuesFrom>
 		</owl:SubClassOf>
-		<owl:SubClassOf>
-			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Inoculation"/>
-			<owl:ObjectSomeValuesFrom>
-				<owl:ObjectInverseOf>
-					<owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#role-b-2"/>
-				</owl:ObjectInverseOf>
-				<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#As3"/>
-			</owl:ObjectSomeValuesFrom>
-		</owl:SubClassOf>
+
 		<owl:SubClassOf>
 			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Inoculation"/>
 			<owl:ObjectMaxCardinality cardinality="2">

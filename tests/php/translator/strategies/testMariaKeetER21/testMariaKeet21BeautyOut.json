@@ -57,16 +57,6 @@
     {
       "subclass": [
         {
-          "class": "http://crowd.fi.uncoma.edu.ar/kb1#As3"
-        },
-        {
-          "class": "http://www.w3.org/2002/07/owl#Thing"
-        }
-      ]
-    },
-    {
-      "subclass": [
-        {
           "class": "http://crowd.fi.uncoma.edu.ar/kb1#as1"
         },
         {
@@ -97,50 +87,60 @@
     {
       "subclass": [
         {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#As3"
+        },
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#As2"
+        }
+      ]
+    },
+    {
+      "subclass": [
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#COVID-19 vaccine"
+        },
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#Regulatory-Body"
+        }
+      ]
+    },
+    {
+      "subclass": [
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#COVID-19 treatment drug"
+        },
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#Regulatory-Body"
+        }
+      ]
+    },
+    {
+      "subclass": [
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#COVID-19 vaccine"
+        },
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#COVID-19Medicine"
+        }
+      ]
+    },
+    {
+      "subclass": [
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#COVID-19 treatment drug"
+        },
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#COVID-19Medicine"
+        }
+      ]
+    },
+    {
+      "subclass": [
+        {
           "class": "http://crowd.fi.uncoma.edu.ar/kb1#Pfizer-Vaccine"
         },
         {
           "class": "http://crowd.fi.uncoma.edu.ar/kb1#COVID-19 vaccine"
-        }
-      ]
-    },
-    {
-      "subclass": [
-        {
-          "class": "http://crowd.fi.uncoma.edu.ar/kb1#COVID-19 vaccine"
-        },
-        {
-          "class": "http://crowd.fi.uncoma.edu.ar/kb1#Regulatory-Body"
-        }
-      ]
-    },
-    {
-      "subclass": [
-        {
-          "class": "http://crowd.fi.uncoma.edu.ar/kb1#COVID-19 treatment drug"
-        },
-        {
-          "class": "http://crowd.fi.uncoma.edu.ar/kb1#Regulatory-Body"
-        }
-      ]
-    },
-    {
-      "subclass": [
-        {
-          "class": "http://crowd.fi.uncoma.edu.ar/kb1#COVID-19 vaccine"
-        },
-        {
-          "class": "http://crowd.fi.uncoma.edu.ar/kb1#COVID-19Medicine"
-        }
-      ]
-    },
-    {
-      "subclass": [
-        {
-          "class": "http://crowd.fi.uncoma.edu.ar/kb1#COVID-19 treatment drug"
-        },
-        {
-          "class": "http://crowd.fi.uncoma.edu.ar/kb1#COVID-19Medicine"
         }
       ]
     },
@@ -368,26 +368,6 @@
       "equivalentclasses": [
         {
           "class": "http://crowd.fi.uncoma.edu.ar/kb1#As2"
-        },
-        {
-          "class": "http://crowd.fi.uncoma.edu.ar/kb1#As2"
-        }
-      ]
-    },
-    {
-      "equivalentclasses": [
-        {
-          "class": "http://crowd.fi.uncoma.edu.ar/kb1#As2"
-        },
-        {
-          "class": "http://crowd.fi.uncoma.edu.ar/kb1#As3"
-        }
-      ]
-    },
-    {
-      "equivalentclasses": [
-        {
-          "class": "http://crowd.fi.uncoma.edu.ar/kb1#As3"
         },
         {
           "class": "http://crowd.fi.uncoma.edu.ar/kb1#As2"

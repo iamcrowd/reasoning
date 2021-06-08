@@ -24,7 +24,7 @@
             "rolename": "http://crowd.fi.uncoma.edu.ar/kb1#of",
             "entity type": "http://crowd.fi.uncoma.edu.ar/kb1#COVID-19Medicine",
             "relationship": "http://crowd.fi.uncoma.edu.ar/kb1#as1",
-            "mandatory": "mandatoryGLrT"
+            "mandatory": "mandatoryRN1L"
         },
         {
             "object type cardinality": [
@@ -49,7 +49,7 @@
             "rolename": "http://crowd.fi.uncoma.edu.ar/kb1#role-b-2",
             "entity type": "http://crowd.fi.uncoma.edu.ar/kb1#Inoculation",
             "relationship": "http://crowd.fi.uncoma.edu.ar/kb1#As2",
-            "mandatory": "mandatorymSlE"
+            "mandatory": "mandatoryLtGh"
         },
         {
             "object type cardinality": [
@@ -129,11 +129,11 @@
             "Mandatory": [
                 {
                     "declared on": "http://crowd.fi.uncoma.edu.ar/kb1#of",
-                    "name": "mandatoryGLrT"
+                    "name": "mandatoryRN1L"
                 },
                 {
                     "declared on": "http://crowd.fi.uncoma.edu.ar/kb1#role-b-2",
-                    "name": "mandatorymSlE"
+                    "name": "mandatoryLtGh"
                 }
             ]
         }
@@ -186,26 +186,26 @@
         "Subsumption": [
             {
                 "entity child": "http://crowd.fi.uncoma.edu.ar/kb1#Pfizer-Vaccine",
-                "name": "c3251_FI3b_xnEt",
+                "name": "c3251_FI3b_xnEt_Atps_5mB0",
                 "entity parent": "http://crowd.fi.uncoma.edu.ar/kb1#COVID-19 vaccine"
             },
             {
                 "entity child": "http://crowd.fi.uncoma.edu.ar/kb1#As3",
-                "name": "c3270_817s_6mzc",
+                "name": "c3270_817s_6mzc_H8pq_Dabf",
                 "entity parent": "http://crowd.fi.uncoma.edu.ar/kb1#As2"
             },
             {
                 "entity child": "http://crowd.fi.uncoma.edu.ar/kb1#COVID-19 treatment drug",
                 "disjointness constraints": "dc9",
                 "completeness constraints": "cc10",
-                "name": "c391_Br6H",
+                "name": "c484_8jHA",
                 "entity parent": "http://crowd.fi.uncoma.edu.ar/kb1#COVID-19Medicine"
             },
             {
                 "entity child": "http://crowd.fi.uncoma.edu.ar/kb1#COVID-19 vaccine",
                 "disjointness constraints": "dc9",
                 "completeness constraints": "cc10",
-                "name": "c391_coUB",
+                "name": "c484_Xrac",
                 "entity parent": "http://crowd.fi.uncoma.edu.ar/kb1#COVID-19Medicine"
             }
         ],

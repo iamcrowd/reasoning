@@ -39,7 +39,6 @@
         </ClassSynset>
         <ClassSynset>
           <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#As2"/>
-          <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#As3"/>
         </ClassSynset>
         <ClassSynset>
           <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#as1"/>
@@ -52,11 +51,11 @@
     </ClassSubClassesPair>
     <ClassSubClassesPair>
       <ClassSynset>
-        <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#COVID-19 vaccine"/>
+        <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#As2"/>
       </ClassSynset>
       <SubClassSynsets>
         <ClassSynset>
-          <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Pfizer-Vaccine"/>
+          <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#As3"/>
         </ClassSynset>
       </SubClassSynsets>
     </ClassSubClassesPair>
@@ -71,6 +70,16 @@
         </ClassSynset>
         <ClassSynset>
           <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#COVID-19 treatment drug"/>
+        </ClassSynset>
+      </SubClassSynsets>
+    </ClassSubClassesPair>
+    <ClassSubClassesPair>
+      <ClassSynset>
+        <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#COVID-19 vaccine"/>
+      </ClassSynset>
+      <SubClassSynsets>
+        <ClassSynset>
+          <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Pfizer-Vaccine"/>
         </ClassSynset>
       </SubClassSynsets>
     </ClassSubClassesPair>
@@ -162,10 +171,8 @@
   </SetOfClasses>
   <SetOfClasses>
     <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#As2"/>
-    <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#As3"/>
   </SetOfClasses>
   <SetOfClasses>
-    <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#As2"/>
     <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#As3"/>
   </SetOfClasses>
   <SetOfObjectPropertySynsets>
