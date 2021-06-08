@@ -57,7 +57,7 @@ load("kf.php", "../common/");
   $kf = new Wicom\KF_Wicom();
 
   try{
-    $answer = $kf->full_reasoning($_POST['json'], $_POST['strategy'], $reasoner, $cards);
+    $answer = $kf->full_reasoning($_POST['json'], "metamodel", $reasoner, $cards);
     if ($answer != null){
         echo $answer;
     }else{
