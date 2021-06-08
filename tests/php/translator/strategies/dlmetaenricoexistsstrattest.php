@@ -224,5 +224,4 @@ class DLMetaEnricoExistsTest extends PHPUnit\Framework\TestCase{
           $this->assertTrue(false, "JSON KF does not match against KF Scheme");
         }
     }
-
 }

@@ -61,13 +61,10 @@
 		<Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#E"/>
 		<Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#C"/>
 	</SubClassOf>
-	<SubClassOf>
-		<ObjectIntersectionOf>
-			<Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#E"/>
-			<Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#D"/>
-		</ObjectIntersectionOf>
-		<Class abbreviatedIRI="owl:Nothing"/>
-	</SubClassOf>
+	<DisjointClasses>
+		<Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#E"/>
+		<Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#D"/>
+	</DisjointClasses>
 	<SubClassOf>
 		<Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#C"/>
 		<ObjectUnionOf>
@@ -98,16 +95,6 @@
 
 	<SubClassOf>
 		<Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#A"/>
-		<ObjectSomeValuesFrom>
-			<ObjectInverseOf>
-				<ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#R1role0"/>
-			</ObjectInverseOf>
-			<Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#R1"/>
-		</ObjectSomeValuesFrom>
-	</SubClassOf>
-
-	<SubClassOf>
-		<Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#A"/>
 		<ObjectMaxCardinality cardinality="1">
 			<ObjectInverseOf>
 				<ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#R1role0"/>
@@ -121,16 +108,6 @@
 		<ObjectSomeValuesFrom>
 			<ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#R1role1"/>
 			<Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#C"/>
-		</ObjectSomeValuesFrom>
-	</SubClassOf>
-
-	<SubClassOf>
-		<Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#C"/>
-		<ObjectSomeValuesFrom>
-			<ObjectInverseOf>
-				<ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#R1role1"/>
-			</ObjectInverseOf>
-			<Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#R1"/>
 		</ObjectSomeValuesFrom>
 	</SubClassOf>
 
@@ -154,16 +131,6 @@
 
 	<SubClassOf>
 		<Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#B"/>
-		<ObjectSomeValuesFrom>
-			<ObjectInverseOf>
-				<ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#R2role0"/>
-			</ObjectInverseOf>
-			<Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#R2"/>
-		</ObjectSomeValuesFrom>
-	</SubClassOf>
-
-	<SubClassOf>
-		<Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#B"/>
 		<ObjectMaxCardinality cardinality="1">
 			<ObjectInverseOf>
 				<ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#R2role0"/>
@@ -177,16 +144,6 @@
 		<ObjectSomeValuesFrom>
 			<ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#R2role1"/>
 			<Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#D"/>
-		</ObjectSomeValuesFrom>
-	</SubClassOf>
-
-	<SubClassOf>
-		<Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#D"/>
-		<ObjectSomeValuesFrom>
-			<ObjectInverseOf>
-				<ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#R2role1"/>
-			</ObjectInverseOf>
-			<Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#R2"/>
 		</ObjectSomeValuesFrom>
 	</SubClassOf>
 
@@ -210,16 +167,6 @@
 
 	<SubClassOf>
 		<Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#A"/>
-		<ObjectSomeValuesFrom>
-			<ObjectInverseOf>
-				<ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#A_role"/>
-			</ObjectInverseOf>
-			<Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#N_valueTypeRel"/>
-		</ObjectSomeValuesFrom>
-	</SubClassOf>
-
-	<SubClassOf>
-		<Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#A"/>
 		<ObjectMaxCardinality cardinality="1">
 			<ObjectInverseOf>
 				<ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#A_role"/>
@@ -233,16 +180,6 @@
 		<ObjectSomeValuesFrom>
 			<ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#N_role"/>
 			<Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#N"/>
-		</ObjectSomeValuesFrom>
-	</SubClassOf>
-
-	<SubClassOf>
-		<Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#N"/>
-		<ObjectSomeValuesFrom>
-			<ObjectInverseOf>
-				<ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#N_role"/>
-			</ObjectInverseOf>
-			<Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#N_valueTypeRel"/>
 		</ObjectSomeValuesFrom>
 	</SubClassOf>
 
@@ -278,5 +215,5 @@
 			<Datatype IRI="string"/>
 		</DataMaxCardinality>
 	</SubClassOf>
-	
+
 </Ontology>

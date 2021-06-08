@@ -50,16 +50,6 @@
 
 		<owl:SubClassOf>
 			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Person"/>
-			<owl:ObjectSomeValuesFrom>
-				<owl:ObjectInverseOf>
-					<owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#person"/>
-				</owl:ObjectInverseOf>
-				<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#enrolled"/>
-			</owl:ObjectSomeValuesFrom>
-		</owl:SubClassOf>
-
-		<owl:SubClassOf>
-			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Person"/>
 			<owl:ObjectMinCardinality cardinality="2">
 				<owl:ObjectInverseOf>
 					<owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#person"/>
@@ -83,16 +73,6 @@
 			<owl:ObjectSomeValuesFrom>
 				<owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#institution"/>
 				<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Institution"/>
-			</owl:ObjectSomeValuesFrom>
-		</owl:SubClassOf>
-
-		<owl:SubClassOf>
-			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Institution"/>
-			<owl:ObjectSomeValuesFrom>
-				<owl:ObjectInverseOf>
-					<owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#institution"/>
-				</owl:ObjectInverseOf>
-				<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#enrolled"/>
 			</owl:ObjectSomeValuesFrom>
 		</owl:SubClassOf>
 

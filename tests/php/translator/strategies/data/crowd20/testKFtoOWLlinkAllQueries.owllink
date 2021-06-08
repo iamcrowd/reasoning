@@ -82,13 +82,10 @@
 			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#E"/>
 			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#C"/>
 		</owl:SubClassOf>
-		<owl:SubClassOf>
-			<owl:ObjectIntersectionOf>
-				<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#E"/>
-				<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#D"/>
-			</owl:ObjectIntersectionOf>
-			<owl:Class IRI="http://www.w3.org/2002/07/owl#Nothing"/>
-		</owl:SubClassOf>
+		<owl:DisjointClasses>
+			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#E"/>
+			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#D"/>
+		</owl:DisjointClasses>
 		<owl:SubClassOf>
 			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#C"/>
 			<owl:ObjectUnionOf>
@@ -108,229 +105,102 @@
 			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#D"/>
 			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#E"/>
 		</owl:SubClassOf>
-
 		<owl:SubClassOf>
+			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#R1"/>
 			<owl:ObjectSomeValuesFrom>
 				<owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#R1role0"/>
-				<owl:Class IRI="http://www.w3.org/2002/07/owl#Thing"/>
+				<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#A"/>
 			</owl:ObjectSomeValuesFrom>
-			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#R1"/>
 		</owl:SubClassOf>
-
-		<owl:SubClassOf>
-			<owl:ObjectSomeValuesFrom>
-				<owl:ObjectInverseOf>
-					<owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#R1role0"/>
-				</owl:ObjectInverseOf>
-				<owl:Class IRI="http://www.w3.org/2002/07/owl#Thing"/>
-			</owl:ObjectSomeValuesFrom>
-			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#A"/>
-		</owl:SubClassOf>
-
 		<owl:SubClassOf>
 			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#A"/>
 			<owl:ObjectMaxCardinality cardinality="1">
 				<owl:ObjectInverseOf>
 					<owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#R1role0"/>
 				</owl:ObjectInverseOf>
+				<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#R1"/>
 			</owl:ObjectMaxCardinality>
 		</owl:SubClassOf>
-
 		<owl:SubClassOf>
+			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#R1"/>
 			<owl:ObjectSomeValuesFrom>
 				<owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#R1role1"/>
-				<owl:Class IRI="http://www.w3.org/2002/07/owl#Thing"/>
+				<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#C"/>
 			</owl:ObjectSomeValuesFrom>
-			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#R1"/>
 		</owl:SubClassOf>
-
-		<owl:SubClassOf>
-			<owl:ObjectSomeValuesFrom>
-				<owl:ObjectInverseOf>
-					<owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#R1role1"/>
-				</owl:ObjectInverseOf>
-				<owl:Class IRI="http://www.w3.org/2002/07/owl#Thing"/>
-			</owl:ObjectSomeValuesFrom>
-			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#C"/>
-		</owl:SubClassOf>
-
 		<owl:SubClassOf>
 			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#C"/>
 			<owl:ObjectMaxCardinality cardinality="1">
 				<owl:ObjectInverseOf>
 					<owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#R1role1"/>
 				</owl:ObjectInverseOf>
+				<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#R1"/>
 			</owl:ObjectMaxCardinality>
 		</owl:SubClassOf>
-
 		<owl:SubClassOf>
-			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#R1"/>
-			<owl:ObjectIntersectionOf>
-				<owl:ObjectSomeValuesFrom>
-					<owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#R1role0"/>
-					<owl:Class IRI="http://www.w3.org/2002/07/owl#Thing"/>
-				</owl:ObjectSomeValuesFrom>
-				<owl:ObjectMaxCardinality cardinality="1">
-					<owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#R1role0"/>
-				</owl:ObjectMaxCardinality>
-				<owl:ObjectSomeValuesFrom>
-					<owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#R1role1"/>
-					<owl:Class IRI="http://www.w3.org/2002/07/owl#Thing"/>
-				</owl:ObjectSomeValuesFrom>
-				<owl:ObjectMaxCardinality cardinality="1">
-					<owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#R1role1"/>
-				</owl:ObjectMaxCardinality>
-			</owl:ObjectIntersectionOf>
-		</owl:SubClassOf>
-
-		<owl:SubClassOf>
+			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#R2"/>
 			<owl:ObjectSomeValuesFrom>
 				<owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#R2role0"/>
-				<owl:Class IRI="http://www.w3.org/2002/07/owl#Thing"/>
+				<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#B"/>
 			</owl:ObjectSomeValuesFrom>
-			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#R2"/>
 		</owl:SubClassOf>
-
-		<owl:SubClassOf>
-			<owl:ObjectSomeValuesFrom>
-				<owl:ObjectInverseOf>
-					<owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#R2role0"/>
-				</owl:ObjectInverseOf>
-				<owl:Class IRI="http://www.w3.org/2002/07/owl#Thing"/>
-			</owl:ObjectSomeValuesFrom>
-			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#B"/>
-		</owl:SubClassOf>
-
 		<owl:SubClassOf>
 			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#B"/>
 			<owl:ObjectMaxCardinality cardinality="1">
 				<owl:ObjectInverseOf>
 					<owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#R2role0"/>
 				</owl:ObjectInverseOf>
+				<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#R2"/>
 			</owl:ObjectMaxCardinality>
 		</owl:SubClassOf>
-
 		<owl:SubClassOf>
+			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#R2"/>
 			<owl:ObjectSomeValuesFrom>
 				<owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#R2role1"/>
-				<owl:Class IRI="http://www.w3.org/2002/07/owl#Thing"/>
+				<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#D"/>
 			</owl:ObjectSomeValuesFrom>
-			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#R2"/>
 		</owl:SubClassOf>
-
-		<owl:SubClassOf>
-			<owl:ObjectSomeValuesFrom>
-				<owl:ObjectInverseOf>
-					<owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#R2role1"/>
-				</owl:ObjectInverseOf>
-				<owl:Class IRI="http://www.w3.org/2002/07/owl#Thing"/>
-			</owl:ObjectSomeValuesFrom>
-			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#D"/>
-		</owl:SubClassOf>
-
 		<owl:SubClassOf>
 			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#D"/>
 			<owl:ObjectMaxCardinality cardinality="1">
 				<owl:ObjectInverseOf>
 					<owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#R2role1"/>
 				</owl:ObjectInverseOf>
+				<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#R2"/>
 			</owl:ObjectMaxCardinality>
 		</owl:SubClassOf>
-
 		<owl:SubClassOf>
-      <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#R2"/>
-      <owl:ObjectIntersectionOf>
-        <owl:ObjectSomeValuesFrom>
-          <owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#R2role0"/>
-          <owl:Class IRI="http://www.w3.org/2002/07/owl#Thing"/>
-        </owl:ObjectSomeValuesFrom>
-        <owl:ObjectMaxCardinality cardinality="1">
-          <owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#R2role0"/>
-        </owl:ObjectMaxCardinality>
-        <owl:ObjectSomeValuesFrom>
-          <owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#R2role1"/>
-          <owl:Class IRI="http://www.w3.org/2002/07/owl#Thing"/>
-        </owl:ObjectSomeValuesFrom>
-        <owl:ObjectMaxCardinality cardinality="1">
-          <owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#R2role1"/>
-        </owl:ObjectMaxCardinality>
-      </owl:ObjectIntersectionOf>
-    </owl:SubClassOf>
-
-		<owl:SubClassOf>
+			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#N_valueTypeRel"/>
 			<owl:ObjectSomeValuesFrom>
 				<owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#A_role"/>
-				<owl:Class IRI="http://www.w3.org/2002/07/owl#Thing"/>
+				<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#A"/>
 			</owl:ObjectSomeValuesFrom>
-			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#N_valueTypeRel"/>
 		</owl:SubClassOf>
-
-		<owl:SubClassOf>
-			<owl:ObjectSomeValuesFrom>
-				<owl:ObjectInverseOf>
-					<owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#A_role"/>
-				</owl:ObjectInverseOf>
-				<owl:Class IRI="http://www.w3.org/2002/07/owl#Thing"/>
-			</owl:ObjectSomeValuesFrom>
-			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#A"/>
-		</owl:SubClassOf>
-
 		<owl:SubClassOf>
 			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#A"/>
 			<owl:ObjectMaxCardinality cardinality="1">
 				<owl:ObjectInverseOf>
 					<owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#A_role"/>
 				</owl:ObjectInverseOf>
+				<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#N_valueTypeRel"/>
 			</owl:ObjectMaxCardinality>
 		</owl:SubClassOf>
-
 		<owl:SubClassOf>
+			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#N_valueTypeRel"/>
 			<owl:ObjectSomeValuesFrom>
 				<owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#N_role"/>
-				<owl:Class IRI="http://www.w3.org/2002/07/owl#Thing"/>
+				<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#N"/>
 			</owl:ObjectSomeValuesFrom>
-			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#N_valueTypeRel"/>
 		</owl:SubClassOf>
-
-		<owl:SubClassOf>
-			<owl:ObjectSomeValuesFrom>
-				<owl:ObjectInverseOf>
-					<owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#N_role"/>
-				</owl:ObjectInverseOf>
-				<owl:Class IRI="http://www.w3.org/2002/07/owl#Thing"/>
-			</owl:ObjectSomeValuesFrom>
-			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#N"/>
-		</owl:SubClassOf>
-
 		<owl:SubClassOf>
 			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#N"/>
 			<owl:ObjectMaxCardinality cardinality="1">
 				<owl:ObjectInverseOf>
 					<owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#N_role"/>
 				</owl:ObjectInverseOf>
+				<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#N_valueTypeRel"/>
 			</owl:ObjectMaxCardinality>
 		</owl:SubClassOf>
-
-		<owl:SubClassOf>
-			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#N_valueTypeRel"/>
-			<owl:ObjectIntersectionOf>
-				<owl:ObjectSomeValuesFrom>
-					<owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#A_role"/>
-					<owl:Class IRI="http://www.w3.org/2002/07/owl#Thing"/>
-				</owl:ObjectSomeValuesFrom>
-				<owl:ObjectMaxCardinality cardinality="1">
-					<owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#A_role"/>
-				</owl:ObjectMaxCardinality>
-				<owl:ObjectSomeValuesFrom>
-					<owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#N_role"/>
-					<owl:Class IRI="http://www.w3.org/2002/07/owl#Thing"/>
-				</owl:ObjectSomeValuesFrom>
-				<owl:ObjectMaxCardinality cardinality="1">
-					<owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#N_role"/>
-				</owl:ObjectMaxCardinality>
-			</owl:ObjectIntersectionOf>
-		</owl:SubClassOf>
-
 		<owl:DataPropertyDomain>
 			<owl:DataProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#N_mappedTo"/>
 			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#N"/>
@@ -343,15 +213,16 @@
 			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#N"/>
 			<owl:DataMinCardinality cardinality="1">
 				<owl:DataProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#N_mappedTo"/>
+				<owl:Datatype IRI="http://crowd.fi.uncoma.edu.ar/kb1#string"/>
 			</owl:DataMinCardinality>
 		</owl:SubClassOf>
 		<owl:SubClassOf>
 			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#N"/>
 			<owl:DataMaxCardinality cardinality="1">
 				<owl:DataProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#N_mappedTo"/>
+				<owl:Datatype IRI="http://crowd.fi.uncoma.edu.ar/kb1#string"/>
 			</owl:DataMaxCardinality>
 		</owl:SubClassOf>
-
 	</Tell>
 	<IsKBSatisfiable kb="http://crowd.fi.uncoma.edu.ar/kb1#"/>
 	<IsClassSatisfiable kb="http://crowd.fi.uncoma.edu.ar/kb1#">
@@ -402,10 +273,8 @@
 	<IsDataPropertySatisfiable kb="http://crowd.fi.uncoma.edu.ar/kb1#">
 		<owl:DataProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#N_mappedTo"/>
 	</IsDataPropertySatisfiable>
-
 	<GetSubClassHierarchy kb="http://crowd.fi.uncoma.edu.ar/kb1#"/>
 	<GetSubObjectPropertyHierarchy kb="http://crowd.fi.uncoma.edu.ar/kb1#"/>
-
 	<GetDisjointClasses kb="http://crowd.fi.uncoma.edu.ar/kb1#">
 		<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#A"/>
 	</GetDisjointClasses>
@@ -433,7 +302,6 @@
 	<GetDisjointClasses kb="http://crowd.fi.uncoma.edu.ar/kb1#">
 		<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#N_valueTypeRel"/>
 	</GetDisjointClasses>
-
 	<GetEquivalentClasses kb="http://crowd.fi.uncoma.edu.ar/kb1#">
 		<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#A"/>
 	</GetEquivalentClasses>
@@ -461,7 +329,6 @@
 	<GetEquivalentClasses kb="http://crowd.fi.uncoma.edu.ar/kb1#">
 		<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#N_valueTypeRel"/>
 	</GetEquivalentClasses>
-
 	<GetDisjointObjectProperties kb="http://crowd.fi.uncoma.edu.ar/kb1#">
 		<owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#R1role0"/>
 	</GetDisjointObjectProperties>
@@ -480,7 +347,6 @@
 	<GetDisjointObjectProperties kb="http://crowd.fi.uncoma.edu.ar/kb1#">
 		<owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#N_role"/>
 	</GetDisjointObjectProperties>
-
 	<GetEquivalentObjectProperties kb="http://crowd.fi.uncoma.edu.ar/kb1#">
 		<owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#R1role0"/>
 	</GetEquivalentObjectProperties>
@@ -499,14 +365,11 @@
 	<GetEquivalentObjectProperties kb="http://crowd.fi.uncoma.edu.ar/kb1#">
 		<owl:ObjectProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#N_role"/>
 	</GetEquivalentObjectProperties>
-
 	<GetDisjointDataProperties kb="http://crowd.fi.uncoma.edu.ar/kb1#">
 		<owl:DataProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#N_mappedTo"/>
 	</GetDisjointDataProperties>
-
 	<GetEquivalentDataProperties kb="http://crowd.fi.uncoma.edu.ar/kb1#">
 		<owl:DataProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#N_mappedTo"/>
 	</GetEquivalentDataProperties>
-
 	<GetPrefixes kb="http://crowd.fi.uncoma.edu.ar/kb1#"/>
 </RequestMessage>
