@@ -902,7 +902,7 @@ class CrowdMetaAnalizer extends AnsAnalizer{
         while ($i < count($a_responses) && !(filter_var($a_responses[$i]["bool"], FILTER_VALIDATE_BOOLEAN))) {
           $i++;
         }
-        if (filter_var($a_responses, FILTER_VALIDATE_BOOLEAN)){
+        if (filter_var($a_responses[1]["bool"], FILTER_VALIDATE_BOOLEAN)){
           $el = [
                           ["subclass" => [
                             ["class" => $role["class"]],
