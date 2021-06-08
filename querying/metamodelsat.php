@@ -51,13 +51,18 @@ load("kf.php", "../common/");
         $cards = filter_var('false', FILTER_VALIDATE_BOOLEAN);
   }
 
+  $strategy = 'alcqi';
+  if (array_key_exists('strategy', $_POST)){
+    $strategy = $_POST['strategy'];
+  }
+
 // --------------------
 // Execute the service
 
   $kf = new Wicom\KF_Wicom();
 
   try{
-    $answer = $kf->full_reasoning($_POST['json'], $_POST['strategy'], $reasoner, $cards);
+    $answer = $kf->full_reasoning($_POST['json'], $strategy, $reasoner, $cards);
     if ($answer != null){
         echo $answer;
     }else{
