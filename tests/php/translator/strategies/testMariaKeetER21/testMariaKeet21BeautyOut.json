@@ -683,6 +683,66 @@
           "dataproperty": "http://crowd.fi.uncoma.edu.ar/kb1#batch"
         }
       ]
+    },
+    {
+      "subclass": [
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#Inoculation"
+        },
+        {
+          "maxcard": [
+            "1",
+            {
+              "inverse": {
+                "role": "http://crowd.fi.uncoma.edu.ar/kb1#role-b-2"
+              }
+            },
+            {
+              "filler": "http://crowd.fi.uncoma.edu.ar/kb1#As2"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "subclass": [
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#Pfizer-Vaccine"
+        },
+        {
+          "maxcard": [
+            "2",
+            {
+              "inverse": {
+                "role": "http://crowd.fi.uncoma.edu.ar/kb1#with"
+              }
+            },
+            {
+              "filler": "http://crowd.fi.uncoma.edu.ar/kb1#As3"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "subclass": [
+        {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#Inoculation"
+        },
+        {
+          "maxcard": [
+            "1",
+            {
+              "inverse": {
+                "role": "http://crowd.fi.uncoma.edu.ar/kb1#role-b-2"
+              }
+            },
+            {
+              "filler": "http://crowd.fi.uncoma.edu.ar/kb1#As3"
+            }
+          ]
+        }
+      ]
     }
   ]
 }
