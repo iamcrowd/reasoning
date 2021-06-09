@@ -37,12 +37,12 @@ load("koncludeconnector.php", "../wicom/reasoner/");
 load("ansanalizer.php",
      "../wicom/translator/strategies/qapackages/answeranalizers/");
 
-load("crowd_dlmeta.php", "../wicom/translator/strategies/strategydlmeta/");
+load("crowd_dl_alcin_meta.php", "../wicom/translator/strategies/strategydlmeta/crowd10/");
+load("crowd_dl_alcqi_meta_exists.php", "../wicom/translator/strategies/strategydlmeta/crowd20/");
+
 load("crowd_checkmeta.php", "../wicom/translator/strategies/strategydlmeta/");
 load("metajsonbuilder.php", "../wicom/translator/builders/");
 load("crowdmetaanalizer.php", "../wicom/translator/strategies/qapackages/answeranalizers/");
-
-load("crowd_dlmeta_enrico_exists.php", "../wicom/translator/strategies/strategydlmeta/crowd20/");
 
 load("metamodeltranslator.php", "../wicom/translator/");
 
@@ -60,13 +60,12 @@ use Wicom\Reasoner\KoncludeConnector;
 use Wicom\Translator\Strategies\QAPackages\AnswerAnalizers\AnsAnalizer;
 use Wicom\Translator\Strategies\QAPackages\QueriesGenerators\QueriesGenerator;
 
-use Wicom\Translator\Strategies\Strategydlmeta\DLMeta;
+use Wicom\Translator\Strategies\Strategydlmeta\crowd10\DLALCINMeta;
+use Wicom\Translator\Strategies\Strategydlmeta\crowd20\DLALCQIMetaExists;
 
 use Wicom\Translator\Strategies\Strategydlmeta\DLCheckMeta;
 use Wicom\Translator\Builders\MetaJSONBuilder;
 use Wicom\Translator\Strategies\QAPackages\AnswerAnalizers\CrowdMetaAnalizer;
-
-use Wicom\Translator\Strategies\Strategydlmeta\crowd20\DLMetaEnricoExists;
 
 use Wicom\Translator\MetamodelTranslator;
 
@@ -97,10 +96,10 @@ class KF_Wicom extends Wicom{
 		          $encoding = new Berardi();
 		        break;
             case "alcin" :
-              $encoding = new DLMeta();
+              $encoding = new DLALCINMeta();
             break;
             case "alcqi" :
-              $encoding = new DLMetaEnricoExists();
+              $encoding = new DLALCQIMetaExists();
             break;
             default: throw new \Exception(
                 "Invalid encoding selected: $strategy");
