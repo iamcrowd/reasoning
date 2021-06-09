@@ -298,12 +298,6 @@
 	</DataPropertyRange>
 	<SubClassOf>
 		<Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#N"/>
-		<DataMinCardinality cardinality="1">
-			<DataProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#N_mappedTo"/>
-		</DataMinCardinality>
-	</SubClassOf>
-	<SubClassOf>
-		<Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#N"/>
 		<DataMaxCardinality cardinality="1">
 			<DataProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#N_mappedTo"/>
 		</DataMaxCardinality>

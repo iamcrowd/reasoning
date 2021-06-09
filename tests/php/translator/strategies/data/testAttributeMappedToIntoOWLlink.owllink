@@ -131,13 +131,6 @@
 
 		<owl:SubClassOf>
 			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Name"/>
-			<owl:DataMinCardinality cardinality="1">
-				<owl:DataProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#Name_mappedTo"/>
-			</owl:DataMinCardinality>
-		</owl:SubClassOf>
-
-		<owl:SubClassOf>
-			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Name"/>
 			<owl:DataMaxCardinality cardinality="1">
 				<owl:DataProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#Name_mappedTo"/>
 			</owl:DataMaxCardinality>
