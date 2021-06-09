@@ -338,12 +338,6 @@
 		</owl:DataPropertyRange>
 		<owl:SubClassOf>
 			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#N"/>
-			<owl:DataMinCardinality cardinality="1">
-				<owl:DataProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#N_mappedTo"/>
-			</owl:DataMinCardinality>
-		</owl:SubClassOf>
-		<owl:SubClassOf>
-			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#N"/>
 			<owl:DataMaxCardinality cardinality="1">
 				<owl:DataProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#N_mappedTo"/>
 			</owl:DataMaxCardinality>

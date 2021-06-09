@@ -344,15 +344,6 @@ class DLMeta extends Metamodel{
                   ]],
                   ["subclass" => [
                     ["class" => $attr_dom_el],
-                    ["data_mincard" => [
-                          1,
-                          ["data_role" => $attr_el["name"]]
-                          ]
-                        ]
-                    ]
-                  ],
-                  ["subclass" => [
-                    ["class" => $attr_dom_el],
                     ["data_maxcard" => [
                           1,
                           ["data_role" => $attr_el["name"]]
@@ -541,15 +532,6 @@ class DLMeta extends Metamodel{
                       ["data_role" => $attrname],
                       ["datatype" => $attrrange]
                     ]],
-                    ["subclass" => [
-                      ["class" => $domain_el],
-                      ["data_mincard" => [
-                            1,
-                            ["data_role" => $attrname]
-                            ]
-                          ]
-                      ]
-                    ],
                     ["subclass" => [
                       ["class" => $domain_el],
                       ["data_maxcard" => [

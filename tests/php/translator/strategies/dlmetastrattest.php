@@ -258,7 +258,7 @@ class DLMetaTest extends PHPUnit\Framework\TestCase{
       $this->markTestIncomplete(
           'This test has not been implemented yet.'
       );
-
+      
       $json = file_get_contents("translator/strategies/data/testGeneralAxioms.json");
       $expected = file_get_contents("translator/strategies/data/testGeneralAxioms.owllink");
 
