@@ -57,6 +57,16 @@
     {
       "subclass": [
         {
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#COVID-19Medicine"
+        },
+        {
+          "class": "http://www.w3.org/2002/07/owl#Thing"
+        }
+      ]
+    },
+    {
+      "subclass": [
+        {
           "class": "http://crowd.fi.uncoma.edu.ar/kb1#as1"
         },
         {
@@ -77,10 +87,10 @@
     {
       "subclass": [
         {
-          "class": "http://crowd.fi.uncoma.edu.ar/kb1#COVID-19Medicine"
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#Pfizer-Vaccine"
         },
         {
-          "class": "http://www.w3.org/2002/07/owl#Thing"
+          "class": "http://crowd.fi.uncoma.edu.ar/kb1#COVID-19 vaccine"
         }
       ]
     },
@@ -100,26 +110,6 @@
           "class": "http://crowd.fi.uncoma.edu.ar/kb1#COVID-19 vaccine"
         },
         {
-          "class": "http://crowd.fi.uncoma.edu.ar/kb1#Regulatory-Body"
-        }
-      ]
-    },
-    {
-      "subclass": [
-        {
-          "class": "http://crowd.fi.uncoma.edu.ar/kb1#COVID-19 treatment drug"
-        },
-        {
-          "class": "http://crowd.fi.uncoma.edu.ar/kb1#Regulatory-Body"
-        }
-      ]
-    },
-    {
-      "subclass": [
-        {
-          "class": "http://crowd.fi.uncoma.edu.ar/kb1#COVID-19 vaccine"
-        },
-        {
           "class": "http://crowd.fi.uncoma.edu.ar/kb1#COVID-19Medicine"
         }
       ]
@@ -131,16 +121,6 @@
         },
         {
           "class": "http://crowd.fi.uncoma.edu.ar/kb1#COVID-19Medicine"
-        }
-      ]
-    },
-    {
-      "subclass": [
-        {
-          "class": "http://crowd.fi.uncoma.edu.ar/kb1#Pfizer-Vaccine"
-        },
-        {
-          "class": "http://crowd.fi.uncoma.edu.ar/kb1#COVID-19 vaccine"
         }
       ]
     },
@@ -280,16 +260,6 @@
           "class": "http://crowd.fi.uncoma.edu.ar/kb1#COVID-19Medicine"
         },
         {
-          "class": "http://crowd.fi.uncoma.edu.ar/kb1#Regulatory-Body"
-        }
-      ]
-    },
-    {
-      "equivalentclasses": [
-        {
-          "class": "http://crowd.fi.uncoma.edu.ar/kb1#COVID-19Medicine"
-        },
-        {
           "class": "http://crowd.fi.uncoma.edu.ar/kb1#COVID-19Medicine"
         }
       ]
@@ -301,16 +271,6 @@
         },
         {
           "class": "http://crowd.fi.uncoma.edu.ar/kb1#Regulatory-Body"
-        }
-      ]
-    },
-    {
-      "equivalentclasses": [
-        {
-          "class": "http://crowd.fi.uncoma.edu.ar/kb1#Regulatory-Body"
-        },
-        {
-          "class": "http://crowd.fi.uncoma.edu.ar/kb1#COVID-19Medicine"
         }
       ]
     },

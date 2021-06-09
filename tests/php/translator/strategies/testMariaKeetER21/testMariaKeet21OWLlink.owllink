@@ -245,13 +245,7 @@
 			<owl:DataProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#name"/>
 			<owl:Datatype IRI="http://www.w3.org/2001/XMLSchema#string"/>
 		</owl:DataPropertyRange>
-		<owl:SubClassOf>
-			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#COVID-19Medicine"/>
-			<owl:DataMinCardinality cardinality="1">
-				<owl:DataProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#name"/>
-				<owl:Datatype IRI="http://www.w3.org/2001/XMLSchema#string"/>
-			</owl:DataMinCardinality>
-		</owl:SubClassOf>
+
 		<owl:SubClassOf>
 			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#COVID-19Medicine"/>
 			<owl:DataMaxCardinality cardinality="1">
@@ -267,13 +261,7 @@
 			<owl:DataProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#name"/>
 			<owl:Datatype IRI="http://www.w3.org/2001/XMLSchema#string"/>
 		</owl:DataPropertyRange>
-		<owl:SubClassOf>
-			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Regulatory-Body"/>
-			<owl:DataMinCardinality cardinality="1">
-				<owl:DataProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#name"/>
-				<owl:Datatype IRI="http://www.w3.org/2001/XMLSchema#string"/>
-			</owl:DataMinCardinality>
-		</owl:SubClassOf>
+
 		<owl:SubClassOf>
 			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Regulatory-Body"/>
 			<owl:DataMaxCardinality cardinality="1">
@@ -289,13 +277,7 @@
 			<owl:DataProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#country"/>
 			<owl:Datatype IRI="http://www.w3.org/2001/XMLSchema#string"/>
 		</owl:DataPropertyRange>
-		<owl:SubClassOf>
-			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Regulatory-Body"/>
-			<owl:DataMinCardinality cardinality="1">
-				<owl:DataProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#country"/>
-				<owl:Datatype IRI="http://www.w3.org/2001/XMLSchema#string"/>
-			</owl:DataMinCardinality>
-		</owl:SubClassOf>
+
 		<owl:SubClassOf>
 			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Regulatory-Body"/>
 			<owl:DataMaxCardinality cardinality="1">
@@ -311,13 +293,7 @@
 			<owl:DataProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#Person"/>
 			<owl:Datatype IRI="http://www.w3.org/2001/XMLSchema#string"/>
 		</owl:DataPropertyRange>
-		<owl:SubClassOf>
-			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Inoculation"/>
-			<owl:DataMinCardinality cardinality="1">
-				<owl:DataProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#Person"/>
-				<owl:Datatype IRI="http://www.w3.org/2001/XMLSchema#string"/>
-			</owl:DataMinCardinality>
-		</owl:SubClassOf>
+
 		<owl:SubClassOf>
 			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Inoculation"/>
 			<owl:DataMaxCardinality cardinality="1">
@@ -333,13 +309,7 @@
 			<owl:DataProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#date"/>
 			<owl:Datatype IRI="http://www.w3.org/2001/XMLSchema#date"/>
 		</owl:DataPropertyRange>
-		<owl:SubClassOf>
-			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Inoculation"/>
-			<owl:DataMinCardinality cardinality="1">
-				<owl:DataProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#date"/>
-				<owl:Datatype IRI="http://www.w3.org/2001/XMLSchema#date"/>
-			</owl:DataMinCardinality>
-		</owl:SubClassOf>
+
 		<owl:SubClassOf>
 			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Inoculation"/>
 			<owl:DataMaxCardinality cardinality="1">
@@ -355,13 +325,7 @@
 			<owl:DataProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#batch"/>
 			<owl:Datatype IRI="http://www.w3.org/2001/XMLSchema#string"/>
 		</owl:DataPropertyRange>
-		<owl:SubClassOf>
-			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Inoculation"/>
-			<owl:DataMinCardinality cardinality="1">
-				<owl:DataProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#batch"/>
-				<owl:Datatype IRI="http://www.w3.org/2001/XMLSchema#string"/>
-			</owl:DataMinCardinality>
-		</owl:SubClassOf>
+
 		<owl:SubClassOf>
 			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Inoculation"/>
 			<owl:DataMaxCardinality cardinality="1">

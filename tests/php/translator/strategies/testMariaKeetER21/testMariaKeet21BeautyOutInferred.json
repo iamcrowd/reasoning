@@ -208,16 +208,6 @@
           "completeness constraints": "cc10",
           "name": "c484_Xrac",
           "entity parent": "http://crowd.fi.uncoma.edu.ar/kb1#COVID-19Medicine"
-        },
-        {
-          "entity child": "http://crowd.fi.uncoma.edu.ar/kb1#COVID-19 vaccine",
-          "name": "http://crowd.fi.uncoma.edu.ar/inferredSubsumption#s1",
-          "entity parent": "http://crowd.fi.uncoma.edu.ar/kb1#Regulatory-Body"
-        },
-        {
-          "entity child": "http://crowd.fi.uncoma.edu.ar/kb1#COVID-19 treatment drug",
-          "name": "http://crowd.fi.uncoma.edu.ar/inferredSubsumption#s2",
-          "entity parent": "http://crowd.fi.uncoma.edu.ar/kb1#Regulatory-Body"
         }
       ],
       "Relationship": [
@@ -268,21 +258,13 @@
       "http://crowd.fi.uncoma.edu.ar/kb1#role-b-2"
     ],
     "UNSATisfiable Roles": [],
-    "Subsumptions": [
-      "http://crowd.fi.uncoma.edu.ar/inferredSubsumption#s1",
-      "http://crowd.fi.uncoma.edu.ar/inferredSubsumption#s2"
-    ],
+    "Subsumptions": [],
     "Object types cardinalities": [
       "card8"
     ]
   },
   "OWL Axioms": {
-    "Equivalent Class Axioms": [
-      [
-        "http://crowd.fi.uncoma.edu.ar/kb1#COVID-19Medicine",
-        "http://crowd.fi.uncoma.edu.ar/kb1#Regulatory-Body"
-      ]
-    ],
+    "Equivalent Class Axioms": [],
     "Equivalent ObjectProperty Axioms": [],
     "Equivalent DataProperty Axioms": [],
     "Disjoint Class Axioms": [

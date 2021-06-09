@@ -41,11 +41,23 @@
           <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#As2"/>
         </ClassSynset>
         <ClassSynset>
+          <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#COVID-19Medicine"/>
+        </ClassSynset>
+        <ClassSynset>
           <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#as1"/>
         </ClassSynset>
         <ClassSynset>
           <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Regulatory-Body"/>
-          <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#COVID-19Medicine"/>
+        </ClassSynset>
+      </SubClassSynsets>
+    </ClassSubClassesPair>
+    <ClassSubClassesPair>
+      <ClassSynset>
+        <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#COVID-19 vaccine"/>
+      </ClassSynset>
+      <SubClassSynsets>
+        <ClassSynset>
+          <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Pfizer-Vaccine"/>
         </ClassSynset>
       </SubClassSynsets>
     </ClassSubClassesPair>
@@ -61,7 +73,6 @@
     </ClassSubClassesPair>
     <ClassSubClassesPair>
       <ClassSynset>
-        <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Regulatory-Body"/>
         <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#COVID-19Medicine"/>
       </ClassSynset>
       <SubClassSynsets>
@@ -70,16 +81,6 @@
         </ClassSynset>
         <ClassSynset>
           <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#COVID-19 treatment drug"/>
-        </ClassSynset>
-      </SubClassSynsets>
-    </ClassSubClassesPair>
-    <ClassSubClassesPair>
-      <ClassSynset>
-        <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#COVID-19 vaccine"/>
-      </ClassSynset>
-      <SubClassSynsets>
-        <ClassSynset>
-          <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Pfizer-Vaccine"/>
         </ClassSynset>
       </SubClassSynsets>
     </ClassSubClassesPair>
@@ -147,12 +148,10 @@
     </ClassSynset>
   </ClassSynsets>
   <SetOfClasses>
-    <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Regulatory-Body"/>
     <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#COVID-19Medicine"/>
   </SetOfClasses>
   <SetOfClasses>
     <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Regulatory-Body"/>
-    <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#COVID-19Medicine"/>
   </SetOfClasses>
   <SetOfClasses>
     <owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#COVID-19 treatment drug"/>

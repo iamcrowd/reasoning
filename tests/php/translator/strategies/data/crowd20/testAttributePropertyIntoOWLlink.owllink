@@ -35,13 +35,6 @@
 			<owl:Datatype IRI="http://www.w3.org/2001/XMLSchema#string"/>
 		</owl:DataPropertyRange>
 
-		<owl:SubClassOf>
-			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Person"/>
-			<owl:DataMinCardinality cardinality="1">
-					<owl:DataProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#Name"/>
-					<owl:Datatype IRI="http://www.w3.org/2001/XMLSchema#string"/>
-			</owl:DataMinCardinality>
-		</owl:SubClassOf>
 
 		<owl:SubClassOf>
 			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#Person"/>

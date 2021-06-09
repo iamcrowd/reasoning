@@ -389,6 +389,10 @@
       ],
       [
         "http://crowd.fi.uncoma.edu.ar/kb1#R2",
+        "http://crowd.fi.uncoma.edu.ar/kb1#A"
+      ],
+      [
+        "http://crowd.fi.uncoma.edu.ar/kb1#R2",
         "http://crowd.fi.uncoma.edu.ar/kb1#F"
       ],
       [
@@ -413,15 +417,11 @@
       ],
       [
         "http://crowd.fi.uncoma.edu.ar/kb1#R2",
-        "http://crowd.fi.uncoma.edu.ar/kb1#R1"
-      ],
-      [
-        "http://crowd.fi.uncoma.edu.ar/kb1#R2",
         "http://www.w3.org/2002/07/owl#Nothing"
       ]
     ],
     "Disjoint ObjectProperty Axioms": [],
     "Disjoint DataProperty Axioms": []
   },
-  "Reasoner warning" : []
+  "Reasoner warning": []
 }
