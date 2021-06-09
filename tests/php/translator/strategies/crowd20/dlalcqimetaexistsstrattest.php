@@ -25,12 +25,12 @@ require_once("common.php");
 
 load("autoload.php", "vendor/");
 
-load("crowd_dlmeta.php", "wicom/translator/strategies/strategydlmeta/");
+load("crowd_dl_alcqi_meta_exists.php", "wicom/translator/strategies/strategydlmeta/crowd20/");
 load("owllinkbuilder.php", "wicom/translator/builders/");
 load("owlbuilder.php", "wicom/translator/builders/");
 load('metamodeltranslator.php', 'wicom/translator/');
 
-use Wicom\Translator\Strategies\Strategydlmeta\DLMeta;
+use Wicom\Translator\Strategies\Strategydlmeta\crowd20\DLALCQIMetaExists;
 use Wicom\Translator\Builders\OWLlinkBuilder;
 use Wicom\Translator\Builders\OWLBuilder;
 use Wicom\Translator\MetamodelTranslator;
@@ -44,7 +44,7 @@ use Opis\JsonSchema\Schema;
 
    It will only check for the amount of attributes.
  */
-class DLMetaTest extends PHPUnit\Framework\TestCase{
+class DLALCQIMetaExistsTest extends PHPUnit\Framework\TestCase{
 
     protected function validate_against_scheme($json){
       $data = json_decode($json);
@@ -65,80 +65,6 @@ class DLMetaTest extends PHPUnit\Framework\TestCase{
       }
     }
 
-    /**
-       @testdox Translate a simple model with some KF OBJECT TYPES into OWLlink with SAT queries
-     */
-    public function testObjTypeIntoOWLlinkWithSat(){
-        $json = file_get_contents("translator/strategies/data/testObjTypeIntoOWLlink.json");
-        $expected = file_get_contents("translator/strategies/data/testObjTypeIntoOWLlink.owllink");
-
-        if ($this->validate_against_scheme($json)){
-          $strategy = new DLMeta();
-          $builder = new OWLlinkBuilder();
-
-          $builder->insert_header();
-          $strategy->translate($json, $builder);
-          $strategy->translate_queries($strategy, $builder);
-          $builder->insert_footer();
-
-          $actual = $builder->get_product();
-          $actual = $actual->to_string();
-
-          $this->assertXmlStringEqualsXmlString($expected, $actual, true);
-        } else {
-          $this->assertTrue(false, "JSON KF does not match against KF Scheme");
-        }
-    }
-
-    /**
-       @testdox Translate a simple model with some KF SUBSUMPTIONS into OWLlink with SAT queries
-     */
-    public function testSubsumptionNoConstIntoOWLlinkWithSat(){
-        $json = file_get_contents("translator/strategies/data/testSubIntoOWLlink.json");
-        $expected = file_get_contents("translator/strategies/data/testSubIntoOWLlink.owllink");
-
-        if ($this->validate_against_scheme($json)){
-          $strategy = new DLMeta();
-          $builder = new OWLlinkBuilder();
-
-          $builder->insert_header();
-          $strategy->translate($json, $builder);
-          $strategy->translate_queries($strategy, $builder);
-          $builder->insert_footer();
-
-          $actual = $builder->get_product();
-          $actual = $actual->to_string();
-
-          $this->assertXmlStringEqualsXmlString($expected, $actual, true);
-        } else {
-          $this->assertTrue(false, "JSON KF does not match against KF Scheme");
-        }
-    }
-
-    /**
-       @testdox Translate a simple model with some KF SUBSUMPTIONS and CONSTRAINTS into OWLlink with SAT queries
-     */
-    public function testSubsumptionWithConstIntoOWLlinkWithSat(){
-        $json = file_get_contents("translator/strategies/data/testSubWithConstraintsIntoOWLlink.json");
-        $expected = file_get_contents("translator/strategies/data/testSubWithConstraintsIntoOWLlink.owllink");
-
-        if ($this->validate_against_scheme($json)){
-          $strategy = new DLMeta();
-          $builder = new OWLlinkBuilder();
-
-          $builder->insert_header();
-          $strategy->translate($json, $builder);
-          $strategy->translate_queries($strategy, $builder);
-          $builder->insert_footer();
-
-          $actual = $builder->get_product();
-          $actual = $actual->to_string();
-
-          $this->assertXmlStringEqualsXmlString($expected, $actual, true);
-        } else {
-          $this->assertTrue(false, "JSON KF does not match against KF Scheme");
-        }
-    }
 
     /**
        @testdox Translate a simple model with some KF RELATIONSHIPS and 0..N CARDINALITIES
@@ -146,10 +72,10 @@ class DLMetaTest extends PHPUnit\Framework\TestCase{
      */
     public function testRel0NCardIntoOWLlinkWithSat(){
         $json = file_get_contents("translator/strategies/data/testRelNoCardIntoOWLlink.json");
-        $expected = file_get_contents("translator/strategies/data/testRelNoCardIntoOWLlink.owllink");
+        $expected = file_get_contents("translator/strategies/data/crowd20/testRelNoCardIntoOWLlink.owllink");
 
         if ($this->validate_against_scheme($json)){
-          $strategy = new DLMeta();
+          $strategy = new DLALCQIMetaExists();
           $builder = new OWLlinkBuilder();
 
           $builder->insert_header();
@@ -172,10 +98,10 @@ class DLMetaTest extends PHPUnit\Framework\TestCase{
      */
     public function testRelMoreThan1CardIntoOWLlinkWithSat(){
         $json = file_get_contents("translator/strategies/data/testRelNoExtendedCardIntoOWLlink.json");
-        $expected = file_get_contents("translator/strategies/data/testRelNoExtendedCardIntoOWLlink.owllink");
+        $expected = file_get_contents("translator/strategies/data/crowd20/testRelNoExtendedCardIntoOWLlink.owllink");
 
         if ($this->validate_against_scheme($json)){
-          $strategy = new DLMeta();
+          $strategy = new DLALCQIMetaExists();
           $builder = new OWLlinkBuilder();
 
           $builder->insert_header();
@@ -192,94 +118,6 @@ class DLMetaTest extends PHPUnit\Framework\TestCase{
         }
     }
 
-    /**
-       @testdox Translate a simple model with some KF ROLE SUBSUMPTIONS
-       into OWLlink with SAT queries.
-     */
-    public function testSubRolesIntoOWLlinkWithSat(){
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
-
-        $json = file_get_contents("translator/strategies/data/testSubRoleIntoOWLlink.json");
-        $expected = file_get_contents("translator/strategies/data/testSubRoleIntoOWLlink.owllink");
-
-        if ($this->validate_against_scheme($json)){
-          $strategy = new DLMeta();
-          $builder = new OWLlinkBuilder();
-
-          $builder->insert_header();
-          $strategy->translate($json, $builder);
-          $strategy->translate_queries($strategy, $builder);
-          $builder->insert_footer();
-
-          $actual = $builder->get_product();
-          $actual = $actual->to_string();
-
-          $this->assertXmlStringEqualsXmlString($expected, $actual, true);
-        }
-        else {
-          $this->assertTrue(false, "JSON KF does not match against KF Scheme");
-        }
-    }
-
-    /**
-       @testdox Translate a simple model with some KF RELATIONSHIP SUBSUMPTIONS
-       into OWLlink with SAT queries.
-     */
-    public function testSubRelationshipsIntoOWLlinkWithSat(){
-      $json = file_get_contents("translator/strategies/data/testSubRelationshipsIntoOWLlink.json");
-      $expected = file_get_contents("translator/strategies/data/testSubRelationshipsIntoOWLlink.owllink");
-
-      if ($this->validate_against_scheme($json)){
-        $strategy = new DLMeta();
-        $builder = new OWLlinkBuilder();
-
-        $builder->insert_header();
-        $strategy->translate($json, $builder);
-        $strategy->translate_queries($strategy, $builder);
-        $builder->insert_footer();
-
-        $actual = $builder->get_product();
-        $actual = $actual->to_string();
-
-        $this->assertXmlStringEqualsXmlString($expected, $actual, true);
-      }
-      else {
-        $this->assertTrue(false, "JSON KF does not match against KF Scheme");
-      }
-    }
-
-    /**
-       @testdox Translate a simple model without KF RELATIONSHIP SUBSUMPTIONS where they should be disjoint each other.
-     */
-    public function testGeneralAxiomsSignaturesRel(){
-
-      $this->markTestIncomplete(
-          'This test has not been implemented yet.'
-      );
-      
-      $json = file_get_contents("translator/strategies/data/testGeneralAxioms.json");
-      $expected = file_get_contents("translator/strategies/data/testGeneralAxioms.owllink");
-
-      if ($this->validate_against_scheme($json)){
-        $strategy = new DLMeta();
-        $builder = new OWLlinkBuilder();
-
-        $builder->insert_header();
-        $strategy->translate($json, $builder);
-        $strategy->translate_queries($strategy, $builder);
-        $builder->insert_footer();
-
-        $actual = $builder->get_product();
-        $actual = $actual->to_string();
-
-        $this->assertXmlStringEqualsXmlString($expected, $actual, true);
-      }
-      else {
-        $this->assertTrue(false, "JSON KF does not match against KF Scheme");
-      }
-    }
 
     /**
        @testdox Translate a simple model with some KF Attribute Property
@@ -288,10 +126,10 @@ class DLMetaTest extends PHPUnit\Framework\TestCase{
      */
     public function testAttributePropertyIntoOWLlink(){
         $json = file_get_contents("translator/strategies/data/testAttributePropertyIntoOWLlink.json");
-        $expected = file_get_contents("translator/strategies/data/testAttributePropertyIntoOWLlink.owllink");
+        $expected = file_get_contents("translator/strategies/data/crowd20/testAttributePropertyIntoOWLlink.owllink");
 
         if ($this->validate_against_scheme($json)){
-          $strategy = new DLMeta();
+          $strategy = new DLALCQIMetaExists();
           $builder = new OWLlinkBuilder();
 
           $builder->insert_header();
@@ -315,10 +153,10 @@ class DLMetaTest extends PHPUnit\Framework\TestCase{
      */
     public function testAttributeMappedToIntoOWLlink(){
         $json = file_get_contents("translator/strategies/data/testAttributeMappedToIntoOWLlink.json");
-        $expected = file_get_contents("translator/strategies/data/testAttributeMappedToIntoOWLlink.owllink");
+        $expected = file_get_contents("translator/strategies/data/crowd20/testAttributeMappedToIntoOWLlink.owllink");
 
         if ($this->validate_against_scheme($json)){
-          $strategy = new DLMeta();
+          $strategy = new DLALCQIMetaExists();
           $builder = new OWLlinkBuilder();
 
           $builder->insert_header();
@@ -342,10 +180,10 @@ class DLMetaTest extends PHPUnit\Framework\TestCase{
      */
     public function testKFtoOWLlinkAllQueries(){
         $json = file_get_contents("translator/strategies/data/testKFtoOWLlinkAllQueries.json");
-        $expected = file_get_contents("translator/strategies/data/testKFtoOWLlinkAllQueries.owllink");
+        $expected = file_get_contents("translator/strategies/data/crowd20/testKFtoOWLlinkAllQueries.owllink");
 
         if ($this->validate_against_scheme($json)){
-          $strategy = new DLMeta();
+          $strategy = new DLALCQIMetaExists();
           $builder = new OWLlinkBuilder();
 
           $builder->insert_header();
@@ -369,10 +207,10 @@ class DLMetaTest extends PHPUnit\Framework\TestCase{
      */
     public function testKFtoOWL2AllQueries(){
         $json = file_get_contents("translator/strategies/data/testKFtoOWLlinkAllQueries.json");
-        $expected = file_get_contents("translator/strategies/data/testKFtoOWLAllQueries.owl");
+        $expected = file_get_contents("translator/strategies/data/crowd20/testKFtoOWLAllQueries.owl");
 
         if ($this->validate_against_scheme($json)){
-          $strategy = new DLMeta();
+          $strategy = new DLALCQIMetaExists();
           $builder = new OWLBuilder();
 
           $builder = new OWLBuilder();
@@ -386,5 +224,4 @@ class DLMetaTest extends PHPUnit\Framework\TestCase{
           $this->assertTrue(false, "JSON KF does not match against KF Scheme");
         }
     }
-
 }

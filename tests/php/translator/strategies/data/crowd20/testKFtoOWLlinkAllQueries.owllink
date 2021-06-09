@@ -207,13 +207,13 @@
 		</owl:DataPropertyDomain>
 		<owl:DataPropertyRange>
 			<owl:DataProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#N_mappedTo"/>
-			<owl:Datatype IRI="http://crowd.fi.uncoma.edu.ar/kb1#string"/>
+			<owl:Datatype IRI="http://www.w3.org/2001/XMLSchema#string"/>
 		</owl:DataPropertyRange>
 		<owl:SubClassOf>
 			<owl:Class IRI="http://crowd.fi.uncoma.edu.ar/kb1#N"/>
 			<owl:DataMaxCardinality cardinality="1">
 				<owl:DataProperty IRI="http://crowd.fi.uncoma.edu.ar/kb1#N_mappedTo"/>
-				<owl:Datatype IRI="http://crowd.fi.uncoma.edu.ar/kb1#string"/>
+				<owl:Datatype IRI="http://www.w3.org/2001/XMLSchema#string"/>
 			</owl:DataMaxCardinality>
 		</owl:SubClassOf>
 	</Tell>

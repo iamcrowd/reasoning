@@ -41,10 +41,10 @@ class KFWicomCardinalitiesTest extends PHPUnit\Framework\TestCase
         $expected = file_get_contents('wicom/data/testKFwithCardinalitiesInferredOut.json');
 
         $wicom = new KF_Wicom();
-        $answer = $wicom->full_reasoning($input, 'Racer', false, 'metamodel');
+        $answer = $wicom->full_reasoning($input, 'alcin', 'Racer', true);
 
         $this->assertJsonStringEqualsJsonString($expected, $answer, true);
-    }
+      }
 
     /**
     @testdox tests reasoning services using konclude reasoner looking for stricter cardinalities. Now N cardinality must become stricter. Subroles and Suproles are the same so that relationships become equivalent.
@@ -54,7 +54,7 @@ class KFWicomCardinalitiesTest extends PHPUnit\Framework\TestCase
         $expected = file_get_contents('wicom/data/testKFwithCardinalitiesInferredOutKonclude.json');
 
         $wicom = new KF_Wicom();
-        $answer = $wicom->full_reasoning($input, 'Konclude', false, 'metamodel');
+        $answer = $wicom->full_reasoning($input, 'alcin', 'Konclude', true);
 
         $this->assertJsonStringEqualsJsonString($expected, $answer, true);
     }
@@ -70,7 +70,7 @@ class KFWicomCardinalitiesTest extends PHPUnit\Framework\TestCase
         $expected = file_get_contents('wicom/data/testKFwithCardinalitiesInferredRolesSubsOut.json');
 
         $wicom = new KF_Wicom();
-        $answer = $wicom->full_reasoning($input, 'Racer', false, 'metamodel');
+        $answer = $wicom->full_reasoning($input, 'alcin', 'Racer', true);
 
         $this->assertJsonStringEqualsJsonString($expected, $answer, true);
     }

@@ -41,7 +41,7 @@ class KFWicomKoncludeTest extends PHPUnit\Framework\TestCase
         $input = file_get_contents('wicom/data/testKFtoOWLlinkAllQueries.json');
         $expected = file_get_contents('wicom/data/testKFtoOWLlinkAllQueriesBeautyOutInferredKonclude.json');
         $wicom = new KF_Wicom();
-        $answer = $wicom->full_reasoning($input, 'Konclude', false, 'metamodel');
+        $answer = $wicom->full_reasoning($input, 'alcin', 'Konclude', false);
         //var_dump($answer);
         $this->assertJsonStringEqualsJsonString($expected, $answer, true);
     }
@@ -53,7 +53,7 @@ class KFWicomKoncludeTest extends PHPUnit\Framework\TestCase
         $input = file_get_contents('wicom/data/testKFReasoningSubsumptions.json');
         $expected = file_get_contents('wicom/data/testKFReasoningSubsumptionsExpectedKonclude.json');
         $wicom = new KF_Wicom();
-        $answer = $wicom->full_reasoning($input, 'Konclude', false, 'metamodel');
+        $answer = $wicom->full_reasoning($input, 'alcin', 'Konclude', false);
         //var_dump($answer);
         $this->assertJsonStringEqualsJsonString($expected, $answer, true);
     }
@@ -65,7 +65,7 @@ class KFWicomKoncludeTest extends PHPUnit\Framework\TestCase
         $input = file_get_contents('wicom/data/testKFReasoningUnsatClassesAndRoles.json');
         $expected = file_get_contents('wicom/data/testKFReasoningUnsatClassesAndRolesExpectedKonclude.json');
         $wicom = new KF_Wicom();
-        $answer = $wicom->full_reasoning($input, 'Konclude', false, 'metamodel');
+        $answer = $wicom->full_reasoning($input, 'alcin', 'Konclude', false);
         //var_dump($answer);
         $this->assertJsonStringEqualsJsonString($expected, $answer, true);
     }
@@ -78,7 +78,7 @@ class KFWicomKoncludeTest extends PHPUnit\Framework\TestCase
         $expected = file_get_contents('wicom/data/testKFwithCardinalitiesTrueKoncludeOut.json');
 
         $wicom = new KF_Wicom();
-        $answer = $wicom->full_reasoning($input, 'Konclude', true, 'metamodel');
+        $answer = $wicom->full_reasoning($input, 'alcin', 'Konclude', false);
 
         $this->assertJsonStringEqualsJsonString($expected, $answer, true);
     }
@@ -89,7 +89,7 @@ class KFWicomKoncludeTest extends PHPUnit\Framework\TestCase
         $input = file_get_contents('wicom/data/testKFReasoningUNSATKB.json');
         $expected = file_get_contents('wicom/data/testKFReasoningUNSATKBExpectedKonclude.json');
         $wicom = new KF_Wicom();
-        $answer = $wicom->full_reasoning($input, 'Konclude', false, 'metamodel');
+        $answer = $wicom->full_reasoning($input, 'alcin', 'Konclude', false);
 
         $this->assertJsonStringEqualsJsonString($expected, $answer, true);
     }

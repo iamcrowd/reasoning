@@ -25,12 +25,21 @@ require_once("common.php");
 
 load("autoload.php", "vendor/");
 
-load("crowd_dlmeta_enrico_exists.php", "wicom/translator/strategies/strategydlmeta/crowd20/");
+load("crowd_dlmeta.php", "wicom/translator/strategies/strategydlmeta/");
+load("crowd_dl_alcqi_meta_exists.php", "wicom/translator/strategies/strategydlmeta/crowd20/");
+
+load("crowd_checkmeta.php", "wicom/translator/strategies/strategydlmeta/");
 load("owllinkbuilder.php", "wicom/translator/builders/");
+load("metajsonbuilder.php", "wicom/translator/builders/");
+load("crowdmetaanalizer.php", "wicom/translator/strategies/qapackages/answeranalizers/");
 
+use Wicom\Translator\Strategies\Strategydlmeta\DLMeta;
+use Wicom\Translator\Strategies\Strategydlmeta\crowd20\DLALCQIMetaExists;
 
-use Wicom\Translator\Strategies\Strategydlmeta\crowd20\DLMetaEnricoExists;
+use Wicom\Translator\Strategies\Strategydlmeta\DLCheckMeta;
 use Wicom\Translator\Builders\OWLlinkBuilder;
+use Wicom\Translator\Builders\MetaJSONBuilder;
+use Wicom\Translator\Strategies\QAPackages\AnswerAnalizers\CrowdMetaAnalizer;
 
 use Opis\JsonSchema\Validator;
 use Opis\JsonSchema\Schema;
@@ -41,7 +50,7 @@ use Opis\JsonSchema\Schema;
 
    It will only check for the amount of attributes.
  */
-class DLMetaALCQIWithCardTest extends PHPUnit\Framework\TestCase{
+class RealExamplesTest extends PHPUnit\Framework\TestCase{
 
     protected function validate_against_scheme($json){
       $data = json_decode($json);
@@ -64,14 +73,18 @@ class DLMetaALCQIWithCardTest extends PHPUnit\Framework\TestCase{
 
 
     /**
-       @testdox Translate a simple model with some KF RELATIONSHIPS and 0..N CARDINALITIES into OWLlink with SAT queries. Cardinality global is N so that no stricter cardinality could be inferred ¿?
+       @testdox Reported by Maria Keet. Motivational Scenario for ER 21
+       @See http://crowd.fi.uncoma.edu.ar/KFDoc/
      */
-     public function testRel0NCardIntoOWLlinkWithSat(){
-        $json = file_get_contents("translator/strategies/data/testRelNoCardIntoOWLlink.json");
-        $expected = file_get_contents("translator/strategies/data/crowd20/testRelExtendedCard0NIntoOWLlink.owllink");
+     public function testMariaKeetER21(){
+        $json = file_get_contents("translator/strategies/testMariaKeetER21/testMariaKeet21.json");
+        $input = file_get_contents("translator/strategies/testMariaKeetER21/testMariaKeet21OWLlink.owllink");
+        $output = file_get_contents("translator/strategies/testMariaKeetER21/testMariaKeet21Out.owllink");
+        $inferred_expected = file_get_contents("translator/strategies/testMariaKeetER21/testMariaKeet21BeautyOutInferred.json");
+        $beauty_out = file_get_contents("translator/strategies/testMariaKeetER21/testMariaKeet21BeautyOut.json");
 
         if ($this->validate_against_scheme($json)){
-          $strategy = new DLMetaEnricoExists();
+          $strategy = new DLALCQIMetaExists();
           $strategy->set_check_cardinalities(true);
           $builder = new OWLlinkBuilder();
 
@@ -83,37 +96,28 @@ class DLMetaALCQIWithCardTest extends PHPUnit\Framework\TestCase{
           $actual = $builder->get_product();
           $actual = $actual->to_string();
 
-          $this->assertXmlStringEqualsXmlString($expected, $actual, true);
-        } else {
+          $this->assertXmlStringEqualsXmlString($input, $actual, true);
+
+          $oa = $strategy->get_qa_pack()->get_ans_analizer();
+          $oa->generate_answer($actual, $output);
+          $oa->set_c_strategy($strategy);
+          $oa->analize();
+          $answer = $oa->get_answer();
+
+          $answer->set_reasoner_input("");
+          $answer->set_reasoner_output("");
+          $actual_o = $answer->to_json();
+
+          $beauty_out_json = $oa->get_beatified_responses();
+          $this->assertJsonStringEqualsJsonString($beauty_out, $beauty_out_json, true);
+
+          $inferred = new DLCheckMeta($json, $strategy, $answer);
+          $this->assertJsonStringEqualsJsonString($inferred_expected, $inferred->built_output(), true);
+
+        }
+        else {
           $this->assertTrue(false, "JSON KF does not match against KF Scheme");
         }
     }
-
-    /**
-      @testdox Translate a simple model with some KF RELATIONSHIPS and CARDINALITIES into OWLlink. Cardinality global is checked for each role.
-     */
-     public function testRelMoreThan1CardIntoOWLlinkWithSat(){
-        $json = file_get_contents("translator/strategies/data/testRelNoExtendedCardIntoOWLlink.json");
-        $expected = file_get_contents("translator/strategies/data/crowd20/testRelExtendedCardMNIntoOWLlink.owllink");
-
-        if ($this->validate_against_scheme($json)){
-          $strategy = new DLMetaEnricoExists();
-          $strategy->set_check_cardinalities(true);
-          $builder = new OWLlinkBuilder();
-
-          $builder->insert_header();
-          $strategy->translate($json, $builder);
-          $strategy->translate_queries($strategy, $builder);
-          $builder->insert_footer();
-
-          $actual = $builder->get_product();
-          $actual = $actual->to_string();
-
-          $this->assertXmlStringEqualsXmlString($expected, $actual, true);
-        } else {
-          $this->assertTrue(false, "JSON KF does not match against KF Scheme");
-        }
-    }
-
 
 }

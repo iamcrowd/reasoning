@@ -25,11 +25,11 @@ require_once("common.php");
 
 load("autoload.php", "vendor/");
 
-load("crowd_dlmeta.php", "wicom/translator/strategies/strategydlmeta/");
+load("crowd_dl_alcqi_meta_exists.php", "wicom/translator/strategies/strategydlmeta/crowd20/");
 load("owllinkbuilder.php", "wicom/translator/builders/");
 
 
-use Wicom\Translator\Strategies\Strategydlmeta\DLMeta;
+use Wicom\Translator\Strategies\Strategydlmeta\crowd20\DLALCQIMetaExists;
 use Wicom\Translator\Builders\OWLlinkBuilder;
 
 use Opis\JsonSchema\Validator;
@@ -41,7 +41,7 @@ use Opis\JsonSchema\Schema;
 
    It will only check for the amount of attributes.
  */
-class DLMetaWithCardTest extends PHPUnit\Framework\TestCase{
+class DLMetaALCQIWithCardTest extends PHPUnit\Framework\TestCase{
 
     protected function validate_against_scheme($json){
       $data = json_decode($json);
@@ -68,10 +68,10 @@ class DLMetaWithCardTest extends PHPUnit\Framework\TestCase{
      */
      public function testRel0NCardIntoOWLlinkWithSat(){
         $json = file_get_contents("translator/strategies/data/testRelNoCardIntoOWLlink.json");
-        $expected = file_get_contents("translator/strategies/data/testRelExtendedCard0NIntoOWLlink.owllink");
+        $expected = file_get_contents("translator/strategies/data/crowd20/testRelExtendedCard0NIntoOWLlink.owllink");
 
         if ($this->validate_against_scheme($json)){
-          $strategy = new DLMeta();
+          $strategy = new DLALCQIMetaExists();
           $strategy->set_check_cardinalities(true);
           $builder = new OWLlinkBuilder();
 
@@ -94,10 +94,10 @@ class DLMetaWithCardTest extends PHPUnit\Framework\TestCase{
      */
      public function testRelMoreThan1CardIntoOWLlinkWithSat(){
         $json = file_get_contents("translator/strategies/data/testRelNoExtendedCardIntoOWLlink.json");
-        $expected = file_get_contents("translator/strategies/data/testRelExtendedCardMNIntoOWLlink.owllink");
+        $expected = file_get_contents("translator/strategies/data/crowd20/testRelExtendedCardMNIntoOWLlink.owllink");
 
         if ($this->validate_against_scheme($json)){
-          $strategy = new DLMeta();
+          $strategy = new DLALCQIMetaExists();
           $strategy->set_check_cardinalities(true);
           $builder = new OWLlinkBuilder();
 
