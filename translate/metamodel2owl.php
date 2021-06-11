@@ -46,7 +46,8 @@ load('metamodeltranslator.php', '../wicom/translator/');
 load('owllinkdocument.php', '../wicom/translator/documents/');
 load('owldocument.php', '../wicom/translator/documents/');
 
-load('crowd_dlmeta.php','../wicom/translator/strategies/strategydlmeta/');
+load("crowd_dl_alcin_meta.php", "../wicom/translator/strategies/strategydlmeta/crowd10/");
+load("crowd_dl_alcqi_meta_exists.php", "../wicom/translator/strategies/strategydlmeta/crowd20/");
 
 load('owllinkbuilder.php', '../wicom/translator/builders/');
 load('owlbuilder.php', '../wicom/translator/builders/');
@@ -54,12 +55,15 @@ load('htmlbuilder.php', '../wicom/translator/builders/');
 
 use Wicom\Translator\Translator;
 use Wicom\Translator\MetamodelTranslator;
-use Wicom\Translator\Strategies\Strategydlmeta\DLMeta;
+
+use Wicom\Translator\Strategies\Strategydlmeta\crowd10\DLALCINMeta;
+use Wicom\Translator\Strategies\Strategydlmeta\crowd20\DLALCQIMetaExists;
+
 use Wicom\Translator\Builders\OWLlinkBuilder;
 use Wicom\Translator\Builders\OWLBuilder;
 use Wicom\Translator\Builders\HTMLBuilder;
 
-$format = 'owllink';
+$format = 'owl2-alcqi';
 if (array_key_exists('format',$_REQUEST)){
     $format = $_REQUEST['format'];
 }
@@ -75,14 +79,24 @@ Use, for example:
     $res = "";
 
     switch ($format){
-    case "owl2":
+    case "owl2-alcin":
         $builder = new OWLBuilder();
-        $trans = new MetamodelTranslator(new DLMeta(), $builder);
+        $trans = new MetamodelTranslator(new DLALCINMeta(), $builder);
         $res = $trans->to_owl2($_POST['json']);
         break;
-    case "owllink":
+    case "owl2-alcqi":
+        $builder = new OWLBuilder();
+        $trans = new MetamodelTranslator(new DLALCQIMetaExists(), $builder);
+        $res = $trans->to_owl2($_POST['json']);
+        break;
+    case "owllink-alcin":
         $builder = new OWLlinkBuilder();
-        $trans = new MetamodelTranslator(new DLMeta(), $builder);
+        $trans = new MetamodelTranslator(new DLALCINMeta(), $builder);
+        $res = $trans->to_owllink($_POST['json']);
+        break;
+    case "owllink-alcqi":
+        $builder = new OWLlinkBuilder();
+        $trans = new MetamodelTranslator(new DLALCQIMetaExists(), $builder);
         $res = $trans->to_owllink($_POST['json']);
         break;
     case "html" :
