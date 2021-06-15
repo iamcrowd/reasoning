@@ -35,7 +35,6 @@ class OWLBuilder extends DocumentBuilder{
 
     function __construct($ontologyIRI = null, $iris = []){
         $this->product = new OWLDocument;
-	// $this->insert_header_owl2($ontologyIRI, $iris);
         $this->min_max = [];
     }
 
@@ -46,7 +45,7 @@ class OWLBuilder extends DocumentBuilder{
      */
     public function insert_header_owl2($ontologyIRI = null, $uris = []){
         if (($ontologyIRI == null) or ($ontologyIRI == '')){
-            $this->actual_kb = OWLDocument::default_ontologyIRI;
+            $this->actual_kb = OWLDocument::default_ontologyIRI["value"];
             $ontologyIRI = $this->actual_kb;
         } else {
             $this->actual_kb = $ontologyIRI;

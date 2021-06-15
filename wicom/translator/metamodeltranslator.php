@@ -28,6 +28,7 @@ use function \load;
 use function \json_decode;
 
 
+
 class MetamodelTranslator{
     protected $strategy = null;
     protected $builder = null;
@@ -111,6 +112,7 @@ class MetamodelTranslator{
         $json_obj = json_decode($json, true);
         $ontoURI = $this->get_ontologyURI_fromNS($json_obj);
         $uris = $this->get_other_URIs_fromNS($json_obj);
+
         $this->builder->insert_header_owl2($ontoURI, $uris);
         $this->strategy->translate($json, $this->builder);
 
@@ -124,6 +126,5 @@ class MetamodelTranslator{
         $document = $this->builder->get_product();
         return $document->to_string();
     }
-
 
 }

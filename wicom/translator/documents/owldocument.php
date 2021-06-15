@@ -56,34 +56,36 @@ class OWLDocument extends Document{
     protected $current_prefixes = [];
 
     const default_ontologyIRI = [
-        [
             'prefix' => 'crowd',
             'value' => "http://crowd.fi.uncoma.edu.ar/kb1#"
-        ]
     ];
 
     protected $default_prefixes = [
-	["prefix" => "rdf",
-	 "value" => "http://www.w3.org/1999/02/22-rdf-syntax-ns#"],
-	["prefix" => "rdfs",
-	 "value" => "http://www.w3.org/2000/01/rdf-schema#"],
-	["prefix" => "xsd",
-	 "value" => "http://www.w3.org/2001/XMLSchema#"],
-	["prefix" => "owl",
-	 "value" => "http://www.w3.org/2002/07/owl#"]
+	     ["prefix" => "rdf",
+	      "value" => "http://www.w3.org/1999/02/22-rdf-syntax-ns#"],
+	     ["prefix" => "rdfs",
+	      "value" => "http://www.w3.org/2000/01/rdf-schema#"],
+	     ["prefix" => "xsd",
+	      "value" => "http://www.w3.org/2001/XMLSchema#"],
+	     ["prefix" => "owl",
+	      "value" => "http://www.w3.org/2002/07/owl#"]
     ];
 
     protected $default_header = [
-	["attr" => "xmlns", "value" => "http://www.w3.org/2002/07/owl#"],
-	["attr" => "xmlns:rdf", "value" => "http://www.w3.org/1999/02/22-rdf-syntax-ns#"],
-	["attr" => "xmlns:xml", "value" => "http://www.w3.org/XML/1998/namespace"],
-	["attr" => "xmlns:xsd", "value" => "http://www.w3.org/2001/XMLSchema#"],
-	["attr" => "xmlns:rdfs", "value" => "http://www.w3.org/2000/01/rdf-schema#"],
+	     ["attr" => "xmlns", "value" => "http://www.w3.org/2002/07/owl#"],
+	     ["attr" => "xmlns:rdf", "value" => "http://www.w3.org/1999/02/22-rdf-syntax-ns#"],
+	     ["attr" => "xmlns:xml", "value" => "http://www.w3.org/XML/1998/namespace"],
+	     ["attr" => "xmlns:xsd", "value" => "http://www.w3.org/2001/XMLSchema#"],
+	     ["attr" => "xmlns:rdfs", "value" => "http://www.w3.org/2000/01/rdf-schema#"],
     ];
 
     function __construct(){
         $this->content = new XMLWriter();
         $this->content->openMemory();
+    }
+
+    public function get_default_URI(){
+      return OWLDocument::default_ontologyIRI;
     }
 
     /**
@@ -112,26 +114,24 @@ class OWLDocument extends Document{
        default_header prefixes are used.
      */
     public function insert_ontology($ontologyIRI = null, $headerIRIs = []){
-        $this->content->startElement("Ontology");
+      $this->content->startElement("Ontology");
 
-	if (empty($headerIRIs)){
-	    $headerIRIs = $this->default_header;
-	}
+	    if (empty($headerIRIs)){
+	       $headerIRIs = $this->default_header;
+	      }
 
-	if ($ontologyIRI == null){
-	    $ontologyIRI = OWLDocument::default_ontologyIRI;
-	}
+	    if ($ontologyIRI == null){
+	       $ontologyIRI = OWLDocument::default_ontologyIRI["value"];
+	      }
 
-        $ontologyIRI = $ontologyIRI[0]['value'];
-
-	foreach ($headerIRIs as $header){
-	    $this->content->writeAttribute($header["attr"], $header["value"]);
+	    foreach ($headerIRIs as $header){
+	       $this->content->writeAttribute($header["attr"], $header["value"]);
         }
 
-	$this->content->writeAttribute("xml:base", $ontologyIRI);
-        $this->content->writeAttribute("ontologyIRI", $ontologyIRI);
+	    $this->content->writeAttribute("xml:base", $ontologyIRI);
+      $this->content->writeAttribute("ontologyIRI", $ontologyIRI);
 
-        $this->actual_kb = $ontologyIRI;
+      $this->actual_kb = $ontologyIRI;
     }
 
     /**
@@ -511,7 +511,7 @@ class OWLDocument extends Document{
     }
 
     public function begin_objectpropertydomain(){
-	$this->content->startElement("ObjectPropertyDomain");
+	     $this->content->startElement("ObjectPropertyDomain");
     }
 
     public function end_objectpropertydomain(){
@@ -519,7 +519,7 @@ class OWLDocument extends Document{
     }
 
     public function begin_objectpropertyrange(){
-	$this->content->startElement("ObjectPropertyRange");
+	     $this->content->startElement("ObjectPropertyRange");
     }
 
     public function end_objectpropertyrange(){
@@ -531,53 +531,53 @@ class OWLDocument extends Document{
     # Min and Max Cardinalities for DataProperties
     #
     public function begin_mincardinality_dataproperty($cardinality){
-	$this->content->startElement("DataMinCardinality");
-	$this->content->writeAttribute("cardinality", $cardinality);
+	     $this->content->startElement("DataMinCardinality");
+	     $this->content->writeAttribute("cardinality", $cardinality);
     }
     public function end_mincardinality_dataproperty(){
-	$this->content->EndElement();
+	     $this->content->EndElement();
     }
 
     public function begin_maxcardinality_dataproperty($cardinality){
-	$this->content->startElement("DataMaxCardinality");
-	$this->content->writeAttribute("cardinality", $cardinality);
+	     $this->content->startElement("DataMaxCardinality");
+	     $this->content->writeAttribute("cardinality", $cardinality);
     }
     public function end_maxcardinality_dataproperty(){
-	$this->content->EndElement();
+	     $this->content->EndElement();
     }
 
     public function begin_somevaluesfrom_dataproperty(){
-	$this->content->startElement("DataSomeValuesFrom");
+	     $this->content->startElement("DataSomeValuesFrom");
     }
     public function end_somevaluesfrom_dataproperty(){
-	$this->content->EndElement();
+	     $this->content->EndElement();
     }
 
     public function begin_allvaluesfrom_dataproperty(){
-	$this->content->startElement("DataAllValuesFrom");
+	     $this->content->startElement("DataAllValuesFrom");
     }
     public function end_allvaluesfrom_dataproperty(){
-	$this->content->EndElement();
+	     $this->content->EndElement();
     }
 
     public function begin_datapropertydomain(){
-	$this->content->startElement("DataPropertyDomain");
+	     $this->content->startElement("DataPropertyDomain");
     }
 
     public function end_datapropertydomain(){
-	$this->content->EndElement();
+	     $this->content->EndElement();
     }
 
     public function begin_datapropertyrange(){
-	$this->content->startElement("DataPropertyRange");
+	     $this->content->startElement("DataPropertyRange");
     }
 
     public function end_datapropertyrange(){
-	$this->content->EndElement();
+	     $this->content->EndElement();
     }
 
     public function begin_equivalentclasses(){
-	$this->content->startElement("EquivalentClasses");
+	     $this->content->startElement("EquivalentClasses");
     }
 
     public function end_equivalentclasses(){
@@ -585,7 +585,7 @@ class OWLDocument extends Document{
     }
 
     public function begin_disjointclasses(){
-	$this->content->startElement("DisjointClasses");
+	     $this->content->startElement("DisjointClasses");
     }
 
     public function end_disjointclasses(){
