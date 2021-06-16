@@ -107,7 +107,7 @@ class KoncludeConnector extends Connector{
 
         $k_answer = fread($owllink_out_file, filesize($out_file_path));
         $k_answer = explode("\n", $k_answer);
-        // konclude returns a DOMDocumentType
+
         $k_answer = array_filter($k_answer, function($k) {return $k != '1';}, ARRAY_FILTER_USE_KEY);
         $k_answer_el = array_slice($k_answer, 0);
 
@@ -159,5 +159,8 @@ class KoncludeConnector extends Connector{
 
       	return true;
           }
+
+
+      function run_converter($document, $si, $so){}
 }
 ?>

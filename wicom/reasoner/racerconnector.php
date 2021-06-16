@@ -129,6 +129,8 @@ Is the path '$racer_path' right? Is the permissions setted properly?");
 
         return true;
     }
+
+    function run_converter($document, $si, $so){}
 }
 
 ?>
