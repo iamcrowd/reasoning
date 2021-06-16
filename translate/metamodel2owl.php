@@ -63,6 +63,16 @@ use Wicom\Translator\Builders\OWLlinkBuilder;
 use Wicom\Translator\Builders\OWLBuilder;
 use Wicom\Translator\Builders\HTMLBuilder;
 
+/**
+    const OWL_XML = "owl/xml";
+    const RDF_XML = "rdf/xml";
+    const TURTLE = "turtle";
+    const JSON_LD = "jsonld";
+    const NTRIPLES = "ntriples";
+    const MANCHESTER = "manchestersyntax";
+    const FUNCTIONAL = "functionalsyntax";
+
+**/
 
 $syntax = 'rdfxml';
 if (array_key_exists('syntax',$_REQUEST)){
