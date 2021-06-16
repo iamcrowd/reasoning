@@ -32,4 +32,6 @@ $GLOBALS['config']['public_html'] = '/var/www/html/';
 $GLOBALS['config']['racer_path'] = $GLOBALS['config']['temporal_path'];
 $GLOBALS['config']['konclude_path'] = $GLOBALS['config']['temporal_path'];
 
+$GLOBALS['config']['converter_path'] = $GLOBALS['config']['temporal_path'];
+
 ?>
