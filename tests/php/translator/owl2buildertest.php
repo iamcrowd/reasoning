@@ -31,7 +31,9 @@ use Wicom\Translator\Builders\OWLBuilder;
 class OWL2BuilderTest extends PHPUnit\Framework\TestCase
 {
 
-
+  /**
+  @testdox Building an OWL 2 document with a custom URI
+  */
   public function testOWLBuilderCustomURI(){
     $expected = '<?xml version="1.0" encoding="UTF-8"?>
           <Ontology
@@ -60,6 +62,7 @@ class OWL2BuilderTest extends PHPUnit\Framework\TestCase
 
 
       $builder = new OWLBuilder();
+      $builder->set_syntax('owlxml');
       $builder->insert_header_owl2("http://crowd.fi.uncoma.edu.ar/kb1/");
       $builder->insert_class_declaration("http://crowd.fi.uncoma.edu.ar/kb1/Class1");
       $builder->insert_class_declaration("http://crowd.fi.uncoma.edu.ar/kb1/Class2");
@@ -70,15 +73,15 @@ class OWL2BuilderTest extends PHPUnit\Framework\TestCase
           ]]]);
       $builder->insert_footer();
       $actual = $builder->get_product();
-      $actual = $actual->to_string();
-
-      //var_dump($actual);
 
       $expected = process_xmlspaces($expected);
       $actual = process_xmlspaces($actual);
       $this->assertEqualXMLStructure($expected, $actual, true);
   }
 
+  /**
+  @testdox Building an OWL 2 document with the default URI
+  */
   public function testOWLBuilderDefaultURI(){
     $expected = '<?xml version="1.0" encoding="UTF-8"?>
           <Ontology
@@ -107,6 +110,7 @@ class OWL2BuilderTest extends PHPUnit\Framework\TestCase
 
 
       $builder = new OWLBuilder();
+      $builder->set_syntax('owlxml');
       $builder->insert_header_owl2();
       $builder->insert_class_declaration("Class1");
       $builder->insert_class_declaration("Class2");
@@ -117,9 +121,42 @@ class OWL2BuilderTest extends PHPUnit\Framework\TestCase
           ]]]);
       $builder->insert_footer();
       $actual = $builder->get_product();
-      $actual = $actual->to_string();
 
-      var_dump($actual);
+      $expected = process_xmlspaces($expected);
+      $actual = process_xmlspaces($actual);
+      $this->assertEqualXMLStructure($expected, $actual, true);
+  }
+
+  /**
+  @testdox Building an OWL 2 document with RDF syntax
+  */
+  public function testOWLBuilderDefaultSyntax(){
+    $expected = '<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns="http://crowd.fi.uncoma.edu.ar/kb1/"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+  <owl:Ontology rdf:about="http://crowd.fi.uncoma.edu.ar/kb1/"/>
+  <owl:Class rdf:about="http://crowd.fi.uncoma.edu.ar/kb1/Class2">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://crowd.fi.uncoma.edu.ar/kb1/Class1"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+</rdf:RDF>';
+
+
+      $builder = new OWLBuilder();
+      $builder->insert_header_owl2("http://crowd.fi.uncoma.edu.ar/kb1/");
+      $builder->insert_class_declaration("http://crowd.fi.uncoma.edu.ar/kb1/Class1");
+      $builder->insert_class_declaration("http://crowd.fi.uncoma.edu.ar/kb1/Class2");
+      $builder->translate_DL([
+          ["subclass" => [
+              ["class" => "http://crowd.fi.uncoma.edu.ar/kb1/Class2"],
+              ["class" => "http://crowd.fi.uncoma.edu.ar/kb1/Class1"],
+          ]]]);
+      $builder->insert_footer();
+      $actual = $builder->get_product();
 
       $expected = process_xmlspaces($expected);
       $actual = process_xmlspaces($actual);

@@ -212,12 +212,10 @@ class DLALCQIMetaExistsTest extends PHPUnit\Framework\TestCase{
         if ($this->validate_against_scheme($json)){
           $strategy = new DLALCQIMetaExists();
           $builder = new OWLBuilder();
-
-          $builder = new OWLBuilder();
+          $builder->set_syntax('owlxml');
           $trans = new MetamodelTranslator($strategy, $builder);
           $actual = $trans->to_owl2($json);
 
-          //var_dump($actual);
           $this->assertXmlStringEqualsXmlString($expected, $actual, true);
         }
         else {
