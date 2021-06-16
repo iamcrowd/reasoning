@@ -63,6 +63,12 @@ use Wicom\Translator\Builders\OWLlinkBuilder;
 use Wicom\Translator\Builders\OWLBuilder;
 use Wicom\Translator\Builders\HTMLBuilder;
 
+
+$syntax = 'rdfxml';
+if (array_key_exists('syntax',$_REQUEST)){
+    $syntax = $_REQUEST['syntax'];
+}
+
 $format = 'owl2-alcqi';
 if (array_key_exists('format',$_REQUEST)){
     $format = $_REQUEST['format'];
@@ -70,10 +76,7 @@ if (array_key_exists('format',$_REQUEST)){
 
 if ( ! array_key_exists('json', $_POST)){
     echo "
-There's no \"json\" parameter :-(
-Use, for example:
-
-    curl -d 'json={\"classes\": [{\"attrs\":[], \"methods\":[], \"name\": \"Hi World\"}]}' http://host.com/translator/berardi.php";
+    \"json\" parameter must be given";
 }else{
     $builder = null;
     $res = "";
@@ -81,11 +84,13 @@ Use, for example:
     switch ($format){
     case "owl2-alcin":
         $builder = new OWLBuilder();
+        $builder->set_syntax($syntax);
         $trans = new MetamodelTranslator(new DLALCINMeta(), $builder);
         $res = $trans->to_owl2($_POST['json']);
         break;
     case "owl2-alcqi":
         $builder = new OWLBuilder();
+        $builder->set_syntax($syntax);
         $trans = new MetamodelTranslator(new DLALCQIMetaExists(), $builder);
         $res = $trans->to_owl2($_POST['json']);
         break;
