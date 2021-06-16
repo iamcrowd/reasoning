@@ -27,16 +27,64 @@ use function \load;
 load("documentbuilder.php");
 load("owldocument.php", "../documents/");
 
+load("config.php", "../../../config/");
+load("converterconnector.php", "../../converter/");
+
+use Wicom\Converter\ConverterConnector;
+
 use Wicom\Translator\Documents\OWLDocument;
 
 class OWLBuilder extends DocumentBuilder{
 
     protected $actual_kb = null;
+    protected $current_syntax = 'rdf/xml';
+    protected $default_crowd_syntax = 'owl/xml';
+
+    const OWL_XML = "owl/xml";
+    const RDF_XML = "rdf/xml";
+    const TURTLE = "turtle";
+    const JSON_LD = "jsonld";
+    const NTRIPLES = "ntriples";
+    const MANCHESTER = "manchestersyntax";
+    const FUNCTIONAL = "functionalsyntax";
 
     function __construct($ontologyIRI = null, $iris = []){
         $this->product = new OWLDocument;
         $this->min_max = [];
     }
+
+
+    /**
+      This function sets the syntax in which the OWL specs will be written
+      By default, initial OWL 2 are generated as OWL/XML but crowd should export RDF/XML because it is the standard syntax for OWL 2.
+    **/
+    public function set_syntax($syntax){
+      switch ($syntax) {
+        case 'rdfxml':
+          $this->current_syntax = OWLBuilder::RDF_XML;
+          break;
+        case 'turtle':
+          $this->current_syntax = OWLBuilder::TURTLE;
+          break;
+        case 'ntriples':
+          $this->current_syntax = OWLBuilder::NTRIPLES;
+          break;
+        case 'manchester':
+          $this->current_syntax = OWLBuilder::MANCHESTER;
+          break;
+        case 'functional':
+          $this->current_syntax = OWLBuilder::FUNCTIONAL;
+          break;
+        case 'owlxml':
+          $this->current_syntax = OWLBuilder::OWL_XML;
+          break;
+        default:
+          $this->current_syntax = OWLBuilder::RDF_XML;
+          break;
+      }
+
+    }
+
 
     /**
        @param $ontologyIRI {string} A string containing the IRI for the ontology
@@ -139,7 +187,17 @@ class OWLBuilder extends DocumentBuilder{
         if ($finish){
             $this->product->end_document();
         }
-        return $this->product;
+
+        if ($this->current_syntax != $this->default_crowd_syntax){
+          $converter = new ConverterConnector();
+          $converter->run_converter($this->product->to_string(),"owl/xml",$this->current_syntax);
+          $product_insyntax = $converter->get_col_answers()[0];
+
+          return $product_insyntax;
+        }
+        else{
+          return $this->product->to_string();
+        }
     }
 
     public function insert_owl2($text){

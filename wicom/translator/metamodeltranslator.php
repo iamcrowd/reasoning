@@ -106,7 +106,7 @@ class MetamodelTranslator{
 
     /**
        @param json A String.
-       @return a XML OWL2 String.
+       @return a XML OWL2 String with a standard syntax
      */
     function to_owl2($json){
         $json_obj = json_decode($json, true);
@@ -124,7 +124,8 @@ class MetamodelTranslator{
 
         $this->builder->insert_footer();
         $document = $this->builder->get_product();
-        return $document->to_string();
+        //return $document->to_string();
+        return $document;
     }
 
 }

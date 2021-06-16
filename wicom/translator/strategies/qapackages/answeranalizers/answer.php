@@ -222,10 +222,10 @@ class Answer{
     }
 
     function set_original_owl2($owl2_srt){
-	     $owl = new OWLBuilder();
-	      $owl->insert_owl2($owl2_srt);
-	       $xml = $owl->get_product();
-	        $this->orig_owl2 = $xml->to_string();
+	    // $owl = new OWLBuilder();
+	    //  $owl->insert_owl2($owl2_srt);
+	    //   $xml = $owl->get_product();
+	    //    $this->orig_owl2 = $xml->to_string();
     }
 
     function get_new_owl2(){
