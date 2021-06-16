@@ -64,13 +64,12 @@ use Wicom\Translator\Builders\OWLBuilder;
 use Wicom\Translator\Builders\HTMLBuilder;
 
 /**
-    const OWL_XML = "owl/xml";
-    const RDF_XML = "rdf/xml";
-    const TURTLE = "turtle";
-    const JSON_LD = "jsonld";
-    const NTRIPLES = "ntriples";
-    const MANCHESTER = "manchestersyntax";
-    const FUNCTIONAL = "functionalsyntax";
+    OWL_XML = "owlxml";
+    RDF_XML = "rdfxml";
+    TURTLE = "turtle";
+    NTRIPLES = "ntriples";
+    MANCHESTER = "manchester";
+    FUNCTIONAL = "functional";
 
 **/
 
